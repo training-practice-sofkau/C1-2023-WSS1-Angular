@@ -1,1 +1,39 @@
-<p>album-list works!</p>
+<div class="search-filter">
+    <div ngClass="artistTxt">
+        <input type="text" placeholder="Enter text" [(ngModel)]="param" (keyup)="ngOnSearch()"/>
+    </div>
+    <div ngClass="artistOps">
+        <input type="radio" value="name" name="filter" [(ngModel)]="filter" (change)="ngOnSearch()"/> Name
+        <input type="radio" value="country" name="filter" [(ngModel)]="filter" (change)="ngOnSearch()"/> Country
+        <input type="radio" value="age" name="filter" [(ngModel)]="filter" (change)="ngOnSearch()"/> Age
+    </div>
+
+    <div>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>
+
+<div class="list-container" *ngFor="let album of l_albums | paginate: { itemsPerPage: 3, currentPage: p}">
+    <div class="card">
+        ID: {{album.id}} <br/>
+        Title: {{album.title}} <br/>
+        Genre: {{album.genre}} <br/>
+        Release Date: {{album.relase_date}} <br/>
+        Number of Songs: {{album.number_of_songs}} <br/>
+        Artist: {{album.artist}} <br/>
+    </div>
+  
+</div>
+
+<!--Implement acording to the results obtained founded: n or There are no matches-->
+<ng-container *ngIf="results > 0; else noArtistFound ">
+    <div>
+        <h4>Founded: {{results}}</h4>
+    </div>
+
+</ng-container>
+<ng-template #noArtistFound>
+    <div>
+        <h4>No artist were found</h4>
+    </div>
+</ng-template>
