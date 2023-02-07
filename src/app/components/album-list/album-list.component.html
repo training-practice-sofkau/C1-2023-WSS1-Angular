@@ -1,1 +1,16 @@
-<p>album-list works!</p>
+<div [ngStyle]="{display: 'flex'}">
+  <div ngClass="albumTxt">
+    <input type="text" placeholder="Enter text" [(ngModel)]="param" />
+  </div>
+  <div ngClass="artistOps">
+    <input type="radio" (click)="ngOnSearch(param, 'title')" /> Title
+    <input type="radio" /> Genre
+    <input type="radio" /> Number of songs
+  </div>
+</div>
+
+<div [ngStyle]="{display: 'flex', flexDirection:'column'}">
+      <app-album
+      [ngStyle]="{backgroundColor: 'green', margin: '10px 10px 10px 13px ', padding:'5px'}"
+      *ngFor="let album of l_albums" [album]="album"></app-album>
+</div>
