@@ -9,18 +9,20 @@
     </div>
 </div>
 
-<div ngClass="albumResults" *ngFor="let album of f_album">
+<div *ngFor="let album of f_album"[ngClass]="{even: album.id % 2 === 0, odd: album.id % 2 !== 0}">
     <div ngClass="albumResults-album">
-        id: {{album.id}} <br/>
-        name: {{album.title}} <br/>
-        genre: {{album.genre}} <br/>
-        release date: {{album.release_date}} <br/>
-        number of songs: {{album.number_of_songs}} <br/>
         <img 
-            *ngIf="album.img?.url"
-            [src]="album.img.url"
-            [alt]="album.title"
+        *ngIf="album.img?.url"
+        [src]="album.img.url"
+        [alt]="album.title"
         />
+        <div>
+            id: {{album.id}} <br/>
+            name: {{album.title}} <br/>
+            genre: {{album.genre}} <br/>
+            release date: {{album.release_date}} <br/>
+            number of songs: {{album.number_of_songs}} <br/>
+        </div>
     </div>
   
 </div>
