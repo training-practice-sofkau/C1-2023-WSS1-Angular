@@ -16,6 +16,11 @@
         genre: {{album.genre}} <br/>
         release date: {{album.release_date}} <br/>
         number of songs: {{album.number_of_songs}} <br/>
+        <img 
+            *ngIf="album.img?.url"
+            [src]="album.img.url"
+            [alt]="album.title"
+        />
     </div>
   
 </div>

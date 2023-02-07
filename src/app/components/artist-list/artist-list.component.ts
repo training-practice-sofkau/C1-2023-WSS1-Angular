@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ARTISTS } from 'src/app/mocks/artist.mock';
 import { IArtist } from 'src/app/models/artist.interface';
+import { NgOptimizedImage } from '@angular/common'
 
 @Component({
   selector: 'app-artist-list',
