@@ -3,29 +3,23 @@
         <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
     </div>
     <div ngClass="artistOps">
-        <input type="radio" id="artistChoice1" (click)="ngOnSearch(param, 'name')" name="artist_radio_button"/>
-        <label for="artistChoice1">Title</label>
+        <input type="radio" id="artistChoice1"  name="artist_radio_button" (click)="ngOnSearch(param, 'name')"/>
+        <label for="artistChoice1">Name</label>
 
-        <input type="radio" id="artistChoice2" name="artist_radio_button"/>
+        <input type="radio" id="artistChoice2" name="artist_radio_button" (click)="ngOnSearch(param, 'country')"/>
         <label for="artistChoice2">Country</label>
 
-        <input type="radio" id="artistChoice3" name="artist_radio_button"/>
+        <input type="radio" id="artistChoice3" name="artist_radio_button" (click)="ngOnSearch(param, 'age')"/>
         <label for="artistChoice3">Age</label>
-
     </div>
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
-    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
-        id: {{artist.id}} <br/>
-        name: {{artist.name}} <br/>
-        country: {{artist.country}} <br/>
-        age: {{artist.age}} <br/>
-        year debut: {{artist.year_debut}} <br/>
-        total of albums: {{artist.total_albums}} <br/>
-    </div>
-
+<!-- Loop rendering for artists -->
+<div [ngStyle]="{display: 'flex', flexDirection:'column'}">
+  <app-artist [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}"
+    *ngFor="let artist of l_artists" [artist]="artist"></app-artist>
 </div>
+
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="results > 0; else noArtistFound ">
@@ -36,6 +30,6 @@
 </ng-container>
 <ng-template #noArtistFound>
     <div>
-        <h4>No artist were found</h4>
+        <h4>No artists were found</h4>
     </div>
 </ng-template>

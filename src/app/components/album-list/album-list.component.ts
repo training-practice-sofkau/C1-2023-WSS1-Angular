@@ -14,13 +14,39 @@ export class AlbumListComponent implements OnInit {
   l_albums: IAlbum[] = [];
   results: number = 0;
 
+  toLowerCase = (data:string): string => {
+    return data.toLowerCase();
+  }
+
+
   ngOnInit(): void {
     this.l_albums = ALBUMS;
     this.results = this.l_albums.length;
   }
 
   ngOnSearch(param: string, typeSearch: string){
-    console.log(param)
+
+    this.l_albums = ALBUMS;
+
+    switch(typeSearch) {
+      case "title": {
+        this.l_albums= this.l_albums.filter(album => this.toLowerCase(album.title).startsWith(this.toLowerCase(<string>param)));
+         break;
+      }
+      case "genre": {
+        this.l_albums= this.l_albums.filter(album => this.toLowerCase(album.genre).startsWith(this.toLowerCase(<string>param)));
+         break;
+      }
+      case "number_of_songs": {
+        this.l_albums= this.l_albums.filter(album => album.number_of_songs === parseInt(<string>param));
+        break;
+     }
+      default: {
+        this.l_albums = ALBUMS;
+        break;
+      }
+   }
+    console.log(param);
   }
 
 

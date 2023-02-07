@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IArtist } from 'src/app/models/artist.interface';
 
 @Component({
   selector: 'app-artist',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./artist.component.scss']
 })
 export class ArtistComponent {
-
+  @Input() artist: IArtist | undefined;
 }
