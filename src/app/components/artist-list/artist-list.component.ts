@@ -12,7 +12,6 @@ export class ArtistListComponent implements OnInit {
 
   @Input() param: string = "";
 
-  //TO-DO: Define a variable that will store the information
   l_artists: IArtist[] = [];
 
   results: number = 0;

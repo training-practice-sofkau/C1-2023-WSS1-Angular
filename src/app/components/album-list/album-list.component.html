@@ -1,1 +1,34 @@
-<p>album-list works!</p>
+<div [ngStyle]="{display: 'flex'}">
+  <div ngClass="artistTxt">
+    <input type="text" placeholder="Enter text"/>
+  </div>
+  <div ngClass="artistOps">
+    <input type="radio"/> Title
+    <input type="radio"/> Genre
+    <input type="radio"/> Release Date
+  </div>
+</div>
+
+<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let album of l_albums">
+  <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
+    id: {{album.id}} <br/>
+    title: {{album.title}} <br/>
+    genre: {{album.genre}} <br/>
+    release date: {{album.releaseDate}} <br/>
+    number of songs: {{album.numberOfSongs}} <br/>
+  </div>
+
+</div>
+
+<!--Implement acording to the results obtained founded: n or There are no matches-->
+<ng-container *ngIf="l_length > 0; else noArtistFound ">
+  <div>
+    <h4>Founded: {{l_length}}</h4>
+  </div>
+
+</ng-container>
+<ng-template #noArtistFound>
+  <div>
+    <h4>No artist were found</h4>
+  </div>
+</ng-template>

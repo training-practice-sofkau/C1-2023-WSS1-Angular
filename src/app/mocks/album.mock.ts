@@ -25,7 +25,7 @@ export const ALBUMS: Ialbum[] = [
   {
     id: 4,
     title: "Fear of the Dark",
-    genre: "heavy Metal",
+    genre: "Heavy Metal",
     releaseDate: "1992",
     numberOfSongs: 12,
   },
