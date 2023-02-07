@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ARTISTS } from 'src/app/mocks/artist.mock';
-import { IArtist } from 'src/app/models/artist.interface';
+import {Component, OnInit, Input} from '@angular/core';
+import {ARTISTS} from 'src/app/mocks/artist.mock';
+import {IArtist} from 'src/app/models/artist.interface';
 
 @Component({
   selector: 'app-artist-list',
@@ -8,7 +8,7 @@ import { IArtist } from 'src/app/models/artist.interface';
   styleUrls: ['./artist-list.component.scss']
 })
 
-export class ArtistListComponent implements OnInit{
+export class ArtistListComponent implements OnInit {
 
   @Input() param: string = "";
 
@@ -16,14 +16,14 @@ export class ArtistListComponent implements OnInit{
   l_artists: IArtist[] = [];
 
   results: number = 0;
-  
+
   ngOnInit(): void {
     this.l_artists = ARTISTS;
     this.results = this.l_artists.length;
   }
 
   //TO-DO: Create a function that based of param it will show n-results
-  ngOnSearch(param: string, typeSearch: string){
+  ngOnSearch(param: string, typeSearch: string) {
     console.log(param)
   }
 
