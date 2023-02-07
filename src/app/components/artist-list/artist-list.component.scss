@@ -1,1 +1,22 @@
+.search-filter {
+    display: flex;
+}
+
+.list-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.list-container:nth-child(even) {
+    background-color: rgba(19, 104, 160, 0.2);
+}
+
+.list-container:nth-child(odd) {
+    background-color: rgba(169, 77, 187, 0.2);
+}
+
+.list-container .card {
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+}
 
