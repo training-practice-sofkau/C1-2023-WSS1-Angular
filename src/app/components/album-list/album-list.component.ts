@@ -39,9 +39,9 @@ export class AlbumListComponent implements OnInit{
     if (this.filter === 'year') {
       this.param === "" ?
       this.l_albums = this.albums
-        .sort((a, b) => a.relase_date - b.relase_date) : 
+        .sort((a, b) => b.relase_date - a.relase_date) : 
       this.l_albums = this.albums
-        .sort((a, b) => a.relase_date - b.relase_date)
+        .sort((a, b) => b.relase_date - a.relase_date)
         .filter((album) => album.relase_date === parseInt(this.param));
     }
     this.results = this.l_albums.length;

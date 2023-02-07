@@ -40,9 +40,9 @@ export class ArtistListComponent implements OnInit {
     if (this.filter === 'age') {
       this.param === "" ?
       this.l_artists = this.artists
-        .sort((a, b) => a.age - b.age) : 
+        .sort((a, b) => b.age - a.age) : 
       this.l_artists = this.artists
-        .sort((a, b) => a.age - b.age)
+        .sort((a, b) => b.age - a.age)
         .filter((artist) => artist.age === parseInt(this.param));
     }
     this.results = this.l_artists.length;
