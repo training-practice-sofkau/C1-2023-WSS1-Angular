@@ -1,4 +1,4 @@
-<div [ngStyle]="{display: 'flex'}">
+<div ngClass="albumSearh">
     <div ngClass="albumtxt">
         <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
     </div>
@@ -9,8 +9,8 @@
     </div>
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let album of f_album">
-    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
+<div ngClass="albumResults" *ngFor="let album of f_album">
+    <div ngClass="albumResults-album">
         id: {{album.id}} <br/>
         name: {{album.title}} <br/>
         genre: {{album.genre}} <br/>

@@ -1,0 +1,14 @@
+.albumSearch {
+    display: flex;
+}
+
+.albumResults {
+    display: 'flex';
+    flex-direction:'column';
+}
+
+.albumResults-album {
+    background-color: pink;
+    margin: 10px 10px 10px 13px;
+    padding: 5px;
+}

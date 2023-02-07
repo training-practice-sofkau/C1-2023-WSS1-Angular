@@ -1,4 +1,4 @@
-<div [ngStyle]="{display: 'flex'}">
+<div ngClass="artistSearch">
     <div ngClass="artistTxt">
         <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
     </div>
@@ -9,8 +9,8 @@
     </div>
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of f_artists">
-    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
+<div ngClass="artistResults" *ngFor="let artist of f_artists">
+    <div ngClass="artistResults-artist">
         id: {{artist.id}} <br/>
         name: {{artist.name}} <br/>
         country: {{artist.country}} <br/>
