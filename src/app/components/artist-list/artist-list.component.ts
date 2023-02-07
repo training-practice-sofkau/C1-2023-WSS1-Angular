@@ -12,7 +12,6 @@ export class ArtistListComponent implements OnInit{
 
   @Input() param: string = "";
 
-  //TO-DO: Define a variable that will store the information
   l_artists: IArtist[] = [];
 
   results: number = 0;
@@ -25,6 +24,8 @@ export class ArtistListComponent implements OnInit{
   //TO-DO: Create a function that based of param it will show n-results
   ngOnSearch(param: string, typeSearch: string){
     console.log(param)
+    console.log(typeSearch);
+    
   }
 
 }
