@@ -5,26 +5,46 @@ import { IArtist } from 'src/app/models/artist.interface';
 @Component({
   selector: 'app-artist-list',
   templateUrl: './artist-list.component.html',
-  styleUrls: ['./artist-list.component.scss']
+  styleUrls: ['./artist-list.component.scss'],
 })
-
-export class ArtistListComponent implements OnInit{
-
-  @Input() param: string = "";
-
-  //TO-DO: Define a variable that will store the information
+export class ArtistListComponent implements OnInit {
+  @Input() param: string = '';
+  artists: IArtist[] = ARTISTS;
   l_artists: IArtist[] = [];
 
   results: number = 0;
-  
+  filter: string = 'name';
+  p: number = 1;
+
   ngOnInit(): void {
-    this.l_artists = ARTISTS;
+    this.l_artists = this.artists;
     this.results = this.l_artists.length;
   }
 
-  //TO-DO: Create a function that based of param it will show n-results
-  ngOnSearch(param: string, typeSearch: string){
-    console.log(param)
-  }
 
+  ngOnSearch() {
+    if (this.filter === 'name') {
+      this.l_artists = this.artists
+        .filter((artist) =>
+          artist.name.toLowerCase().includes(this.param.toLowerCase())
+        )
+        .sort((a, b) => a.name.localeCompare(b.name));
+    }
+    if (this.filter === 'country') {
+      this.l_artists = this.artists
+        .sort((a, b) => a.country.localeCompare(b.country))
+        .filter((artist) =>
+          artist.country.toLowerCase().includes(this.param.toLowerCase())
+        );
+    }
+    if (this.filter === 'age') {
+      this.param === "" ?
+      this.l_artists = this.artists
+        .sort((a, b) => a.age - b.age) : 
+      this.l_artists = this.artists
+        .sort((a, b) => a.age - b.age)
+        .filter((artist) => artist.age === parseInt(this.param));
+    }
+    this.results = this.l_artists.length;
+  }
 }
