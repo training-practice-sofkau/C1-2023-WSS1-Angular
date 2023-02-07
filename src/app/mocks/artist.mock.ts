@@ -52,7 +52,7 @@ export const ARTISTS: IArtist[] = [
   {
     id: 7,
     name: 'Frankie Ruiz',
-    country: 'Colombia',
+    country: 'CO',
     age: 60,
     debutYear: 1975,
     totalAlbums: 15,
