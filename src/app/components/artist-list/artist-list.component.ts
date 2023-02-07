@@ -37,6 +37,8 @@ export class ArtistListComponent implements OnInit{
         this.f_artists = this.l_artists.filter((obj) => obj.age.toString().toLowerCase().includes(param.toLowerCase()));
     }
     
+
+    this.results = this.f_artists.length
   }
 
 }
