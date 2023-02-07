@@ -16,7 +16,7 @@ export class ArtistListComponent implements OnInit{
   l_artists: IArtist[] = [];
 
   results: number = 0;
-  
+
   ngOnInit(): void {
     this.l_artists = ARTISTS;
     this.results = this.l_artists.length;
