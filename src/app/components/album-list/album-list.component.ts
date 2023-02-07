@@ -33,7 +33,7 @@ export class AlbumListComponent implements OnInit{
       this.l_albums = this.albums
         .sort((a, b) => a.artist.localeCompare(b.artist))
         .filter((album) =>
-          album.title.toLowerCase().includes(this.param.toLowerCase())
+          album.artist.toLowerCase().includes(this.param.toLowerCase())
         );
     }
     if (this.filter === 'year') {
