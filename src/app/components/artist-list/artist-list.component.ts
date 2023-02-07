@@ -30,11 +30,11 @@ export class ArtistListComponent implements OnInit{
     }
 
     if (typeSearch === "name") {
-        this.f_artists = this.l_artists.filter((obj) => obj.name.toLowerCase().includes(param.toLowerCase()));
+        this.f_artists = this.l_artists.filter((obj) => obj.name.toLowerCase().startsWith(param.toLowerCase()));
     } else if(typeSearch === "country") {
-        this.f_artists = this.l_artists.filter((obj) => obj.country.toLowerCase().includes(param.toLowerCase()));
+        this.f_artists = this.l_artists.filter((obj) => obj.country.toLowerCase().startsWith(param.toLowerCase()));
     } else {
-        this.f_artists = this.l_artists.filter((obj) => obj.age.toString().toLowerCase().includes(param.toLowerCase()));
+        this.f_artists = this.l_artists.filter((obj) => obj.age.toString().toLowerCase().startsWith(param.toLowerCase()));
     }
     
 
