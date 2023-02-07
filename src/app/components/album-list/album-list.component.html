@@ -1,1 +1,38 @@
-<p>album-list works!</p>
+<div class="search_bar">
+  <div ngClass="artistTxt">
+    <input type="text" placeholder="Enter text" [ngModel]="searchParam" />
+  </div>
+  <div ngClass="artistOps">
+    <input type="radio" (click)="ngOnSearch(searchParam, 'name')" /> Name
+    <input type="radio" /> Country <input type="radio" /> Age
+  </div>
+  <div>
+    <ng-container *ngIf="results > 0; else noArtistFound">
+      <div>
+        <h4 class="result_text">Founded {{ results }} albums</h4>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<div class="results_body" *ngFor="let album of albums">
+  <div class="entry_card">
+    title: {{ album.title }} <br />
+    genre: {{ album.genre }} <br />
+    release_date: {{ album.release_date }} <br />
+    number_of_songs: {{ album.number_of_songs }} <br />
+    artist: {{ album.artist }} <br />
+  </div>
+</div>
+
+<!--Implement acording to the results obtained founded: n or There are no matches-->
+<ng-container *ngIf="results > 0; else noArtistFound">
+  <div>
+    <h4 class="result_text">Founded {{ results }} albums</h4>
+  </div>
+</ng-container>
+<ng-template #noArtistFound>
+  <div>
+    <h4 class="result_text">No albums were found</h4>
+  </div>
+</ng-template>

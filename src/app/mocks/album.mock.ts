@@ -1,6 +1,6 @@
 import { IAlbum } from '../models/album.interface';
 
-export const ALBUM: IAlbum[] = [
+export const ALBUMS: IAlbum[] = [
   {
     title: 'TAMARA',
     release_date: '2022',
