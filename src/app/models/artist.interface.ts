@@ -4,5 +4,6 @@ export interface IArtist{
     country: string,
     age: number,
     year_debut: number,
-    total_albums: number
+    total_albums: number,
+    link?:string
 }

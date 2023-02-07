@@ -7,7 +7,8 @@ export const ARTISTS: IArtist[] = [
         country: 'USA',
         age: 30,
         year_debut: 2004,
-        total_albums: 12
+        total_albums: 12,
+        link:'https://www.thestatesman.com/wp-content/uploads/2017/10/brunomars.jpg'   
     },
     {
         id: 2,
@@ -16,5 +17,13 @@ export const ARTISTS: IArtist[] = [
         age: 38,
         year_debut: 2017,
         total_albums: 4
+    },
+    {
+        id: 3,
+        name: 'Maluma',
+        country: 'Colombia',
+        age: 35,
+        year_debut: 2009,
+        total_albums: 16
     }
 ]
