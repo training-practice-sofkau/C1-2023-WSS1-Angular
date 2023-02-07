@@ -3,9 +3,10 @@
     <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
   </div>
   <div ngClass="artistOps">
-    <input type="radio" (click)="ngOnSearch(param, 'name')"/> Name
-    <input type="radio"/> Country
-    <input type="radio"/> Age
+    <button type="button" (click)="search(param, 'name')">Name</button>
+    <button type="button" (click)="search(param, 'country')">Country</button>
+    <button type="button" (click)="search(param, 'age')">Age</button>
+    <button type="button" (click)="search(param, 'reset')">Reset</button>
   </div>
 </div>
 

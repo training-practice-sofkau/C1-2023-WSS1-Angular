@@ -70,5 +70,5 @@ export const ALBUMS: Ialbum[] = [
     genre: "Hard Rock",
     releaseDate: "2008",
     numberOfSongs: 14,
-  },
+  }
 ]

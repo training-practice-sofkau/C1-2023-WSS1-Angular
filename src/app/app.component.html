@@ -16,9 +16,14 @@
   <div class="albumTitle" (click)="ngOnShowList('album')"><h2>Album</h2></div>
   <br/>
 
+  <div class="containers" *ngIf="type === 'album'">
+    <app-album-list></app-album-list>
+  </div>
+  <div class="containers"  *ngIf="type === 'artist'">
+    <app-artist-list></app-artist-list>
+  </div>
 
-  <app-artist-list *ngIf="type === 'artist'"></app-artist-list>
-  <app-album-list *ngIf="type === 'album'"></app-album-list>
+
 
 
 </div>

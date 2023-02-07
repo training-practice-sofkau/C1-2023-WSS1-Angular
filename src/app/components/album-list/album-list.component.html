@@ -1,11 +1,12 @@
 <div [ngStyle]="{display: 'flex'}">
   <div ngClass="artistTxt">
-    <input type="text" placeholder="Enter text"/>
+    <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
   </div>
   <div ngClass="artistOps">
-    <input type="radio"/> Title
-    <input type="radio"/> Genre
-    <input type="radio"/> Release Date
+    <button type="button" (click)="search(param,'title')">Title</button>
+    <button type="button" (click)="search(param,'genre')">Genre</button>
+    <button type="button" (click)="search(param,'releaseDate')">Release Date</button>
+    <button type="button" (click)="search(param,'reset')">Reset</button>
   </div>
 </div>
 
@@ -17,7 +18,6 @@
     release date: {{album.releaseDate}} <br/>
     number of songs: {{album.numberOfSongs}} <br/>
   </div>
-
 </div>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->

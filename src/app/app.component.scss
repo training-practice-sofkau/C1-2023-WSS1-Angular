@@ -79,3 +79,13 @@
 .albumTitle h2 {
   margin: 14px 16px;
 }
+
+.containers{
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid rgb(70,70,70,0.2);
+}
