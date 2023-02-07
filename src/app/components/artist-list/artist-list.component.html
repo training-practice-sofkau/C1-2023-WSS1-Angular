@@ -3,14 +3,18 @@
     <input type="text" placeholder="Enter text" [(ngModel)]="param" />
   </div>
   <div ngClass="artistOps">
-    <input type="radio" (click)="ngOnSearch(param, 'name')" /> Name
-    <input type="radio" /> Country <input type="radio" /> Age
+    <input type="radio" name="filterOption" (click)="filter('age')" />
+    Age
+    <input type="radio" name="filterOption" (click)="filter('name')" />
+    Name
+    <input type="radio" name="filterOption" (click)="filter('country')" />
+    Country
   </div>
 </div>
 
 <div
   [ngStyle]="{ display: 'flex', flexDirection: 'column' }"
-  *ngFor="let artist of l_artists"
+  *ngFor="let artist of artistsList"
 >
   <div
     [ngStyle]="{
@@ -28,7 +32,6 @@
   </div>
 </div>
 
-<!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="results > 0; else noArtistFound">
   <div>
     <h4>Founded: {{ results }}</h4>
