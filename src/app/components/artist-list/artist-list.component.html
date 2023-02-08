@@ -1,35 +1,44 @@
-<div [ngStyle]="{display: 'flex'}">
-    <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
-    </div>
-    <div ngClass="artistOps">
-        <input type="radio" (click)="ngOnSearch(param, 'name')"/> Name
-        <input type="radio"/> Country
-        <input type="radio"/> Age
-    </div>
+<div [ngStyle]="{ display: 'flex', justifyContent: 'center' }">
+  <div ngClass="artistTxt">
+    <input type="text" placeholder="Enter text" [(ngModel)]="param" />
+  </div>
+  <div ngClass="artistOps">
+    <input
+      type="radio"
+      name="paramFilter"
+      (click)="ngOnSearch(param, 'name')"
+    />
+    Name
+    <input
+      type="radio"
+      name="paramFilter"
+      (click)="ngOnSearch(param, 'country')"
+    />
+    Country
+    <input type="radio" name="paramFilter" (click)="ngOnSearch(param, 'age')" />
+    Age
+  </div>
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
-    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
-        id: {{artist.id}} <br/>
-        name: {{artist.name}} <br/>
-        country: {{artist.country}} <br/>
-        age: {{artist.age}} <br/>
-        year debut: {{artist.year_debut}} <br/>
-        total of albums: {{artist.total_albums}} <br/>
-    </div>
-  
+<div class="list--container">
+  <div *ngFor="let artist of pagination_artist">
+    <app-element-card [elementRender]="artist"></app-element-card>
+  </div>
+  <div class="paginator--container" *ngIf="pagination_artist.length>0">
+    <p (click)="changePage('down')" *ngIf="currentPage>1" class="pagination--button"><<</p>
+    <p (click)="paginationList()">Page {{currentPage}}</p>
+    <p (click)="changePage('up')" *ngIf="(l_artists.length/rows)>currentPage" class="pagination--button">>></p>
+  </div>
 </div>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->
-<ng-container *ngIf="results > 0; else noArtistFound ">
-    <div>
-        <h4>Founded: {{results}}</h4>
-    </div>
-
+<ng-container *ngIf="results > 0; else noArtistFound">
+  <div>
+    <h4>Found: {{ results }}</h4>
+  </div>
 </ng-container>
 <ng-template #noArtistFound>
-    <div>
-        <h4>No artist were found</h4>
-    </div>
+  <div>
+    <h4>No artist were found</h4>
+  </div>
 </ng-template>

@@ -1,0 +1,14 @@
+<div class="element--container">
+  <div class="image--section">
+    <img
+      [src]="imgElement ? imgElement : defaultImage"
+      alt="image for song"
+      class="logo--song"
+    />
+  </div>
+  <div class="info--section">
+    <p *ngFor="let item of elementRender | keyvalue: returnZero | slice:0:numberProperties">
+      {{ item.key }} : {{ item.value }}
+    </p>
+  </div>
+</div>
