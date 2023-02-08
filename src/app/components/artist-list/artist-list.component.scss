@@ -39,3 +39,24 @@
     width: 50em;
     margin: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+  .odd {
+      width: 20em;
+  }
+
+  .even {
+      width: 20em;
+  }
+
+
+  .artistSearch {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .artistOps {
+      margin-top: 10px;
+  }
+
+}
