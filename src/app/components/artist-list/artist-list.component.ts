@@ -36,7 +36,7 @@ export class ArtistListComponent implements OnInit {
         console.log('Error filtering the list');
         break;
     }
-    console.table(this.searchResulst);
+    this.results=this.searchResulst.length;
   }
   searchByTitle(artists: IArtist[], param: string) {
     return artists
