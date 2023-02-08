@@ -35,17 +35,20 @@ export class ArtistListComponent implements OnInit, OnChanges{
     switch(this.typeSearch) {
       case "name": {
         this.l_artists= this.l_artists
-        .filter(artist => this.toLowerCase(artist.name).startsWith(this.toLowerCase(param)));
+        .filter(artist => this.toLowerCase(artist.name).startsWith(this.toLowerCase(param)))
+        .sort((a, b) => (a.name < b.name ? -1 : 1));;
          break;
       }
       case "country": {
         this.l_artists= this.l_artists
-        .filter(artist => this.toLowerCase(artist.country).startsWith(this.toLowerCase(param)));
+        .filter(artist => this.toLowerCase(artist.country).startsWith(this.toLowerCase(param)))
+        .sort((a, b) => (a.name < b.name ? -1 : 1));
          break;
       }
       case "age": {
         this.l_artists= this.l_artists
-        .filter(artist => artist.age === parseInt(param));
+        .filter(artist => artist.age === parseInt(param))
+        .sort((a, b) => (a.name < b.name ? -1 : 1));
         break;
      }
       default: {

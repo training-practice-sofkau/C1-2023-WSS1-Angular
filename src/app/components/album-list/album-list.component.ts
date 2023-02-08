@@ -32,15 +32,21 @@ export class AlbumListComponent implements OnInit {
 
     switch (this.typeSearch) {
       case "title": {
-        this.l_albums = this.l_albums.filter(album => this.toLowerCase(album.title).startsWith(this.toLowerCase(param)));
+        this.l_albums = this.l_albums
+        .filter(album => this.toLowerCase(album.title).startsWith(this.toLowerCase(param)))
+        .sort((a, b) => (a.title < b.title? -1 : 1));
         break;
       }
       case "genre": {
-        this.l_albums = this.l_albums.filter(album => this.toLowerCase(album.genre).startsWith(this.toLowerCase(param)));
+        this.l_albums = this.l_albums
+        .filter(album => this.toLowerCase(album.genre).startsWith(this.toLowerCase(param)))
+        .sort((a, b) => (a.title < b.title? -1 : 1));
         break;
       }
       case "number_of_songs": {
-        this.l_albums = this.l_albums.filter(album => album.number_of_songs === parseInt(param));
+        this.l_albums = this.l_albums
+        .filter(album => album.number_of_songs === parseInt(param))
+        .sort((a, b) => (a.title < b.title? -1 : 1));;
         break;
       }
       default: {
