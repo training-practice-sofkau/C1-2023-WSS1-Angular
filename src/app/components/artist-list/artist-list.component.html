@@ -1,24 +1,29 @@
-<div [ngStyle]="{display: 'flex'}">
+<div ngClass="artist-nav" [ngStyle]="{'display': 'flex', 'align-items': 'center', 'justify-content': 'center'}">
     <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
+        <input type="text" placeholder="Enter text" (click)="ngInputReset()" [(ngModel)]="param"/>
     </div>
     <div ngClass="artistOps">
-        <input type="radio" (click)="ngOnSearch(param, 'name')"/> Name
-        <input type="radio"/> Country
-        <input type="radio"/> Age
+        <input type="radio"  name="1" (click)="ngOnSearchByName(param, 'name')"> Name
+        <input type="radio"  name="1" (click)="ngOnSearchByCountry(param, 'country')"> Country
+        <input type="radio"  name="1" (click)="ngOnSearchByAge(param, 'age')" /> Age
     </div>
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
-    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
-        id: {{artist.id}} <br/>
-        name: {{artist.name}} <br/>
-        country: {{artist.country}} <br/>
-        age: {{artist.age}} <br/>
-        year debut: {{artist.year_debut}} <br/>
-        total of albums: {{artist.total_albums}} <br/>
+<div>
+  <div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists | paginate: { itemsPerPage: count, currentPage: p }">
+      <div ngClass="artistList" [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
+        <img [src]="artist.img" alt="">
+          id: {{artist.id}} <br/>
+          name: {{artist.name}} <br/>
+          country: {{artist.country}} <br/>
+          age: {{artist.age}} <br/>
+          year debut: {{artist.year_debut}} <br/>
+          total of albums: {{artist.total_albums}} <br/>
+      </div>
     </div>
-  
+    <div class="text-right">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
 </div>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->

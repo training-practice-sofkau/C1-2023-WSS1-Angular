@@ -1,0 +1,85 @@
+import { IAlbum } from "../models/album.interface";
+
+export const ALBUMS: IAlbum[] = [
+
+  {
+		title: "Imelda Ellison",
+		genre: "Wyoming Gallagher",
+		release_date: "Feb 1, 2013",
+		number_of_songs: 2,
+		artist: "Zorita Bryan",
+    img: 'https://source.unsplash.com/random',
+	},
+	{
+		title: "Adria Church",
+		genre: "Alfonso Hines",
+		release_date: "Feb 11, 2007",
+		number_of_songs: 2,
+		artist: "Brooke Chandler",
+    img: 'https://source.unsplash.com/random',
+	},
+	{
+		title: "Jaime Gomez",
+		genre: "Oliver Donaldson",
+		release_date: "Sep 22, 2005",
+		number_of_songs: 1,
+		artist: "Ifeoma Howard",
+    img: 'https://source.unsplash.com/random',
+	},
+	{
+		title: "Ali Travis",
+		genre: "Myra Wright",
+		release_date: "Mar 17, 2002",
+		number_of_songs: 1,
+		artist: "Thor Washington",
+    img: 'https://source.unsplash.com/random',
+	},
+	{
+		title: "Dane Gilbert",
+		genre: "Pearl Allison",
+		release_date: "Sep 19, 2018",
+		number_of_songs: 6,
+		artist: "Hadassah Arnold",
+    img: 'https://source.unsplash.com/random',
+	},
+  {
+    title: "Clinton Lowery",
+    genre: "Jerome Mcfadden",
+    release_date: "Nov 10, 2005",
+    number_of_songs: 3,
+    artist: "Gail Morse",
+    img: 'https://source.unsplash.com/random',
+  },
+  {
+    title: "Jason Garza",
+    genre: "Samantha Nielsen",
+    release_date: "Sep 25, 2011",
+    number_of_songs: 3,
+    artist: "Karly Daniels",
+    img: 'https://source.unsplash.com/random',
+  },
+  {
+    title: "Penelope Saunders",
+    genre: "Camille Beck",
+    release_date: "Jul 21, 2006",
+    number_of_songs: 3,
+    artist: "Jemima Middleton",
+    img: 'https://source.unsplash.com/random',
+  },
+  {
+    title: "Deanna Bryant",
+    genre: "Rajah Kemp",
+    release_date: "Jun 18, 2004",
+    number_of_songs: 7,
+    artist: "Marvin Knox",
+    img: 'https://source.unsplash.com/random',
+  },
+  {
+    title: "Sybill Callahan",
+    genre: "Curran Marshall",
+    release_date: "May 20, 2001",
+    number_of_songs: 8,
+    artist: "Scott Austin",
+    img: 'https://source.unsplash.com/random',
+  }
+];
