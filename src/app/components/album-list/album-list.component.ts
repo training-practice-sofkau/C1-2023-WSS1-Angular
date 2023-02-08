@@ -11,28 +11,29 @@ import { IAlbum } from 'src/app/models/album.interface';
 export class AlbumListComponent implements OnInit{
 
   @Input() param: string = "";
-
+  albumsAll: IAlbum[] = ALBUMS;
   l_albums: IAlbum[]=[];
-
+  page: number = 0;
   results: number = 0;
 
+
   ngOnInit(): void{
-    this.l_albums = ALBUMS;
+    this.l_albums = this.albumsAll;
     this.results = this.l_albums.length;
   }
 
   ngOnSearch(param: string, typeSearch: string){
     console.log(param)
     if (typeSearch === 'title'){
-      this.l_albums = ALBUMS.filter(album => album.title.includes(param));
+      this.l_albums = this.albumsAll.filter(album => album.title.includes(param));
       this.results = this.l_albums.length;
     }
     if (typeSearch === 'genre'){
-      this.l_albums = ALBUMS.filter(album => album.genre.includes(param));
+      this.l_albums = this.albumsAll.filter(album => album.genre.includes(param));
       this.results = this.l_albums.length;
     }
     if(typeSearch ==='date'){
-      this.l_albums = ALBUMS.sort((a,b) => {return b.date - a.date});
+      this.l_albums = this.albumsAll.sort((a,b) => {return b.date - a.date});
       this.results = this.l_albums.length;
     }
   }
