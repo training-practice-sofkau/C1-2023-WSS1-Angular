@@ -37,5 +37,32 @@ export const ALBUMS: IAlbum[] = [
         numberOfSongs:14,
         artist:'JBalvin',
         link:'https://forbes.co/_next/image?url=https%3A%2F%2Fcdn.forbes.co%2F2020%2F01%2Fj-balvin-1569828372.67.2560x1440.jpg&w=1920&q=75'
+    },
+    {
+        id:5,
+        title:'Axis: Bold as Love',
+        genre:'Rock',
+        releaseDate:1968,
+        numberOfSongs:8,
+        artist:'Jimi Hendrix',
+        link:'https://forbes.co/_next/image?url=https%3A%2F%2Fcdn.forbes.co%2F2020%2F01%2Fj-balvin-1569828372.67.2560x1440.jpg&w=1920&q=75'
+    },
+    {
+        id:6,
+        title:'Revolver',
+        genre:'Rock',
+        releaseDate:1966,
+        numberOfSongs:10,
+        artist:'The Beatles',
+        link:'https://forbes.co/_next/image?url=https%3A%2F%2Fcdn.forbes.co%2F2020%2F01%2Fj-balvin-1569828372.67.2560x1440.jpg&w=1920&q=75'
+    },
+    {
+        id:7,
+        title:'The Joshua Tree',
+        genre:'Rock',
+        releaseDate:1987,
+        numberOfSongs:2,
+        artist:'U2',
+        link:'https://forbes.co/_next/image?url=https%3A%2F%2Fcdn.forbes.co%2F2020%2F01%2Fj-balvin-1569828372.67.2560x1440.jpg&w=1920&q=75'
     }
 ]
