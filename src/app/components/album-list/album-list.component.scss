@@ -3,6 +3,7 @@ html *{
   font-family: Roboto !important;
 };
 
+@media screen and (min-width: 40em) {
 .search-bar{
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -36,5 +37,40 @@ html *{
     margin-left: 5px;
     padding: 5px;
     justify-content: left;
+  }
+}
+}
+
+@media screen and (max-width: 40em) {
+  .search-bar{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 5px;
+    align-items: center;
+    div {
+      padding: 10px;
+      label {
+        margin-right: 5px;
+      };
+    };
+  }
+
+
+  .album-details-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 80%;
+    margin-left: 20px;
+    img {
+      width: 100%;
+      border-radius: 11px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .album-details{
+    padding: 10px;
+    margin-bottom: 5px;
   }
 }
