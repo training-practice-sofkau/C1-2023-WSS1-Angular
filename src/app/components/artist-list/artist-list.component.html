@@ -9,7 +9,8 @@
     </div>
 </div>
 
-<div *ngFor="let artist of f_artists" [ngClass]="{even: artist.id % 2 === 0, odd: artist.id % 2 !== 0}">
+<div *ngFor="let artist of f_artists | paginate : { itemsPerPage: 3,
+    currentPage: page}" [ngClass]="{even: artist.id % 2 === 0, odd: artist.id % 2 !== 0}">
     <div ngClass="artistResults-artist">
         <img 
         *ngIf="artist.img?.url"
@@ -28,6 +29,7 @@
   
 </div>
 
+<pagination-controls (pageChange)="page = $event"></pagination-controls>
 <!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="results > 0; else noArtistFound ">
     <div>

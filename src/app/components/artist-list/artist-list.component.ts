@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ARTISTS } from 'src/app/mocks/artist.mock';
 import { IArtist } from 'src/app/models/artist.interface';
-import { NgOptimizedImage } from '@angular/common'
 
 @Component({
   selector: 'app-artist-list',
@@ -17,6 +16,8 @@ export class ArtistListComponent implements OnInit{
   f_artists: IArtist[] = [];
 
   results: number = 0;
+
+  page: number = 1;
   
   ngOnInit(): void {
     this.l_artists = ARTISTS;
@@ -41,5 +42,6 @@ export class ArtistListComponent implements OnInit{
 
     this.results = this.f_artists.length
   }
+
 
 }
