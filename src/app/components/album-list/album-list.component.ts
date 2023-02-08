@@ -16,6 +16,8 @@ export class AlbumListComponent {
 
   results: number = 0;
   
+  page: number = 1;
+
   ngOnInit(): void {
     this.l_almbum = ALBUM;
     this.f_album = ALBUM;

@@ -9,7 +9,8 @@
     </div>
 </div>
 
-<div *ngFor="let album of f_album"[ngClass]="{even: album.id % 2 === 0, odd: album.id % 2 !== 0}">
+<div *ngFor="let album of f_album | paginate : { itemsPerPage: 3,
+    currentPage: page}"[ngClass]="{even: album.id % 2 === 0, odd: album.id % 2 !== 0}">
     <div ngClass="albumResults-album">
         <img 
         *ngIf="album.img?.url"
@@ -27,6 +28,7 @@
   
 </div>
 
+<pagination-controls (pageChange)="page = $event"></pagination-controls>
 <!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="results > 0; else noAlbumFound ">
     <div>
