@@ -1,35 +1,54 @@
 <div [ngStyle]="{display: 'flex'}">
     <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
+        <input type="text" placeholder="Enter text" [(ngModel)]="paramArt"/>
     </div>
     <div ngClass="artistOps">
-        <input type="radio" (click)="ngOnSearch(param, 'name')"/> Name
-        <input type="radio"/> Country
-        <input type="radio"/> Age
+        <input type="radio" name="artistFilter" (click)="ngOnSearch(paramArt, 'name')"/> Name
+        <input type="radio" name="artistFilter" (click)="ngOnSearch(paramArt, 'country')"/> Country
+        <input type="radio" name="artistFilter" (click)="ngOnSearch(paramArt, 'age')"/> Age
     </div>
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
+<div class="container" *ngFor="let artist of l_artists | paginate: {itemsPerPage: 2, currentPage: page}">
+
+          <div [ngStyle]="{backgroundColor: '#1368a0cc', margin: '10px 1310px 10px 13px', padding:'5px'}">
+            id: {{artist.id}} <br/>
+            Name: {{artist.name}} <br/>
+            Country: {{artist.country}} <br/>
+            Age: {{artist.age}} <br/>
+            Year debut: {{artist.year_debut}} <br/>
+            Total albums: {{artist.total_albums}} <br/>
+          </div>
+
+ </div>
+ <div>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
+
+
+
+
+<!--<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
     <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
         id: {{artist.id}} <br/>
-        name: {{artist.name}} <br/>
-        country: {{artist.country}} <br/>
-        age: {{artist.age}} <br/>
-        year debut: {{artist.year_debut}} <br/>
-        total of albums: {{artist.total_albums}} <br/>
+        Name: {{artist.name}} <br/>
+        Country: {{artist.country}} <br/>
+        Age: {{artist.age}} <br/>
+        Year debut: {{artist.year_debut}} <br/>
+        Total albums: {{artist.total_albums}} <br/>
     </div>
-  
-</div>
 
+</div>
+-->
 <!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="results > 0; else noArtistFound ">
     <div>
-        <h4>Founded: {{results}}</h4>
+        <h4>Found: {{results}}</h4>
     </div>
 
 </ng-container>
 <ng-template #noArtistFound>
     <div>
-        <h4>No artist were found</h4>
+        <h4>No matching artists found</h4>
     </div>
 </ng-template>
