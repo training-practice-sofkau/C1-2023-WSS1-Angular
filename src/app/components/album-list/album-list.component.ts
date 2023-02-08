@@ -20,25 +20,22 @@ export class AlbumListComponent implements OnInit {
 
   filter(typeSearch: string) {
     if (typeSearch == 'title') {
-      this.param.toLowerCase();
       const filteredList = this.albumsList.filter((item) =>
-        item.title.toLowerCase().startsWith(this.param)
+        item.title.toLowerCase().startsWith(this.param.toLocaleLowerCase())
       );
       this.results = filteredList.length;
       this.albumsList = filteredList;
     }
     if (typeSearch == 'genre') {
-      this.param.toLowerCase();
       const filteredList = this.albumsList.filter((item) =>
-        item.genre.toLowerCase().startsWith(this.param)
+        item.genre.toLowerCase().startsWith(this.param.toLocaleLowerCase())
       );
       this.results = filteredList.length;
       this.albumsList = filteredList;
     }
     if (typeSearch == 'artist') {
-      this.param.toLowerCase();
       const filteredList = this.albumsList.filter((item) =>
-        item.artist.toLowerCase().startsWith(this.param)
+        item.artist.toLowerCase().startsWith(this.param.toLocaleLowerCase())
       );
       this.results = filteredList.length;
       this.albumsList = filteredList;

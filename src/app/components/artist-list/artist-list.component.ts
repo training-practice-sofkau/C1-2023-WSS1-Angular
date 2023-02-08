@@ -20,9 +20,8 @@ export class ArtistListComponent implements OnInit {
 
   filter(typeSearch: string) {
     if (typeSearch == 'name') {
-      this.param.toLowerCase();
       const filteredList = this.artistsList.filter((item) =>
-        item.name.toLowerCase().startsWith(this.param)
+        item.name.toLowerCase().startsWith(this.param.toLocaleLowerCase())
       );
       this.results = filteredList.length;
       this.artistsList = filteredList;
@@ -35,9 +34,8 @@ export class ArtistListComponent implements OnInit {
       this.results = filteredList.length;
     }
     if (typeSearch == 'country') {
-      this.param.toLowerCase();
       const filteredList = this.artistsList.filter((item) =>
-        item.country.toLowerCase().startsWith(this.param)
+        item.country.toLowerCase().startsWith(this.param.toLocaleLowerCase())
       );
       this.artistsList = filteredList;
       this.results = filteredList.length;
