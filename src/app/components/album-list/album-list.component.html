@@ -12,23 +12,19 @@
   </div>
 </div>
 
-<div
-  [ngStyle]="{ display: 'flex', flexDirection: 'column' }"
-  *ngFor="let album of albumsList"
->
-  <div
-    [ngStyle]="{
-      backgroundColor: 'salmon',
-      margin: '10px 10px 10px 13px ',
-      padding: '5px'
-    }"
-  >
-    id: {{ album.id }} <br />
-    title: {{ album.title }} <br />
-    genre: {{ album.genre }} <br />
-    artist: {{ album.artist }} <br />
-    releaseDate: {{ album.releaseDate }} <br />
-    totalSongs: {{ album.totalSongs }} <br />
+<div *ngFor="let album of albumsList">
+  <div class="album-container">
+    <figure>
+      <img class="album-image" [src]="album.image" alt="image" />
+    </figure>
+    <p class="album-info">
+      ID: {{ album.id }} <br />
+      Title: {{ album.title }} <br />
+      Genre: {{ album.genre }} <br />
+      Artist: {{ album.artist }} <br />
+      Release Date: {{ album.releaseDate }} <br />
+      Total Number of songs: {{ album.totalSongs }} <br />
+    </p>
   </div>
 </div>
 

@@ -13,17 +13,17 @@
 </div>
 
 <div *ngFor="let artist of artistsList">
-  <div class="artistContainer">
+  <div class="artist-container">
     <figure>
-      <img [src]="artist.image" alt="image" width="350px" height="390px" />
+      <img class="artist-image"[src]="artist.image" alt="image"/>
     </figure>
-    <p>
-      id: {{ artist.id }} <br />
-      name: {{ artist.name }} <br />
-      country: {{ artist.country }} <br />
-      age: {{ artist.age }} <br />
-      year debut: {{ artist.debutYear }} <br />
-      total of albums: {{ artist.totalAlbums }} <br />
+    <p class="artist-info">
+      ID: {{ artist.id }} <br />
+      Name: {{ artist.name }} <br />
+      Country: {{ artist.country }} <br />
+      Age: {{ artist.age }} <br />
+      Debut Year: {{ artist.debutYear }} <br />
+      Total Number of Albums: {{ artist.totalAlbums }} <br />
     </p>
   </div>
 </div>
