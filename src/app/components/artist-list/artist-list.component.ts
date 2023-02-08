@@ -8,6 +8,7 @@ import { IArtist } from 'src/app/models/artist.interface';
   styleUrls: ['./artist-list.component.scss'],
 })
 export class ArtistListComponent implements OnInit {
+  page: number = 1;
   param: string = '';
   results: number = 0;
   artistsList: IArtist[] = [];
@@ -21,7 +22,7 @@ export class ArtistListComponent implements OnInit {
     if (typeSearch == 'name') {
       this.param.toLowerCase();
       const filteredList = this.artistsList.filter((item) =>
-        item.name.toLowerCase().includes(this.param)
+        item.name.toLowerCase().startsWith(this.param)
       );
       this.results = filteredList.length;
       this.artistsList = filteredList;
@@ -36,7 +37,7 @@ export class ArtistListComponent implements OnInit {
     if (typeSearch == 'country') {
       this.param.toLowerCase();
       const filteredList = this.artistsList.filter((item) =>
-        item.country.toLowerCase().includes(this.param)
+        item.country.toLowerCase().startsWith(this.param)
       );
       this.artistsList = filteredList;
       this.results = filteredList.length;

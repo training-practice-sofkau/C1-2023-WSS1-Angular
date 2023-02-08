@@ -8,6 +8,7 @@ import { IAlbum } from 'src/app/models/album.interface';
   styleUrls: ['./album-list.component.scss'],
 })
 export class AlbumListComponent implements OnInit {
+  page: number = 1;
   param: string = '';
   results: number = 0;
   albumsList: IAlbum[] = [];
