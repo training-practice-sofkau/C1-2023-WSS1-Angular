@@ -76,7 +76,7 @@ export const ARTISTS: IArtist[] = [
   {
     id: 9,
     name: 'Julieta Venegas',
-    country: 'UK',
+    country: 'MX',
     age: 53,
     year_debut:1995,
     total_albums: 7,

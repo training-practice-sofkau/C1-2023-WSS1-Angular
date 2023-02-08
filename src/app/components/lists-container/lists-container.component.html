@@ -40,6 +40,7 @@
     </div>
 </div>
 
-
+<div id="list">
 <app-artist-list *ngIf="type === 'artist'" [typeSearch]="typeSearch" [param]='param'></app-artist-list>
 <app-album-list *ngIf="type === 'album'" [typeSearch]="typeSearch" [param]='param'></app-album-list>
+</div>
