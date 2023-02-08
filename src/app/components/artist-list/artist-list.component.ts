@@ -18,6 +18,9 @@ export class ArtistListComponent implements OnInit {
 
   results: number = 0;
 
+  pagFrom: number = 0;
+  pagTo: number = 1;
+
   ngOnInit(): void {
     this.l_artists = ARTISTS;
     this.results = this.l_artists.length;
@@ -58,4 +61,22 @@ export class ArtistListComponent implements OnInit {
   filterAlbumByAge(artist: IArtist[], filter: string): IArtist[]{
     return this.l_artists = artist.filter(a => a.age == Number(filter));
   }
+
+  changePage(change: boolean){
+    console.log(this.pagTo);
+    if(change){
+      if(!(this.pagTo == this.results-1)){
+        this.pagFrom +=2;
+        this.pagTo +=2;
+      }
+    }else if(!change){
+      if(!(this.pagFrom == 0)) {
+        this.pagFrom -= 2;
+        this.pagTo -= 2;
+      }
+    }
+
+  }
+
+
 }
