@@ -11,6 +11,7 @@ import { IArtist } from 'src/app/models/artist.interface';
 export class ArtistListComponent implements OnInit{
 
   @Input() param: string = "";
+  p: number=0;
 
   //TO-DO: Define a variable that will store the information
   l_artists: IArtist[] = [];

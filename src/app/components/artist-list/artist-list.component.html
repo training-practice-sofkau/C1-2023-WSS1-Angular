@@ -1,4 +1,4 @@
-<div [ngStyle]="{display: 'flex', flexDirection:'row'}">
+<div Class="options">
     <div ngClass="artistTxt">
         <input type="text" placeholder="Enter text" [(ngModel)]="param"
         (keydown.backspace)="ngOnInit()"/>
@@ -10,7 +10,8 @@
     </div>
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
+<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists
+| paginate: { itemsPerPage: 4, currentPage: p }">
     <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
         Name: {{artist.name}} <br/>
         Country: {{artist.country}} <br/>
@@ -33,3 +34,6 @@
         <h4>No artist were found</h4>
     </div>
 </ng-template>
+
+<pagination-controls class="pagination" (pageChange)="p = $event"  previousLabel="Previous"
+nextLabel="Next"></pagination-controls>
