@@ -14,19 +14,16 @@ export class ArtistListComponent implements OnInit{
 
   //TO-DO: Define a variable that will store the information
   l_artists: IArtist[] = [];
-  //l_artists2: IArtist[] = [];
-
   results: number = 0;
   
   ngOnInit(): void {
-    this.l_artists = ARTISTS;
+    this.l_artists = ARTISTS.sort((a,b) => (a.year_debut<b.year_debut)?1:-1);
     this.results = this.l_artists.length;
   }
 
   //TO-DO: Create a function that based of param it will show n-results
   ngOnSearch(param: string, typeSearch: string){
-    console.log(param);
-    
+    //console.log(param);
     if(param=="") this.ngOnInit();
     this.l_artists = [];
     switch(typeSearch){
