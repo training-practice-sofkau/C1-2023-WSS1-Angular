@@ -1,34 +1,40 @@
 <div class="search_bar">
-  <div ngClass="artistTxt">
-    <input type="text" placeholder="Enter text" [ngModel]="searchParam" />
+  <div class="input-text">
+    <input type="text" placeholder="Enter text" [(ngModel)]="searchParam" />
   </div>
-  <div ngClass="artistOps">
-    <input type="radio" (click)="ngOnSearch(searchParam, 'name')" /> Name
-    <input type="radio" /> Country <input type="radio" /> Age
-  </div>
-  <div>
-    <ng-container *ngIf="results > 0; else noArtistFound">
-      <div>
-        <h4 class="result_text">Founded {{ results }} albums</h4>
-      </div>
-    </ng-container>
-  </div>
+  <button type="button" (click)="ngOnSearch(searchParam, 'title')">
+    Title
+  </button>
+  <button type="button" (click)="ngOnSearch(searchParam, 'genre')">
+    Genre
+  </button>
+  <button type="button" (click)="ngOnSearch(searchParam, 'artist')">
+    Artist
+  </button>
+  <ng-container *ngIf="results > 0; else noArtistFound">
+    <div class="search-results">
+      <h4 class="result_text">{{ results }} albums found</h4>
+    </div>
+  </ng-container>
 </div>
-
-<div class="results_body" *ngFor="let album of albums">
-  <div class="entry_card">
-    title: {{ album.title }} <br />
-    genre: {{ album.genre }} <br />
-    release_date: {{ album.release_date }} <br />
-    number_of_songs: {{ album.number_of_songs }} <br />
-    artist: {{ album.artist }} <br />
+<div class="results_body">
+  <div class="entry_card" *ngFor="let album of searchResulst">
+    <img
+      [src]="'../../../assets/album_images/' + album.title + '.png'"
+      [alt]="album.title"
+    />
+    <div class="card-info">
+      <h3>{{ album.title }}</h3>
+      <h4>{{ album.artist }} • {{ album.release_date }} • {{ album.number_of_songs }} canciones</h4>
+      <h3 id="genre">{{ album.genre }}</h3>
+    </div>
   </div>
 </div>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="results > 0; else noArtistFound">
   <div>
-    <h4 class="result_text">Founded {{ results }} albums</h4>
+    <h4 class="result_text">{{ results }} albums found</h4>
   </div>
 </ng-container>
 <ng-template #noArtistFound>
