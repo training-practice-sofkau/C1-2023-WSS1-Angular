@@ -37,7 +37,8 @@ export class AlbumListComponent {
         console.log('Error filtering the list');
         break;
     }
-    this.results=this.searchResulst.length;
+    this.results = this.searchResulst.length;
+    this.searchParam = '';
   }
   searchByTitle(albums: IAlbum[], param: string) {
     return albums

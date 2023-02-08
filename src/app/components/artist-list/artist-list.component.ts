@@ -20,7 +20,7 @@ export class ArtistListComponent implements OnInit {
     this.results = this.artists.length;
   }
 
-  ngOnSearch(param : any, typeSearch: string) {
+  ngOnSearch(param: any, typeSearch: string) {
     console.log(param + ' ' + typeSearch);
     switch (typeSearch) {
       case 'name':
@@ -36,13 +36,12 @@ export class ArtistListComponent implements OnInit {
         console.log('Error filtering the list');
         break;
     }
-    this.results=this.searchResulst.length;
+    this.results = this.searchResulst.length;
+    this.searchParam = '';
   }
   searchByTitle(artists: IArtist[], param: string) {
     return artists
-      .filter((album) =>
-        album.name.toLowerCase().includes(param.toLowerCase())
-      )
+      .filter((album) => album.name.toLowerCase().includes(param.toLowerCase()))
       .sort((a, b) => {
         a.name.toLowerCase();
         b.name.toLowerCase();
@@ -62,10 +61,7 @@ export class ArtistListComponent implements OnInit {
   }
   searchByArtist(artists: IArtist[], param: number) {
     return artists
-      .filter((album) =>
-        album.age==param
-      )
-      .sort((a, b) => a.age-b.age);
+      .filter((album) => album.age == param)
+      .sort((a, b) => a.age - b.age);
   }
-
 }
