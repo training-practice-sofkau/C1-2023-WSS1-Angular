@@ -1,4 +1,4 @@
-<div [ngStyle]="{display: 'flex'}">
+<div [ngStyle]="{display: 'flex', flexDirection:'row'}">
     <div ngClass="artistTxt">
         <input type="text" placeholder="Enter text" [(ngModel)]="param"
         (keydown.backspace)="ngOnInit()"/>
@@ -12,12 +12,11 @@
 
 <div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
     <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
-        id: {{artist.id}} <br/>
-        name: {{artist.name}} <br/>
-        country: {{artist.country}} <br/>
-        age: {{artist.age}} <br/>
-        year debut: {{artist.year_debut}} <br/>
-        total of albums: {{artist.total_albums}} <br/>
+        Name: {{artist.name}} <br/>
+        Country: {{artist.country}} <br/>
+        Age: {{artist.age}} <br/>
+        Debut Year: {{artist.year_debut}} <br/>
+        Total albums: {{artist.total_albums}} <br/>
     </div>
   
 </div>

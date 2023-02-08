@@ -22,7 +22,7 @@ export class ArtistListComponent implements OnInit{
   }
 
   //TO-DO: Create a function that based of param it will show n-results
-  ngOnSearch(param: string, typeSearch: string){
+  ngOnSearch(param: string, typeSearch: string): void{
     //console.log(param);
     if(param=="") this.ngOnInit();
     this.l_artists = [];
