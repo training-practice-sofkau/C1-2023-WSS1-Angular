@@ -25,9 +25,9 @@
     <app-element-card [elementRender]="artist"></app-element-card>
   </div>
   <div class="paginator--container" *ngIf="pagination_artist.length>0">
-    <p (click)="changePage('down')" *ngIf="currentPage>1"><<</p>
+    <p (click)="changePage('down')" *ngIf="currentPage>1" class="pagination--button"><<</p>
     <p (click)="paginationList()">Page {{currentPage}}</p>
-    <p (click)="changePage('up')" *ngIf="(l_artists.length/rows)>currentPage">>></p>
+    <p (click)="changePage('up')" *ngIf="(l_artists.length/rows)>currentPage" class="pagination--button">>></p>
   </div>
 </div>
 

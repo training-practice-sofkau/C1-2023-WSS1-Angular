@@ -17,7 +17,7 @@ export const ALBUMS: IAlbum[] = [
         releaseDate:1980,
         numberOfSongs:10,
         artist:'AC/DC',
-        link:'https://vitrinarock.com/wp-content/uploads/2020/10/acdc-shot-in-the-dark.jpg.webp'
+        link:'https://cdn.smehost.net/acdccom-uscolumbiaprod/wp-content/uploads/2021/05/4.jpg'
     },
 
     {
@@ -54,7 +54,7 @@ export const ALBUMS: IAlbum[] = [
         releaseDate:1966,
         numberOfSongs:10,
         artist:'The Beatles',
-        link:'https://wp.es.aleteia.org/wp-content/uploads/sites/7/2020/01/web3-the-beatles-rock-band-music-shutterstock_364210334-michele-paccione..jpg?w=640&crop=1'
+        link:'https://revistaastronauta.com/wp-content/uploads/2022/04/1200px-7C396001-AA89-4EF5-8732-342FE9276B38.jpg'
     },
     {
         id:7,
