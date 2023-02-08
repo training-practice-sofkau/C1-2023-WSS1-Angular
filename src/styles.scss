@@ -57,7 +57,12 @@ body {
   .entry_card {
     padding: 1vh;
     margin: 10px 10px 10px 13px;
-    background-color: #3d3d3dcc;
+    // background-color: #3d3d3dcc;
+    background: linear-gradient(90deg,
+      #3d3d3dcc,
+      90%,
+      rgba(128, 128, 128, 0.027)
+    );
     width: 45%;
     border-radius: 3vh;
     padding: 2vh;
