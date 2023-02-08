@@ -3,6 +3,19 @@
     margin: 2em;
 }
 
+
+.artistOptions {
+    display: flex;
+    align-items: center;
+    width: 15em;
+    justify-content: space-between;
+    margin-left: 10px;
+
+    input {
+        cursor:pointer;
+    }
+}
+
 .artistResults {
     display: 'flex';
     flex-direction:'column';
@@ -55,7 +68,7 @@
       align-items: center;
   }
 
-  .artistOps {
+  .artistOptions {
       margin-top: 10px;
   }
 
