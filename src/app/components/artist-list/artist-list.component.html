@@ -1,5 +1,3 @@
-
-
 <section class="search-bar">
     <div class="search-box">
         <input type="text" placeholder="Enter text" [(ngModel)]="filterParam" (change)="ngOnSearch()"/>
@@ -32,16 +30,3 @@
     </div>
   </div>
 </section>
-
-<!--Implement acording to the results obtained founded: n or There are no matches
-<ng-container *ngIf="results.length > 0; else noArtistFound ">
-    <div>
-        <h4>Founded: {{results}}</h4>
-    </div>
-
-</ng-container>
-<ng-template #noArtistFound>
-    <div>
-        <h4>No artist were found</h4>
-    </div>
-</ng-template>-->
