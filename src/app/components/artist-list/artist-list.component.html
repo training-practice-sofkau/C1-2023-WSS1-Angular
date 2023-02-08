@@ -32,22 +32,6 @@
   </div>
 </div>
 
-<div *ngFor="let artist of artistsList">
-  <div class="artist-container">
-    <figure>
-      <img class="artist-image" [src]="artist.image" alt="image" />
-    </figure>
-    <p class="artist-info">
-      ID: {{ artist.id }} <br />
-      Name: {{ artist.name }} <br />
-      Country: {{ artist.country }} <br />
-      Age: {{ artist.age }} <br />
-      Debut Year: {{ artist.debutYear }} <br />
-      Total Number of Albums: {{ artist.totalAlbums }} <br />
-    </p>
-  </div>
-</div>
-
 <ng-container *ngIf="results > 0; else noArtistFound">
   <div>
     <h4>Founded: {{ results }}</h4>
@@ -58,3 +42,28 @@
     <h4>No artist were found</h4>
   </div>
 </ng-template>
+
+<div
+  *ngFor="
+    let artist of artistsList
+      | paginate : { itemsPerPage: 2, currentPage: page }
+  "
+>
+  <div class="artist-container">
+    <figure>
+      <img class="artist-image" [src]="artist.image" alt="image" />
+    </figure>
+    <div class="artist-info">
+      ID: {{ artist.id }} <br />
+      Name: {{ artist.name }} <br />
+      Country: {{ artist.country }} <br />
+      Age: {{ artist.age }} <br />
+      Debut Year: {{ artist.debutYear }} <br />
+      Total Number of Albums: {{ artist.totalAlbums }} <br />
+    </div>
+  </div>
+</div>
+
+<div class="paginator">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
