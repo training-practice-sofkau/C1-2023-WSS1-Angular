@@ -24,21 +24,27 @@ export class ArtistListComponent implements OnInit {
         item.name.toLowerCase().startsWith(this.param.toLocaleLowerCase())
       );
       this.results = filteredList.length;
-      this.artistsList = filteredList;
+      this.artistsList = filteredList.sort((x, y) =>
+        x.name.localeCompare(y.name)
+      );
     }
     if (typeSearch == 'age') {
       const filteredList = this.artistsList.filter(
         (item) => item.age == parseInt(this.param)
       );
-      this.artistsList = filteredList;
       this.results = filteredList.length;
+      this.artistsList = filteredList.sort((x, y) =>
+        x.name.localeCompare(y.name)
+      );
     }
     if (typeSearch == 'country') {
       const filteredList = this.artistsList.filter((item) =>
         item.country.toLowerCase().startsWith(this.param.toLocaleLowerCase())
       );
-      this.artistsList = filteredList;
       this.results = filteredList.length;
+      this.artistsList = filteredList.sort((x, y) =>
+        x.name.localeCompare(y.name)
+      );
     }
   }
 }

@@ -24,21 +24,27 @@ export class AlbumListComponent implements OnInit {
         item.title.toLowerCase().startsWith(this.param.toLocaleLowerCase())
       );
       this.results = filteredList.length;
-      this.albumsList = filteredList;
+      this.albumsList = filteredList.sort((x, y) =>
+        x.title.localeCompare(y.title)
+      );
     }
     if (typeSearch == 'genre') {
       const filteredList = this.albumsList.filter((item) =>
         item.genre.toLowerCase().startsWith(this.param.toLocaleLowerCase())
       );
       this.results = filteredList.length;
-      this.albumsList = filteredList;
+      this.albumsList = filteredList.sort((x, y) =>
+        x.title.localeCompare(y.title)
+      );
     }
     if (typeSearch == 'artist') {
       const filteredList = this.albumsList.filter((item) =>
         item.artist.toLowerCase().startsWith(this.param.toLocaleLowerCase())
       );
       this.results = filteredList.length;
-      this.albumsList = filteredList;
+      this.albumsList = filteredList.sort((x, y) =>
+        x.artist.localeCompare(y.artist)
+      );
     }
   }
 }
