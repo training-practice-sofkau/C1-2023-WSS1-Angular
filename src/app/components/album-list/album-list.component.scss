@@ -8,9 +8,9 @@
   border-width: thick;
   border-style: solid;
   border-radius: 10px;
-  border-color: #FED766;
+  border-color: #fed766;
 
-  background-color: #4A5043;
+  background-color: #4a5043;
 }
 
 .album-info {
@@ -23,4 +23,15 @@
   width: 350px;
   height: 390px;
   border-radius: 10px;
+}
+
+.artist-input {
+  border-radius: 10px;
+  border-width: thick;
+  border-style: solid;
+  border-color: #fed766;
+}
+
+.radio-btn {
+  accent-color: #fed766;
 }

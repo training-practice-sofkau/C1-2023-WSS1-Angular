@@ -1,13 +1,33 @@
 <div [ngStyle]="{ display: 'flex' }">
   <div ngClass="artistTxt">
-    <input type="text" placeholder="Enter text" [(ngModel)]="param" />
+    <input
+      class="artist-input"
+      type="text"
+      placeholder="Enter text"
+      [(ngModel)]="param"
+    />
   </div>
   <div ngClass="artistOps">
-    <input type="radio" name="filterOption" (click)="filter('age')" />
+    <input
+      class="radio-btn"
+      type="radio"
+      name="filterOption"
+      (click)="filter('age')"
+    />
     Age
-    <input type="radio" name="filterOption" (click)="filter('name')" />
+    <input
+      class="radio-btn"
+      type="radio"
+      name="filterOption"
+      (click)="filter('name')"
+    />
     Name
-    <input type="radio" name="filterOption" (click)="filter('country')" />
+    <input
+      class="radio-btn"
+      type="radio"
+      name="filterOption"
+      (click)="filter('country')"
+    />
     Country
   </div>
 </div>
@@ -15,7 +35,7 @@
 <div *ngFor="let artist of artistsList">
   <div class="artist-container">
     <figure>
-      <img class="artist-image"[src]="artist.image" alt="image"/>
+      <img class="artist-image" [src]="artist.image" alt="image" />
     </figure>
     <p class="artist-info">
       ID: {{ artist.id }} <br />

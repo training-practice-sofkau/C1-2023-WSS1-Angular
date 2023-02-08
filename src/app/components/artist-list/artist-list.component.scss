@@ -8,9 +8,9 @@
   border-width: thick;
   border-style: solid;
   border-radius: 10px;
-  border-color: #2AB7CA;
+  border-color: #2ab7ca;
 
-  background-color: #4A5043;
+  background-color: #4a5043;
 }
 
 .artist-info {
@@ -24,4 +24,15 @@
   width: 350px;
   height: 390px;
   border-radius: 10px;
+}
+
+.artist-input {
+  border-radius: 10px;
+  border-width: thick;
+  border-style: solid;
+  border-color: #2ab7ca;
+}
+
+.radio-btn {
+  accent-color: #2ab7ca;
 }

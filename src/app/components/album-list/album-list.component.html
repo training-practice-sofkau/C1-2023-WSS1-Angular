@@ -1,13 +1,33 @@
 <div [ngStyle]="{ display: 'flex' }">
   <div ngClass="albumTxt">
-    <input type="text" placeholder="Enter text" [(ngModel)]="param" />
+    <input
+      class="artist-input"
+      type="text"
+      placeholder="Enter text"
+      [(ngModel)]="param"
+    />
   </div>
   <div ngClass="albumOps">
-    <input type="radio" name="filterOption" (click)="filter('title')" />
+    <input
+      class="radio-btn"
+      type="radio"
+      name="filterOption"
+      (click)="filter('title')"
+    />
     Title
-    <input type="radio" name="filterOption" (click)="filter('genre')" />
+    <input
+      class="radio-btn"
+      type="radio"
+      name="filterOption"
+      (click)="filter('genre')"
+    />
     Genre
-    <input type="radio" name="filterOption" (click)="filter('artist')" />
+    <input
+      class="radio-btn"
+      type="radio"
+      name="filterOption"
+      (click)="filter('artist')"
+    />
     Artist
   </div>
 </div>
