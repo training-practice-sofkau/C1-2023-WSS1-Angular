@@ -3,5 +3,6 @@ export interface Ialbum{
   title: string,
   genre: string,
   releaseDate: string,
-  numberOfSongs: number
+  numberOfSongs: number,
+  picture: string
 }

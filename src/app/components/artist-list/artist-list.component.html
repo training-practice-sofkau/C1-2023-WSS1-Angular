@@ -10,8 +10,11 @@
   </div>
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
-  <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
+<div [ngStyle]="{display: 'flex', flexDirection:'row'}" *ngFor="let artist of l_artists">
+  <div [ngStyle]="{padding:'5px'}">
+    <img src="{{artist.picture}}" alt="Album cover">
+  </div>
+  <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px', flexDirection:'column', width:'300px'}">
     id: {{artist.id}} <br/>
     name: {{artist.name}} <br/>
     country: {{artist.country}} <br/>
