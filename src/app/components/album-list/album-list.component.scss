@@ -1,6 +1,5 @@
 .album-container {
   display: flex;
-  padding: 20px;
   margin-top: 20px;
   margin-left: 100px;
   margin-right: 100px;
@@ -14,15 +13,20 @@
 }
 
 .album-info {
+  display: flex;
   color: white;
-  font-size: 25px;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
   font-family: "Roboto", sans-serif;
 }
 
 .album-image {
-  width: 350px;
-  height: 390px;
+  width: 170px;
+  height: 190px;
   border-radius: 10px;
+  border-style: solid;
+  border-color: #20bf55;
 }
 
 .artist-input {
@@ -34,4 +38,13 @@
 
 .radio-btn {
   accent-color: #fed766;
+}
+
+h4 {
+  text-align: center;
+}
+
+.paginator {
+  display: flex;
+  justify-content: center;
 }
