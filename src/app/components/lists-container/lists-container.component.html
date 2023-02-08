@@ -8,7 +8,7 @@
 <br />
 
 <!-- Selecttors and search -->
-<div *ngIf="type === 'artist'" [ngStyle]="{display: 'flex'}">
+<div id="option-selector" *ngIf="type === 'artist'" [ngStyle]="{display: 'flex'}">
   <div ngClass="artistTxt">
     <input type="text" placeholder="Enter text" [(ngModel)]="param" />
   </div>
@@ -24,7 +24,7 @@
   </div>
 </div>
 
-<div *ngIf="type === 'album'"  [ngStyle]="{display: 'flex'}">
+<div id="option-selector" *ngIf="type === 'album'"  [ngStyle]="{display: 'flex'}">
   <div ngClass="albumTxt">
     <input type="text" placeholder="Enter text" [(ngModel)]="param" />
   </div>

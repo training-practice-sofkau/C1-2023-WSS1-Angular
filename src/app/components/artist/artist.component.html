@@ -1,15 +1,17 @@
-<h5>Name: {{artist?.name}}</h5>
+<h2>{{artist?.name}}</h2>
 <div id="artist-container">
-<div>
+<div id="artist-pic">
   <img src= {{artist?.pic_url}}
   alt="Artist image"
   style="width:150px;height:200px;">
 </div>
-<div>
-<p>Id: {{artist?.id}}</p>
-<p>Country: {{artist?.country}}</p>
-<p>Age: {{artist?.age}}</p>
-<p>Year debut: {{artist?.year_debut}}</p>
-<p>Total of albums: {{artist?.total_albums}}</p>
+<div id="artist-info">
+  <ul>
+    <li>Id: {{artist?.id}}</li>
+    <li>Country: {{artist?.country}}</li>
+    <li>Age: {{artist?.age}}</li>
+    <li>Year debut: {{artist?.year_debut}}</li>
+    <li>Total of albums: {{artist?.total_albums}}</li>
+  </ul>
 </div>
 </div>

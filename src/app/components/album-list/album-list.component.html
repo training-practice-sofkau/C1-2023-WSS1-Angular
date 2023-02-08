@@ -1,6 +1,6 @@
 <!-- Loop rendering for albumes -->
 <div [ngStyle]="{display: 'flex', flexDirection:'column'}">
-  <app-album [ngStyle]="{backgroundColor: 'green', margin: '10px 10px 10px 13px ', padding:'5px'}"
+  <app-album [ngStyle]="{margin: '10px 10px 10px 13px ', padding:'5px'}"
     *ngFor="let album of l_albums | paginate: { itemsPerPage: 3, currentPage: p }" [album]="album"></app-album>
 </div>
 

@@ -1,6 +1,6 @@
 <!-- Loop rendering for artists -->
 <div [ngStyle]="{display: 'flex', flexDirection:'column'}">
-  <app-artist [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}"
+  <app-artist [ngStyle]="{margin: '10px 10px 10px 13px ', padding:'5px'}"
     *ngFor="let artist of l_artists | paginate: { itemsPerPage: 3, currentPage: p }" [artist]="artist"></app-artist>
 </div>
 
