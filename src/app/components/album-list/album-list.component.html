@@ -27,8 +27,8 @@
 <ng-container *ngIf="l_length > 0; else noArtistFound ">
   <div>
     <div>
-      <button type="button" (click)="changePage(false)" *ngIf="pagFrom!=0"><-</button>
-      <button type="button" (click)="changePage(true)" *ngIf="pagTo!=l_albums.length-1">-></button>
+      <button type="button" (click)="changePage(false)" *ngIf="pagFrom!=0">Previous</button>
+      <button type="button" (click)="changePage(true)" *ngIf="pagTo!=l_albums.length-1">Next</button>
     </div>
     <h4>Founded: {{l_length}}</h4>
   </div>

@@ -60,7 +60,6 @@ export class AlbumListComponent implements OnInit{
   }
 
   changePage(change: boolean){
-    console.log(this.pagTo);
     if(change){
       if(!(this.pagTo == this.l_length-1)){
         this.pagFrom +=2;

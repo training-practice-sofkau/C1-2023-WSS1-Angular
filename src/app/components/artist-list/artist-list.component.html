@@ -28,8 +28,8 @@
 <!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="results > 0; else noArtistFound ">
   <div>
-    <button type="button" (click)="changePage(false)" *ngIf="pagFrom!=0"><-</button>
-    <button type="button" (click)="changePage(true)" *ngIf="pagTo!=l_artists.length-1">-></button>
+    <button type="button" (click)="changePage(false)" *ngIf="pagFrom!=0">Previous</button>
+    <button type="button" (click)="changePage(true)" *ngIf="pagTo!=l_artists.length-1">Next</button>
     <h4>Founded: {{results}}</h4>
   </div>
 

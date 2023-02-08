@@ -63,7 +63,6 @@ export class ArtistListComponent implements OnInit {
   }
 
   changePage(change: boolean){
-    console.log(this.pagTo);
     if(change){
       if(!(this.pagTo == this.results-1)){
         this.pagFrom +=2;
