@@ -7,6 +7,18 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.artist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.album {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .footer {
     position: fixed;
     left: 0;
@@ -77,3 +89,4 @@
 .albumTitle h2 {
     margin: 14px 16px;
 }
+

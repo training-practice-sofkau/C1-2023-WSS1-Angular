@@ -1,5 +1,6 @@
 .albumSearch {
     display: flex;
+    margin: 2em;
 }
 
 .albumResults {
@@ -9,7 +10,7 @@
 
 .albumResults-album {
     display: flex;
-    margin: 10px 10px 10px 13px;
+    margin: 10px;
     padding: 5px;
 
     img {
@@ -29,8 +30,12 @@
 
 .odd {
     background-color: #1368a0cc;
+    width: 50em;
+    margin: 10px;
 }
 
 .even {
     background-color: #a94dbbcc;
+    width: 50em;
+    margin:10px
 }
