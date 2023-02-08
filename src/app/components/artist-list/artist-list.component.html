@@ -1,12 +1,12 @@
-<div Class="options">
+<div [ngStyle]="{display: 'flex', flexDirection:'row', margin: '10px 10px 10px 13px '}">
     <div ngClass="artistTxt">
         <input type="text" placeholder="Enter text" [(ngModel)]="param"
         (keydown.backspace)="ngOnInit()"/>
     </div>
     <div ngClass="artistOps">
-        <input type="button" (click)="ngOnSearch(param, 'name')"/> Name
-        <input type="button" (click)="ngOnSearch(param, 'country')"/> Country
-        <input type="button" (click)="ngOnSearch(param, 'age')"/> Age
+        <input class="artistButton" type="button" value="Name" (click)="ngOnSearch(param, 'name')"/>
+        <input class="artistButton" type="button" value="Country" (click)="ngOnSearch(param, 'country')"/>
+        <input class="artistButton" type="button" value="Age" (click)="ngOnSearch(param, 'age')"/> 
     </div>
 </div>
 
@@ -23,8 +23,8 @@
 </div>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->
-<ng-container *ngIf="results > 0; else noArtistFound ">
-    <div>
+<ng-container  *ngIf="results > 0; else noArtistFound ">
+    <div class="found">
         <h4>Founded: {{results}}</h4>
     </div>
 
