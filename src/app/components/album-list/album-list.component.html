@@ -10,11 +10,11 @@
   </div>
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'row'}" *ngFor="let album of l_albums">
-  <div [ngStyle]="{padding:'5px'}">
+<div [ngStyle]="{display: 'flex', flexDirection:'row'}" *ngFor="let album of l_albums; index as i">
+  <div [ngStyle]="{padding:'5px'}" *ngIf="i >= pagFrom && i<= pagTo">
     <img src="{{album.picture}}" alt="Album cover">
   </div>
-  <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px', flexDirection:'column', width:'100%'}">
+  <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px', flexDirection:'column', width:'100%'}" *ngIf="i >= pagFrom && i<= pagTo">
     id: {{album.id}} <br/>
     title: {{album.title}} <br/>
     genre: {{album.genre}} <br/>
@@ -26,6 +26,10 @@
 <!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="l_length > 0; else noArtistFound ">
   <div>
+    <div>
+      <button type="button" (click)="changePage(false)" *ngIf="pagFrom!=0"><-</button>
+      <button type="button" (click)="changePage(true)" *ngIf="pagTo!=l_albums.length-1">-></button>
+    </div>
     <h4>Founded: {{l_length}}</h4>
   </div>
 

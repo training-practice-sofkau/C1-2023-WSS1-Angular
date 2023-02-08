@@ -15,6 +15,9 @@ export class AlbumListComponent implements OnInit{
 
   l_length: number = 0;
 
+  pagFrom: number = 0;
+  pagTo: number = 1;
+
   ngOnInit(): void{
     this.l_albums = ALBUMS;
     this.l_length = this.l_albums.length;
@@ -54,5 +57,21 @@ export class AlbumListComponent implements OnInit{
   }
   filterAlbumByReleaseDate(albums: Ialbum[],filter: string): Ialbum[]{
     return this.l_albums = albums.filter(a => a.releaseDate.includes(filter));
+  }
+
+  changePage(change: boolean){
+    console.log(this.pagTo);
+    if(change){
+      if(!(this.pagTo == this.l_length-1)){
+        this.pagFrom +=2;
+        this.pagTo +=2;
+      }
+    }else if(!change){
+      if(!(this.pagFrom == 0)) {
+        this.pagFrom -= 2;
+        this.pagTo -= 2;
+      }
+    }
+
   }
 }
