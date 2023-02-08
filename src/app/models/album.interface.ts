@@ -1,8 +1,9 @@
 export interface IAlbum{
-    id:string;
-    tittle:string;
+    id:number;
+    title:string;
     genre:string;
-    relaseDate:string;
+    releaseDate:number;
     numberOfSongs:number;
     artist:string;
+    link?:string;
 }
