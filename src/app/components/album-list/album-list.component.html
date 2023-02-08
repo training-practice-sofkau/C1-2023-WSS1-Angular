@@ -18,9 +18,10 @@
 <!-- Loop rendering for albumes -->
 <div [ngStyle]="{display: 'flex', flexDirection:'column'}">
   <app-album [ngStyle]="{backgroundColor: 'green', margin: '10px 10px 10px 13px ', padding:'5px'}"
-    *ngFor="let album of l_albums" [album]="album"></app-album>
+    *ngFor="let album of l_albums | paginate: { itemsPerPage: 3, currentPage: p }" [album]="album"></app-album>
 </div>
 
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="results > 0; else noAlbumFound ">

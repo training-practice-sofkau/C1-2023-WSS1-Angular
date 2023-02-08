@@ -16,6 +16,7 @@ export class ArtistListComponent implements OnInit{
   l_artists: IArtist[] = [];
 
   results: number = 0;
+  p: number = 1;
 
   toLowerCase = (data:string): string => {
     return data.toLowerCase();

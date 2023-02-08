@@ -7,6 +7,7 @@ import { AlbumListComponent } from './components/album-list/album-list.component
 import { FormsModule } from '@angular/forms';
 import { AlbumComponent } from './components/album/album.component';
 import { ArtistComponent } from './components/artist/artist.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ArtistComponent } from './components/artist/artist.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

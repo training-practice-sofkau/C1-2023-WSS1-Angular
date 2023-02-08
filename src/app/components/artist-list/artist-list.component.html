@@ -17,9 +17,10 @@
 <!-- Loop rendering for artists -->
 <div [ngStyle]="{display: 'flex', flexDirection:'column'}">
   <app-artist [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}"
-    *ngFor="let artist of l_artists" [artist]="artist"></app-artist>
+    *ngFor="let artist of l_artists | paginate: { itemsPerPage: 3, currentPage: p }" [artist]="artist"></app-artist>
 </div>
 
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="results > 0; else noArtistFound ">
