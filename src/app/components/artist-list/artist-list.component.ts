@@ -31,12 +31,14 @@ export class ArtistListComponent implements OnInit{
         ARTISTS.forEach((artist)=>{
           if(artist.name.startsWith(param)) this.l_artists.push(artist);
         });
+        this.l_artists = this.l_artists.sort((a,b) => (a.year_debut<b.year_debut)?1:-1);
         this.results = this.l_artists.length;
         break;
       case "country":
         ARTISTS.forEach((artist)=>{
           if(artist.country.startsWith(param)) this.l_artists.push(artist);
         });
+        this.l_artists = this.l_artists.sort((a,b) => (a.year_debut<b.year_debut)?1:-1);
         this.results = this.l_artists.length;
         break;
       case "age":
@@ -45,6 +47,7 @@ export class ArtistListComponent implements OnInit{
           if(artist.age === y) this.l_artists.push(artist);
         });
         this.results = this.l_artists.length;
+        this.l_artists = this.l_artists.sort((a,b) => (a.year_debut<b.year_debut)?1:-1);
         break;
     }
   }
