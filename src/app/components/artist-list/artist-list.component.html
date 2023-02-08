@@ -14,14 +14,17 @@
   </ng-container>
 </div>
 
+
 <div class="results_body">
   <div class="entry_card" *ngFor="let artist of searchResulst">
-    <img [src]="'../../../assets/album_images/'+artist.name+'.png'" [alt]="artist.name">
-    name: {{ artist.name }} <br />
-    country: {{ artist.country }} <br />
-    age: {{ artist.age }} <br />
-    year debut: {{ artist.year_debut }} <br />
-    total of albums: {{ artist.total_albums }} <br />
+    <img
+      [src]="'../../../assets/album_images/' + artist.name + '.png'"
+      [alt]="artist.name"
+    />
+    <div class="card-info">
+      <h3>{{ artist.name }} <span>({{ artist.age }})</span> </h3>
+      <h4>{{ artist.country }} • {{ artist.year_debut }} • {{ artist.total_albums }} albums</h4>
+    </div>
   </div>
 </div>
 
