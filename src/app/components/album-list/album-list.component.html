@@ -21,8 +21,13 @@
   </div>
   
   <div class="list--container">
-    <div *ngFor="let Album of l_albums">
+    <div *ngFor="let Album of pagination_albums">
       <app-element-card [elementRender]="Album"></app-element-card>
+    </div>
+    <div class="paginator--container" *ngIf="pagination_albums.length>0">
+      <p (click)="changePage('down')" *ngIf="currentPage>1"><<</p>
+      <p (click)="paginationList()">Page {{currentPage}}</p>
+      <p (click)="changePage('up')" *ngIf="(l_albums.length/rows)>currentPage">>></p>
     </div>
   </div>
   

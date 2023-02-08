@@ -12,11 +12,17 @@ export class ArtistListComponent implements OnInit {
 
   //TO-DO: Define a variable that will store the information
   l_artists: IArtist[] = [];
+  pagination_artist: IArtist[] = [];
 
   results: number = 0;
 
+  currentPage:number = 1;
+
+  rows:number = 3;
+
   ngOnInit(): void {
     this.l_artists = ARTISTS;
+    this.pagination_artist=this.paginationList()
     this.results = this.l_artists.length;
   }
 
@@ -49,5 +55,22 @@ export class ArtistListComponent implements OnInit {
       );
     }
     if (isNumber) this.l_artists.reverse();
+    this.currentPage=1
+    this.pagination_artist=this.paginationList()
+  }
+
+  paginationList():IArtist[]{
+    let start = this.rows*(this.currentPage-1)
+    let end = start + this.rows;
+    return this.l_artists.slice(start,end)
+  }
+
+  changePage(move:string){
+    if(move=='up'){
+      this.currentPage++;
+    }else{
+      this.currentPage--;
+    }
+    this.pagination_artist=this.paginationList()
   }
 }
