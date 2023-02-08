@@ -12,23 +12,19 @@
   </div>
 </div>
 
-<div
-  [ngStyle]="{ display: 'flex', flexDirection: 'column' }"
-  *ngFor="let artist of artistsList"
->
-  <div
-    [ngStyle]="{
-      backgroundColor: 'pink',
-      margin: '10px 10px 10px 13px ',
-      padding: '5px'
-    }"
-  >
-    id: {{ artist.id }} <br />
-    name: {{ artist.name }} <br />
-    country: {{ artist.country }} <br />
-    age: {{ artist.age }} <br />
-    year debut: {{ artist.debutYear }} <br />
-    total of albums: {{ artist.totalAlbums }} <br />
+<div *ngFor="let artist of artistsList">
+  <div class="artistContainer">
+    <figure>
+      <img [src]="artist.image" alt="image" width="350px" height="390px" />
+    </figure>
+    <p>
+      id: {{ artist.id }} <br />
+      name: {{ artist.name }} <br />
+      country: {{ artist.country }} <br />
+      age: {{ artist.age }} <br />
+      year debut: {{ artist.debutYear }} <br />
+      total of albums: {{ artist.totalAlbums }} <br />
+    </p>
   </div>
 </div>
 
