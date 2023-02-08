@@ -33,7 +33,7 @@ export const ALBUMS: IAlbum[] = [
     title: 'The Car',
     release_date: '2022',
     artist: 'Arctic Monkeys',
-    genre: 'Rock',
+    genre: 'Indi-Rock',
     number_of_songs: 10,
   },
   {
