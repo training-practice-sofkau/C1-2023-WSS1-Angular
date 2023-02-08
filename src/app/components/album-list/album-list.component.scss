@@ -1,0 +1,26 @@
+.album-container {
+  display: flex;
+  padding: 20px;
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+
+  border-width: thick;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #FED766;
+
+  background-color: #4A5043;
+}
+
+.album-info {
+  color: white;
+  font-size: 25px;
+  font-family: "Roboto", sans-serif;
+}
+
+.album-image {
+  width: 350px;
+  height: 390px;
+  border-radius: 10px;
+}

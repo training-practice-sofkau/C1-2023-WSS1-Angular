@@ -1,10 +1,27 @@
-.artistContainer {
+.artist-container {
   display: flex;
   padding: 20px;
   margin-top: 20px;
   margin-left: 100px;
   margin-right: 100px;
-  border-radius: 20px;
 
-  background-color: salmon;
+  border-width: thick;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #2AB7CA;
+
+  background-color: #4A5043;
+}
+
+.artist-info {
+  color: white;
+  font-size: 25px;
+  font-family: "Roboto", sans-serif;
+  align-items: center;
+}
+
+.artist-image {
+  width: 350px;
+  height: 390px;
+  border-radius: 10px;
 }
