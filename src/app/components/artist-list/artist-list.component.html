@@ -1,12 +1,12 @@
 <div [ngStyle]="{display: 'flex'}">
-  <div ngClass="artistTxt">
+  <div ngClass="artistTxt" [ngStyle]="{marginTop:'5px'}">
     <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
   </div>
   <div ngClass="artistOps">
-    <button type="button" (click)="search(param, 'name')">Name</button>
-    <button type="button" (click)="search(param, 'country')">Country</button>
-    <button type="button" (click)="search(param, 'age')">Age</button>
-    <button type="button" (click)="search(param, 'reset')">Reset</button>
+    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param, 'name')">Name</button>
+    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param, 'country')">Country</button>
+    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param, 'age')">Age</button>
+    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param, 'reset')">Reset</button>
   </div>
 </div>
 
@@ -14,7 +14,7 @@
   <div [ngStyle]="{padding:'5px'}">
     <img src="{{artist.picture}}" alt="Album cover">
   </div>
-  <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px', flexDirection:'column', width:'300px'}">
+  <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px', flexDirection:'column', width:'100%'}">
     id: {{artist.id}} <br/>
     name: {{artist.name}} <br/>
     country: {{artist.country}} <br/>
