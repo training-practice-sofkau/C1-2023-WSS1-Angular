@@ -13,6 +13,7 @@ export class AlbumListComponent implements OnInit{
   //Variables to store the info
   l_albums: IAlbum[] = [];
   results: number = 0;
+  p: number=0;
 
   ngOnInit(): void {
     this.l_albums = ALBUM.sort((a,b) => (a.songs<b.songs)?1:-1);

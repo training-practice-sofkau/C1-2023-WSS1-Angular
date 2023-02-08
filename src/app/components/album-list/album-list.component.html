@@ -10,7 +10,8 @@
     </div>
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let album of l_albums">
+<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let album of l_albums
+   | paginate: { itemsPerPage: 4, currentPage: p }">
     <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
         Title: {{album.title}} <br/>
         Genre: {{album.genre}} <br/>
@@ -33,4 +34,7 @@
         <h4>No album were found</h4>
     </div>
 </ng-template>
+
+<pagination-controls class="pagination" (pageChange)="p = $event"  previousLabel="Previous"
+nextLabel="Next"></pagination-controls>
 
