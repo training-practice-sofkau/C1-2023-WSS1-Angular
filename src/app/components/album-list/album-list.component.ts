@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ALBUMS } from 'src/app/mocks/album.mock';
 import { IAlbum } from 'src/app/models/album.interface';
 
@@ -10,6 +10,7 @@ import { IAlbum } from 'src/app/models/album.interface';
 export class AlbumListComponent implements OnInit {
 
   @Input() param: string = "";
+  @Input() typeSearch: string = "";
 
   l_albums: IAlbum[] = [];
   results: number = 0;
@@ -26,21 +27,20 @@ export class AlbumListComponent implements OnInit {
     this.results = this.l_albums.length;
   }
 
-  ngOnSearch(param: string, typeSearch: string) {
-
+  ngOnSearch(param: string) {
     this.l_albums = ALBUMS;
 
-    switch (typeSearch) {
+    switch (this.typeSearch) {
       case "title": {
-        this.l_albums = this.l_albums.filter(album => this.toLowerCase(album.title).startsWith(this.toLowerCase(<string>param)));
+        this.l_albums = this.l_albums.filter(album => this.toLowerCase(album.title).startsWith(this.toLowerCase(param)));
         break;
       }
       case "genre": {
-        this.l_albums = this.l_albums.filter(album => this.toLowerCase(album.genre).startsWith(this.toLowerCase(<string>param)));
+        this.l_albums = this.l_albums.filter(album => this.toLowerCase(album.genre).startsWith(this.toLowerCase(param)));
         break;
       }
       case "number_of_songs": {
-        this.l_albums = this.l_albums.filter(album => album.number_of_songs === parseInt(<string>param));
+        this.l_albums = this.l_albums.filter(album => album.number_of_songs === parseInt(param));
         break;
       }
       default: {
@@ -49,6 +49,13 @@ export class AlbumListComponent implements OnInit {
       }
     }
     this.results = this.l_albums.length;
-    console.log(param);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+/*     console.log("On changes working ");
+    console.log("Type",this.typeSearch);
+    console.log("Param",this.param);
+    console.log("Length", this.l_albums.length) */
+    this.ngOnSearch(this.param);
   }
 }

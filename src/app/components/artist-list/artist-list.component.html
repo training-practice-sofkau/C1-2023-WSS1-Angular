@@ -1,19 +1,3 @@
-<div [ngStyle]="{display: 'flex'}">
-    <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
-    </div>
-    <div ngClass="artistOps">
-        <input type="radio" id="artistChoice1"  name="artist_radio_button" (click)="ngOnSearch(param, 'name')"/>
-        <label for="artistChoice1">Name</label>
-
-        <input type="radio" id="artistChoice2" name="artist_radio_button" (click)="ngOnSearch(param, 'country')"/>
-        <label for="artistChoice2">Country</label>
-
-        <input type="radio" id="artistChoice3" name="artist_radio_button" (click)="ngOnSearch(param, 'age')"/>
-        <label for="artistChoice3">Age</label>
-    </div>
-</div>
-
 <!-- Loop rendering for artists -->
 <div [ngStyle]="{display: 'flex', flexDirection:'column'}">
   <app-artist [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}"
