@@ -24,13 +24,13 @@ export class ArtistListComponent implements OnInit {
     console.log(param + ' ' + typeSearch);
     switch (typeSearch) {
       case 'name':
-        this.searchResulst = this.searchByTitle(this.artists, param);
+        this.searchResulst = this.searchByName(this.artists, param);
         break;
       case 'country':
-        this.searchResulst = this.searchByGenre(this.artists, param);
+        this.searchResulst = this.searchByCountry(this.artists, param);
         break;
       case 'age':
-        this.searchResulst = this.searchByArtist(this.artists, param);
+        this.searchResulst = this.searchByAge(this.artists, param);
         break;
       default:
         console.log('Error filtering the list');
@@ -39,29 +39,38 @@ export class ArtistListComponent implements OnInit {
     this.results = this.searchResulst.length;
     this.searchParam = '';
   }
-  searchByTitle(artists: IArtist[], param: string) {
-    return artists
-      .filter((album) => album.name.toLowerCase().includes(param.toLowerCase()))
-      .sort((a, b) => {
-        a.name.toLowerCase();
-        b.name.toLowerCase();
-        return a.name.localeCompare(b.name);
-      });
+  searchByName(artists: IArtist[], param: string) {
+    return (
+      artists
+        //.filter((artist) => artist.name.toLowerCase().includes(param.toLowerCase()))
+        .filter((artist) => this.checkCoincidence(artist.name, param))
+        .sort((a, b) => {
+          a.name.toLowerCase();
+          b.name.toLowerCase();
+          return a.name.localeCompare(b.name);
+        })
+    );
   }
-  searchByGenre(artists: IArtist[], param: string) {
+  searchByCountry(artists: IArtist[], param: string) {
     return artists
-      .filter((album) =>
-        album.country.toLowerCase().includes(param.toLowerCase())
-      )
+      // .filter((artist) =>
+      //   artist.country.toLowerCase().includes(param.toLowerCase())
+      // )
+      .filter((artist) => this.checkCoincidence(artist.country, param))
       .sort((a, b) => {
         a.country.toLowerCase();
         b.country.toLowerCase();
         return a.country.localeCompare(b.country);
       });
   }
-  searchByArtist(artists: IArtist[], param: number) {
+  searchByAge(artists: IArtist[], param: number) {
     return artists
-      .filter((album) => album.age == param)
+      .filter((artist) => artist.age == param)
       .sort((a, b) => a.age - b.age);
+  }
+  checkCoincidence(word: string, param: string) {
+    return (
+      word.toLocaleLowerCase().slice(0, param.length) === param.toLowerCase()
+    );
   }
 }

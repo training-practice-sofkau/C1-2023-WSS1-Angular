@@ -42,9 +42,10 @@ export class AlbumListComponent {
   }
   searchByTitle(albums: IAlbum[], param: string) {
     return albums
-      .filter((album) =>
-        album.title.toLowerCase().includes(param.toLowerCase())
-      )
+      // .filter((album) =>
+      //   album.title.toLowerCase().includes(param.toLowerCase())
+      // )
+      .filter((album) => this.checkCoincidence(album.title, param))
       .sort((a, b) => {
         a.title.toLowerCase();
         b.title.toLowerCase();
@@ -53,9 +54,10 @@ export class AlbumListComponent {
   }
   searchByGenre(albums: IAlbum[], param: string) {
     return albums
-      .filter((album) =>
-        album.genre.toLowerCase().includes(param.toLowerCase())
-      )
+      // .filter((album) =>
+      //   album.genre.toLowerCase().includes(param.toLowerCase())
+      // )
+      .filter((album) => this.checkCoincidence(album.genre, param))
       .sort((a, b) => {
         a.genre.toLowerCase();
         b.genre.toLowerCase();
@@ -64,13 +66,19 @@ export class AlbumListComponent {
   }
   searchByArtist(albums: IAlbum[], param: string) {
     return albums
-      .filter((album) =>
-        album.artist.toLowerCase().includes(param.toLowerCase())
-      )
+      // .filter((album) =>
+      //   album.artist.toLowerCase().includes(param.toLowerCase())
+      // )
+      .filter((album) => this.checkCoincidence(album.artist, param))
       .sort((a, b) => {
         a.artist.toLowerCase();
         b.artist.toLowerCase();
         return a.artist.localeCompare(b.artist);
       });
+  }
+  checkCoincidence(word: string, param: string) {
+    return (
+      word.toLocaleLowerCase().slice(0, param.length) === param.toLowerCase()
+    );
   }
 }
