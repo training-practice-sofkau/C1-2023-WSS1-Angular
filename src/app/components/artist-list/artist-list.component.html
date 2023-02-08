@@ -1,25 +1,37 @@
-<div [ngStyle]="{display: 'flex'}">
-    <div ngClass="artistTxt">
+
+
+<section class="search-bar">
+    <div class="search-box">
         <input type="text" placeholder="Enter text" [(ngModel)]="filterParam" (change)="ngOnSearch()"/>
     </div>
-    <label>Filter by</label>
-    <select name="filterOption" id="filterOption" [(ngModel)]="filterOption">
-      <option value="name">Name</option>
-      <option value="genre">Genre</option>
-      <option value="albums" (click)="ngOnSearch()">Albums</option>
-    </select>
-</div>
-
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of results">
-    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px', padding:'5px'}">
-        id: {{ artist.id }}<br>
-        Name: {{ artist.name }}<br>
-        Genre: {{ artist.genre }}<br>
-        Created: {{ artist.created }}<br>
-        Country: {{ artist.country }}<br>
-        Albums: {{ artist.albums }}<br>
+    <div class="search-options">
+      <label>Filter by</label>
+      <select name="filterOption" id="filterOption" [(ngModel)]="filterOption">
+        <option value="name">Name</option>
+        <option value="genre">Genre</option>
+        <option value="albums" (click)="ngOnSearch()">Albums</option>
+      </select>
     </div>
-</div>
+</section>
+<section class="artist-results-container">
+  <div class="artist-details-container" *ngFor="let artist of results">
+    <div>
+      <img src="{{ artist.img }}" alt="kratos">
+    </div>
+    <div class="artist-details">
+      <div>
+        <strong>id: </strong>{{ artist.id }}<br>
+        <strong>Name: </strong>{{ artist.name }}<br>
+        <strong>Genre: </strong>{{ artist.genre }}<br>
+      </div>
+      <div>
+        <strong>Created: </strong>{{ artist.created }}<br>
+        <strong>Country: </strong>{{ artist.country }}<br>
+        <strong>Albums: </strong>{{ artist.albums }}<br>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!--Implement acording to the results obtained founded: n or There are no matches
 <ng-container *ngIf="results.length > 0; else noArtistFound ">

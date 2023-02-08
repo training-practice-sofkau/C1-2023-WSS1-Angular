@@ -4,5 +4,6 @@ export interface IArtist {
     genre: string,
     created: string,
     country: string,
-    albums: number
+    albums: number,
+    img: string;
 }

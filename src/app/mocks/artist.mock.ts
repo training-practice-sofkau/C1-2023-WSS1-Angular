@@ -7,7 +7,8 @@ export const ARTISTS: IArtist[] = [
         genre: "Death Metal",
         created: "1992-02-06",
         country: 'Sweden',
-        albums: 12
+        albums: 12,
+        img: "./assets/artists/amon-amarth.jpg"
     },
     {
         id: 2,
@@ -15,7 +16,8 @@ export const ARTISTS: IArtist[] = [
         genre: "Death Metal",
         created: "1995-05-02",
         country: 'Sweden',
-        albums: 4
+        albums: 4,
+        img: "./assets/artists/arch-enemy.jpg"
     },
     {
       id: 3,
@@ -23,7 +25,8 @@ export const ARTISTS: IArtist[] = [
       genre: "Heavy Metal",
       created: "1990-05-02",
       country: 'UK',
-      albums: 8
+      albums: 8,
+      img: "./assets/artists/iron-maiden.jpg"
     },
     {
       id: 4,
@@ -31,7 +34,8 @@ export const ARTISTS: IArtist[] = [
       genre: "Rock",
       created: "1993-05-02",
       country: 'USA',
-      albums: 13
+      albums: 13,
+      img: "./assets/artists/papa-roach.jpg"
     },
     {
       id: 5,
@@ -39,7 +43,8 @@ export const ARTISTS: IArtist[] = [
       genre: "Rock",
       created: "1990-08-22",
       country: 'UK',
-      albums: 13
+      albums: 13,
+      img: "./assets/artists/paramore.jpg"
     },
     {
       id: 6,
@@ -47,7 +52,8 @@ export const ARTISTS: IArtist[] = [
       genre: "Rock",
       created: "1996-11-12",
       country: 'USA',
-      albums: 10
+      albums: 10,
+      img: "./assets/artists/blink-182.jpg"
     },
     {
       id: 7,
@@ -55,7 +61,8 @@ export const ARTISTS: IArtist[] = [
       genre: "Metal",
       created: "1997-02-16",
       country: 'France',
-      albums: 13
+      albums: 13,
+      img: "./assets/artists/gojira.jpg"
     },
     {
       id: 8,
@@ -63,7 +70,8 @@ export const ARTISTS: IArtist[] = [
       genre: "Metal",
       created: "1994-08-12",
       country: 'Colombia',
-      albums: 9
+      albums: 9,
+      img: "./assets/artists/trivium.jpg"
     },
     {
       id: 9,
@@ -71,7 +79,8 @@ export const ARTISTS: IArtist[] = [
       genre: "Trash",
       created: "1994-07-17",
       country: 'USA',
-      albums: 9
+      albums: 9,
+      img: "./assets/artists/metallica.jpg"
     },
     {
       id: 10,
@@ -79,6 +88,7 @@ export const ARTISTS: IArtist[] = [
       genre: "Trash",
       created: "1889-11-12",
       country: 'USA',
-      albums: 16
+      albums: 16,
+      img: "./assets/artists/slayer.jpg"
     }
 ]
