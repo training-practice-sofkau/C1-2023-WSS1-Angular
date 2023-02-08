@@ -1,11 +1,12 @@
 <div [ngStyle]="{display: 'flex'}">
     <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
+        <input type="text" placeholder="Enter text" [(ngModel)]="param"
+        (keydown.backspace)="ngOnInit()"/>
     </div>
     <div ngClass="artistOps">
-        <input type="radio" (click)="ngOnSearch(param, 'name')"/> Name
-        <input type="radio"/> Country
-        <input type="radio"/> Age
+        <input type="button" (click)="ngOnSearch(param, 'name')"/> Name
+        <input type="button" (click)="ngOnSearch(param, 'country')"/> Country
+        <input type="button" (click)="ngOnSearch(param, 'age')"/> Age
     </div>
 </div>
 

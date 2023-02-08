@@ -16,5 +16,13 @@ export const ARTISTS: IArtist[] = [
         age: 38,
         year_debut: 2017,
         total_albums: 4
+    },
+    {
+        id: 3,
+        name: 'Shakira',
+        country: 'Colombia',
+        age: 49,
+        year_debut: 1993,
+        total_albums: 20
     }
 ]
