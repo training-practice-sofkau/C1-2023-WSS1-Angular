@@ -14,6 +14,7 @@ export class ArtistListComponent implements OnInit{
   constructor(private service: ArtistService) {}
 
   @Input() param: string = "";
+  p: number=0;
 
   //TO-DO: Define a variable that will store the information
   l_artists: IArtist[] = [];

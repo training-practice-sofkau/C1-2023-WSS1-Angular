@@ -8,6 +8,8 @@
   <span>Music catalog</span>
     
 </div>
+
+<h1 *ngIf="type === 'n/a'">Please, select an Option.</h1>
 <router-outlet></router-outlet>
 
 <!-- Footer -->
@@ -17,5 +19,5 @@
     alt="Copyright Logo"
     src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Copyright-serif.svg/2048px-Copyright-serif.svg.png"
   />
-  <span>Copyright, 2023 - insertYourUserName</span>
+  <span>Copyright, 2023 - Diego Sánchez</span>
 </div> 
