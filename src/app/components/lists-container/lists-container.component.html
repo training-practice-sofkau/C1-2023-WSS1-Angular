@@ -1,0 +1,46 @@
+<div class="artistTitle" (click)="ngOnShowList('artist')">
+  <h2>Artist</h2>
+</div>
+<br />
+<div class="albumTitle" (click)="ngOnShowList('album')">
+  <h2>Album</h2>
+</div>
+<br />
+
+<!-- Selecttors and search -->
+<div id="option-selector" *ngIf="type === 'artist'" [ngStyle]="{display: 'flex'}">
+  <div ngClass="artistTxt">
+    <input type="text" placeholder="Enter text" [(ngModel)]="param" />
+  </div>
+  <div ngClass="artistOps">
+    <input type="radio" id="artistChoice1" name="artist_radio_button" (click)="ngOnOptionSelection('name')" />
+    <label for="artistChoice1">Name</label>
+
+    <input type="radio" id="artistChoice2" name="artist_radio_button" (click)="ngOnOptionSelection('country')" />
+    <label for="artistChoice2">Country</label>
+
+    <input type="radio" id="artistChoice3" name="artist_radio_button" (click)="ngOnOptionSelection('age')" />
+    <label for="artistChoice3">Age</label>
+  </div>
+</div>
+
+<div id="option-selector" *ngIf="type === 'album'"  [ngStyle]="{display: 'flex'}">
+  <div ngClass="albumTxt">
+    <input type="text" placeholder="Enter text" [(ngModel)]="param" />
+  </div>
+    <div ngClass="albumOps">
+      <input type="radio" id="albumChoice1" name="album_radio_button" (click)="ngOnOptionSelection('title')"/>
+      <label for="albumChoice1">Title</label>
+
+      <input type="radio" id="albumChoice2" name="album_radio_button" (click)="ngOnOptionSelection('genre')" />
+      <label for="albumChoice2">Genre</label>
+
+      <input type="radio" id="albumChoice3" name="album_radio_button" (click)="ngOnOptionSelection('number_of_songs')"/>
+      <label for="albumChoice3">Number of songs</label>
+    </div>
+</div>
+
+<div id="list">
+<app-artist-list *ngIf="type === 'artist'" [typeSearch]="typeSearch" [param]='param'></app-artist-list>
+<app-album-list *ngIf="type === 'album'" [typeSearch]="typeSearch" [param]='param'></app-album-list>
+</div>

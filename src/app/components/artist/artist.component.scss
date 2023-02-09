@@ -1,0 +1,16 @@
+#artist-container{
+  display: flex;
+  flex-direction: row;
+}
+
+
+#artist-info{
+  padding: 15px;
+  //background-color: aqua;
+}
+
+@media only screen and (max-width: 400px) {
+  #artist-pic {
+      display:none;
+  }
+}
