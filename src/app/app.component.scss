@@ -1,11 +1,3 @@
-:host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
 
 .footer {
     position: fixed;
@@ -22,16 +14,6 @@
 
 .footer img {
     margin: 0 16px;
-}
-
-
-.content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    //max-width: 960px;
-    flex-direction: column;
-    //align-items: center;
 }
 
 .toolbar {
@@ -51,31 +33,3 @@
     margin: 0 16px;
 }
 
-.artistTitle{
-    width: 100%;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background-color: #1368a0cc;
-    color: white;
-    font-weight: 600;
-    
-}
-
-.artistTitle h2 {
-    margin: 14px 16px;
-}
-
-.albumTitle{
-    width: 100%;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background-color: #a94dbbcc;
-    color: white;
-    font-weight: 600;
-}
-
-.albumTitle h2 {
-    margin: 14px 16px;
-}
