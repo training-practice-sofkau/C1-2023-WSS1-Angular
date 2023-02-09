@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ALBUMS } from 'src/app/mocks/album.mocks';
 import { IAlbum } from 'src/app/models/album.interface';
+import { AlbumService } from 'src/app/services/album-services/album.service';
 
 @Component({
   selector: 'app-album-list',
@@ -8,50 +9,78 @@ import { IAlbum } from 'src/app/models/album.interface';
   styleUrls: ['./album-list.component.scss'],
 })
 export class AlbumListComponent implements OnInit {
+
   l_albums: IAlbum[] = [];
   pagination_albums: IAlbum[] = [];
 
   results: number = 0;
 
-  param: string = '';
-
   currentPage: number = 1;
 
   rows: number = 3;
 
+  myParam:string = ''
+
+  constructor(private serviceAlbum:AlbumService){}
+
   ngOnInit(): void {
-    this.l_albums = ALBUMS;
+    this.serviceAlbum.getAll().subscribe(al=>this.l_albums=al)
     this.pagination_albums = this.paginationList();
     this.results = this.l_albums.length;
   }
 
-  onSearch(param: string, typeSearch: string) {
-    this.l_albums = ALBUMS;
+  onSearch() {
+
+    this.serviceAlbum.getAll().subscribe(al=>this.l_albums=al)
+
+    const MYINDICATOR = this.myParam.match(/[:><-]/g) || [];
+
+    const MYPARAMS = this.myParam.split(MYINDICATOR[0]);
+
     let myfilter: string =
       Object.keys(this.l_albums[0]).find((pro) =>
-        pro.toLocaleLowerCase().includes(typeSearch.toLocaleLowerCase())
+        pro.toLocaleLowerCase().includes(MYPARAMS[0].toLocaleLowerCase())
       ) || '';
+
     let isNumber: boolean = false;
-    this.l_albums = this.l_albums.filter((art) => {
+
+    [this.l_albums[0]].filter((art) => {
       if (typeof art[myfilter as keyof IAlbum]?.valueOf() == 'number') {
         isNumber = true;
-        if (param.length == 0) return art;
-        return art[myfilter as keyof IAlbum]?.valueOf() == param;
       }
-      return art[myfilter as keyof IAlbum]
-        ?.toString()
-        .toLocaleLowerCase()
-        .startsWith(param.toLocaleLowerCase());
     });
-    this.results = this.l_albums.length;
-    if (this.results > 0) {
-      this.l_albums.sort((a, b) =>
-        (a[myfilter as keyof IAlbum]?.valueOf() || 1) >
-        (b[myfilter as keyof IAlbum]?.valueOf() || 1)
-          ? 1
-          : -1
-      );
+
+    if(isNumber){
+      switch(MYINDICATOR[0]){
+        case '>':
+          this.serviceAlbum.getGreaterThan(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_albums=ar)
+          break
+        case '<':
+          this.serviceAlbum.getLessThan(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_albums=ar)
+          break
+        case '-':
+          this.serviceAlbum.getExcludeResults(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_albums=ar)
+          break
+        default:
+          console.log("can not filter");  
+
+      }
+
+    }else{
+      switch(MYINDICATOR[0]){
+        case ':':
+          this.serviceAlbum.getByStartWithString(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_albums=ar)
+          break
+        case '-':
+          this.serviceAlbum.getByNoStartWithString(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_albums=ar)
+          break
+        default:
+          console.log("can not filter");  
+
+      }
+
     }
+
     if (isNumber) this.l_albums.reverse();
     this.currentPage = 1;
     this.pagination_albums = this.paginationList();
