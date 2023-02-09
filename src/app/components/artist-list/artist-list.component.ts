@@ -1,14 +1,19 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ARTISTS } from 'src/app/mocks/artist.mock';
 import { IArtist } from 'src/app/models/artist.interface';
+import { ArtistService } from 'src/app/services/artist-services/artist.service';
 
 @Component({
   selector: 'app-artist-list',
   templateUrl: './artist-list.component.html',
   styleUrls: ['./artist-list.component.scss'],
 })
-export class ArtistListComponent implements OnInit {
-  @Input() param: string = '';
+
+export class ArtistListComponent implements OnInit{
+
+  constructor(private service: ArtistService) {}
+
+  @Input() param: string = "";
 
   //TO-DO: Define a variable that will store the information
   l_artists: IArtist[] = [];
@@ -21,7 +26,7 @@ export class ArtistListComponent implements OnInit {
   rows:number = 3;
 
   ngOnInit(): void {
-    this.l_artists = ARTISTS;
+    this.service.getAll().subscribe((artist) => this.l_artists = artist);
     this.pagination_artist=this.paginationList()
     this.results = this.l_artists.length;
   }
