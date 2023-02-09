@@ -1,20 +1,20 @@
 .list--container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-.paginator--container{
+.paginator--container {
   display: flex;
 }
 
-.paginator--container p{
+.paginator--container p {
   margin: 0 1% 0 1%;
 }
 
-.pagination--button{
+.pagination--button {
   background-color: #a94dbbcc;
   color: white;
   border-radius: 100%;
@@ -23,3 +23,45 @@
   align-items: center;
   justify-content: center;
 }
+
+.search--btn {
+  background-color: red;
+  border: 0px;
+  color: white;
+  border-radius: 1em;
+  font-weight: 550;
+  font-size: 1.4rem;
+  text-align: center;
+  background: rgb(182, 98, 212);
+  background: linear-gradient(
+    0deg,
+    rgba(182, 98, 212, 1) 0%,
+    rgba(129, 77, 154, 1) 35%
+  );
+  margin: 0% 10% 0% 1%;
+  padding: 10% 20% 10% 20%;
+  width: auto;
+}
+
+.search--btn:hover{
+  cursor: pointer;
+  background: linear-gradient(
+    0deg,
+    rgba(182, 98, 212, 1) 0%,
+    rgb(155, 101, 180) 35%
+  );
+}
+
+.search--container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 5vh;
+}
+
+
+.AlbumsOps{
+  display: flex;
+  margin: 0% 0.8% 0% 0.8%;
+}
+

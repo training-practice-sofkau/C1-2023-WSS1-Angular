@@ -1,22 +1,11 @@
 <div [ngStyle]="{ display: 'flex', justifyContent: 'center' }">
-  <div ngClass="artistTxt">
-    <input type="text" placeholder="Enter text" [(ngModel)]="param" />
-  </div>
-  <div ngClass="artistOps">
-    <input
-      type="radio"
-      name="paramFilter"
-      (click)="ngOnSearch(param, 'name')"
-    />
-    Name
-    <input
-      type="radio"
-      name="paramFilter"
-      (click)="ngOnSearch(param, 'country')"
-    />
-    Country
-    <input type="radio" name="paramFilter" (click)="ngOnSearch(param, 'age')" />
-    Age
+  <div class="search--container">
+    <div ngClass="artistTxt">
+      <input type="text" placeholder="Enter text" [(ngModel)]="myParam" />
+    </div>
+    <div ngClass="artistOps">
+      <button (click)="onSearch()" class="search--btn">Search</button>
+    </div>
   </div>
 </div>
 
@@ -24,10 +13,22 @@
   <div *ngFor="let artist of pagination_artist">
     <app-element-card [elementRender]="artist"></app-element-card>
   </div>
-  <div class="paginator--container" *ngIf="pagination_artist.length>0">
-    <p (click)="changePage('down')" *ngIf="currentPage>1" class="pagination--button"><<</p>
-    <p (click)="paginationList()">Page {{currentPage}}</p>
-    <p (click)="changePage('up')" *ngIf="(l_artists.length/rows)>currentPage" class="pagination--button">>></p>
+  <div class="paginator--container" *ngIf="pagination_artist.length > 0">
+    <p
+      (click)="changePage('down')"
+      *ngIf="currentPage > 1"
+      class="pagination--button"
+    >
+      <<
+    </p>
+    <p (click)="paginationList()">Page {{ currentPage }}</p>
+    <p
+      (click)="changePage('up')"
+      *ngIf="l_artists.length / rows > currentPage"
+      class="pagination--button"
+    >
+      >>
+    </p>
   </div>
 </div>
 

@@ -1,36 +1,42 @@
-<div [ngStyle]="{ display: 'flex', justifyContent: 'center' }">
+<div
+  [ngStyle]="{
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+  }"
+>
+  <div class="search--container">
     <div ngClass="AlbumsTxt">
-      <input type="text" placeholder="Enter text" [(ngModel)]="param" />
+      <input type="text" placeholder="Enter text" [(ngModel)]="myParam" />
     </div>
     <div ngClass="AlbumsOps">
-      <input
-        type="radio"
-        name="paramFilter"
-        (click)="onSearch(param, 'title')"
-      />
-      Title
-      <input
-        type="radio"
-        name="paramFilter"
-        (click)="onSearch(param, 'release')"
-      />
-      Release
-      <input type="radio" name="paramFilter" (click)="onSearch(param, 'genre')" />
-      Genre
+      <button (click)="onSearch()" class="search--btn">Search</button>
     </div>
   </div>
-  
+
   <div class="list--container">
     <div *ngFor="let Album of pagination_albums">
       <app-element-card [elementRender]="Album"></app-element-card>
     </div>
-    <div class="paginator--container" *ngIf="pagination_albums.length>0">
-      <p (click)="changePage('down')" *ngIf="currentPage>1" class="pagination--button"><<</p>
-      <p (click)="paginationList()">Page {{currentPage}}</p>
-      <p (click)="changePage('up')" *ngIf="(l_albums.length/rows)>currentPage" class="pagination--button">>></p>
+    <div class="paginator--container" *ngIf="pagination_albums.length > 0">
+      <p
+        (click)="changePage('down')"
+        *ngIf="currentPage > 1"
+        class="pagination--button"
+      >
+        <<
+      </p>
+      <p (click)="paginationList()">Page {{ currentPage }}</p>
+      <p
+        (click)="changePage('up')"
+        *ngIf="l_albums.length / rows > currentPage"
+        class="pagination--button"
+      >
+        >>
+      </p>
     </div>
   </div>
-  
+
   <!--Implement acording to the results obtained founded: n or There are no matches-->
   <ng-container *ngIf="results > 0; else noAlbumsFound">
     <div>
@@ -42,3 +48,4 @@
       <h4>No Albums were found</h4>
     </div>
   </ng-template>
+</div>
