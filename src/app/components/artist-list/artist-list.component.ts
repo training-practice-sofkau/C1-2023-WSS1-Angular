@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ARTISTS } from 'src/app/mocks/artist.mock';
 import { IArtist } from 'src/app/models/artist.interface';
-import { ArtistService } from 'src/app/services/artist-services/artist.service';
 
 @Component({
   selector: 'app-artist-list',
@@ -11,23 +10,70 @@ import { ArtistService } from 'src/app/services/artist-services/artist.service';
 
 export class ArtistListComponent implements OnInit{
 
-  constructor(private service: ArtistService) {}
-
   @Input() param: string = "";
 
-  //TO-DO: Define a variable that will store the information
   l_artists: IArtist[] = [];
 
   results: number = 0;
-  
+
+  pagFrom: number = 0;
+  pagTo: number = 1;
+
   ngOnInit(): void {
-    this.service.getAll().subscribe((artist) => this.l_artists = artist);
+    this.l_artists = ARTISTS;
     this.results = this.l_artists.length;
   }
 
   //TO-DO: Create a function that based of param it will show n-results
-  ngOnSearch(param: string, typeSearch: string){
-    console.log(param)
+  search(param: string, typeSearch: string) {
+    switch (typeSearch){
+      case "name":
+        this.l_artists = ARTISTS;
+        this.filterAlbumByName(this.l_artists,param);
+        this.results = this.l_artists.length;
+        break;
+      case "country":
+        this.l_artists = ARTISTS;
+        this.filterAlbumByCountry(this.l_artists,param);
+        this.results = this.l_artists.length;
+        break;
+      case "age":
+        this.l_artists = ARTISTS;
+        this.filterAlbumByAge(this.l_artists,param);
+        this.results = this.l_artists.length;
+        break;
+      default:
+        this.l_artists = ARTISTS;
+        console.log("No filter");
+        this.results = this.l_artists.length;
+        break;
+    }
   }
+
+  filterAlbumByName(artist: IArtist[], filter: string): IArtist[]{
+    return this.l_artists = artist.filter(a => a.name.includes(filter));
+  }
+  filterAlbumByCountry(artists: IArtist[], filter: string): IArtist[]{
+    return this.l_artists = artists.filter(a => a.country.includes(filter));
+  }
+  filterAlbumByAge(artist: IArtist[], filter: string): IArtist[]{
+    return this.l_artists = artist.filter(a => a.age == Number(filter));
+  }
+
+  changePage(change: boolean){
+    if(change){
+      if(!(this.pagTo == this.results-1)){
+        this.pagFrom +=2;
+        this.pagTo +=2;
+      }
+    }else if(!change){
+      if(!(this.pagFrom == 0)) {
+        this.pagFrom -= 2;
+        this.pagTo -= 2;
+      }
+    }
+
+  }
+
 
 }

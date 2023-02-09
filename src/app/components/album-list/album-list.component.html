@@ -1,1 +1,41 @@
-<p>album-list works!</p>
+<div [ngStyle]="{display: 'flex'}">
+  <div ngClass="artistTxt" [ngStyle]="{marginTop:'5px'}">
+    <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
+  </div>
+  <div ngClass="artistOps">
+    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param,'title')">Title</button>
+    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param,'genre')">Genre</button>
+    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param,'releaseDate')">Release Date</button>
+    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param,'reset')">Reset</button>
+  </div>
+</div>
+
+<div [ngStyle]="{display: 'flex', flexDirection:'row'}" *ngFor="let album of l_albums; index as i">
+  <div [ngStyle]="{padding:'5px'}" *ngIf="i >= pagFrom && i<= pagTo">
+    <img src="{{album.picture}}" alt="Album cover">
+  </div>
+  <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px', flexDirection:'column', width:'100%'}" *ngIf="i >= pagFrom && i<= pagTo">
+    id: {{album.id}} <br/>
+    title: {{album.title}} <br/>
+    genre: {{album.genre}} <br/>
+    release date: {{album.releaseDate}} <br/>
+    number of songs: {{album.numberOfSongs}} <br/>
+  </div>
+</div>
+
+<!--Implement acording to the results obtained founded: n or There are no matches-->
+<ng-container *ngIf="l_length > 0; else noArtistFound ">
+  <div>
+    <div>
+      <button type="button" (click)="changePage(false)" *ngIf="pagFrom!=0">Previous</button>
+      <button type="button" (click)="changePage(true)" *ngIf="pagTo!=l_albums.length-1">Next</button>
+    </div>
+    <h4>Founded: {{l_length}}</h4>
+  </div>
+
+</ng-container>
+<ng-template #noArtistFound>
+  <div>
+    <h4>No artist were found</h4>
+  </div>
+</ng-template>
