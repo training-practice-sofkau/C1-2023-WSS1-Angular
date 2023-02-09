@@ -20,10 +20,6 @@ export class ArtistListComponent implements OnInit, OnChanges {
 
   constructor(private service:ArtistService){}
 
-  toLowerCase = (data: string): string => {
-    return data.toLowerCase();
-  }
-
   ngOnInit(): void {
     this.service.getAll().subscribe((artist) => this.l_artists = artist);
     this.results = this.l_artists.length;
@@ -35,21 +31,15 @@ export class ArtistListComponent implements OnInit, OnChanges {
 
     switch (this.typeSearch) {
       case "name": {
-        this.l_artists = this.l_artists
           this.service.getByName(param).subscribe(artists => this.l_artists= artists);
-          this.results = this.l_artists.length;
         break;
       }
       case "country": {
-        this.l_artists = this.l_artists
           this.service.getByCountry(param).subscribe(artists => this.l_artists= artists);
-          this.results = this.l_artists.length;
         break;
       }
       case "age": {
-        this.l_artists = this.l_artists
           this.service.getByAge(param).subscribe(artists => this.l_artists= artists);
-          this.results = this.l_artists.length;
         break;
       }
       default: {

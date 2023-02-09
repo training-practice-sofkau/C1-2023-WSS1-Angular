@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ALBUMS } from 'src/app/mocks/album.mock';
 import { IAlbum } from 'src/app/models/album.interface';
+import { AlbumService } from 'src/app/services/album.service';
 
 @Component({
   selector: 'app-album-list',
@@ -17,13 +18,10 @@ export class AlbumListComponent implements OnInit {
   p: number = 1;
 
 
-  toLowerCase = (data: string): string => {
-    return data.toLowerCase();
-  }
-
+  constructor(private service:AlbumService){}
 
   ngOnInit(): void {
-    this.l_albums = ALBUMS;
+    this.service.getAll().subscribe((artist) => this.l_albums = artist);
     this.results = this.l_albums.length;
   }
 
@@ -32,21 +30,15 @@ export class AlbumListComponent implements OnInit {
 
     switch (this.typeSearch) {
       case "title": {
-        this.l_albums = this.l_albums
-        .filter(album => this.toLowerCase(album.title).startsWith(this.toLowerCase(param)))
-        .sort((a, b) => (a.title < b.title? -1 : 1));
+        this.service.getByTitle(param).subscribe(albums => this.l_albums= albums);
         break;
       }
       case "genre": {
-        this.l_albums = this.l_albums
-        .filter(album => this.toLowerCase(album.genre).startsWith(this.toLowerCase(param)))
-        .sort((a, b) => (a.title < b.title? -1 : 1));
+        this.service.getByGenre(param).subscribe(albums => this.l_albums= albums);
         break;
       }
       case "number_of_songs": {
-        this.l_albums = this.l_albums
-        .filter(album => album.number_of_songs === parseInt(param))
-        .sort((a, b) => (a.title < b.title? -1 : 1));;
+        this.service.getByNumberOfSongs(param).subscribe(albums => this.l_albums= albums);
         break;
       }
       default: {
@@ -58,10 +50,6 @@ export class AlbumListComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-/*     console.log("On changes working ");
-    console.log("Type",this.typeSearch);
-    console.log("Param",this.param);
-    console.log("Length", this.l_albums.length) */
     this.ngOnSearch(this.param);
   }
 }
