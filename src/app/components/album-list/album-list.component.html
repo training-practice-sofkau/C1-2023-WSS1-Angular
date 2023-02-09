@@ -1,1 +1,68 @@
-<p>album-list works!</p>
+<div [ngStyle]="{ display: 'flex' }">
+  <div ngClass="albumTxt">
+    <input
+      class="artist-input"
+      type="text"
+      placeholder="Enter text"
+      [(ngModel)]="param"
+    />
+  </div>
+  <div ngClass="albumOps">
+    <input
+      class="radio-btn"
+      type="radio"
+      name="filterOption"
+      (click)="filter('title')"
+    />
+    Title
+    <input
+      class="radio-btn"
+      type="radio"
+      name="filterOption"
+      (click)="filter('genre')"
+    />
+    Genre
+    <input
+      class="radio-btn"
+      type="radio"
+      name="filterOption"
+      (click)="filter('artist')"
+    />
+    Artist
+  </div>
+</div>
+
+<ng-container *ngIf="results > 0; else noAlbumFound">
+  <div>
+    <h4>Founded: {{ results }}</h4>
+  </div>
+</ng-container>
+<ng-template #noAlbumFound>
+  <div>
+    <h4>No album were found</h4>
+  </div>
+</ng-template>
+
+<div
+  *ngFor="
+    let album of albumsList | paginate : { itemsPerPage: 2, currentPage: page }
+  "
+>
+  <div class="album-container">
+    <figure>
+      <img class="album-image" [src]="album.image" alt="image" />
+    </figure>
+    <div class="album-info">
+      ID: {{ album.id }} <br />
+      Title: {{ album.title }} <br />
+      Genre: {{ album.genre }} <br />
+      Artist: {{ album.artist }} <br />
+      Release Date: {{ album.releaseDate }} <br />
+      Total Number of songs: {{ album.totalSongs }} <br />
+    </div>
+  </div>
+</div>
+
+<div class="paginator">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>

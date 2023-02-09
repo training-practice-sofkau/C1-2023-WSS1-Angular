@@ -1,0 +1,50 @@
+.album-container {
+  display: flex;
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+
+  border-width: thick;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #fed766;
+
+  background-color: #4a5043;
+}
+
+.album-info {
+  display: flex;
+  color: white;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.album-image {
+  width: 170px;
+  height: 190px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #20bf55;
+}
+
+.artist-input {
+  border-radius: 10px;
+  border-width: thick;
+  border-style: solid;
+  border-color: #fed766;
+}
+
+.radio-btn {
+  accent-color: #fed766;
+}
+
+h4 {
+  text-align: center;
+}
+
+.paginator {
+  display: flex;
+  justify-content: center;
+}

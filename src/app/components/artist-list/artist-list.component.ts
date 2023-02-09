@@ -5,26 +5,46 @@ import { IArtist } from 'src/app/models/artist.interface';
 @Component({
   selector: 'app-artist-list',
   templateUrl: './artist-list.component.html',
-  styleUrls: ['./artist-list.component.scss']
+  styleUrls: ['./artist-list.component.scss'],
 })
-
-export class ArtistListComponent implements OnInit{
-
-  @Input() param: string = "";
-
-  //TO-DO: Define a variable that will store the information
-  l_artists: IArtist[] = [];
-
+export class ArtistListComponent implements OnInit {
+  page: number = 1;
+  param: string = '';
   results: number = 0;
-  
+  artistsList: IArtist[] = [];
+
   ngOnInit(): void {
-    this.l_artists = ARTISTS;
-    this.results = this.l_artists.length;
+    this.artistsList = ARTISTS;
+    this.results = this.artistsList.length;
   }
 
-  //TO-DO: Create a function that based of param it will show n-results
-  ngOnSearch(param: string, typeSearch: string){
-    console.log(param)
+  filter(typeSearch: string) {
+    if (typeSearch == 'name') {
+      const filteredList = this.artistsList.filter((item) =>
+        item.name.toLowerCase().startsWith(this.param.toLocaleLowerCase())
+      );
+      this.results = filteredList.length;
+      this.artistsList = filteredList.sort((x, y) =>
+        x.name.localeCompare(y.name)
+      );
+    }
+    if (typeSearch == 'age') {
+      const filteredList = this.artistsList.filter(
+        (item) => item.age == parseInt(this.param)
+      );
+      this.results = filteredList.length;
+      this.artistsList = filteredList.sort((x, y) =>
+        x.name.localeCompare(y.name)
+      );
+    }
+    if (typeSearch == 'country') {
+      const filteredList = this.artistsList.filter((item) =>
+        item.country.toLowerCase().startsWith(this.param.toLocaleLowerCase())
+      );
+      this.results = filteredList.length;
+      this.artistsList = filteredList.sort((x, y) =>
+        x.name.localeCompare(y.name)
+      );
+    }
   }
-
 }
