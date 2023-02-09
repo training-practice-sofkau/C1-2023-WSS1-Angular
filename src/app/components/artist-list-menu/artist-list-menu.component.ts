@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-artist-list-menu',
@@ -10,10 +10,7 @@ export class ArtistListMenuComponent {
   typeSearch: string ="";
   param: string = "";
   paramApp: string ="";
-
-  ngOnOptionSelection(typeSearch: string) {
-    let newTypeSearch: string = typeSearch;
-    this.typeSearch = newTypeSearch;
-  }
-
+  searchStrategy: string = "";
+  typeOptions: string[] = ["name", "country", "age"];
+  strategyOptions: string[] =["Starts with", "Not starts with","More than", "Less than"] ;
 }

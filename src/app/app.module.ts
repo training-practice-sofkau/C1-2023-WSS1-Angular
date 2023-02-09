@@ -14,6 +14,8 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
 import { HomePageComponent } from './components/pages/home-page/home-page.component';
 import { ArtistListMenuComponent } from './components/artist-list-menu/artist-list-menu.component';
 import { AlbumListMenuComponent } from './components/album-list-menu/album-list-menu.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { AlbumListMenuComponent } from './components/album-list-menu/album-list-
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

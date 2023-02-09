@@ -3,19 +3,22 @@
   <div ngClass="artistTxt">
     <input type="text" placeholder="Enter text" [(ngModel)]="param" />
   </div>
-  <div ngClass="artistOps">
-    <input type="radio" id="artistChoice1" name="artist_radio_button" (click)="ngOnOptionSelection('name')" />
-    <label for="artistChoice1">Name</label>
 
-    <input type="radio" id="artistChoice2" name="artist_radio_button" (click)="ngOnOptionSelection('country')" />
-    <label for="artistChoice2">Country</label>
-
-    <input type="radio" id="artistChoice3" name="artist_radio_button" (click)="ngOnOptionSelection('age')" />
-    <label for="artistChoice3">Age</label>
+    <!-- Search type selector -->
+    <div style="width:100px">
+      <mat-select [(value)]="typeSearch">
+        <mat-option *ngFor="let option of typeOptions" [value]="option">{{option}}</mat-option>
+      </mat-select>
+    </div>
+  <!-- Search strategy selector -->
+  <div style="width:200px">
+    <mat-select [(value)]="searchStrategy">
+      <mat-option *ngFor="let option of strategyOptions" [value]="option">{{option}}</mat-option>
+    </mat-select>
   </div>
 </div>
 
 <!-- ListComponent call -->
-<div id="list">
-<app-artist-list [typeSearch]="typeSearch" [param]='param'></app-artist-list>
-</div>
+<app-artist-list [typeSearch]="typeSearch" [param]="param" [searchStrategy]="searchStrategy">
+</app-artist-list>
+<div id="list"></div>

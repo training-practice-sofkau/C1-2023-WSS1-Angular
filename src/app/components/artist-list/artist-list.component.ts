@@ -13,6 +13,7 @@ export class ArtistListComponent implements OnInit, OnChanges {
 
   @Input() param: string = "";
   @Input() typeSearch: string = "";
+  @Input() searchStrategy: string = "";
 
   l_artists: IArtist[] = [];
   results: number = 0;
@@ -52,6 +53,7 @@ export class ArtistListComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.ngOnSearch(this.param);
+    console.log(this.searchStrategy)
   }
 
 }
