@@ -6,14 +6,12 @@ import { ArtistListComponent } from './components/artist-list/artist-list.compon
 import { AlbumListComponent } from './components/album-list/album-list.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HomePageComponent } from './components/home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArtistListComponent,
     AlbumListComponent,
-    HomePageComponent
   ],
   imports: [
     BrowserModule,
