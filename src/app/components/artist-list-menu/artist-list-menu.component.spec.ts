@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FatherComponent } from './father.component';
+import { ArtistListMenuComponent } from './artist-list-menu.component';
 
-describe('FatherComponent', () => {
-  let component: FatherComponent;
-  let fixture: ComponentFixture<FatherComponent>;
+describe('ArtistListMenuComponent', () => {
+  let component: ArtistListMenuComponent;
+  let fixture: ComponentFixture<ArtistListMenuComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FatherComponent ]
+      declarations: [ ArtistListMenuComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FatherComponent);
+    fixture = TestBed.createComponent(ArtistListMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

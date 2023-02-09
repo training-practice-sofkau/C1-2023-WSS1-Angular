@@ -1,15 +1,4 @@
-<div class="artistTitle" (click)="ngOnShowList('artist')">
-  <h2>Artist</h2>
-</div>
-<br />
-<div class="albumTitle" (click)="ngOnShowList('album')">
-  <h2>Album</h2>
-</div>
-<br />
-
-
-
-<div id="option-selector" *ngIf="type === 'album'"  [ngStyle]="{display: 'flex'}">
+<div id="option-selector" [ngStyle]="{display: 'flex'}">
   <div ngClass="albumTxt">
     <input type="text" placeholder="Enter text" [(ngModel)]="param" />
   </div>
@@ -26,6 +15,5 @@
 </div>
 
 <div id="list">
-<app-artist-list *ngIf="type === 'artist'" [typeSearch]="typeSearch" [param]='param'></app-artist-list>
-<app-album-list *ngIf="type === 'album'" [typeSearch]="typeSearch" [param]='param'></app-album-list>
-</div>
+  <app-album-list [typeSearch]="typeSearch" [param]='param'></app-album-list>
+ </div>

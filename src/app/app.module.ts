@@ -8,10 +8,12 @@ import { FormsModule } from '@angular/forms';
 import { AlbumComponent } from './components/album/album.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { FatherComponent } from './components/test/father/father.component';
-import { ChildComponent } from './components/test/child/child.component';
 import { ListsContainerComponent } from './components/lists-container/lists-container.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './components/pages/not-found/not-found.component';
+import { HomePageComponent } from './components/pages/home-page/home-page.component';
+import { ArtistListMenuComponent } from './components/artist-list-menu/artist-list-menu.component';
+import { AlbumListMenuComponent } from './components/album-list-menu/album-list-menu.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,11 @@ import { AppRoutingModule } from './app-routing.module';
     AlbumListComponent,
     AlbumComponent,
     ArtistComponent,
-    FatherComponent,
-    ChildComponent,
-    ListsContainerComponent
+    ListsContainerComponent,
+    NotFoundComponent,
+    HomePageComponent,
+    ArtistListMenuComponent,
+    AlbumListMenuComponent
   ],
   imports: [
     BrowserModule,
