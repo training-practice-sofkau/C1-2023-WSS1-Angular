@@ -80,5 +80,13 @@ export const ALBUMS: IAlbum[] = [
         relase_date: 2006,
         number_of_songs: 16,
         artist: "Cuarteto de Nos",
+    },
+    {
+        id: 11, 
+        title: "My Album",
+        genre: "Rock",
+        relase_date: 2023,
+        number_of_songs: 1,
+        artist: "CITYLarry",
     }
 ]

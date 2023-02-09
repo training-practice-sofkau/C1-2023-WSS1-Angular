@@ -8,7 +8,7 @@ import { IAlbum } from '../../models/album.interface';
   styleUrls: ['./album-list.component.scss']
 })
 export class AlbumListComponent implements OnInit{
-  @Input() param: string = "";
+  searchingText: string = "";
   albums: IAlbum[] = ALBUMS;
   l_albums: IAlbum[] = [];
 
@@ -26,23 +26,23 @@ export class AlbumListComponent implements OnInit{
       this.l_albums = this.albums
         .sort((a, b) => a.title.localeCompare(b.title))
         .filter((album) =>
-          album.title.toLowerCase().includes(this.param.toLowerCase())
+          album.title.toLowerCase().includes(this.searchingText.toLowerCase())
         );
     }
     if (this.filter === 'artist') {
       this.l_albums = this.albums
         .sort((a, b) => a.artist.localeCompare(b.artist))
         .filter((album) =>
-          album.artist.toLowerCase().includes(this.param.toLowerCase())
+          album.artist.toLowerCase().includes(this.searchingText.toLowerCase())
         );
     }
     if (this.filter === 'year') {
-      this.param === "" ?
+      this.searchingText === "" ?
       this.l_albums = this.albums
         .sort((a, b) => b.relase_date - a.relase_date) : 
       this.l_albums = this.albums
         .sort((a, b) => b.relase_date - a.relase_date)
-        .filter((album) => album.relase_date === parseInt(this.param));
+        .filter((album) => album.relase_date === parseInt(this.searchingText));
     }
     this.results = this.l_albums.length;
   }
