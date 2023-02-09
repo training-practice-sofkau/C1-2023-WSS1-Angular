@@ -7,6 +7,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.col {
+    width: 30%;
+}
+
 .footer {
     position: fixed;
     left: 0;
@@ -78,4 +82,8 @@
 
 .albumTitle h2 {
     margin: 14px 16px;
+}
+
+.artistTitle, .albumTitle :hover {
+    cursor: pointer;
 }
