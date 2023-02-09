@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ARTISTS } from 'src/app/mocks/artist.mock';
 import { IArtist } from 'src/app/models/artist.interface';
+import { ArtistService } from 'src/app/services/artist-service';
 
 @Component({
   selector: 'app-artist-list',
@@ -8,64 +9,58 @@ import { IArtist } from 'src/app/models/artist.interface';
   styleUrls: ['./artist-list.component.scss']
 })
 
-export class ArtistListComponent implements OnInit, OnChanges{
+export class ArtistListComponent implements OnInit, OnChanges {
 
   @Input() param: string = "";
   @Input() typeSearch: string = "";
 
-  //TO-DO: Define a variable that will store the information
   l_artists: IArtist[] = [];
   results: number = 0;
   p: number = 1;
 
-  toLowerCase = (data:string): string => {
+  constructor(private service:ArtistService){}
+
+  toLowerCase = (data: string): string => {
     return data.toLowerCase();
   }
 
   ngOnInit(): void {
-    this.l_artists = ARTISTS;
+    this.service.getAll().subscribe((artist) => this.l_artists = artist);
     this.results = this.l_artists.length;
   }
 
-  //TO-DO: Create a function that based of param it will show n-results
-  ngOnSearch(param: string){
+  ngOnSearch(param: string) {
 
-    this.l_artists= ARTISTS;
+    this.l_artists = ARTISTS;
 
-    switch(this.typeSearch) {
+    switch (this.typeSearch) {
       case "name": {
-        this.l_artists= this.l_artists
-        .filter(artist => this.toLowerCase(artist.name).startsWith(this.toLowerCase(param)))
-        .sort((a, b) => (a.name < b.name ? -1 : 1));;
-         break;
+        this.l_artists = this.l_artists
+          this.service.getByName(param).subscribe(artists => this.l_artists= artists);
+          this.results = this.l_artists.length;
+        break;
       }
       case "country": {
-        this.l_artists= this.l_artists
-        .filter(artist => this.toLowerCase(artist.country).startsWith(this.toLowerCase(param)))
-        .sort((a, b) => (a.name < b.name ? -1 : 1));
-         break;
+        this.l_artists = this.l_artists
+          this.service.getByCountry(param).subscribe(artists => this.l_artists= artists);
+          this.results = this.l_artists.length;
+        break;
       }
       case "age": {
-        this.l_artists= this.l_artists
-        .filter(artist => artist.age === parseInt(param))
-        .sort((a, b) => (a.name < b.name ? -1 : 1));
-        break;
-     }
-      default: {
-        this.l_artists= ARTISTS;
+        this.l_artists = this.l_artists
+          this.service.getByAge(param).subscribe(artists => this.l_artists= artists);
+          this.results = this.l_artists.length;
         break;
       }
-   }
-   this.results = this.l_artists.length;
+      default: {
+        this.l_artists = ARTISTS;
+        break;
+      }
+    }
+    this.results = this.l_artists.length;
   }
 
-
-
   ngOnChanges(changes: SimpleChanges): void {
-/*     console.log("On changes working ");
-    console.log("Type",this.typeSearch);
-    console.log("Param",this.param);
-    console.log("Length", this.l_artists.length) */
     this.ngOnSearch(this.param);
   }
 
