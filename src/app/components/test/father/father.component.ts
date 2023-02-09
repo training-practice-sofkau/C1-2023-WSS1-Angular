@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 export class FatherComponent {
 
   value: string = "Hola";
+  valueUpdatedByChild: string = "";
 }

@@ -11,6 +11,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FatherComponent } from './components/test/father/father.component';
 import { ChildComponent } from './components/test/child/child.component';
 import { ListsContainerComponent } from './components/lists-container/lists-container.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ListsContainerComponent } from './components/lists-container/lists-cont
   imports: [
     BrowserModule,
     FormsModule,
+    AppRoutingModule,
     NgxPaginationModule
   ],
   providers: [],
