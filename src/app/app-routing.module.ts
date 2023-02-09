@@ -15,28 +15,16 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomePageComponent,
-    children: [
-      {
-        path: 'artist',
-        component: ArtistListComponent 
-      },
-      {
-        path: 'album',
-        component: AlbumListComponent 
-      }
-
-    ]
+    component: HomePageComponent
   },
-  /*{
+  {
     path: 'artist',
-    component: HomePageComponent,
-    component: ArtistListComponent 
+    component: ArtistListComponent
   },
   {
     path: 'album',
     component: AlbumListComponent
-  }*/
+  }
   
 ];
 
