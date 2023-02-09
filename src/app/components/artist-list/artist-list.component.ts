@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ARTISTS } from 'src/app/mocks/artist.mock';
 import { IArtist } from 'src/app/models/artist.interface';
+import { ArtistService } from 'src/app/services/artist-services/artist.service';
 
 @Component({
   selector: 'app-artist-list',
@@ -10,6 +11,8 @@ import { IArtist } from 'src/app/models/artist.interface';
 
 export class ArtistListComponent implements OnInit{
 
+  constructor(private service: ArtistService) {}
+
   @Input() param: string = "";
 
   //TO-DO: Define a variable that will store the information
@@ -18,7 +21,7 @@ export class ArtistListComponent implements OnInit{
   results: number = 0;
   
   ngOnInit(): void {
-    this.l_artists = ARTISTS;
+    this.service.getAll().subscribe((artist) => this.l_artists = artist);
     this.results = this.l_artists.length;
   }
 

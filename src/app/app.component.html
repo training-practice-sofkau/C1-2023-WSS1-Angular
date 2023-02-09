@@ -1,5 +1,5 @@
 <!-- Toolbar -->
-<div class="toolbar" role="banner" (click)="ngOnShowList('n/a')">
+<div class="toolbar" role="banner">
   <img
     width="40"
     alt="Angular Logo"
@@ -8,20 +8,8 @@
   <span>Music catalog</span>
     
 </div>
+<router-outlet></router-outlet>
 
-<div class="content" role="main">
-
-  <div class="artistTitle" (click)="ngOnShowList('artist')"><h2>Artist</h2></div>
-  <br/>
-  <div class="albumTitle" (click)="ngOnShowList('album')"><h2>Album</h2></div>
-  <br/>
-
- 
-  <app-artist-list *ngIf="type === 'artist'"></app-artist-list>
-  <app-album-list *ngIf="type === 'album'"></app-album-list>
-
- 
-</div>
 <!-- Footer -->
 <div class="footer" role="banner">
   <img
