@@ -7,9 +7,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.col {
-    width: 30%;
-}
+
 
 .footer {
     position: fixed;
@@ -49,41 +47,10 @@
     background-color: #3d13a0cc;
     color: white;
     font-weight: 600;
+    
 }
 
 .toolbar img {
     margin: 0 16px;
 }
 
-.artistTitle{
-    width: 100%;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background-color: #1368a0cc;
-    color: white;
-    font-weight: 600;
-    
-}
-
-.artistTitle h2 {
-    margin: 14px 16px;
-}
-
-.albumTitle{
-    width: 100%;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background-color: #a94dbbcc;
-    color: white;
-    font-weight: 600;
-}
-
-.albumTitle h2 {
-    margin: 14px 16px;
-}
-
-.artistTitle, .albumTitle :hover {
-    cursor: pointer;
-}
