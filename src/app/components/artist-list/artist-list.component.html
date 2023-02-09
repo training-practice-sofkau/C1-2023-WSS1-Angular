@@ -1,41 +1,45 @@
-<div [ngStyle]="{display: 'flex'}">
-  <div ngClass="artistTxt" [ngStyle]="{marginTop:'5px'}">
-    <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
+<div>
+  <div [ngStyle]="{display: 'flex'}">
+    <div ngClass="artistTxt" [ngStyle]="{marginTop:'5px'}">
+      <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
+    </div>
+    <div ngClass="artistOps">
+      <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param, 'name')">Name</button>
+      <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param, 'country')">Country</button>
+      <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param, 'age')">Age</button>
+      <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param, 'reset')">Reset</button>
+    </div>
   </div>
-  <div ngClass="artistOps">
-    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param, 'name')">Name</button>
-    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param, 'country')">Country</button>
-    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param, 'age')">Age</button>
-    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param, 'reset')">Reset</button>
+
+  <div [ngStyle]="{display: 'flex', flexDirection:'row'}" *ngFor="let artist of l_artists; index as i">
+    <div [ngStyle]="{padding:'5px'}" *ngIf="i >= pagFrom && i <= pagTo">
+      <img src="{{artist.picture}}" alt="Album cover">
+    </div>
+    <div
+      [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px', flexDirection:'column', width:'100%'}"
+      *ngIf="i >= pagFrom && i<= pagTo">
+      id: {{artist.id}} <br/>
+      name: {{artist.name}} <br/>
+      country: {{artist.country}} <br/>
+      age: {{artist.age}} <br/>
+      year debut: {{artist.year_debut}} <br/>
+      total of albums: {{artist.total_albums}} <br/>
+    </div>
+
   </div>
+
+  <!--Implement acording to the results obtained founded: n or There are no matches-->
+  <ng-container *ngIf="results > 0; else noArtistFound ">
+    <div>
+      <button type="button" (click)="changePage(false)" *ngIf="pagFrom>0">Previous</button>
+      <button type="button" (click)="changePage(true)" *ngIf="pagTo<l_artists.length-1">Next</button>
+      <h4>Founded: {{results}}</h4>
+    </div>
+
+  </ng-container>
+  <ng-template #noArtistFound>
+    <div>
+      <h4>No artist were found</h4>
+    </div>
+  </ng-template>
 </div>
-
-<div [ngStyle]="{display: 'flex', flexDirection:'row'}" *ngFor="let artist of l_artists; index as i">
-  <div [ngStyle]="{padding:'5px'}" *ngIf="i >= pagFrom && i<= pagTo">
-    <img src="{{artist.picture}}" alt="Album cover">
-  </div>
-  <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px', flexDirection:'column', width:'100%'}" *ngIf="i >= pagFrom && i<= pagTo">
-    id: {{artist.id}} <br/>
-    name: {{artist.name}} <br/>
-    country: {{artist.country}} <br/>
-    age: {{artist.age}} <br/>
-    year debut: {{artist.year_debut}} <br/>
-    total of albums: {{artist.total_albums}} <br/>
-  </div>
-
-</div>
-
-<!--Implement acording to the results obtained founded: n or There are no matches-->
-<ng-container *ngIf="results > 0; else noArtistFound ">
-  <div>
-    <button type="button" (click)="changePage(false)" *ngIf="pagFrom!=0">Previous</button>
-    <button type="button" (click)="changePage(true)" *ngIf="pagTo!=l_artists.length-1">Next</button>
-    <h4>Founded: {{results}}</h4>
-  </div>
-
-</ng-container>
-<ng-template #noArtistFound>
-  <div>
-    <h4>No artist were found</h4>
-  </div>
-</ng-template>

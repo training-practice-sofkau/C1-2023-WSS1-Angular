@@ -1,5 +1,5 @@
 <!-- Toolbar -->
-<div class="toolbar" role="banner" (click)="ngOnShowList('n/a')">
+<div class="toolbar" role="banner" routerLink="">
   <img
     width="40"
     alt="Angular Logo"
@@ -10,19 +10,14 @@
 
 
 <div class="content" role="main">
-  <div class="artistTitle" (click)="ngOnShowList('artist')"><h2>Artist</h2></div>
-  <br/>
-  <div class="albumTitle" (click)="ngOnShowList('album')"><h2>Album</h2></div>
-  <br/>
-
-  <div class="containers" *ngIf="type === 'album'">
-    <app-album-list></app-album-list>
+  <div class="selector">
+    <div class="artistTitle" routerLink="artist" [ngStyle]="{borderRadius: '10px', marginBottom: '10px'}"><h2>Artist</h2></div>
+    <div class="albumTitle" routerLink="album" [ngStyle]="{borderRadius: '10px'}"><h2>Album</h2></div>
   </div>
-  <div class="containers"  *ngIf="type === 'artist'">
-    <app-artist-list></app-artist-list>
+  <div class="results">
+    <router-outlet></router-outlet>
   </div>
 </div>
-
 
 <!-- Footer -->
 <div class="footer" role="banner">

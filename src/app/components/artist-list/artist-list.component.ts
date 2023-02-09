@@ -17,7 +17,7 @@ export class ArtistListComponent implements OnInit{
   results: number = 0;
 
   pagFrom: number = 0;
-  pagTo: number = 1;
+  pagTo: number = 3;
 
   ngOnInit(): void {
     this.l_artists = ARTISTS;
@@ -62,14 +62,14 @@ export class ArtistListComponent implements OnInit{
 
   changePage(change: boolean){
     if(change){
-      if(!(this.pagTo == this.results-1)){
-        this.pagFrom +=2;
-        this.pagTo +=2;
+      if(!(this.pagTo >= this.results-1)){
+        this.pagFrom +=4;
+        this.pagTo +=4;
       }
     }else if(!change){
-      if(!(this.pagFrom == 0)) {
-        this.pagFrom -= 2;
-        this.pagTo -= 2;
+      if(!(this.pagFrom <= 0)) {
+        this.pagFrom -= 4;
+        this.pagTo -= 4;
       }
     }
 

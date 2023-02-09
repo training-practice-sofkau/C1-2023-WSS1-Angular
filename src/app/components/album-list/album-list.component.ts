@@ -15,7 +15,7 @@ export class AlbumListComponent {
   l_length: number = 0;
 
   pagFrom: number = 0;
-  pagTo: number = 1;
+  pagTo: number = 3;
 
   ngOnInit(): void{
     this.l_albums = ALBUMS;
@@ -61,13 +61,13 @@ export class AlbumListComponent {
   changePage(change: boolean){
     if(change){
       if(!(this.pagTo == this.l_length-1)){
-        this.pagFrom +=2;
-        this.pagTo +=2;
+        this.pagFrom +=4;
+        this.pagTo +=4;
       }
     }else if(!change){
       if(!(this.pagFrom == 0)) {
-        this.pagFrom -= 2;
-        this.pagTo -= 2;
+        this.pagFrom -= 4;
+        this.pagTo -= 4;
       }
     }
 
