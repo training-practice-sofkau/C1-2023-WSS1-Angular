@@ -1,11 +1,16 @@
 <div class="search-filter">
-    <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param" (keyup)="ngOnSearch()"/>
-    </div>
     <div ngClass="artistOps">
-        <input type="radio" value="name" name="filter" [(ngModel)]="filter" (change)="ngOnSearch()"/> Name
-        <input type="radio" value="country" name="filter" [(ngModel)]="filter" (change)="ngOnSearch()"/> Country
-        <input type="radio" value="age" name="filter" [(ngModel)]="filter" (change)="ngOnSearch()"/> Age
+        <select class="form-select" name="filter">
+            <option value="name">Name starts with:</option>
+            <option value="country">Contry:</option>
+            <option value="age">Age:</option>
+            <option value="atleast">Maximum age:</option>
+            <option value="noname">Name no starts with:</option>
+        </select>
+    </div>
+
+    <div ngClass="artistTxt">
+        <input class="form-control" type="text" placeholder="Enter text" [(ngModel)]="param" (keyup)="ngOnSearch()"/>
     </div>
 
     <div>
@@ -14,7 +19,7 @@
 </div>
 
 <div class="list-container" *ngFor="let artist of l_artists | paginate: { itemsPerPage: 3, currentPage: p}">
-    <div class="card">
+    <div class="card-artist">
         Id: {{artist.id}} <br/>
         Name: {{artist.name}} <br/>
         Country: {{artist.country}} <br/>
