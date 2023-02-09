@@ -1,6 +1,6 @@
 <div class="search-filter">
     <div ngClass="artistOps">
-        <select class="form-select" name="filter">
+        <select class="form-select" name="filter" [(ngModel)]="filter" (change)="ngOnSearch()">
             <option value="name">Name starts with:</option>
             <option value="country">Contry:</option>
             <option value="age">Age:</option>
@@ -10,7 +10,7 @@
     </div>
 
     <div ngClass="artistTxt">
-        <input class="form-control" type="text" placeholder="Enter text" [(ngModel)]="param" (keyup)="ngOnSearch()"/>
+        <input class="form-control" type="text" placeholder="Enter text" [(ngModel)]="searchingText" (keyup)="ngOnSearch()"/>
     </div>
 
     <div>

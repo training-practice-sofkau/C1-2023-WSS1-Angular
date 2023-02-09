@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ARTISTS } from 'src/app/mocks/artist.mock';
 import { IArtist } from 'src/app/models/artist.interface';
+import { ArtistService } from 'src/app/services/artist-service/artist.service';
 
 @Component({
   selector: 'app-artist-list',
@@ -8,42 +9,38 @@ import { IArtist } from 'src/app/models/artist.interface';
   styleUrls: ['./artist-list.component.scss'],
 })
 export class ArtistListComponent implements OnInit {
-  @Input() param: string = '';
-  artists: IArtist[] = ARTISTS;
-  l_artists: IArtist[] = [];
+  constructor(private artistService: ArtistService) {}
 
+  searchingText: string = '';
+  artists: IArtist[] = [];
+  l_artists: IArtist[] = [];
   results: number = 0;
   filter: string = 'name';
   p: number = 1;
 
   ngOnInit(): void {
+    this.artistService
+      .getAll()
+      .subscribe((artists) => (this.artists = artists));
     this.l_artists = this.artists;
     this.results = this.l_artists.length;
   }
 
-
   ngOnSearch() {
     if (this.filter === 'name') {
-      this.l_artists = this.artists
-        .filter((artist) =>
-          artist.name.toLowerCase().includes(this.param.toLowerCase())
-        )
-        .sort((a, b) => a.name.localeCompare(b.name));
+      this.artistService
+        .filterByName(this.searchingText)
+        .subscribe((artists) => (this.l_artists = artists));
     }
     if (this.filter === 'country') {
-      this.l_artists = this.artists
-        .sort((a, b) => a.country.localeCompare(b.country))
-        .filter((artist) =>
-          artist.country.toLowerCase().includes(this.param.toLowerCase())
-        );
+      this.artistService
+        .filterByCountry(this.searchingText)
+        .subscribe((artists) => (this.l_artists = artists));
     }
     if (this.filter === 'age') {
-      this.param === "" ?
-      this.l_artists = this.artists
-        .sort((a, b) => b.age - a.age) : 
-      this.l_artists = this.artists
-        .sort((a, b) => b.age - a.age)
-        .filter((artist) => artist.age === parseInt(this.param));
+      this.artistService
+        .filterByAge(this.searchingText)
+        .subscribe((artists) => (this.l_artists = artists));;
     }
     this.results = this.l_artists.length;
   }
