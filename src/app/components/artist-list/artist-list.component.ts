@@ -42,6 +42,16 @@ export class ArtistListComponent implements OnInit {
         .filterByAge(this.searchingText)
         .subscribe((artists) => (this.l_artists = artists));;
     }
+    if (this.filter === 'maxage') {
+      this.artistService
+        .filterMaximumAge(this.searchingText)
+        .subscribe((artists) => (this.l_artists = artists));;
+    }
+    if (this.filter === 'noname') {
+      this.artistService
+        .filterNoName(this.searchingText)
+        .subscribe((artists) => (this.l_artists = artists));;
+    }
     this.results = this.l_artists.length;
   }
 }

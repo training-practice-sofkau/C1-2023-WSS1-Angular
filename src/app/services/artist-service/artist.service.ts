@@ -50,4 +50,30 @@ export class ArtistService {
       observer.complete();
     });
   }
+
+  filterMaximumAge(searchingText: string): Observable<IArtist[]> {
+    return new Observable((observer) => {
+      searchingText === ''
+        ? observer.next(ARTISTS.sort((a, b) => b.age - a.age))
+        : observer.next(
+            ARTISTS.sort((a, b) => b.age - a.age).filter(
+              (artist) => artist.age <= parseInt(searchingText)
+            )
+          );
+      observer.complete();
+    });
+  }
+
+  filterNoName(searchingText: string): Observable<IArtist[]> {
+    return new Observable((observer) => {
+      searchingText === ''
+        ? observer.next(ARTISTS.sort((a, b) => a.name.localeCompare(b.name)))
+        : observer.next(
+        ARTISTS.sort((a, b) => a.name.localeCompare(b.name)).filter((artist) =>
+          !artist.name.toLowerCase().startsWith(searchingText.toLowerCase())!
+        )
+      );
+      observer.complete();
+    });
+  }
 }
