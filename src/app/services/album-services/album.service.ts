@@ -49,8 +49,8 @@ export class AlbumService {
         (ar[myParam as keyof IAlbum]
         ?.valueOf() || 0) > myValue).sort((a, b) => (a[myParam as keyof IAlbum]?.valueOf() ||
       1 )> (b[myParam as keyof IAlbum]?.valueOf() || 1)
-        ? 1
-        : -1))
+        ? -1
+        : 1))
     );
   }
 
@@ -60,8 +60,8 @@ export class AlbumService {
         (ar[myParam as keyof IAlbum]
         ?.valueOf() || 0) <= myValue).sort((a, b) => (a[myParam as keyof IAlbum]?.valueOf() ||
       1 )> (b[myParam as keyof IAlbum]?.valueOf() || 1)
-        ? 1
-        : -1))
+        ? -1
+        : 1))
     );
   }
 
@@ -71,8 +71,8 @@ export class AlbumService {
         (ar[myParam as keyof IAlbum]
         ?.valueOf() || 0) != myValue).sort((a, b) => (a[myParam as keyof IAlbum]?.valueOf() ||
       1 )> (b[myParam as keyof IAlbum]?.valueOf() || 1)
-        ? -1
-        : 1))
+        ? 1
+        : -1))
     );
   }
 }

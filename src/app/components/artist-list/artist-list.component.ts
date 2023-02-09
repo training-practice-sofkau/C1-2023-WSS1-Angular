@@ -30,7 +30,7 @@ export class ArtistListComponent implements OnInit {
   }
 
   //TO-DO: Create a function that based of param it will show n-results
-  ngOnSearch() {
+  onSearch() {
 
     this.service.getAll().subscribe((artist) => (this.l_artists = artist));
     const MYINDICATOR = this.myParam.match(/[:><-]/g) || [];

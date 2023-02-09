@@ -81,7 +81,7 @@ export class AlbumListComponent implements OnInit {
 
     }
 
-    if (isNumber) this.l_albums.reverse();
+    this.results = this.l_albums.length;
     this.currentPage = 1;
     this.pagination_albums = this.paginationList();
   }
