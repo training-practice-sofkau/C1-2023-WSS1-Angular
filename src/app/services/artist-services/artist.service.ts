@@ -65,11 +65,15 @@ export class ArtistService {
     );
   }
 
-  /*getByCountry(){
+  getExcludeResults(myParam:string,myValue:string): Observable<IArtist[]>{
+    return this.getAll().pipe(
+      map((ar) => ar.filter(ar=>
+        (ar[myParam as keyof IArtist]
+        ?.valueOf() || 0) != myValue).sort((a, b) => (a[myParam as keyof IArtist]?.valueOf() ||
+      1 )> (b[myParam as keyof IArtist]?.valueOf() || 1)
+        ? -1
+        : 1))
+    );
+  }
 
-  }*/
-
-  /*getByDateDebut(){
-
-  }*/
 }
