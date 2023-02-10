@@ -85,3 +85,16 @@
 .albumTitle h2 {
     margin: 14px 16px;
 }
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 15px;
+  padding: 15px;
+}
+
+.grid-container > div {
+  background-color: rgba(53, 101, 233, 0.1);
+  padding: 10px 90px;
+}

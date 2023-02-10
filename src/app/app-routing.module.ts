@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomePageComponent,
-     children: [
+/*      children: [
       {
         path: 'artist',
         component: ArtistListMenuComponent
@@ -24,21 +24,20 @@ const routes: Routes = [
         path: 'album',
         component: AlbumListMenuComponent
       }
-    ]
+    ] */
+  },
+  {
+    path: 'artist',
+    component: ArtistListMenuComponent
+  },
+  {
+    path: 'album',
+    component: AlbumListMenuComponent
   },
   {
     path: '**',
     component: NotFoundComponent
   }
-  /*{
-    path: 'artist',
-    component: HomePageComponent,
-    component: ArtistListComponent
-  },
-  {
-    path: 'album',
-    component: AlbumListComponent
-  }*/
 ];
 
 @NgModule({
