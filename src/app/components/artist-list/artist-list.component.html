@@ -1,16 +1,27 @@
-<div [ngStyle]="{display: 'flex'}">
+<div [ngStyle]="{display: 'flex','margin-top':'-190px','margin-left':'250px'}">
     <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
+        <input type="text" placeholder="Search parameter" [(ngModel)]="param"/>
     </div>
-    <div ngClass="artistOps">
-        <input type="radio" (click)="ngOnSearch(param, 'name')"/> Name
-        <input type="radio"/> Country
-        <input type="radio"/> Age
-    </div>
+    <select [(ngModel)]="choice">
+
+          <option value="nameInclude">Filter by name including parameter</option>
+          <option value="nameExclude">Filter by name excluding parameter</option>
+
+          <option value="ageGreat">Filter by ages greater to parameter</option>
+          <option value="ageLess">Filter by ages less to parameter</option>
+
+          <option value="countryInclude">Filter by country including parameter</option>
+          <option value="countryExclude">Filter by country excluding parameter</option>
+      </select>
+    <button (click)="ngOnSearch(choice)">Filter</button>
+
+
+
+
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
-    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
+<div class="container" *ngFor="let artist of l_artists | paginate: {itemsPerPage: 2, currentPage: page}">
+    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 250px ', padding:'5px', width:'500px'}">
         id: {{artist.id}} <br/>
         name: {{artist.name}} <br/>
         country: {{artist.country}} <br/>
@@ -18,13 +29,16 @@
         year debut: {{artist.year_debut}} <br/>
         total of albums: {{artist.total_albums}} <br/>
     </div>
-  
+
+</div>
+<div [ngStyle]="{margin: '10px 10px 10px 200px '}">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="results > 0; else noArtistFound ">
-    <div>
-        <h4>Founded: {{results}}</h4>
+    <div [ngStyle]="{display: 'flex',margin: '10px 10px 10px 250px'}">
+        <h4>Found: {{results}}</h4>
     </div>
 
 </ng-container>
