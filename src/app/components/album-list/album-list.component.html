@@ -1,16 +1,17 @@
 <div class="search_bar">
+  <select name="Filter.by" id="filter-by" [(ngModel)]="searchBy">
+    <option disabled selected [value]="0">seach by</option>
+    <option [value]="1">Title</option>
+    <option [value]="2">Genre</option>
+    <option [value]="3">Artist</option>
+  </select>
+  <select name="Filter.operator" [(ngModel)]="searchOperator">
+    <option [value]="1">=</option>
+    <option [value]="4">-</option>
+  </select>
   <div class="input-text">
     <input type="text" placeholder="Enter text" [(ngModel)]="searchParam" />
   </div>
-  <button type="button" (click)="ngOnSearch(searchParam, 'title')">
-    Title
-  </button>
-  <button type="button" (click)="ngOnSearch(searchParam, 'genre')">
-    Genre
-  </button>
-  <button type="button" (click)="ngOnSearch(searchParam, 'artist')">
-    Artist
-  </button>
   <ng-container *ngIf="results > 0; else noArtistFound">
     <div class="search-results">
       <h4 class="result_text">{{ results }} albums found</h4>

@@ -1,19 +1,38 @@
 <div class="search_bar">
+  <select name="Filter.by" id="filter-by" [(ngModel)]="searchBy">
+    <option disabled selected [value]="0">seach by</option>
+    <option [value]="1">Name</option>
+    <option [value]="2">Country</option>
+    <option [value]="3">Age</option>
+  </select>
+  <select name="Filter.operator" [(ngModel)]="searchOperator">
+    <option [value]="1">=</option>
+    <option *ngIf="searchBy == 3" [value]="2">></option>
+    <option *ngIf="searchBy == 3" [value]="3"><</option>
+    <option [value]="4">-</option>
+  </select>
   <div class="input-text">
     <input type="text" placeholder="Enter text" [(ngModel)]="searchParam" />
   </div>
-  <button type="radio" (click)="ngOnSearch(searchParam, 'name')">Name</button>
-  <button type="radio" (click)="ngOnSearch(searchParam, 'country')">
-    Country
+  <button >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      fill="currentColor"
+      viewBox="0 0 13 13"
+    >
+      <path
+        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+      />
+    </svg>
   </button>
-  <button type="radio" (click)="ngOnSearch(searchParam, 'age')">Age</button>
   <ng-container *ngIf="results > 0; else noArtistFound">
     <div class="search-results">
       <h4 class="result_text">{{ results }} albums found</h4>
     </div>
   </ng-container>
 </div>
-
 
 <div class="results_body">
   <div class="entry_card" *ngFor="let artist of searchResulst">
@@ -22,8 +41,13 @@
       [alt]="artist.name"
     />
     <div class="card-info">
-      <h3>{{ artist.name }} <span>({{ artist.age }})</span> </h3>
-      <h4>{{ artist.country }} • {{ artist.year_debut }} • {{ artist.total_albums }} albums</h4>
+      <h3>
+        {{ artist.name }} <span>({{ artist.age }})</span>
+      </h3>
+      <h4>
+        {{ artist.country }} • {{ artist.year_debut }} •
+        {{ artist.total_albums }} albums
+      </h4>
     </div>
   </div>
 </div>
