@@ -31,22 +31,41 @@ export class ArtistService {
   getByName(name: string): Observable<IArtist[]> {
     console.log(name);
     let obsArtist: Observable<IArtist[]> = this.getAll();
-    //let obsArtist2: Observable<IArtist[]>;
     console.log(obsArtist.forEach(art => console.log(art)));
     if (name.startsWith(":")) {
       obsArtist = obsArtist.pipe(
         map((artists: IArtist[]) => artists.filter((artist: IArtist) => artist.name.toLowerCase().startsWith(name.substring(1).toLowerCase()))));
     } else if (name.startsWith("-")) {
-      obsArtist = obsArtist.pipe(map((artist:IArtist[]) => artist.filter((artist: IArtist) => !artist.name.toLowerCase().startsWith(name.substring(1).toLowerCase()))));
+      obsArtist = obsArtist.pipe(map((artist: IArtist[]) => artist.filter((artist: IArtist) => !artist.name.toLowerCase().startsWith(name.substring(1).toLowerCase()))));
     }
     return obsArtist;
   }
 
-  /*getByCountry(){
+  getByCountry(country: string): Observable<IArtist[]> {
+    console.log(country);
+    let obsArtist: Observable<IArtist[]> = this.getAll();
+    console.log(obsArtist.forEach(art => console.log(art)));
+    if (country.startsWith(":")) {
+      obsArtist = obsArtist.pipe(
+        map((artists: IArtist[]) => artists.filter((artist: IArtist) => artist.country.toLowerCase().startsWith(country.substring(1).toLowerCase()))));
+    } else if (country.startsWith("-")) {
+      obsArtist = obsArtist.pipe(map((artist: IArtist[]) => artist.filter((artist: IArtist) => !artist.country.toLowerCase().startsWith(country.substring(1).toLowerCase()))));
+    }
+    return obsArtist;
+  }
 
-  }*/
+  getByAge(age: string): Observable<IArtist[]> {
+    let obsArtist: Observable<IArtist[]> = this.getAll();
+    if (age.startsWith("<")) {
+      var ageNumber: number = +age.substring(1);
+      obsArtist = obsArtist.pipe(
+        map((artists: IArtist[]) => artists.filter((artist: IArtist) => artist.age <= ageNumber)))
+    } else if (age.startsWith(">")) {
+      var ageNumber: number = +age.substring(1);
+      obsArtist = obsArtist.pipe(
+        map((artists: IArtist[]) => artists.filter((artist: IArtist) => artist.age > ageNumber)))
+    }
+    return obsArtist.pipe(map((artists: IArtist[]) => artists.sort((a,b) => (a.age<b.age)?1:-1)));
 
-  /*getByDateDebut(){
-
-  }*/
+  }
 }

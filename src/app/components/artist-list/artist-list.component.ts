@@ -8,31 +8,42 @@ import { ArtistService } from 'src/app/services/artist-services/artist.service';
   styleUrls: ['./artist-list.component.scss']
 })
 
-export class ArtistListComponent implements OnInit{
+export class ArtistListComponent implements OnInit {
 
-  constructor(private service: ArtistService) {}
+  constructor(private service: ArtistService) { }
 
   @Input() param: string = "";
-  p: number=0;
+  p: number = 0;
 
   //TO-DO: Define a variable that will store the information
   l_artists: IArtist[] = [];
 
   results: number = 0;
-  
+
   ngOnInit(): void {
     this.service.getAll().subscribe((artist) => this.l_artists = artist);
     this.results = this.l_artists.length;
   }
 
   //TO-DO: Create a function that based of param it will show n-results
-  ngOnSearch(param: string, typeSearch: string){
+  ngOnSearch(param: string, typeSearch: string) {
     console.log(typeSearch);
-    if(typeSearch==="name"){
-      this.service.getByName(param).subscribe(((artist) => this.l_artists=artist));
-      console.log(this.l_artists);
-      this.results = this.l_artists.length;
+    switch (typeSearch) {
+      case "name":
+        this.service.getByName(param).subscribe(((artist) => this.l_artists = artist));
+        console.log(this.l_artists);
+        this.results = this.l_artists.length;
+        break;
+      case "country":
+        this.service.getByCountry(param).subscribe(((artist) => this.l_artists = artist));
+        this.results = this.l_artists.length;
+        break;
+      case "age":
+        this.service.getByAge(param).subscribe((artist) => this.l_artists = artist);
+        this.results = this.l_artists.length;
+        break;
     }
+
   }
 
 }
