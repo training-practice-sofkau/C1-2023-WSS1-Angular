@@ -27,7 +27,6 @@ export class AlbumListComponent implements OnInit {
     })
   }
 
-
   //TO-DO: Create a function that based of param it will show n-results
   ngOnSearch(){
     switch(this.filterOption){
@@ -43,13 +42,9 @@ export class AlbumListComponent implements OnInit {
         );
         break;
       };
-    }
-  }
-}
-    /*
-      case "albums": {
-        this.artistService.getByAlbums(this.filterParam, this.artistList).subscribe(
-          artists => { this.results = artists}
+      case "songs": {
+        this.albumService.getBySongs(this.filterParam, this.albumList).subscribe(
+          albums => { this.results = albums}
         );
         break;
       };

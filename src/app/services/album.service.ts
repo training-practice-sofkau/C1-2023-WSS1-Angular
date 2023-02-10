@@ -36,4 +36,22 @@ export class AlbumService {
 
     return obsAlbum;
   }
+
+  getBySongs (filterParam: string, albumList: IAlbum[]): Observable<IAlbum[]> {
+    if (filterParam){
+      if (parseInt(filterParam)){
+        let obsAlbum: Observable<IAlbum[]> = new Observable(observer => {
+          observer.next(albumList.filter(album => album.songs >= parseInt(filterParam))
+            .sort((a, b) => (a.songs > b.songs) ? -1 : 1));
+          observer.complete()
+        });
+        return obsAlbum;
+      };
+    };
+    let obsAlbum: Observable<IAlbum[]> = new Observable(observer => {
+      observer.next(albumList.sort((a, b) => (a.songs > b.songs) ? -1 : 1));
+      observer.complete();
+    });
+    return obsAlbum;
+  };
 }
