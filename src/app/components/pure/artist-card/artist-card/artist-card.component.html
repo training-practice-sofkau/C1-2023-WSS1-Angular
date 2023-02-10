@@ -1,0 +1,12 @@
+<img
+[src]="'../../../assets/artist_images/' + artist.name + '.png'"
+[alt]="artist.name"
+/>
+<div class="card-info">
+<h3>
+  {{ artist.name }} <span>({{ artist.age }})</span>
+</h3>
+<h4>
+  {{ artist.country }} • {{ artist.year_debut }} •
+  {{ artist.total_albums }} albums
+</h4>
