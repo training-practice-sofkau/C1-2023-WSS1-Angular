@@ -19,15 +19,26 @@ export class ArtistListComponent implements OnInit{
   l_artists: IArtist[] = [];
 
   results: number = 0;
-  
+  p: number = 1;
+  count: number = 3;
+
+  selected_option = '';
+
   ngOnInit(): void {
     this.service.getAll().subscribe((artist) => this.l_artists = artist);
     this.results = this.l_artists.length;
   }
 
-  //TO-DO: Create a function that based of param it will show n-results
-  ngOnSearch(param: string, typeSearch: string){
-    console.log(param)
+  ngSearchByParam(event: Event) {
+    const element = event.target as HTMLInputElement;
+    this.l_artists = this.service.filterParameterType(this.selected_option, element.value)
+    this.results = this.l_artists.length;
+    this.p = 1;
+  }
+
+  ngInputReset(){
+    this.service.getAll().subscribe((artist) => this.l_artists = artist);
+    this.results = this.l_artists.length;
   }
 
 }
