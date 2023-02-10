@@ -16,14 +16,12 @@ export class ArtistListComponent implements OnInit{
   @Input() param: string = "";
 
   l_artists: IArtist[] = [];
-  f_artists: IArtist[] = [];
 
   results: number = 0;
 
   page: number = 1;
   
   ngOnInit(): void {
-    this.service.getAll().subscribe((val) => {this.f_artists = val})
     this.service.getAll().subscribe((val) => {this.l_artists = val})
     this.results = this.l_artists.length;
   }
@@ -37,7 +35,7 @@ export class ArtistListComponent implements OnInit{
       let b = filter![3];
 
 
-      this.service.getByParameter(p, s, b).subscribe((val) => {this.f_artists = val})
+      this.service.getByParameter(p, s, b).subscribe((val) => {this.l_artists = val})
       
   }
 

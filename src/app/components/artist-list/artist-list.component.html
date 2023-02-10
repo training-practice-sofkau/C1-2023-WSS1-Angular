@@ -9,7 +9,7 @@
     <!-- </div> -->
 </div>
 
-<div *ngFor="let artist of f_artists | paginate : { itemsPerPage: 3,
+<div *ngFor="let artist of l_artists | paginate : { itemsPerPage: 3,
     currentPage: page}" [ngClass]="{even: artist.id % 2 === 0, odd: artist.id % 2 !== 0}">
     <div ngClass="artistResults-artist">
         <img 

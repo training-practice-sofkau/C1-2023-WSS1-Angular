@@ -9,5 +9,4 @@ export class AppComponent {
   title = 'C1-2023-WSS1-Angular';
   type: string ='n/a';
   paramApp: string ="";
-
 }

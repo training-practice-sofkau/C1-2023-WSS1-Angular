@@ -22,7 +22,7 @@ export class ArtistService {
   }
 
   getByParameter(p:string, s:string, b:string): Observable<IArtist[]> {
-                        
+
       if(p === "name"){
           if(s === ":"){
               return this.obsArtist
@@ -59,13 +59,13 @@ export class ArtistService {
               .pipe(map(items => items
                         .filter(items => !items
                                 .age.toString().toLowerCase().startsWith(b))));
-          
-         }else if(s === ">"){
+
+          }else if(s === ">"){
               return this.obsArtist
               .pipe(map(items => items
                         .filter(items => items
                                 .age > parseInt(b, 10))));
-          
+
           }else if(s === "<"){
               return this.obsArtist
               .pipe(map(items => items
