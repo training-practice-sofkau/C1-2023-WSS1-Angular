@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ALBUMS } from 'src/app/mocks/album.mock';
 import { IAlbum } from 'src/app/models/album.interface';
+import { AlbumService } from 'src/app/services/album.service';
 
 @Component({
   selector: 'app-album-list',
@@ -8,7 +9,10 @@ import { IAlbum } from 'src/app/models/album.interface';
   styleUrls: ['./album-list.component.scss'],
 })
 export class AlbumListComponent {
-  //TO-DO: Define a variable that will store the information
+
+  constructor(private albumService: AlbumService) {}
+
+
   albums: IAlbum[] = [];
   searchResulst: IAlbum[] = [];
   searchParam: string = '';
@@ -17,70 +21,52 @@ export class AlbumListComponent {
   results: number = 0;
 
   ngOnInit(): void {
-    this.albums = ALBUMS;
-    this.searchResulst = this.albums;
-    this.results = this.albums.length;
+    this.albumService.getAll().subscribe((albums) => {
+      this.albums = albums;
+      this.searchResulst = albums;
+      this.results = this.searchResulst.length;
+    });
   }
 
   //TO-DO: Create a function that based of param it will show n-results
-  ngOnSearch(param: string, typeSearch: string) {
-    console.log(param + ' ' + typeSearch);
-    switch (typeSearch) {
-      case 'title':
-        this.searchResulst = this.searchByTitle(this.albums, param);
+  ngOnSearch() {
+    switch (Number(this.searchBy)) {
+      case 0:
+        alert("Select an option to proceed with the filter")
         break;
-      case 'genre':
-        this.searchResulst = this.searchByGenre(this.albums, param);
+      case 1:
+        this.albumService
+          .filterByTitle(this.albums, this.searchOperator, this.searchParam)
+          .subscribe((albums) => {
+            this.searchResulst = albums;
+            this.results = albums.length;
+            this.results = this.searchResulst.length;
+            this.searchParam = '';
+          });
         break;
-      case 'artist':
-        this.searchResulst = this.searchByArtist(this.albums, param);
+      case 2:
+        this.albumService
+          .filterByGenre(this.albums, this.searchOperator, this.searchParam)
+          .subscribe((albums) => {
+            this.searchResulst = albums;
+            this.results = albums.length;
+            this.results = this.searchResulst.length;
+            this.searchParam = '';
+          });
         break;
+      case 3:
+        this.albumService
+        .filterByArtist(this.albums, this.searchOperator, this.searchParam)
+        .subscribe((albums) => {
+          this.searchResulst = albums;
+          this.results = albums.length;
+          this.results = this.searchResulst.length;
+          this.searchParam = '';
+        });
+      break;
       default:
-        console.log('Error filtering the list');
+        console.error('Error filtering the list');
         break;
     }
-    this.results = this.searchResulst.length;
-    this.searchParam = '';
-  }
-  searchByTitle(albums: IAlbum[], param: string) {
-    return albums
-      // .filter((album) =>
-      //   album.title.toLowerCase().includes(param.toLowerCase())
-      // )
-      .filter((album) => this.checkCoincidence(album.title, param))
-      .sort((a, b) => {
-        a.title.toLowerCase();
-        b.title.toLowerCase();
-        return a.title.localeCompare(b.title);
-      });
-  }
-  searchByGenre(albums: IAlbum[], param: string) {
-    return albums
-      // .filter((album) =>
-      //   album.genre.toLowerCase().includes(param.toLowerCase())
-      // )
-      .filter((album) => this.checkCoincidence(album.genre, param))
-      .sort((a, b) => {
-        a.genre.toLowerCase();
-        b.genre.toLowerCase();
-        return a.genre.localeCompare(b.genre);
-      });
-  }
-  searchByArtist(albums: IAlbum[], param: string) {
-    return albums
-      // .filter((album) =>
-      //   album.artist.toLowerCase().includes(param.toLowerCase())
-      // )
-      .filter((album) => this.checkCoincidence(album.artist, param))
-      .sort((a, b) => {
-        a.artist.toLowerCase();
-        b.artist.toLowerCase();
-        return a.artist.localeCompare(b.artist);
-      });
-  }
-  checkCoincidence(word: string, param: string) {
-    return (
-      word.toLocaleLowerCase().slice(0, param.length) === param.toLowerCase()
-    );
   }
 }
