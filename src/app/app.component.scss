@@ -24,14 +24,11 @@
     margin: 0 16px;
 }
 
-
 .content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    //max-width: 960px;
-    flex-direction: column;
-    //align-items: center;
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  flex-direction: column;
 }
 
 .toolbar {
@@ -59,7 +56,7 @@
     background-color: #1368a0cc;
     color: white;
     font-weight: 600;
-    
+
 }
 
 .artistTitle h2 {

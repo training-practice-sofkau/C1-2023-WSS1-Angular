@@ -24,13 +24,22 @@
     margin: 0 16px;
 }
 
+@media screen and (min-width: 40em) {
+  .content {
+      display: grid;
+      grid-template-columns: 1fr 5fr;
+      margin: 60px 0px 32px 0px;
+      //padding: 0 16px;
+  }
+}
 
-.content {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    margin: 60px 0px 32px 0px;
-    //padding: 0 16px;
-
+@media screen and (max-width: 40em) {
+  .content {
+      display: flex;
+      margin: 82px auto 32px;
+      padding: 0 16px;
+      flex-direction: column;
+  }
 }
 
 .menu--container{
