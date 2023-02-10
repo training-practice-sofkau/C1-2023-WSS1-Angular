@@ -6,20 +6,20 @@ $blue-gray-color: mat.$blue-gray-palette;
 $gray-color: mat.$gray-palette;
 
 .footer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
   height: 6vh;
   display: flex;
   align-items: center;
   color: white;
-  font-weight: 600;
-  background-color: map.get($pink-color, 500);
+  font-weight: 400;
 }
 
 .footer img {
   margin: 0 16px;
+}
+
+.alignText{
+  display: flex;
+  align-items: center;
 }
 
 .content {
@@ -39,6 +39,7 @@ $gray-color: mat.$gray-palette;
   border-radius: 10px;
   box-shadow: 1px 1px 10px #ffffff33;
   background-color: map.get($blue-gray-color, 500);
+  justify-content: space-between;
 }
 
 .results {

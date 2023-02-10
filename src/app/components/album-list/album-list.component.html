@@ -20,34 +20,20 @@
   </div>
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'row'}" *ngFor="let album of l_albums; index as i">
-  <div [ngStyle]="{padding:'5px'}" *ngIf="i >= pagFrom && i<= pagTo">
+<mat-card [ngStyle]="{display: 'flex', flexDirection:'row', marginTop:'5px'}" *ngFor="let album of l_albums_filtered">
+
+  <div [ngStyle]="{padding:'4px'}">
     <img src="{{album.picture}}" alt="Album cover">
   </div>
-  <div
-    [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px', flexDirection:'column', width:'100%'}"
-    *ngIf="i >= pagFrom && i<= pagTo">
-    id: {{album.id}} <br/>
-    title: {{album.title}} <br/>
-    genre: {{album.genre}} <br/>
-    release date: {{album.releaseDate}} <br/>
-    number of songs: {{album.numberOfSongs}} <br/>
-  </div>
-</div>
 
-<!--Implement acording to the results obtained founded: n or There are no matches-->
-<ng-container *ngIf="l_length > 0; else noArtistFound ">
-  <div>
-    <div>
-      <button type="button" (click)="changePage(false)" *ngIf="pagFrom>0">Previous</button>
-      <button type="button" (click)="changePage(true)" *ngIf="pagTo<l_albums.length-1">Next</button>
-    </div>
-    <h4>Founded: {{l_length}}</h4>
-  </div>
+  <div [ngStyle]="{flexDirection:'column', width:'100%'}">
 
-</ng-container>
-<ng-template #noArtistFound>
-  <div>
-    <h4>No artist were found</h4>
+    <h4>{{album.id}}</h4>
+    <h4>title: {{album.title}}</h4>
+    <h4>genre: {{album.genre}}</h4>
+    <h4>release date: {{album.releaseDate}}</h4>
+    <h4>number of songs: {{album.numberOfSongs}}</h4>
   </div>
-</ng-template>
+</mat-card>
+<mat-paginator [length]="l_albums.length" [pageSize]="defaultPerPage" aria-label="Select page" (page)="pageEvent = $event; onPaginateChange($event)">
+</mat-paginator>

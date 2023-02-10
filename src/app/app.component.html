@@ -11,21 +11,23 @@
 
 <div class="content" role="main">
   <div class="selector">
-    <div class="artistTitle" routerLink="artist" [ngStyle]="{borderRadius: '10px', marginBottom: '10px'}"><h2>
-      Artist</h2></div>
-    <div class="albumTitle" routerLink="album" [ngStyle]="{borderRadius: '10px'}"><h2>Album</h2></div>
+    <div>
+      <div class="artistTitle alignText" routerLink="artist" [ngStyle]="{borderRadius: '10px', marginBottom: '10px'}"><h2>
+        Artist</h2></div>
+      <div class="albumTitle alignText" routerLink="album" [ngStyle]="{borderRadius: '10px'}"><h2>Album</h2></div>
+    </div>
+    <!-- Footer -->
+    <div class="footer" role="banner">
+      <img
+        width="40"
+        alt="Copyright Logo"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Copyright-serif.svg/2048px-Copyright-serif.svg.png"
+      />
+      <span>Copyright, 2023 - JonathanPinilla</span>
+    </div>
+
   </div>
   <div class="results">
     <router-outlet></router-outlet>
   </div>
-</div>
-
-<!-- Footer -->
-<div class="footer" role="banner">
-  <img
-    width="40"
-    alt="Copyright Logo"
-    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Copyright-serif.svg/2048px-Copyright-serif.svg.png"
-  />
-  <span>Copyright, 2023 - JonathanPinilla</span>
 </div>

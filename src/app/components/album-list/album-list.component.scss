@@ -6,7 +6,12 @@ $blue-gray-color: mat.$blue-gray-palette;
 $gray-color: mat.$gray-palette;
 
 img {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   border-radius: 5px;
+}
+
+mat-card{
+  align-items: center;
+  padding: 10px;
 }
