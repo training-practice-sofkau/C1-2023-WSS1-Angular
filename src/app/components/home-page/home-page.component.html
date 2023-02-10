@@ -1,7 +1,9 @@
 <div class="content" role="main">
+  <div class="menu--container">
     <div class="artistTitle" routerLink="./artist"><h2>Artist</h2></div>
-    <br/>
     <div class="albumTitle" routerLink="./album"><h2>Album</h2></div>
-    <br/>
+  </div>
+  <div class="content-selection-container">
+    <router-outlet></router-outlet>
+  </div>
 </div>
-<router-outlet></router-outlet>
