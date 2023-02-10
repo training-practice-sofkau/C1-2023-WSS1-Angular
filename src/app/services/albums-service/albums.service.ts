@@ -31,7 +31,7 @@ export class AlbumsService {
       });
     }
 
-    if (filter === 'starts with') {
+    if (filter === 'Starts with') {
       obsAlbums = new Observable((observer) => {
         observer.next(
           ALBUMS.filter((album) =>
@@ -42,7 +42,7 @@ export class AlbumsService {
       });
     }
 
-    if (filter === 'not starts with') {
+    if (filter === 'Not starts with') {
       obsAlbums = new Observable((observer) => {
         observer.next(
           ALBUMS.filter(
@@ -71,7 +71,7 @@ export class AlbumsService {
       });
     }
 
-    if (filter === 'starts with') {
+    if (filter === 'Starts with') {
       obsAlbums = new Observable((observer) => {
         observer.next(
           ALBUMS.filter((album) =>
@@ -82,7 +82,7 @@ export class AlbumsService {
       });
     }
 
-    if (filter === 'not starts with') {
+    if (filter === 'Not starts with') {
       obsAlbums = new Observable((observer) => {
         observer.next(
           ALBUMS.filter(
@@ -111,7 +111,7 @@ export class AlbumsService {
       });
     }
 
-    if (filter === 'starts with') {
+    if (filter === 'Starts with') {
       obsAlbums = new Observable((observer) => {
         observer.next(
           ALBUMS.filter((album) =>
@@ -122,7 +122,7 @@ export class AlbumsService {
       });
     }
 
-    if (filter === 'not starts with') {
+    if (filter === 'Not starts with') {
       obsAlbums = new Observable((observer) => {
         observer.next(
           ALBUMS.filter(
