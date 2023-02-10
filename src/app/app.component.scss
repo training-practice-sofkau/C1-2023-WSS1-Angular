@@ -1,4 +1,7 @@
-:host {
+.container-fluid{
+    display: flex;
+    align-items: left;
+    justify-content: center;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 14px;
     color: #333;
@@ -15,67 +18,17 @@
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #3d13a0a9;
-    color: white;
+    justify-content: center;
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
     font-weight: 600;
 }
 
-.footer img {
-    margin: 0 16px;
-}
-
-
-.content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    //max-width: 960px;
-    flex-direction: column;
-    //align-items: center;
-}
-
-.toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
+.text-white {
     display: flex;
     align-items: center;
-    background-color: #3d13a0cc;
-    color: white;
-    font-weight: 600;
-}
-
-.toolbar img {
-    margin: 0 16px;
-}
-
-.artistTitle{
-    width: 100%;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background-color: #1368a0cc;
-    color: white;
-    font-weight: 600;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     
 }
 
-.artistTitle h2 {
-    margin: 14px 16px;
-}
-
-.albumTitle{
-    width: 100%;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background-color: #a94dbbcc;
-    color: white;
-    font-weight: 600;
-}
-
-.albumTitle h2 {
-    margin: 14px 16px;
-}
