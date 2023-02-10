@@ -12,19 +12,28 @@ export class AlbumService {
 
   getAll(): Observable<IAlbum[]> {
 
-    let obsArtist: Observable<IAlbum[]> = new Observable(observer => {
+    let obsAlbum: Observable<IAlbum[]> = new Observable(observer => {
       observer.next(ALBUMS);
       observer.complete();
     });
-    return obsArtist;
+    return obsAlbum;
   }
 
-  getByName(filterParam: string, albumList: IAlbum[]): Observable<IAlbum[]> {
+  getByTitle(filterParam: string, albumList: IAlbum[]): Observable<IAlbum[]> {
 
-    let obsArtist: Observable<IAlbum[]> = new Observable(observer =>{
+    let obsAlbum: Observable<IAlbum[]> = new Observable(observer =>{
       observer.next(albumList.filter(album => album.title.startsWith(filterParam)));
       observer.complete();
     });
-    return obsArtist;
+    return obsAlbum;
+  }
+
+  getByArtist (filterParam: string, albumList: IAlbum[]): Observable<IAlbum[]> {
+    let obsAlbum: Observable<IAlbum[]> = new Observable(observer => {
+      observer.next(albumList.filter(album => album.artist.startsWith(filterParam)));
+      observer.complete();
+    });
+
+    return obsAlbum;
   }
 }
