@@ -1,16 +1,64 @@
-.pagination{
+:host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     display: flex;
-    justify-content: center;
+    padding: 0 16px 0px 16px;
+    width: 100%;
+    height: 88%;
+    margin: 40px 0px 0px 10px;
+}
+
+.container-fluid{
+    padding: 16px 16px 16px 16px;
+    width: 100%;
+    height: 88%;
+}
+
+.search-container{
+    display: flex;
     align-items: center;
 }
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
+.card{
+    display: flex;
+    //flex-direction:row;
+    background-color: pink;
+    margin: 10px 10px 10px 13px;
+    padding:5px;
+    text-align: left;
+}
+.card-body{
+    text-align: left;
+}
+
 .albumOps{
     margin-left: 10pt;
     
 }
-.albumButton {
+.btn {
     margin-right: 10pt;
 }
 
 .found{
-    margin: 10px 10px 10px 13px;
+    margin: 20px 10px 10px 0px;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

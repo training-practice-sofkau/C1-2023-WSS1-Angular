@@ -10,6 +10,7 @@ import { AlbumService } from 'src/app/services/album-services/album.service';
 })
 export class AlbumListComponent implements OnInit{
   @Input() param: string = "";
+  @Input() typeSearch: string = "";
 
   //Variables to store the info
   l_albums: IAlbum[] = [];

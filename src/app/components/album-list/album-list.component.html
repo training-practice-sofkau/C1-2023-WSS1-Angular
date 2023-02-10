@@ -1,39 +1,62 @@
-<div [ngStyle]="{display: 'flex', flexDirection:'row', margin: '10px 10px 10px 13px '}">
-    <div ngClass="albumTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param"
-        (keydown.backspace)="ngOnInit()"/>
+<div class="container-fluid">
+    <div class="search-container" [ngStyle]="{display: 'flex', flexDirection:'row', margin: '10px 10px 10px 13px '}">
+        <div ngClass="albumTxt">
+            <input class="form-control" type="text" placeholder="Enter text" [(ngModel)]="param" (keydown.backspace)="ngOnInit()" />
+        </div>
+        <div ngClass="albumOps">
+            <input class="btn btn-info" type="button" value="Title" (click)="ngOnSearch(param, 'title')" />
+            <input class="btn btn-info" type="button" value="Artist" (click)="ngOnSearch(param, 'artist')" />
+            <input class="btn btn-info" type="button" value="Songs" (click)="ngOnSearch(param, 'songs')" />
+        </div>
     </div>
-    <div ngClass="albumOps">
-        <input class="albumButton" type="button" value="Title" (click)="ngOnSearch(param, 'title')"/>
-        <input class="albumButton" type="button" value="Artist" (click)="ngOnSearch(param, 'artist')"/>
-        <input class="albumButton" type="button" value="Songs" (click)="ngOnSearch(param, 'songs')"/>
+
+    <!--<form class="search-container">
+        <div ngClass="albumTxt">
+            <input type="text" placeholder="Enter text" [(ngModel)]="param" (keydown.backspace)="ngOnInit()" />
+        </div>
+        <div  ngClass="albumOps">
+            <select name="search">
+                <option [(ngModel)]="typeSearch"  selected>Select an option</option>
+                <option [(ngModel)]="typeSearch"  selected>title</option>
+                <option [(ngModel)]="typeSearch"  selected>artist</option>
+                <option [(ngModel)]="typeSearch"  selected>songs</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success boton" (click)="ngOnSearch(param, typeSearch)">Search</button>
+    </form>-->
+
+
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="card" *ngFor="let album of l_albums | paginate: { itemsPerPage: 4, currentPage: p }">
+            <!--<img src="..." class="card-img-top" alt="...">-->
+            <div class="card-header">
+                <h5 class="card-title">Album</h5>
+                <img src="..." class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="card-body">
+                <strong>Title:</strong>{{album.title}} <br />
+                <strong>Genre</strong>: {{album.genre}} <br />
+                <strong> Date:</strong>{{album.release_date}} <br />
+                <strong>Songs:</strong>{{album.songs}} <br />
+                <strong>Artist:</strong> {{album.artist}} <br />
+            </div>
+
+        </div>
     </div>
+
+    <!--Implement acording to the results obtained founded: n or There are no matches-->
+    <ng-container *ngIf="results > 0; else noAlbumFound ">
+        <div class="found">
+            <h4>Founded: {{results}}</h4>
+        </div>
+
+    </ng-container>
+    <ng-template #noAlbumFound>
+        <div>
+            <h4>No album were found</h4>
+        </div>
+    </ng-template>
+
+    <pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="Previous"
+        nextLabel="Next"></pagination-controls>
 </div>
-
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let album of l_albums
-   | paginate: { itemsPerPage: 4, currentPage: p }">
-    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
-        Title: {{album.title}} <br/>
-        Genre: {{album.genre}} <br/>
-        Release Date: {{album.release_date}} <br/>
-        Songs: {{album.songs}} <br/>
-        Artist: {{album.artist}} <br/>
-    </div>
-  
-</div>
-
-<!--Implement acording to the results obtained founded: n or There are no matches-->
-<ng-container *ngIf="results > 0; else noAlbumFound ">
-    <div class="found">
-        <h4>Founded: {{results}}</h4>
-    </div>
-
-</ng-container>
-<ng-template #noAlbumFound>
-    <div>
-        <h4>No album were found</h4>
-    </div>
-</ng-template>
-
-<pagination-controls class="pagination" (pageChange)="p = $event"  previousLabel="Previous"
-nextLabel="Next"></pagination-controls>
