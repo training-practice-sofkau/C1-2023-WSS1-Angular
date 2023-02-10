@@ -1,1 +1,60 @@
-<p>album-list works!</p>
+<div ngClass="album-nav" [ngStyle]="{'display': 'flex', 'align-items': 'center', 'justify-content': 'center'}">
+  <div ngClass="albumsOps">
+      <label>Propiedades a filtrar</label>
+      <select name="album-options" [(ngModel)]="selected_option">
+        <optgroup label="titles options">
+        <option value="title:">title:</option>
+        <option value="title-">title-</option>
+        </optgroup>
+        <optgroup label="genre options">
+        <option value="genre:">genre:</option>
+        <option value="genre-">genre-</option>
+        </optgroup>
+        <optgroup label="release date options">
+        <option value="release_date:">release date:</option>
+        <option value="release_date-">release date-</option>
+        </optgroup>
+        <optgroup label="number of songs options">
+        <option value="number_of_songs<">number of songs< </option>
+        <option value="number_of_songs>">number of songs> </option>
+        </optgroup>
+        <optgroup label="artist options">
+        <option value="artist:">artist:</option>
+        <option value="artist-">artist-</option>
+      </select>
+  </div>
+  <div ngClass="albunTxt">
+    <input type="text" placeholder="Enter text" (click)="ngInputReset()" [(ngModel)]="param" (keyup)="ngSearchByParam($event)"/>
+</div>
+</div>
+
+<div>
+<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let album of l_albums | paginate: { itemsPerPage: count, currentPage: p }">
+    <div ngClass="albumList" [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
+        <img [src]="album.img" alt="">
+        <div class="text">
+          <h3>title: {{album.title}}</h3>
+          <h3>genre: {{album.genre}}</h3>
+          <h3>release date: {{album.release_date}}</h3>
+          <h3>number of songs: {{album.number_of_songs}}</h3>
+          <h3>artist: {{album.artist}}</h3>
+        </div>
+    </div>
+  </div>
+  <div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+
+<!--Implement acording to the results obtained founded: n or There are no matches-->
+<ng-container *ngIf="results > 0; else noAlbumsFound ">
+  <div>
+      <h4>Founded: {{results}}</h4>
+  </div>
+
+</ng-container>
+<ng-template #noAlbumsFound>
+  <div>
+      <h4>No albums were found</h4>
+  </div>
+</ng-template>
