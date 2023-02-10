@@ -24,9 +24,7 @@ export class AlbumListComponent implements OnInit{
   }
 
   ngOnSearch(param: string, typeSearch: string): void{
-    //console.log(param);
     if(param=="") this.ngOnInit();
-    //this.l_albums = [];
     switch(typeSearch){
       case "title":
         this.albumService.getByTitle(param).subscribe((album: IAlbum[]) => this.l_albums = album);
