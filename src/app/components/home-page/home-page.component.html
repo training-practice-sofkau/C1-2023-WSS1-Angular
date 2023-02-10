@@ -1,8 +1,19 @@
-<div class="content" role="main"
->
-    <div class="artistTitle" routerLink="./artist"><h2>Artist</h2></div>
-    <br/>
-    <div class="albumTitle" routerLink="./album"><h2>Album</h2></div>
-    <br/>
+<div class="container-fluid" role="main">
+    <div class="leftContainer">
+        <div class="artistTitle" routerLink="./artist">
+            <h2>Artist</h2>
+        </div>
+        <br />
+        <div class="albumTitle" routerLink="./album">
+            <h2>Album</h2>
+        </div>
+        <br />
+    </div>
+
+    <div class="rightContainer">
+        <router-outlet></router-outlet>
+    </div>
+
+    
 </div>
-<router-outlet></router-outlet>
+

@@ -7,13 +7,26 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.content {
+.container-fluid{
     display: flex;
-    margin: 82px auto 32px;
+    padding: 0 16px 0px 16px;
+    position: fixed;
+    height:auto;
+    width: 100%;
+    height: 88%;
+}
+
+.rightContainer{
     padding: 0 16px;
-    //max-width: 960px;
-    flex-direction: column;
-    //align-items: center;
+    justify-content: center;
+    background-color:#748590cc;
+    margin: 15px 15px 15px 15px;
+    width: 100%;
+}
+
+.leftContainer{
+    background-color: #1368a0cc;
+    margin: 15px 0px 15px 15px;
 }
 
 .artistTitle{
