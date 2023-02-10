@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ALBUM } from 'src/app/mocks/album.mock';
 import { IAlbum } from 'src/app/models/album.interface';
+import { AlbumService } from 'src/app/services/album.service';
 
 @Component({
   selector: 'app-album-list',
@@ -9,37 +9,32 @@ import { IAlbum } from 'src/app/models/album.interface';
 })
 export class AlbumListComponent {
 
+    constructor(private service: AlbumService){}
+
   @Input() param: string = "";
 
-  l_almbum: IAlbum[] = [];
-  f_album: IAlbum[] = [];
+  l_album: IAlbum[] = [];
 
   results: number = 0;
-  
-  page: number = 1;
 
+  page: number = 1;
+  
   ngOnInit(): void {
-    this.l_almbum = ALBUM;
-    this.f_album = ALBUM;
-    this.results = this.l_almbum.length;
+    this.service.getAll().subscribe((val) => {this.l_album = val})
+    this.results = this.l_album.length;
   }
 
-  //TO-DO: Create a function that based of param it will show n-results
-  ngOnSearch(param: string, typeSearch: string){
-    if (param == "") {
-        this.f_album = ALBUM        
-    }
+  ngOnSearch(){
+      let re = /(?<name>\w+)+(\W)+(\w+)/;
+      let filter = re.exec(this.param);
 
-    if (typeSearch === "title") {
-        this.f_album = this.l_almbum.filter((obj) => obj.title.toLowerCase().startsWith(param.toLowerCase()));
-    } else if(typeSearch === "genre") {
-        this.f_album = this.l_almbum.filter((obj) => obj.genre.toLowerCase().startsWith(param.toLowerCase()));
-    } else {
-        this.f_album = this.l_almbum.filter((obj) => obj.number_of_songs.toString().toLowerCase().startsWith(param.toLowerCase()));
-    }
-    
+      let p = filter![1];
+      let s = filter![2];
+      let b = filter![3];
 
-    this.results = this.f_album.length
+
+      this.service.getByParameter(p, s, b).subscribe((val) => {this.l_album = val})
+      
   }
 
 }
