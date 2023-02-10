@@ -36,23 +36,9 @@ export class ArtistListComponent implements OnInit{
       let s = filter![2];
       let b = filter![3];
 
-      console.log(p);
-      console.log(s);
-      console.log(b);
 
       this.service.getByParameter(p, s, b).subscribe((val) => {this.f_artists = val})
       
-
-    // if (this.filter === "name") {
-    //     this.f_artists = this.l_artists.filter((obj) => obj.name.toLowerCase().startsWith(this.param.toLowerCase()));
-    // } else if(this.filter === "country") {
-    //     this.f_artists = this.l_artists.filter((obj) => obj.country.toLowerCase().startsWith(this.param.toLowerCase()));
-    // } else if(this.filter === "age") {
-    //     this.f_artists = this.l_artists.filter((obj) => obj.age.toString().toLowerCase().startsWith(this.param.toLowerCase()));
-    // }
-    
-
-    // this.results = this.f_artists.length
   }
 
 
