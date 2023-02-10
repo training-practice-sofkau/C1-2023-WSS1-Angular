@@ -11,6 +11,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatSelectModule,
     MatButtonModule,
     MatCardModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
