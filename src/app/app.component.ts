@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,16 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'C1-2023-WSS1-Angular';
-  type: string ='n/a';
-  paramApp: string ="";
+  type: string = 'n/a';
+  paramApp: string = "";
 
-  ngOnShowList(typeSel: string){
-    if(typeSel === "album"){
+  ngOnShowList(typeSel: string) {
+    if (typeSel === "album") {
       this.type = "album";
 
-    }else if(typeSel === "artist"){
+    } else if (typeSel === "artist") {
       this.type = "artist";
-    }else{
+    } else {
       this.type = "n/a";
     }
   }

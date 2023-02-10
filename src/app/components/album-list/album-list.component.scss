@@ -1,0 +1,17 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+$pink-color: mat.$pink-palette;
+$blue-gray-color: mat.$blue-gray-palette;
+$gray-color: mat.$gray-palette;
+
+img {
+  width: 180px;
+  height: 180px;
+  border-radius: 5px;
+}
+
+mat-card{
+  align-items: center;
+  padding: 10px;
+}

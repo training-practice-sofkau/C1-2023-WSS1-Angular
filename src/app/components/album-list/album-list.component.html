@@ -1,1 +1,38 @@
-<p>album-list works!</p>
+<div [ngStyle]="{display: 'flex',  alignItems:'flex-start'}">
+  <div [ngStyle]="{marginRight:'10px'}">
+    <mat-form-field>
+      <mat-label>Type your search</mat-label>
+      <input matInput placeholder="Ex. Metallica" [(ngModel)]="param">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Type of search</mat-label>
+      <mat-select>
+        <mat-option (click)="searchObs(param,'title:')">Title</mat-option>
+        <mat-option (click)="searchObs(param,'genre:')">Genre</mat-option>
+        <mat-option (click)="searchObs(param,'releaseDate:')">Release Date</mat-option>
+        <mat-option (click)="searchObs(param,'numberOfSongs>')">More songs than</mat-option>
+        <mat-option (click)="searchObs(param,'numberOfSongs-')">Different number of songs</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <button (click)="searchObs(param,'reset')" [ngStyle]="{marginLeft:'10px'}" mat-raised-button>Reset</button>
+</div>
+
+<mat-card [ngStyle]="{display: 'flex', flexDirection:'row', marginTop:'5px'}" *ngFor="let album of l_albums_filtered">
+
+  <div [ngStyle]="{padding:'4px', marginRight:'10px'}">
+    <img src="{{album.picture}}" alt="Album cover">
+  </div>
+
+  <div [ngStyle]="{flexDirection:'column', width:'100%'}">
+
+    <h4>Title: {{album.title}}</h4>
+    <h4>Genre: {{album.genre}}</h4>
+    <h4>Release date: {{album.releaseDate}}</h4>
+    <h4>Number of songs: {{album.numberOfSongs}}</h4>
+  </div>
+</mat-card>
+<mat-paginator [length]="l_albums.length" [pageSize]="defaultPerPage" aria-label="Select page" (page)="pageEvent = $event; onPaginateChange($event)">
+</mat-paginator>
