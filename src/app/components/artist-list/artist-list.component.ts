@@ -36,15 +36,19 @@ export class ArtistListComponent implements OnInit{
           artists => { this.results = artists; }
         );
         break;
-      }
+      };
       case "genre": {
-        this.results = this.artistList.filter(artist => artist.genre.startsWith(this.filterParam));
+        this.artistService.getByGenre(this.filterParam, this.artistList).subscribe(
+          artists => { this.results = artists;}
+        );
         break;
-      }
+      };
       case "albums": {
-        this.results = this.artistList.sort((a, b) => (a.albums > b.albums) ? -1 : 1);
+        this.artistService.getByAlbums(this.filterParam, this.artistList).subscribe(
+          artists => { this.results = artists}
+        );
         break;
-      }
-    }
-  }
+      };
+    };
+  };
 }
