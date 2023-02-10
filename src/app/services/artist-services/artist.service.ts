@@ -51,7 +51,7 @@ export class ArtistService {
     } else if (country.startsWith("-")) {
       obsArtist = obsArtist.pipe(map((artist: IArtist[]) => artist.filter((artist: IArtist) => !artist.country.toLowerCase().startsWith(country.substring(1).toLowerCase()))));
     }
-    return obsArtist;
+    return obsArtist.pipe(map((artists: IArtist[]) => artists.sort((a,b) => (a.age<b.age)?1:-1)));
   }
 
   getByAge(age: string): Observable<IArtist[]> {
