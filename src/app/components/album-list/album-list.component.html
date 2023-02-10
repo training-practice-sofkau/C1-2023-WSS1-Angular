@@ -3,10 +3,10 @@
     <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
   </div>
   <div ngClass="artistOps">
-    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param,'title')">Title</button>
-    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param,'genre')">Genre</button>
-    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param,'releaseDate')">Release Date</button>
-    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="search(param,'reset')">Reset</button>
+    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="searchObs(param,'title')">Title</button>
+    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="searchObs(param,'genre')">Genre</button>
+    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="searchObs(param,'releaseDate')">Release Date</button>
+    <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="searchObs(param,'reset')">Reset</button>
   </div>
 </div>
 
