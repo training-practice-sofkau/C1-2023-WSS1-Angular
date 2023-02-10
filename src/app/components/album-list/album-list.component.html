@@ -1,7 +1,16 @@
 <div ngClass="albumSearch">
-    <div ngClass="albumtxt">
-        <input type="text" placeholder="Enter text" (keyup)="ngOnSearch()" [(ngModel)]="param"/>
+    <div ngClass="albumSearch-imput">
+        <div ngClass="albumtxt">
+            <input type="text" placeholder="Enter text" (keyup)="ngOnSearch()" [(ngModel)]="param"/>
+        </div>
     </div>
+
+    <ng-container *ngIf="results > 0; else noAlbumFound ">
+        <div>
+            <h4>Founded: {{results}}</h4>
+        </div>
+
+    </ng-container>
 </div>
 
 <div *ngFor="let album of l_album | paginate : { itemsPerPage: 3,
@@ -25,12 +34,6 @@
 
 <pagination-controls (pageChange)="page = $event"></pagination-controls>
 <!--Implement acording to the results obtained founded: n or There are no matches-->
-<ng-container *ngIf="results > 0; else noAlbumFound ">
-    <div>
-        <h4>Founded: {{results}}</h4>
-    </div>
-
-</ng-container>
 <ng-template #noAlbumFound>
     <div>
        <h4>No album were found</h4>

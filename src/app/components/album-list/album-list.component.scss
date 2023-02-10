@@ -1,6 +1,12 @@
 .albumSearch {
     display: flex;
-    margin: 2em;
+    justify-content: center;
+    align-items: center;
+}
+
+.albumSearch-imput {
+    display: flex;
+    margin: 1em;
 }
 
 .albumResults {
