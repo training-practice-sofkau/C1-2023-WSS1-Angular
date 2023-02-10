@@ -1,12 +1,22 @@
 <div [ngStyle]="{display: 'flex'}">
-  <div ngClass="artistTxt" [ngStyle]="{marginTop:'5px'}">
+  <div [ngStyle]="{marginTop:'5px'}">
     <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
   </div>
-  <div ngClass="artistOps">
+  <div>
     <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="searchObs(param,'title')">Title</button>
     <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="searchObs(param,'genre')">Genre</button>
     <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="searchObs(param,'releaseDate')">Release Date</button>
     <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="searchObs(param,'reset')">Reset</button>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Type of search</mat-label>
+      <mat-select>
+        <mat-option>Title</mat-option>
+        <mat-option>Genre</mat-option>
+        <mat-option>Release Date</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </div>
 
