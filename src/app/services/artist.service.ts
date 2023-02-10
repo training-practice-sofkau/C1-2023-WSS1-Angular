@@ -14,7 +14,6 @@ export class ArtistService {
       observer.next(ARTISTS);
       observer.complete();
     });
-
     return obsArtist;
   }
 
@@ -73,6 +72,8 @@ export class ArtistService {
         )
         .sort((a, b) => a.age - b.age);
       observer.next(artistsFiltered);
+      console.log("here i am");
+
       observer.complete();
     });
 
@@ -87,7 +88,7 @@ export class ArtistService {
       return (
         word.toLocaleLowerCase().slice(0, param.length) === param.toLowerCase()
       );
-    } else if (operator == 2) {
+    } else if (operator == 4) {
       return (
         word.toLocaleLowerCase().slice(0, param.length) != param.toLowerCase()
       );
@@ -100,7 +101,7 @@ export class ArtistService {
     param: number,
     operator: number
   ): boolean | undefined {
-    switch (operator) {
+    switch (Number(operator)) {
       case 1:
         if (age == param) return true;
         return false;

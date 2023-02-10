@@ -10,7 +10,6 @@ import { ArtistService } from 'src/app/services/artist.service';
   styleUrls: ['./artist-list.component.scss'],
 })
 export class ArtistListComponent implements OnInit {
-  //TO-DO: Define a variable that will store the information
 
   constructor(private artistService: ArtistService) {}
 
@@ -30,7 +29,10 @@ export class ArtistListComponent implements OnInit {
   }
 
   ngOnSearch() {
-    switch (this.searchBy) {
+    switch (Number(this.searchBy)) {
+      case 0:
+        alert("Select an option to proceed with the filter")
+        break;
       case 1:
         this.artistService
           .filterByName(this.artists, this.searchOperator, this.searchParam)
@@ -52,6 +54,20 @@ export class ArtistListComponent implements OnInit {
           });
         break;
       case 3:
+        if(this.searchParam==""){
+          this.artistService
+          .filterByAge(
+            this.artists,
+            this.searchOperator,
+            0
+          )
+          .subscribe((artists) => {
+            this.searchResulst = artists;
+            this.results = artists.length;
+            this.results = this.searchResulst.length;
+            this.searchParam = '';
+          });
+        }else{
         this.artistService
           .filterByAge(
             this.artists,
@@ -63,7 +79,7 @@ export class ArtistListComponent implements OnInit {
             this.results = artists.length;
             this.results = this.searchResulst.length;
             this.searchParam = '';
-          });
+          });}
         break;
       default:
         console.error('Error filtering the list');
