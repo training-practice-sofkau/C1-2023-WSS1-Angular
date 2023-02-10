@@ -13,12 +13,15 @@ export class ArtistListComponent implements OnInit {
   
 
   @Input() param: string = "";
-  p: number = 0;
+  @Input() typeSearch: string = "";
+  
 
   //TO-DO: Define a variable that will store the information
   l_artists: IArtist[] = [];
 
   results: number = 0;
+
+  p: number = 0;
 
   constructor(private artistService: ArtistService) { }
 
@@ -30,9 +33,7 @@ export class ArtistListComponent implements OnInit {
 
   //TO-DO: Create a function that based of param it will show n-results
   ngOnSearch(param: string, typeSearch: string) {
-    console.log(typeSearch);
-    //this.l_artists = [];
-    if(param=="") this.ngOnInit();
+    if(param=="" || typeSearch ==="Select an option") this.ngOnInit();
     switch (typeSearch) {
       case "name":
         this.artistService.getByName(param).subscribe(((artist: IArtist[]) => this.l_artists = artist));
