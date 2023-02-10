@@ -10,7 +10,7 @@ export class HomePageComponent {
   type: string ='n/a';
   paramApp: string ="";
 
-  ngOnShowList(typeSel: string){
+  /*ngOnShowList(typeSel: string){
     if(typeSel === "album"){
       this.type = "album";
 
@@ -19,6 +19,6 @@ export class HomePageComponent {
     }else{
       this.type = "n/a";
     }
-  }
+  }*/
 
 }

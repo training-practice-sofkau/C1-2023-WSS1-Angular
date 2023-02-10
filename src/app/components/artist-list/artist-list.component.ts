@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ARTISTS } from 'src/app/mocks/artist.mock';
 import { IArtist } from 'src/app/models/artist.interface';
 import { ArtistService } from 'src/app/services/artist-services/artist.service';
 
@@ -28,7 +27,12 @@ export class ArtistListComponent implements OnInit{
 
   //TO-DO: Create a function that based of param it will show n-results
   ngOnSearch(param: string, typeSearch: string){
-    console.log(param)
+    console.log(typeSearch);
+    if(typeSearch==="name"){
+      this.service.getByName(param).subscribe(((artist) => this.l_artists=artist));
+      console.log(this.l_artists);
+      this.results = this.l_artists.length;
+    }
   }
 
 }
