@@ -16,7 +16,7 @@
     </select>
   </form>
   <form>
-    <select name="characters" [(ngModel)]="filter">
+    <select name="filters" [(ngModel)]="filter">
       <option value="">Select a condition</option>
       <option *ngFor="let filter of filtersList" [ngValue]="filter">
         {{ filter }}
