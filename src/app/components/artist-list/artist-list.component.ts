@@ -36,6 +36,7 @@ export class ArtistListComponent implements OnInit{
 
       this.service.getByParameter(p, s, b).subscribe((val) => {this.l_artists = val})
       
+      this.results = this.l_artists.length
   }
 
 

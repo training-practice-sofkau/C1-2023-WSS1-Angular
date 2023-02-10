@@ -34,6 +34,8 @@ export class AlbumListComponent {
 
 
       this.service.getByParameter(p, s, b).subscribe((val) => {this.l_album = val})
+
+      this.results = this.l_album.length
       
   }
 
