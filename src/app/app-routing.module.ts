@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { AlbumListComponent } from './components/album-list/album-list.component';
+import { AlbumListComponent } from './album-list/album-list.component';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 
@@ -19,11 +19,11 @@ const routes: Routes = [
     children: [
       {
         path: 'artist',
-        component: ArtistListComponent 
+        component: ArtistListComponent
       },
       {
         path: 'album',
-        component: AlbumListComponent 
+        component: AlbumListComponent
       }
 
     ]
@@ -31,13 +31,13 @@ const routes: Routes = [
   /*{
     path: 'artist',
     component: HomePageComponent,
-    component: ArtistListComponent 
+    component: ArtistListComponent
   },
   {
     path: 'album',
     component: AlbumListComponent
   }*/
-  
+
 ];
 
 @NgModule({
