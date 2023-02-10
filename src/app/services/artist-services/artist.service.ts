@@ -12,19 +12,23 @@ export class ArtistService {
 
   //TO-DO: All the functionalities related to artist
   getAll(): Observable<IArtist[]> {
-  
+
     let obsArtist: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS);
       observer.complete();
     });
-
     return obsArtist;
-
   }
 
-  /*getByName(){
+  getByName(filterParam: string, artistList: IArtist[]): Observable<IArtist[]> {
 
-  }*/
+    let obsArtist: Observable<IArtist[]> = new Observable(observer =>{
+      observer.next(artistList.filter(artist => artist.name.startsWith(filterParam)));
+      observer.complete();
+    });
+    return obsArtist;
+  }
+
 
   /*getByCountry(){
 

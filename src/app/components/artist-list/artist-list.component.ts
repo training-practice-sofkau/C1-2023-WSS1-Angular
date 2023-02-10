@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ARTISTS } from 'src/app/mocks/artist.mock';
 import { IArtist } from 'src/app/models/artist.interface';
+import { ArtistService } from 'src/app/services/artist-services/artist.service';
 
 @Component({
   selector: 'app-artist-list',
@@ -10,24 +10,31 @@ import { IArtist } from 'src/app/models/artist.interface';
 
 export class ArtistListComponent implements OnInit{
 
+  constructor(
+    private artistService: ArtistService
+  ){};
+
   filterOption: string = "";
   @Input() filterParam: string = "";
 
-  //TO-DO: Define a variable that will store the information
   artistList: IArtist[] = [];
 
   results: IArtist[] = []
 
   ngOnInit(): void {
-    this.artistList = ARTISTS;
-    this.results = ARTISTS;
+    this.artistService.getAll().subscribe(artists => {
+      this.artistList = artists;
+      this.results = artists;
+    })
   }
 
   //TO-DO: Create a function that based of param it will show n-results
   ngOnSearch(){
     switch(this.filterOption){
       case "name": {
-        this.results = this.artistList.filter(artist => artist.name.startsWith(this.filterParam));
+        this.artistService.getByName(this.filterParam, this.artistList).subscribe(
+          artists => { this.results = artists; }
+        );
         break;
       }
       case "genre": {
