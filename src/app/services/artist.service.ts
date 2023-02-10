@@ -36,6 +36,17 @@ export class ArtistService {
                                 .name.toLowerCase().startsWith(b))));
           }
       }else if(p === "country"){
+          if(s === ":"){
+              return this.obsArtist
+              .pipe(map(items => items
+                        .filter(items => items
+                                .country.toLowerCase().startsWith(b.toLowerCase()))));
+          }else if(s === "-"){
+              return this.obsArtist
+              .pipe(map(items => items
+                        .filter(items => !items
+                                .country.toLowerCase().startsWith(b))));
+          }
 
       }else if(p === "age"){
 
