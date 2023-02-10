@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ALBUMS } from 'src/app/mocks/album.mock';
 import { IAlbum } from 'src/app/models/album.interface';
+import { AlbumsService } from 'src/app/services/albums-service/albums.service';
 
 @Component({
   selector: 'app-album-list',
@@ -11,40 +12,49 @@ export class AlbumListComponent implements OnInit {
   page: number = 1;
   param: string = '';
   results: number = 0;
+  filter: string = '';
+  typeSearch: string = '';
   albumsList: IAlbum[] = [];
+  filtersList: string[] = ['starts with', 'not starts with'];
+  typeSearchList: string[] = ['Title', 'Genre', 'Artist'];
+
+  constructor(private service: AlbumsService) {}
 
   ngOnInit(): void {
-    this.albumsList = ALBUMS;
+    this.service.getAll().subscribe((album) => (this.albumsList = album));
     this.results = this.albumsList.length;
   }
 
-  filter(typeSearch: string) {
-    if (typeSearch == 'title') {
-      const filteredList = this.albumsList.filter((item) =>
-        item.title.toLowerCase().startsWith(this.param.toLocaleLowerCase())
-      );
-      this.results = filteredList.length;
-      this.albumsList = filteredList.sort((x, y) =>
-        x.title.localeCompare(y.title)
-      );
+  ngOnSearch() {
+    this.albumsList = ALBUMS;
+
+    switch (this.typeSearch) {
+      case 'Title': {
+        this.service
+          .getByTitle(this.param, this.filter)
+          .subscribe((albums) => (this.albumsList = albums));
+        break;
+      }
+
+      case 'Genre': {
+        this.service
+          .getByGenre(this.param, this.filter)
+          .subscribe((albums) => (this.albumsList = albums));
+        break;
+      }
+
+      case 'Artist': {
+        this.service
+          .getByArtist(this.param, this.filter)
+          .subscribe((albums) => (this.albumsList = albums));
+        break;
+      }
+
+      default: {
+        this.albumsList = ALBUMS;
+        break;
+      }
     }
-    if (typeSearch == 'genre') {
-      const filteredList = this.albumsList.filter((item) =>
-        item.genre.toLowerCase().startsWith(this.param.toLocaleLowerCase())
-      );
-      this.results = filteredList.length;
-      this.albumsList = filteredList.sort((x, y) =>
-        x.title.localeCompare(y.title)
-      );
-    }
-    if (typeSearch == 'artist') {
-      const filteredList = this.albumsList.filter((item) =>
-        item.artist.toLowerCase().startsWith(this.param.toLocaleLowerCase())
-      );
-      this.results = filteredList.length;
-      this.albumsList = filteredList.sort((x, y) =>
-        x.artist.localeCompare(y.artist)
-      );
-    }
+    this.results = this.albumsList.length;
   }
 }
