@@ -1,14 +1,29 @@
 <div class="container-fluid">
     <div class="search-container" [ngStyle]="{display: 'flex', flexDirection:'row', margin: '10px 10px 10px 13px '}">
         <div ngClass="albumTxt">
-            <input class="form-control" type="text" placeholder="Enter text" [(ngModel)]="param" (keydown.backspace)="ngOnInit()" />
+            <input class="form-control" type="text" placeholder="Enter text" [(ngModel)]="param"
+                (keydown.backspace)="ngOnInit()" />
         </div>
-        <div ngClass="albumOps">
+        <!--<div ngClass="albumOps">
             <input class="btn btn-info" type="button" value="Title" (click)="ngOnSearch(param, 'title')" />
             <input class="btn btn-info" type="button" value="Artist" (click)="ngOnSearch(param, 'artist')" />
             <input class="btn btn-info" type="button" value="Songs" (click)="ngOnSearch(param, 'songs')" />
+        </div>-->
+        <div ngClass="albumOps">
+            <select class="form-control" [(ngModel)]="typeSearch">
+                <option disable selected>Select an option</option>
+                <option selected>title</option>
+                <option selected>artist</option>
+                <option selected>songs</option>
+            </select>
         </div>
+
+        <div>
+            <input class="btn btn-info" type="button" value="Search" (click)="ngOnSearch(param, typeSearch)" />
+        </div>
+
     </div>
+
 
     <!--<form class="search-container">
         <div ngClass="albumTxt">
