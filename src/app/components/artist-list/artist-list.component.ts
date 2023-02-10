@@ -14,17 +14,20 @@ export class ArtistListComponent implements OnInit {
   @Input() param: string = "";
 
   l_artists: IArtist[] = [];
+  l_artists_filtered: IArtist[] = [];
 
   results: number = 0;
 
-  pagFrom: number = 0;
-  pagTo: number = 3;
+  //Variables for pagination
+  defaultPerPage = 2;
+  pageEvent: any;
 
   constructor(private artistService: ArtistService) {
   }
 
   ngOnInit(): void {
     this.l_artists = ARTISTS;
+    this.l_artists_filtered = this.l_artists.slice(0, this.defaultPerPage);
     this.results = this.l_artists.length;
   }
 
@@ -34,24 +37,13 @@ export class ArtistListComponent implements OnInit {
       .subscribe(observer => {
         this.l_artists = observer;
       }).unsubscribe();
+    this.l_artists_filtered = this.l_artists.slice(0, this.defaultPerPage);
     this.results = this.l_artists.length;
-    this.pagFrom = 0;
-    this.pagTo = 3;
   }
 
-  changePage(change: boolean) {
-    if (change) {
-      if (!(this.pagTo >= this.results - 1)) {
-        this.pagFrom += 4;
-        this.pagTo += 4;
-      }
-    } else if (!change) {
-      if (!(this.pagFrom <= 0)) {
-        this.pagFrom -= 4;
-        this.pagTo -= 4;
-      }
-    }
-
+  //New pagination method
+  onPaginateChange(data : any) {
+    this.l_artists_filtered = this.l_artists.slice(data.pageIndex * this.defaultPerPage, (data.pageIndex + 1) * this.defaultPerPage);
   }
 
 

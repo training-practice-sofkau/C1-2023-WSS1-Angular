@@ -1,4 +1,4 @@
-<div [ngStyle]="{display: 'flex'}">
+<div [ngStyle]="{display: 'flex',  alignItems:'flex-start'}">
   <div [ngStyle]="{marginRight:'10px'}">
     <mat-form-field>
       <mat-label>Type your search</mat-label>
@@ -14,10 +14,10 @@
         <mat-option (click)="searchObs(param,'releaseDate:')">Release Date</mat-option>
         <mat-option (click)="searchObs(param,'numberOfSongs>')">More songs than</mat-option>
         <mat-option (click)="searchObs(param,'numberOfSongs-')">Different number of songs</mat-option>
-        <mat-option (click)="searchObs(param,'reset')">Reset</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
+  <button (click)="searchObs(param,'reset')" [ngStyle]="{marginLeft:'10px'}" mat-raised-button>Reset</button>
 </div>
 
 <mat-card [ngStyle]="{display: 'flex', flexDirection:'row', marginTop:'5px'}" *ngFor="let album of l_albums_filtered">

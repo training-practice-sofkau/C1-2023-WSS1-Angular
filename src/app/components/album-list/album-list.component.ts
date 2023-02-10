@@ -18,6 +18,7 @@ export class AlbumListComponent {
   l_length: number = 0;
 
 
+  //Variables for pagination
   defaultPerPage = 2;
   pageEvent: any;
 
@@ -40,6 +41,7 @@ export class AlbumListComponent {
     this.l_length = this.l_albums_filtered.length;
   }
 
+  //New pagination method
   onPaginateChange(data : any) {
     this.l_albums_filtered = this.l_albums.slice(data.pageIndex * this.defaultPerPage, (data.pageIndex + 1) * this.defaultPerPage);
   }

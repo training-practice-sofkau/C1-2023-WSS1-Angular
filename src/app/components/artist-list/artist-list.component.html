@@ -1,45 +1,38 @@
-<div>
-  <div [ngStyle]="{display: 'flex'}">
-    <div ngClass="artistTxt" [ngStyle]="{marginTop:'5px'}">
-      <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
-    </div>
-    <div ngClass="artistOps">
-      <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="searchObs(param, 'name')">Name</button>
-      <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="searchObs(param, 'country')">Country</button>
-      <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="searchObs(param, 'age')">Age</button>
-      <button type="button" [ngStyle]="{marginTop:'5px'}" (click)="searchObs(param, 'reset')">Reset</button>
-    </div>
+<div [ngStyle]="{display: 'flex', alignItems:'flex-start'}">
+  <div [ngStyle]="{marginRight:'10px'}">
+    <mat-form-field>
+      <mat-label>Type your search</mat-label>
+      <input matInput placeholder="Ex. James" [(ngModel)]="param">
+    </mat-form-field>
   </div>
-
-  <div [ngStyle]="{display: 'flex', flexDirection:'row'}" *ngFor="let artist of l_artists; index as i">
-    <div [ngStyle]="{padding:'5px'}" *ngIf="i >= pagFrom && i <= pagTo">
-      <img src="{{artist.picture}}" alt="Album cover">
-    </div>
-    <div
-      [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px', flexDirection:'column', width:'100%'}"
-      *ngIf="i >= pagFrom && i<= pagTo">
-      id: {{artist.id}} <br/>
-      name: {{artist.name}} <br/>
-      country: {{artist.country}} <br/>
-      age: {{artist.age}} <br/>
-      year debut: {{artist.year_debut}} <br/>
-      total of albums: {{artist.total_albums}} <br/>
-    </div>
-
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Type of search</mat-label>
+      <mat-select>
+        <mat-option (click)="searchObs(param,'name:')">Name</mat-option>
+        <mat-option (click)="searchObs(param,'country:')">Country</mat-option>
+        <mat-option (click)="searchObs(param,'age:')">Age</mat-option>
+        <mat-option (click)="searchObs(param,'age<')">Age less than</mat-option>
+        <mat-option (click)="searchObs(param,'name-')">Name does not have</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-
-  <!--Implement acording to the results obtained founded: n or There are no matches-->
-  <ng-container *ngIf="results > 0; else noArtistFound ">
-    <div>
-      <button type="button" (click)="changePage(false)" *ngIf="pagFrom>0">Previous</button>
-      <button type="button" (click)="changePage(true)" *ngIf="pagTo<l_artists.length-1">Next</button>
-      <h4>Founded: {{results}}</h4>
-    </div>
-
-  </ng-container>
-  <ng-template #noArtistFound>
-    <div>
-      <h4>No artist were found</h4>
-    </div>
-  </ng-template>
+  <button (click)="searchObs(param,'reset')" [ngStyle]="{marginLeft:'10px'}" mat-raised-button>Reset</button>
 </div>
+
+<mat-card [ngStyle]="{display: 'flex', flexDirection:'row', marginTop:'5px'}" *ngFor="let artist of l_artists_filtered; index as i">
+  <div [ngStyle]="{padding:'5px'}">
+    <img src="{{artist.picture}}" alt="Album cover">
+  </div>
+  <div [ngStyle]="{flexDirection:'column', width:'100%'}">
+    <h4>{{artist.id}}</h4>
+    <h4>name: {{artist.name}}</h4>
+    <h4>country: {{artist.country}}</h4>
+    <h4>age: {{artist.age}}</h4>
+    <h4>year debut: {{artist.year_debut}}</h4>
+    <h4>total of albums: {{artist.total_albums}}</h4>
+  </div>
+
+</mat-card>
+<mat-paginator [length]="l_artists.length" [pageSize]="defaultPerPage" aria-label="Select page" (page)="pageEvent = $event; onPaginateChange($event)">
+</mat-paginator>

@@ -11,19 +11,29 @@ export class ArtistService {
   }
 
   search(typeSearch: string, artist: IArtist[], param: string): Observable<IArtist[]> {
-    if (typeSearch === "name") {
+    if (typeSearch === "name:") {
       return new Observable<IArtist[]>(observer => {
         observer.next(artist.filter(a => a.name.includes(param)));
         observer.complete();
       });
-    } else if (typeSearch === "country") {
+    } else if (typeSearch === "country:") {
       return new Observable<IArtist[]>(observer => {
         observer.next(artist.filter(a => a.country.includes(param)));
         observer.complete();
       });
-    } else if (typeSearch === "age") {
+    } else if (typeSearch === "age:") {
       return new Observable<IArtist[]>(observer => {
         observer.next(artist.filter(a => a.age == Number(param)));
+        observer.complete();
+      });
+    } else if (typeSearch === "age<") {
+      return new Observable<IArtist[]>(observer => {
+        observer.next(artist.filter(a => a.age <= Number(param)));
+        observer.complete();
+      });
+    } else if (typeSearch === "name-") {
+      return new Observable<IArtist[]>(observer => {
+        observer.next(artist.filter(a => !a.name.includes(param)));
         observer.complete();
       });
     }
