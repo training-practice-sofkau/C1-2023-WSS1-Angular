@@ -1,12 +1,12 @@
 <div ngClass="artistSearch">
     <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
+        <input type="text" placeholder="Enter text" (keyup)="ngOnSearch()" [(ngModel)]="param"/>
     </div>
-    <div ngClass="artistOptions">
-        <input type="radio" name="opt" (click)="ngOnSearch(param, 'name')"/> Name
-        <input type="radio" name="opt" (click)="ngOnSearch(param, 'country')"/> Country
-        <input type="radio" name="opt" (click)="ngOnSearch(param, 'age')"/> Age
-    </div>
+    <!-- <div ngClass="artistOptions"> -->
+    <!--     <input type="radio" value="name" name="opt" [ngModel]="filter" (change)="ngOnSearch()"/> Name -->
+    <!--     <input type="radio" value="country" name="opt" [ngModel]="filter" (change)="ngOnSearch()"/> Country -->
+    <!--     <input type="radio" value="age" name="opt" [ngModel]="filter" (change)="ngOnSearch()"/> Age -->
+    <!-- </div> -->
 </div>
 
 <div *ngFor="let artist of f_artists | paginate : { itemsPerPage: 3,
