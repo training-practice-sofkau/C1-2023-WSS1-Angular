@@ -1,0 +1,49 @@
+<div [ngStyle]="{display: 'flex','margin-top':'-190px','margin-left':'250px'}">
+  <div ngClass="albumTxt">
+      <input type="text" placeholder="Search parameter" [(ngModel)]="param"/>
+  </div>
+  <select [(ngModel)]="choice">
+
+        <option value="titleInclude">Filter by title including parameter</option>
+        <option value="titleExclude">Filter by title excluding parameter</option>
+
+        <option value="dateGreat">Filter by dates greater to parameter</option>
+        <option value="dateLess">Filter by dates less to parameter</option>
+
+        <option value="genreInclude">Filter by genre including parameter</option>
+        <option value="genreExclude">Filter by genre excluding parameter</option>
+    </select>
+  <button (click)="ngOnSearch(choice)">Filter</button>
+
+
+
+
+</div>
+
+<div class="container" *ngFor="let album of l_albums | paginate: {itemsPerPage: 2, currentPage: page}">
+  <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 250px ', padding:'5px', width:'500px'}">
+    id: {{album.id}}<br/>
+    Title: {{album.title}}<br/>
+    Genre: {{album.genre}}<br/>
+    Release date: {{album.date}}<br/>
+    Number of songs: {{album.number_songs}}<br/>
+    Artist: {{album.artist}}<br/>
+  </div>
+
+</div>
+<div [ngStyle]="{margin: '10px 10px 10px 200px '}">
+<pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
+
+<!--Implement acording to the results obtained founded: n or There are no matches-->
+<ng-container *ngIf="results > 0; else noArtistFound ">
+  <div [ngStyle]="{display: 'flex',margin: '10px 10px 10px 250px'}">
+      <h4>Found: {{results}}</h4>
+  </div>
+
+</ng-container>
+<ng-template #noArtistFound>
+  <div>
+      <h4>No albums were found</h4>
+  </div>
+</ng-template>
