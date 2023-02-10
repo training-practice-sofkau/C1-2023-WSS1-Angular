@@ -7,31 +7,31 @@
       [(ngModel)]="param"
     />
   </div>
-  <div ngClass="albumOps">
+  <form>
+    <select name="searchTypes" [(ngModel)]="typeSearch">
+      <option value="">Select a type</option>
+      <option *ngFor="let type of typeSearchList" [ngValue]="type">
+        {{ type }}
+      </option>
+    </select>
+  </form>
+  <form>
+    <select name="characters" [(ngModel)]="filter">
+      <option value="">Select a condition</option>
+      <option *ngFor="let filter of filtersList" [ngValue]="filter">
+        {{ filter }}
+      </option>
+    </select>
+  </form>
+  <div Class="search-btn">
     <input
-      class="radio-btn"
-      type="radio"
+      type="submit"
+      class="search-btn"
       name="filterOption"
-      (click)="filter('title')"
+      (click)="ngOnSearch()"
     />
-    Title
-    <input
-      class="radio-btn"
-      type="radio"
-      name="filterOption"
-      (click)="filter('genre')"
-    />
-    Genre
-    <input
-      class="radio-btn"
-      type="radio"
-      name="filterOption"
-      (click)="filter('artist')"
-    />
-    Artist
   </div>
 </div>
-
 <ng-container *ngIf="results > 0; else noAlbumFound">
   <div>
     <h4>Founded: {{ results }}</h4>
@@ -39,7 +39,7 @@
 </ng-container>
 <ng-template #noAlbumFound>
   <div>
-    <h4>No album were found</h4>
+    <h4>No albums were found</h4>
   </div>
 </ng-template>
 
