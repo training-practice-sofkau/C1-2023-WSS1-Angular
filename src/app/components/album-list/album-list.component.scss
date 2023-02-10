@@ -1,4 +1,4 @@
-button{
+button {
   margin: 0 5px 0 5px;
   background-color: lightseagreen;
   border-radius: 5px;
@@ -6,17 +6,17 @@ button{
   box-shadow: 0 0 3px gray;
 }
 
-button:hover{
+button:hover {
   cursor: pointer;
   box-shadow: 0 0 4px darkgray;
 }
 
-button:active{
+button:active {
   cursor: pointer;
   box-shadow: none;
 }
 
-img{
+img {
   width: 120px;
   height: 120px;
   border-radius: 5px;

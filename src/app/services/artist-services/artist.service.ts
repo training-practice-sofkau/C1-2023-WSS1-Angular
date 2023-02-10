@@ -1,36 +1,36 @@
-import { Injectable } from '@angular/core';
-import { Observable} from 'rxjs';
-import { ARTISTS } from 'src/app/mocks/artist.mock';
-import { IArtist } from 'src/app/models/artist.interface';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {IArtist} from "../../models/artist.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistService {
 
-  constructor() { }
-
-  //TO-DO: All the functionalities related to artist
-  getAll(): Observable<IArtist[]> {
-  
-    let obsArtist: Observable<IArtist[]> = new Observable(observer => {
-      observer.next(ARTISTS);
-      observer.complete();
-    });
-
-    return obsArtist;
-
+  constructor() {
   }
 
-  /*getByName(){
+  search(typeSearch: string, artist: IArtist[], param: string): Observable<IArtist[]> {
+    if (typeSearch === "name") {
+      return new Observable<IArtist[]>(observer => {
+        observer.next(artist.filter(a => a.name.includes(param)));
+        observer.complete();
+      });
+    } else if (typeSearch === "country") {
+      return new Observable<IArtist[]>(observer => {
+        observer.next(artist.filter(a => a.country.includes(param)));
+        observer.complete();
+      });
+    } else if (typeSearch === "age") {
+      return new Observable<IArtist[]>(observer => {
+        observer.next(artist.filter(a => a.age == Number(param)));
+        observer.complete();
+      });
+    }
+    return new Observable<IArtist[]>(observer => {
+      observer.next(artist);
+      observer.complete();
+    });
+  }
 
-  }*/
-
-  /*getByCountry(){
-
-  }*/
-
-  /*getByDateDebut(){
-
-  }*/
 }

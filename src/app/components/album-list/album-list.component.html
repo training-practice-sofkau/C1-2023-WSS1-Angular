@@ -14,7 +14,9 @@
   <div [ngStyle]="{padding:'5px'}" *ngIf="i >= pagFrom && i<= pagTo">
     <img src="{{album.picture}}" alt="Album cover">
   </div>
-  <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px', flexDirection:'column', width:'100%'}" *ngIf="i >= pagFrom && i<= pagTo">
+  <div
+    [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px', flexDirection:'column', width:'100%'}"
+    *ngIf="i >= pagFrom && i<= pagTo">
     id: {{album.id}} <br/>
     title: {{album.title}} <br/>
     genre: {{album.genre}} <br/>

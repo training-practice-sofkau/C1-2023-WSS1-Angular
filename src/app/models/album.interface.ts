@@ -1,4 +1,4 @@
-export interface Ialbum{
+export interface Ialbum {
   id: number,
   title: string,
   genre: string,

@@ -28,11 +28,13 @@ export class AlbumListComponent {
 
 
   searchObs(param: string, typeSearch: string) {
-    this.albumService.search(typeSearch,ALBUMS,param)
-      .subscribe(observer =>{
+    this.albumService.search(typeSearch, ALBUMS, param)
+      .subscribe(observer => {
         this.l_albums = observer;
       }).unsubscribe();
     this.l_length = this.l_albums.length;
+    this.pagFrom = 0;
+    this.pagTo = 3;
   }
 
   changePage(change: boolean) {
