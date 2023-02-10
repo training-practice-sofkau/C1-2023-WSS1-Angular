@@ -15,8 +15,8 @@ export class AlbumListComponent implements OnInit {
   filter: string = '';
   typeSearch: string = '';
   albumsList: IAlbum[] = [];
-  filtersList: string[] = ['starts with', 'not starts with'];
   typeSearchList: string[] = ['Title', 'Genre', 'Artist'];
+  filtersList: string[] = ['Starts with', 'Not starts with'];
 
   constructor(private service: AlbumsService) {}
 
