@@ -1,35 +1,65 @@
-<div [ngStyle]="{display: 'flex'}">
-    <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
+<div class="search_bar">
+  <select name="Filter.by" id="filter-by" [(ngModel)]="searchBy">
+    <option disabled selected [value]="0">seach by</option>
+    <option [value]="1">Name</option>
+    <option [value]="2">Country</option>
+    <option [value]="3">Age</option>
+  </select>
+  <select name="Filter.operator" [(ngModel)]="searchOperator">
+    <option [value]="1">=</option>
+    <option *ngIf="searchBy == 3" [value]="2">></option>
+    <option *ngIf="searchBy == 3" [value]="3"><</option>
+    <option [value]="4">-</option>
+  </select>
+  <div class="input-text">
+    <input type="text" placeholder="Enter text" [(ngModel)]="searchParam" />
+  </div>
+  <button (click)="ngOnSearch()" class="green-button">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="3vh"
+      height="3vh"
+      fill="currentColor"
+      viewBox="0 0 15 15"
+    >
+      <path
+        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+      />
+    </svg>
+  </button>
+  <ng-container *ngIf="results > 0; else noArtistFound">
+    <div class="search-results">
+      <h4 class="result_text">{{ results }} albums found</h4>
     </div>
-    <div ngClass="artistOps">
-        <input type="radio" (click)="ngOnSearch(param, 'name')"/> Name
-        <input type="radio"/> Country
-        <input type="radio"/> Age
-    </div>
+  </ng-container>
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
-    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
-        id: {{artist.id}} <br/>
-        name: {{artist.name}} <br/>
-        country: {{artist.country}} <br/>
-        age: {{artist.age}} <br/>
-        year debut: {{artist.year_debut}} <br/>
-        total of albums: {{artist.total_albums}} <br/>
+<div class="results_body" *ngIf="results>0">
+  <div class="entry_card" *ngFor="let artist of searchResulst">
+    <img
+      [src]="'../../../assets/artist_images/' + artist.name + '.png'"
+      [alt]="artist.name"
+    />
+    <div class="card-info">
+      <h3>
+        {{ artist.name }} <span>({{ artist.age }})</span>
+      </h3>
+      <h4>
+        {{ artist.country }} • {{ artist.year_debut }} •
+        {{ artist.total_albums }} albums
+      </h4>
     </div>
-  
+  </div>
 </div>
 
-<!--Implement acording to the results obtained founded: n or There are no matches-->
-<ng-container *ngIf="results > 0; else noArtistFound ">
-    <div>
-        <h4>Founded: {{results}}</h4>
-    </div>
-
+<!--Implement acording to the results obtained: "n" or "There are no matches"-->
+<ng-container *ngIf="results > 0; else noArtistFound">
+  <div>
+    <h4 class="result_text">{{ results }} albums found</h4>
+  </div>
 </ng-container>
 <ng-template #noArtistFound>
-    <div>
-        <h4>No artist were found</h4>
-    </div>
+  <div>
+    <h4 class="result_text">No artist were found</h4>
+  </div>
 </ng-template>

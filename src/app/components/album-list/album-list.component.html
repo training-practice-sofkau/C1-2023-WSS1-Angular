@@ -1,1 +1,60 @@
-<p>album-list works!</p>
+<div class="search_bar">
+  <select name="Filter.by" id="filter-by" [(ngModel)]="searchBy">
+    <option disabled selected [value]="0">seach by</option>
+    <option [value]="1">Title</option>
+    <option [value]="2">Genre</option>
+    <option [value]="3">Artist</option>
+  </select>
+  <select name="Filter.operator" [(ngModel)]="searchOperator">
+    <option [value]="1">=</option>
+    <option [value]="4">-</option>
+  </select>
+  <div class="input-text">
+    <input type="text" placeholder="Enter text" [(ngModel)]="searchParam" />
+  </div>
+  <button (click)="ngOnSearch()" class="green-button">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="3vh"
+      height="3vh"
+      fill="currentColor"
+      viewBox="0 0 15 15"
+    >
+      <path
+        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+      />
+    </svg>
+  </button>
+  <ng-container *ngIf="results > 0; else noArtistFound">
+    <div class="search-results">
+      <h4 class="result_text">{{ results }} albums found</h4>
+    </div>
+  </ng-container>
+</div>
+
+
+<div class="results_body" *ngIf="results>0">
+  <div class="entry_card" *ngFor="let album of searchResulst">
+    <img
+      [src]="'../../../assets/album_images/' + album.title + '.png'"
+      [alt]="album.title"
+    />
+    <div class="card-info">
+      <h3>{{ album.title }}</h3>
+      <h4>{{ album.artist }} • {{ album.release_date }} • {{ album.number_of_songs }} canciones</h4>
+      <h3 id="genre">{{ album.genre }}</h3>
+    </div>
+  </div>
+</div>
+
+<!--Implement acording to the results obtained founded: n or There are no matches-->
+<ng-container *ngIf="results > 0; else noArtistFound">
+  <div>
+    <h4 class="result_text">{{ results }} albums found</h4>
+  </div>
+</ng-container>
+<ng-template #noArtistFound>
+  <div>
+    <h4 class="result_text">No albums were found</h4>
+  </div>
+</ng-template>
