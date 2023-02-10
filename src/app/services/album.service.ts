@@ -18,4 +18,13 @@ export class AlbumService {
     });
     return obsArtist;
   }
+
+  getByName(filterParam: string, albumList: IAlbum[]): Observable<IAlbum[]> {
+
+    let obsArtist: Observable<IAlbum[]> = new Observable(observer =>{
+      observer.next(albumList.filter(album => album.title.startsWith(filterParam)));
+      observer.complete();
+    });
+    return obsArtist;
+  }
 }

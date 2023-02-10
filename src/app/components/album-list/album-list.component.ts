@@ -27,16 +27,20 @@ export class AlbumListComponent implements OnInit {
     })
   }
 
-  /*
+
   //TO-DO: Create a function that based of param it will show n-results
   ngOnSearch(){
     switch(this.filterOption){
       case "name": {
-        this.artistService.getByName(this.filterParam, this.artistList).subscribe(
-          artists => { this.results = artists; }
+        this.albumService.getByName(this.filterParam, this.albumList).subscribe(
+          albums => { this.results = albums; }
         );
         break;
       };
+    }
+  }
+}
+      /*
       case "genre": {
         this.artistService.getByGenre(this.filterParam, this.artistList).subscribe(
           artists => { this.results = artists;}
@@ -50,5 +54,5 @@ export class AlbumListComponent implements OnInit {
         break;
       };
     };
-  }; */
+  };
 }
