@@ -12,13 +12,13 @@
     margin: 40px 0px 0px 10px;
 }
 
-.container-fluid{
+.container-fluid {
     padding: 16px 16px 16px 16px;
     width: 100%;
     height: 88%;
 }
 
-.search-container{
+.search-container {
     display: flex;
     align-items: center;
 }
@@ -33,32 +33,42 @@
     margin-left: calc(-.5 * var(--bs-gutter-x));
 }
 
-.card{
+.card {
     display: flex;
     //flex-direction:row;
     background-color: pink;
     margin: 10px 10px 10px 13px;
-    padding:5px;
-    text-align: left;
-}
-.card-body{
+    padding: 5px;
     text-align: left;
 }
 
-.artistOps{
-    margin-left: 10pt;
-    
+.card-body {
+    text-align: left;
 }
+
+.artistOps {
+    margin-left: 10pt;
+
+}
+
 .btn {
     margin-right: 10pt;
     margin-left: 10pt;
 }
 
-.found{
+
+
+.img-fluid {
+    width: 100px;
+    height: 100px;
+    
+}
+
+.found {
     margin: 20px 10px 10px 0px;
 }
 
-.pagination{
+.pagination {
     display: flex;
     justify-content: center;
     align-items: center;

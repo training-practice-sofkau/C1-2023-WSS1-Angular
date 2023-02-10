@@ -21,15 +21,17 @@
         <div class="card" *ngFor="let artist of l_artists
 | paginate: { itemsPerPage: 3, currentPage: p }">
             <div class="card-header">
-                <h5 class="card-title">Album</h5>
-                <img src="..." class="img-fluid rounded-start" alt="...">
+                <h5 class="card-title">Artist</h5>
+                <div>
+                <img class="imgContainer" src={{artist.image}} class="img-fluid rounded-start" alt="...">
+            </div>
             </div>
             <div class="card-body">
-                <strong>Name:</strong>{{artist.name}} <br />
-                <strong>Country:</strong>: {{artist.country}} <br />
-                <strong> Age:</strong>{{artist.age}} <br />
-                <strong> Debut Year:</strong>{{artist.year_debut}} <br />
-                <strong>Total albums:</strong> {{artist.total_albums}} <br />
+                <strong>Name: </strong>{{artist.name}} <br />
+                <strong>Country: </strong>: {{artist.country}} <br />
+                <strong> Age: </strong>{{artist.age}} <br />
+                <strong> Debut Year: </strong>{{artist.year_debut}} <br />
+                <strong>Total albums: </strong> {{artist.total_albums}} <br />
             </div>
 
         </div>
