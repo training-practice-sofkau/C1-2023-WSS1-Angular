@@ -19,7 +19,7 @@ export class ArtistListComponent implements OnInit, OnChanges {
   results: number = 0;
   p: number = 1;
 
-  constructor(private service:ArtistService){}
+  constructor(private service: ArtistService) { }
 
   ngOnInit(): void {
     this.service.getAll().subscribe((artist) => this.l_artists = artist);
@@ -32,15 +32,48 @@ export class ArtistListComponent implements OnInit, OnChanges {
 
     switch (this.typeSearch) {
       case "name": {
-          this.service.getByName(param).subscribe(artists => this.l_artists= artists);
+        if (this.searchStrategy === "Starts with") {
+          this.service.getByName(param).subscribe(artists => this.l_artists = artists)
+        };
+        if (this.searchStrategy === "Not starts with") {
+          this.service.getByNotName(param).subscribe(artists => this.l_artists = artists)
+        };
+        if (this.searchStrategy === "More than") {
+          this.service.getByMoreName(param).subscribe(artists => this.l_artists = artists)
+        };
+        if (this.searchStrategy === "Less than") {
+          this.service.getByLessName(param).subscribe(artists => this.l_artists = artists)
+        };
         break;
       }
       case "country": {
-          this.service.getByCountry(param).subscribe(artists => this.l_artists= artists);
+        if (this.searchStrategy === "Starts with") {
+        this.service.getByCountry(param).subscribe(artists => this.l_artists = artists)
+        };
+        if (this.searchStrategy === "Not starts with") {
+          this.service.getByNotCountry(param).subscribe(artists => this.l_artists = artists)
+        };
+        if (this.searchStrategy === "More than") {
+          this.service.getByMoreCountry(param).subscribe(artists => this.l_artists = artists)
+        };
+        if (this.searchStrategy === "Less than") {
+          this.service.getByLessCountry(param).subscribe(artists => this.l_artists = artists)
+        };
         break;
       }
       case "age": {
-          this.service.getByAge(param).subscribe(artists => this.l_artists= artists);
+        if (this.searchStrategy === "Starts with") {
+        this.service.getByAge(param).subscribe(artists => this.l_artists = artists)
+        };
+        if (this.searchStrategy === "Not starts with") {
+          this.service.getByNotAge(param).subscribe(artists => this.l_artists = artists)
+        };
+        if (this.searchStrategy === "More than") {
+          this.service.getByMoreAge(param).subscribe(artists => this.l_artists = artists)
+        };
+        if (this.searchStrategy === "Less than") {
+          this.service.getByLessAge(param).subscribe(artists => this.l_artists = artists)
+        };
         break;
       }
       default: {
