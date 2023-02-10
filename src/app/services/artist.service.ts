@@ -49,6 +49,29 @@ export class ArtistService {
           }
 
       }else if(p === "age"){
+          if(s === ":"){
+              return this.obsArtist
+              .pipe(map(items => items
+                        .filter(items => items
+                                .age.toString().toLowerCase().startsWith(b.toLowerCase()))));
+          }else if(s === "-"){
+              return this.obsArtist
+              .pipe(map(items => items
+                        .filter(items => !items
+                                .age.toString().toLowerCase().startsWith(b))));
+          
+         }else if(s === ">"){
+              return this.obsArtist
+              .pipe(map(items => items
+                        .filter(items => items
+                                .age > parseInt(b, 10))));
+          
+          }else if(s === "<"){
+              return this.obsArtist
+              .pipe(map(items => items
+                        .filter(items => items
+                                .age < parseInt(b, 10))));
+          }
 
       }
 
