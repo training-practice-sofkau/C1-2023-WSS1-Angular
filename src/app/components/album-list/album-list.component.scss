@@ -4,17 +4,19 @@ html *{
 };
 
 @media screen and (min-width: 40em) {
-.search-bar{
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-gap: 15px;
-  div {
-    padding: 10px;
-    label {
-      margin-right: 5px;
+  .search-bar{
+    display: grid;
+    grid-template-columns: 1fr 2fr 4fr;
+    grid-gap: 15px;
+    div {
+      justify-content: right;
+      align-items: left;
+      padding: 10px;
+      label {
+        margin-right: 5px;
+      };
     };
-  };
-}
+  }
 
 .album-details-container{
   display: grid;
