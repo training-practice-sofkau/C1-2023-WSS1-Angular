@@ -24,6 +24,7 @@ $gray-color: mat.$gray-palette;
 
 .content {
   display: flex;
+  justify-content: center;
   margin: 82px auto 62px;
   flex-direction: row;
   height: 80vh;
@@ -44,8 +45,10 @@ $gray-color: mat.$gray-palette;
 
 .results {
   display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
-  width: 100%;
+  width: fit-content;
   border-radius: 10px;
   border: 1px solid #33333333;
   margin: 1%;

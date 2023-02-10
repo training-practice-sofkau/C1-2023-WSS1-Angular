@@ -21,16 +21,15 @@
 </div>
 
 <mat-card [ngStyle]="{display: 'flex', flexDirection:'row', marginTop:'5px'}" *ngFor="let artist of l_artists_filtered; index as i">
-  <div [ngStyle]="{padding:'5px'}">
+  <div [ngStyle]="{padding:'5px', marginRight:'10px'}">
     <img src="{{artist.picture}}" alt="Album cover">
   </div>
   <div [ngStyle]="{flexDirection:'column', width:'100%'}">
-    <h4>{{artist.id}}</h4>
-    <h4>name: {{artist.name}}</h4>
-    <h4>country: {{artist.country}}</h4>
-    <h4>age: {{artist.age}}</h4>
-    <h4>year debut: {{artist.year_debut}}</h4>
-    <h4>total of albums: {{artist.total_albums}}</h4>
+    <h4>Name: {{artist.name}}</h4>
+    <h4>Country: {{artist.country}}</h4>
+    <h4>Age: {{artist.age}}</h4>
+    <h4>Year debut: {{artist.year_debut}}</h4>
+    <h4>Total of albums: {{artist.total_albums}}</h4>
   </div>
 
 </mat-card>
