@@ -61,14 +61,34 @@ export class AlbumService {
     return obsAlbum;
   }
 
+  getBySongs(songs: string): Observable<IAlbum[]> {
+    let obsAlbum: Observable<IAlbum[]> = this.getAll();
+    if(songs.startsWith("<")){
+      var songsNumber: number = +songs.substring(1);
+      obsAlbum = obsAlbum.pipe(
+        map((albums: IAlbum[]) => albums.filter(
+          (album:IAlbum) => album.songs <= songsNumber )));
+    }else if(songs.startsWith(">")){
+      var songsNumber: number = +songs.substring(1);
+      obsAlbum = obsAlbum.pipe(
+        map((albums: IAlbum[]) => albums.filter(
+          (album:IAlbum) => album.songs > songsNumber )));
+    }
+    else if(songs.startsWith("-")){
+      var songsNumber: number = +songs.substring(1);
+      obsAlbum = obsAlbum.pipe(
+        map((albums: IAlbum[]) => albums.filter(
+          (album:IAlbum) => album.songs != songsNumber )));
+    }
+    return obsAlbum;
+  }
+
   /*
   
 
   
 
-  getBySongs(){
-
-  }
+  
   
   */
 }
