@@ -1,6 +1,12 @@
 .artistSearch {
     display: flex;
-    margin: 2em;
+    justify-content: center;
+    align-items: center;
+}
+
+.artistSearch-imput {
+    display: flex;
+    margin: 1em;
 }
 
 

@@ -13,7 +13,7 @@
     </ng-container>
 </div>
 
-<div *ngFor="let album of l_album | paginate : { itemsPerPage: 3,
+<div *ngFor="let album of l_albums | paginate : { itemsPerPage: 3,
     currentPage: page}"[ngClass]="{even: album.id % 2 === 0, odd: album.id % 2 !== 0}">
     <div ngClass="albumResults-album">
         <img 

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { map, Observable} from 'rxjs';
-import { ALBUM } from 'src/app/mocks/album.mock';
+import { ALBUMS } from 'src/app/mocks/album.mock';
 import { IAlbum } from 'src/app/models/album.interface';
 
-ALBUM;
+ALBUMS;
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AlbumService {
   constructor() { }
 
   obsAlbum: Observable<IAlbum[]> = new Observable((observer) => {
-      observer.next(ALBUM);
+      observer.next(ALBUMS);
       observer.complete();
   })
 
@@ -48,7 +48,7 @@ export class AlbumService {
                                 .genre.toLowerCase().startsWith(b))));
           }
 
-      }else if(p === "numberofsongs"){
+      }else if(p === "nsongs"){
           if(s === ":"){
               return this.obsAlbum
               .pipe(map(items => items

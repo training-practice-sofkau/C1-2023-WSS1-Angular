@@ -7,25 +7,26 @@ import { AlbumService } from 'src/app/services/album.service';
   templateUrl: './album-list.component.html',
   styleUrls: ['./album-list.component.scss']
 })
-export class AlbumListComponent {
+
+export class AlbumListComponent implements OnInit {
 
     constructor(private service: AlbumService){}
 
   @Input() param: string = "";
 
-  l_album: IAlbum[] = [];
+  l_albums: IAlbum[] = [];
 
   results: number = 0;
 
   page: number = 1;
   
   ngOnInit(): void {
-    this.service.getAll().subscribe((val) => {this.l_album = val})
-    this.results = this.l_album.length;
+    this.service.getAll().subscribe((val) => {this.l_albums = val})
+    this.results = this.l_albums.length;
   }
 
   ngOnSearch(){
-      let re = /(?<name>\w+)+(\W)+(\w+)/;
+      let re = /(\w+)+(\W)+(\w+)/;
       let filter = re.exec(this.param);
 
       let p = filter![1];
@@ -33,10 +34,9 @@ export class AlbumListComponent {
       let b = filter![3];
 
 
-      this.service.getByParameter(p, s, b).subscribe((val) => {this.l_album = val})
-
-      this.results = this.l_album.length
+      this.service.getByParameter(p, s, b).subscribe((val) => {this.l_albums = val})
       
+      this.results = this.l_albums.length
   }
 
 }

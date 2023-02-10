@@ -26,7 +26,7 @@ export class ArtistListComponent implements OnInit{
   }
 
   ngOnSearch(){
-      let re = /(?<name>\w+)+(\W)+(\w+)/;
+      let re = /(\w+)+(\W)+(\w+)/;
       let filter = re.exec(this.param);
 
       let p = filter![1];

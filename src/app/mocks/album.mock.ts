@@ -1,6 +1,6 @@
 import { IAlbum } from "../models/album.interface";
 
-export const ALBUM: IAlbum[] = [
+export const ALBUMS: IAlbum[] = [
     {
         id: 1,
         title: 'Kind of Blue',
