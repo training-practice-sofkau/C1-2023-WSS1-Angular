@@ -39,20 +39,7 @@
 ></app-search-bar>
 
 <div class="results_body" *ngIf="results > 0">
-  <div class="entry_card" *ngFor="let album of searchResulst">
-    <img
-      [src]="'../../../assets/album_images/' + album.title + '.png'"
-      [alt]="album.title"
-    />
-    <div class="card-info">
-      <h3>{{ album.title }}</h3>
-      <h4>
-        {{ album.artist }} • {{ album.release_date }} •
-        {{ album.number_of_songs }} canciones
-      </h4>
-      <h3 id="genre">{{ album.genre }}</h3>
-    </div>
-  </div>
+  <app-album-card *ngFor="let album of searchResulst" [album]="album" class="entry_card"></app-album-card>
 </div>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->

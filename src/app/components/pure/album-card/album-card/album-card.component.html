@@ -1,1 +1,12 @@
-<p>album-card works!</p>
+  <img
+    [src]="'../../../assets/album_images/' + album.title + '.png'"
+    [alt]="album.title"
+  />
+  <div class="card-info">
+    <h3>{{ album.title }}</h3>
+    <h4>
+      {{ album.artist }} • {{ album.release_date }} •
+      {{ album.number_of_songs }} canciones
+    </h4>
+    <h3 id="genre">{{ album.genre }}</h3>
+  </div>
