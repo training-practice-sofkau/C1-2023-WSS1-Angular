@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {Ialbum} from "../../models/album.interface";
-import {ALBUMS} from "../../mocks/album.mock";
 
 @Injectable({
   providedIn: 'root'

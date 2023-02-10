@@ -6,6 +6,7 @@ import {ArtistListComponent} from './components/artist-list/artist-list.componen
 import {AlbumListComponent} from './components/album-list/album-list.component';
 import {FormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {AppRoutingModule} from './app-routing.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
