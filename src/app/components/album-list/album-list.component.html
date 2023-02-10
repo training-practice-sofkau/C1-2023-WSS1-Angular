@@ -1,1 +1,31 @@
-<p>album-list works!</p>
+<section class="search-bar">
+  <div class="search-box">
+      <input type="text" placeholder="Enter text" [(ngModel)]="filterParam" (change)="ngOnSearch()"/>
+  </div>
+  <div class="search-options">
+    <label>Filter by</label>
+    <select name="filterOption" id="filterOption" [(ngModel)]="filterOption">
+      <option value="title">Title</option>
+      <option value="artist">Artist</option>
+      <option value="songs" (click)="ngOnSearch()">Songs</option>
+    </select>
+  </div>
+</section>
+<section class="album-results-container">
+<div class="album-details-container" *ngFor="let album of results">
+  <div>
+    <img src="{{ album.img }}">
+  </div>
+  <div class="album-details">
+    <div>
+      <strong>Title: </strong>{{ album.title }}<br>
+      <strong>Artist: </strong>{{ album.artist }}<br>
+      <strong>Genre: </strong>{{ album.genre }}<br>
+    </div>
+    <div>
+      <strong>Songs: </strong>{{ album.songs }}<br>
+      <strong>Release: </strong>{{ album.release }}<br>
+    </div>
+  </div>
+</div>
+</section>

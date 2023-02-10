@@ -1,8 +1,9 @@
-export interface IArtist{
+export interface IArtist {
     id: number,
     name: string,
+    genre: string,
+    created: string,
     country: string,
-    age: number,
-    year_debut: number,
-    total_albums: number
+    albums: number,
+    img: string;
 }
