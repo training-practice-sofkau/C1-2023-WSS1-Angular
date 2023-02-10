@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ALBUMS } from '../../mocks/albums.mock';
 import { IAlbum } from '../../models/album.interface';
+import { AlbumService } from '../../services/album-service/album.service';
 
 @Component({
   selector: 'app-album-list',
@@ -8,10 +9,12 @@ import { IAlbum } from '../../models/album.interface';
   styleUrls: ['./album-list.component.scss']
 })
 export class AlbumListComponent implements OnInit{
+
+  constructor(private albumService: AlbumService){}
+
   searchingText: string = "";
   albums: IAlbum[] = ALBUMS;
   l_albums: IAlbum[] = [];
-
   results: number = 0;
   filter: string = "title";
   p:number = 0;
@@ -21,28 +24,31 @@ export class AlbumListComponent implements OnInit{
     this.results = this.l_albums.length;
   }
 
-  ngOnSearch(){
+  ngOnSearch() {
     if (this.filter === 'title') {
-      this.l_albums = this.albums
-        .sort((a, b) => a.title.localeCompare(b.title))
-        .filter((album) =>
-          album.title.toLowerCase().includes(this.searchingText.toLowerCase())
-        );
+      this.albumService
+        .filterByTitle(this.searchingText)
+        .subscribe((albums) => (this.l_albums = albums));
     }
     if (this.filter === 'artist') {
-      this.l_albums = this.albums
-        .sort((a, b) => a.artist.localeCompare(b.artist))
-        .filter((album) =>
-          album.artist.toLowerCase().includes(this.searchingText.toLowerCase())
-        );
+      this.albumService
+        .filterByArtist(this.searchingText)
+        .subscribe((albums) => (this.l_albums = albums));
     }
     if (this.filter === 'year') {
-      this.searchingText === "" ?
-      this.l_albums = this.albums
-        .sort((a, b) => b.relase_date - a.relase_date) : 
-      this.l_albums = this.albums
-        .sort((a, b) => b.relase_date - a.relase_date)
-        .filter((album) => album.relase_date === parseInt(this.searchingText));
+      this.albumService
+        .filterByYear(this.searchingText)
+        .subscribe((albums) => (this.l_albums = albums));;
+    }
+    if (this.filter === 'minsongs') {
+      this.albumService
+        .filterMinumumSongs(this.searchingText)
+        .subscribe((albums) => (this.l_albums = albums));;
+    }
+    if (this.filter === 'nosingle') {
+      this.albumService
+        .filterNonSingles()
+        .subscribe((albums) => (this.l_albums = albums));;
     }
     this.results = this.l_albums.length;
   }

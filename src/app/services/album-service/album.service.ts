@@ -4,11 +4,10 @@ import { IAlbum } from 'src/app/models/album.interface';
 import { ALBUMS } from '../../mocks/albums.mock';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AlbumService {
-
-  constructor() { }
+  constructor() {}
 
   getAll(): Observable<IAlbum[]> {
     return new Observable((observer) => {
@@ -31,8 +30,9 @@ export class AlbumService {
   filterByArtist(searchingText: string): Observable<IAlbum[]> {
     return new Observable((observer) => {
       observer.next(
-        ALBUMS.sort((a, b) => a.artist.localeCompare(b.artist)).filter((album) =>
-          album.artist.toLowerCase().startsWith(searchingText.toLowerCase())
+        ALBUMS.sort((a, b) => a.artist.localeCompare(b.artist)).filter(
+          (album) =>
+            album.artist.toLowerCase().startsWith(searchingText.toLowerCase())
         )
       );
       observer.complete();
@@ -55,7 +55,9 @@ export class AlbumService {
   filterMinumumSongs(searchingText: string): Observable<IAlbum[]> {
     return new Observable((observer) => {
       searchingText === ''
-        ? observer.next(ALBUMS.sort((a, b) => b.number_of_songs - a.number_of_songs))
+        ? observer.next(
+            ALBUMS.sort((a, b) => b.number_of_songs - a.number_of_songs)
+          )
         : observer.next(
             ALBUMS.sort((a, b) => b.number_of_songs - a.number_of_songs).filter(
               (album) => album.number_of_songs >= parseInt(searchingText)
@@ -65,17 +67,14 @@ export class AlbumService {
     });
   }
 
-  filterNonSingles(searchingText: string): Observable<IAlbum[]> {
+  filterNonSingles(): Observable<IAlbum[]> {
     return new Observable((observer) => {
-      searchingText === ''
-        ? observer.next(ALBUMS.sort((a, b) => b.number_of_songs - a.number_of_songs))
-        : observer.next(
-            ALBUMS.sort((a, b) => b.number_of_songs - a.number_of_songs).filter(
-              (album) => album.number_of_songs > 1
-            )
-          );
+      observer.next(
+        ALBUMS.sort((a, b) => b.number_of_songs - a.number_of_songs).filter(
+          (album) => album.number_of_songs > 1
+        )
+      );
       observer.complete();
     });
   }
-
 }
