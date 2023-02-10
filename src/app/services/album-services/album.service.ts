@@ -27,6 +27,7 @@ export class AlbumService {
         observer.next(resp);
         observer.complete();
       });
+
     });
 
     return obsAlbum;

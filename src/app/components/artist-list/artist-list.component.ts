@@ -40,7 +40,7 @@ export class ArtistListComponent implements OnInit{
     if (choice == 'nameInclude')this.service.getByNameInclude(this.param).subscribe((artist) => (this.l_artists = artist));
     if (choice == 'nameExclude')this.service.getByNameExclude(this.param).subscribe((artist) => (this.l_artists = artist));
     if (choice == 'ageGreat')this.service.getByAgeGreat(Number(this.param)).subscribe((artist) => (this.l_artists = artist));
-    if (choice == 'ageLess')this.service.getByAgeGreat(Number(this.param)).subscribe((artist) => (this.l_artists = artist));
+    if (choice == 'ageLess')this.service.getByAgeLess(Number(this.param)).subscribe((artist) => (this.l_artists = artist));
     if (choice == 'countryInclude')this.service.getByCountryInclude(this.param).subscribe((artist) => (this.l_artists = artist));
     if (choice == 'countryExclude')this.service.getByCountryExclude(this.param).subscribe((artist) => (this.l_artists = artist));
 
