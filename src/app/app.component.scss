@@ -7,6 +7,79 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.wrapper {
+    display: grid; 
+    grid-template-columns: 20% 70%; 
+    grid-template-rows: 0.1fr 1fr; 
+    gap: 10px 10px; 
+    grid-template-areas: 
+    "nav nav nav"
+    "links main main"
+    "links main main"; 
+}
+
+.main { 
+    grid-area: main;
+    background-color: purple;
+}
+
+.toolbar {
+    grid-area: nav;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #3d13a0cc;
+    font-weight: 600;
+    font-size: 30px;
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.links {
+    height: 590px;
+    grid-area: links;
+    background-color: #3d13a0a9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        list-style: none;
+        margin: 50px 30px;
+        padding: 0;
+        height: 150px;
+    }
+
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .footer {
+        display: flex;
+        align-items: center;
+        color: white;
+        font-weight: 600;
+        margin-bottom: 30px;
+
+        img {
+            margin: 0 16px;
+        }
+    }
+}
+
+
 .artist {
     display: flex;
     flex-direction: column;
@@ -19,43 +92,8 @@
     align-items: center;
 }
 
-.footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #3d13a0a9;
-    color: white;
-    font-weight: 600;
-}
-
-.footer img {
-    margin: 0 16px;
-}
 
 
-.content {
-    display: flex;
-    margin: 82px auto 82px;
-    padding: 0 16px;
-    flex-direction: column;
-}
-
-.toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #3d13a0cc;
-    color: white;
-    font-weight: 600;
-}
 
 .toolbar img {
     margin: 0 16px;
