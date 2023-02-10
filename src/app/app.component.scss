@@ -20,7 +20,10 @@
 
 .main { 
     grid-area: main;
-    background-color: purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
 }
 
 .toolbar {
