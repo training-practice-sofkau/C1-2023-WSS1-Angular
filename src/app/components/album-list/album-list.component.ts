@@ -9,9 +9,7 @@ import { AlbumService } from 'src/app/services/album.service';
   styleUrls: ['./album-list.component.scss'],
 })
 export class AlbumListComponent {
-
   constructor(private albumService: AlbumService) {}
-
 
   albums: IAlbum[] = [];
   searchResulst: IAlbum[] = [];
@@ -32,7 +30,7 @@ export class AlbumListComponent {
   ngOnSearch() {
     switch (Number(this.searchBy)) {
       case 0:
-        alert("Select an option to proceed with the filter")
+        alert('Select an option to proceed with the filter');
         break;
       case 1:
         this.albumService
@@ -41,7 +39,6 @@ export class AlbumListComponent {
             this.searchResulst = albums;
             this.results = albums.length;
             this.results = this.searchResulst.length;
-            this.searchParam = '';
           });
         break;
       case 2:
@@ -51,22 +48,26 @@ export class AlbumListComponent {
             this.searchResulst = albums;
             this.results = albums.length;
             this.results = this.searchResulst.length;
-            this.searchParam = '';
           });
         break;
       case 3:
         this.albumService
-        .filterByArtist(this.albums, this.searchOperator, this.searchParam)
-        .subscribe((albums) => {
-          this.searchResulst = albums;
-          this.results = albums.length;
-          this.results = this.searchResulst.length;
-          this.searchParam = '';
-        });
-      break;
+          .filterByArtist(this.albums, this.searchOperator, this.searchParam)
+          .subscribe((albums) => {
+            this.searchResulst = albums;
+            this.results = albums.length;
+            this.results = this.searchResulst.length;
+          });
+        break;
       default:
         console.error('Error filtering the list');
         break;
     }
+  }
+  event(selection: any) {
+    this.searchParam=selection[0];
+    this.searchBy=selection[1];
+    this.searchOperator=selection[2];
+    this.ngOnSearch()
   }
 }

@@ -10,7 +10,6 @@ import { ArtistService } from 'src/app/services/artist.service';
   styleUrls: ['./artist-list.component.scss'],
 })
 export class ArtistListComponent implements OnInit {
-
   constructor(private artistService: ArtistService) {}
 
   artists: IArtist[] = [];
@@ -31,7 +30,7 @@ export class ArtistListComponent implements OnInit {
   ngOnSearch() {
     switch (Number(this.searchBy)) {
       case 0:
-        alert("Select an option to proceed with the filter")
+        alert('Select an option to proceed with the filter');
         break;
       case 1:
         this.artistService
@@ -40,7 +39,6 @@ export class ArtistListComponent implements OnInit {
             this.searchResulst = artists;
             this.results = artists.length;
             this.results = this.searchResulst.length;
-            this.searchParam = '';
           });
         break;
       case 2:
@@ -50,40 +48,40 @@ export class ArtistListComponent implements OnInit {
             this.searchResulst = artists;
             this.results = artists.length;
             this.results = this.searchResulst.length;
-            this.searchParam = '';
           });
         break;
       case 3:
-        if(this.searchParam==""){
+        if (this.searchParam == '') {
           this.artistService
-          .filterByAge(
-            this.artists,
-            this.searchOperator,
-            0
-          )
-          .subscribe((artists) => {
-            this.searchResulst = artists;
-            this.results = artists.length;
-            this.results = this.searchResulst.length;
-            this.searchParam = '';
-          });
-        }else{
-        this.artistService
-          .filterByAge(
-            this.artists,
-            this.searchOperator,
-            Number(this.searchParam)
-          )
-          .subscribe((artists) => {
-            this.searchResulst = artists;
-            this.results = artists.length;
-            this.results = this.searchResulst.length;
-            this.searchParam = '';
-          });}
+            .filterByAge(this.artists, this.searchOperator, 0)
+            .subscribe((artists) => {
+              this.searchResulst = artists;
+              this.results = artists.length;
+              this.results = this.searchResulst.length;
+            });
+        } else {
+          this.artistService
+            .filterByAge(
+              this.artists,
+              this.searchOperator,
+              Number(this.searchParam)
+            )
+            .subscribe((artists) => {
+              this.searchResulst = artists;
+              this.results = artists.length;
+              this.results = this.searchResulst.length;
+            });
+        }
         break;
       default:
         console.error('Error filtering the list');
         break;
     }
+  }
+  event(selection: any) {
+    this.searchParam = selection[0];
+    this.searchBy = selection[1];
+    this.searchOperator = selection[2];
+    this.ngOnSearch();
   }
 }

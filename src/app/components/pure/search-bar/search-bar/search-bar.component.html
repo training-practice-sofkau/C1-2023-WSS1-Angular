@@ -1,18 +1,20 @@
-<!-- <div class="search_bar">
+<div class="search_bar">
   <select name="Filter.by" id="filter-by" [(ngModel)]="searchBy">
     <option disabled selected [value]="0">seach by</option>
-    <option [value]="1">'Title'</option>
-    <option [value]="2">'Genre'</option>
-    <option [value]="3">'Artist'</option>
+    <option *ngFor="let item of options; index as i" [value]="i + 1">
+      {{item}}
+    </option>
   </select>
   <select name="Filter.operator" [(ngModel)]="searchOperator">
     <option [value]="1">=</option>
+    <option *ngIf="searchBy==3" [value]="2">></option>
+    <option *ngIf="searchBy==3" [value]="3"><</option>
     <option [value]="4">-</option>
   </select>
   <div class="input-text">
     <input type="text" placeholder="Enter text" [(ngModel)]="searchParam" />
   </div>
-  <button (click)="ngOnSearch()" class="green-button">
+  <button (click)="search()" class="green-button">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="3vh"
@@ -30,37 +32,7 @@
       <h4 class="result_text">{{ results }} albums found</h4>
     </div>
   </ng-container>
-</div> -->
-
-<app-search-bar
-  [options]="['Title', 'Genre', 'Artist']"
-  [results]="results"
-  (buttonClick)="event($event)"
-></app-search-bar>
-
-<div class="results_body" *ngIf="results > 0">
-  <div class="entry_card" *ngFor="let album of searchResulst">
-    <img
-      [src]="'../../../assets/album_images/' + album.title + '.png'"
-      [alt]="album.title"
-    />
-    <div class="card-info">
-      <h3>{{ album.title }}</h3>
-      <h4>
-        {{ album.artist }} • {{ album.release_date }} •
-        {{ album.number_of_songs }} canciones
-      </h4>
-      <h3 id="genre">{{ album.genre }}</h3>
-    </div>
-  </div>
 </div>
-
-<!--Implement acording to the results obtained founded: n or There are no matches-->
-<ng-container *ngIf="results > 0; else noArtistFound">
-  <div>
-    <h4 class="result_text">{{ results }} albums found</h4>
-  </div>
-</ng-container>
 <ng-template #noArtistFound>
   <div>
     <h4 class="result_text">No albums were found</h4>

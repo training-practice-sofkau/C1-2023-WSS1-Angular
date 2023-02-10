@@ -6,12 +6,18 @@ import { ArtistListComponent } from './components/artist-list/artist-list.compon
 import { AlbumListComponent } from './components/album-list/album-list.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { SearchBarComponent } from './components/pure/search-bar/search-bar/search-bar.component';
+import { ArtistCardComponent } from './components/pure/artist-card/artist-card/artist-card.component';
+import { AlbumCardComponent } from './components/pure/album-card/album-card/album-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArtistListComponent,
-    AlbumListComponent
+    AlbumListComponent,
+    SearchBarComponent,
+    ArtistCardComponent,
+    AlbumCardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-<div class="search_bar">
+<!-- <div class="search_bar">
   <select name="Filter.by" id="filter-by" [(ngModel)]="searchBy">
     <option disabled selected [value]="0">seach by</option>
     <option [value]="1">Name</option>
@@ -32,7 +32,13 @@
       <h4 class="result_text">{{ results }} albums found</h4>
     </div>
   </ng-container>
-</div>
+</div> -->
+
+<app-search-bar
+  [options]="['Name', 'Country', 'Age']"
+  [results]="results"
+  (buttonClick)="event($event)"
+></app-search-bar>
 
 <div class="results_body" *ngIf="results>0">
   <div class="entry_card" *ngFor="let artist of searchResulst">
