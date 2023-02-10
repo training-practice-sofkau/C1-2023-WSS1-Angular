@@ -12,6 +12,8 @@ export class AlbumListComponent {
   albums: IAlbum[] = [];
   searchResulst: IAlbum[] = [];
   searchParam: string = '';
+  searchBy: number = 0;
+  searchOperator: number = 1;
   results: number = 0;
 
   ngOnInit(): void {

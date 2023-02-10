@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ARTISTS } from '../../mocks/artist.mock';
 import { IArtist } from '../../models/artist.interface';
+import { FormControl } from '@angular/forms';
+import { ArtistService } from 'src/app/services/artist.service';
 
 @Component({
   selector: 'app-artist-list',
@@ -9,68 +11,63 @@ import { IArtist } from '../../models/artist.interface';
 })
 export class ArtistListComponent implements OnInit {
   //TO-DO: Define a variable that will store the information
+
+  constructor(private artistService: ArtistService) {}
+
   artists: IArtist[] = [];
   searchResulst: IArtist[] = [];
   searchParam: string = '';
+  searchBy: number = 0;
+  searchOperator: number = 1;
   results: number = 0;
 
   ngOnInit(): void {
-    this.artists = ARTISTS;
-    this.searchResulst = this.artists;
-    this.results = this.artists.length;
+    this.artistService.getAll().subscribe((artists) => {
+      this.artists = artists;
+      this.searchResulst = artists;
+      this.results = this.searchResulst.length;
+    });
   }
 
-  ngOnSearch(param: any, typeSearch: string) {
-    console.log(param + ' ' + typeSearch);
-    switch (typeSearch) {
-      case 'name':
-        this.searchResulst = this.searchByName(this.artists, param);
+  ngOnSearch() {
+    switch (this.searchBy) {
+      case 1:
+        this.artistService
+          .filterByName(this.artists, this.searchOperator, this.searchParam)
+          .subscribe((artists) => {
+            this.searchResulst = artists;
+            this.results = artists.length;
+            this.results = this.searchResulst.length;
+            this.searchParam = '';
+          });
         break;
-      case 'country':
-        this.searchResulst = this.searchByCountry(this.artists, param);
+      case 2:
+        this.artistService
+          .filterByCountry(this.artists, this.searchOperator, this.searchParam)
+          .subscribe((artists) => {
+            this.searchResulst = artists;
+            this.results = artists.length;
+            this.results = this.searchResulst.length;
+            this.searchParam = '';
+          });
         break;
-      case 'age':
-        this.searchResulst = this.searchByAge(this.artists, param);
+      case 3:
+        this.artistService
+          .filterByAge(
+            this.artists,
+            this.searchOperator,
+            Number(this.searchParam)
+          )
+          .subscribe((artists) => {
+            this.searchResulst = artists;
+            this.results = artists.length;
+            this.results = this.searchResulst.length;
+            this.searchParam = '';
+          });
         break;
       default:
-        console.log('Error filtering the list');
+        console.error('Error filtering the list');
         break;
     }
-    this.results = this.searchResulst.length;
-    this.searchParam = '';
-  }
-  searchByName(artists: IArtist[], param: string) {
-    return (
-      artists
-        //.filter((artist) => artist.name.toLowerCase().includes(param.toLowerCase()))
-        .filter((artist) => this.checkCoincidence(artist.name, param))
-        .sort((a, b) => {
-          a.name.toLowerCase();
-          b.name.toLowerCase();
-          return a.name.localeCompare(b.name);
-        })
-    );
-  }
-  searchByCountry(artists: IArtist[], param: string) {
-    return artists
-      // .filter((artist) =>
-      //   artist.country.toLowerCase().includes(param.toLowerCase())
-      // )
-      .filter((artist) => this.checkCoincidence(artist.country, param))
-      .sort((a, b) => {
-        a.country.toLowerCase();
-        b.country.toLowerCase();
-        return a.country.localeCompare(b.country);
-      });
-  }
-  searchByAge(artists: IArtist[], param: number) {
-    return artists
-      .filter((artist) => artist.age == param)
-      .sort((a, b) => a.age - b.age);
-  }
-  checkCoincidence(word: string, param: string) {
-    return (
-      word.toLocaleLowerCase().slice(0, param.length) === param.toLowerCase()
-    );
   }
 }
