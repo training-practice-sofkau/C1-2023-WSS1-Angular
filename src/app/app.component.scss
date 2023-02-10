@@ -44,12 +44,16 @@
     padding-top: 11vh;
     display: flex;
     height: 87vh;
+    justify-content: stretch;
     .content {
       display: flex;
       gap: 2vh;
       padding: 0 1vw;
       flex-direction: column;
       .search-option {
+        &:hover {
+          background-color:  #79ff8f94;
+        }
         left: 0;
         right: 0;
         height: 5vh;
@@ -68,5 +72,6 @@
         }
       }
     }
+
   }
 }
