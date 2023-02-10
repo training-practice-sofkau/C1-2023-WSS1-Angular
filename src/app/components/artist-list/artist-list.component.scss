@@ -45,3 +45,37 @@ h4 {
   display: flex;
   justify-content: center;
 }
+
+select {
+  // A reset of styles, including removing the default dropdown arrow
+  appearance: none;
+  // Additional resets for further consistency
+  background-color: salmon;
+  color: white;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 5px;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+}
+
+.search-btn {
+  margin-top: 4.5px;
+  margin-left: 7px;
+  background: #a0dde6;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  text-shadow: none;
+}
+
+.search-btn:hover {
+  background: #2ab7ca;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  text-shadow: none;
+}
