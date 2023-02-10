@@ -8,13 +8,13 @@
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="results > 0; else noAlbumFound ">
-  <div>
+  <div class="foundNotfound">
       <h4>Founded: {{results}}</h4>
   </div>
 
 </ng-container>
 <ng-template #noAlbumFound>
-  <div>
+  <div class="foundNotfound">
       <h4>No albums were found</h4>
   </div>
 </ng-template>

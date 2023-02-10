@@ -28,7 +28,7 @@ import {MatSelectModule} from '@angular/material/select';
     NotFoundComponent,
     HomePageComponent,
     ArtistListMenuComponent,
-    AlbumListMenuComponent
+    AlbumListMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +36,7 @@ import {MatSelectModule} from '@angular/material/select';
     AppRoutingModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
