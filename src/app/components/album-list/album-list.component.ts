@@ -38,7 +38,6 @@ export class AlbumListComponent {
           .subscribe((albums) => {
             this.searchResulst = albums;
             this.results = albums.length;
-            this.results = this.searchResulst.length;
           });
         break;
       case 2:
@@ -47,7 +46,6 @@ export class AlbumListComponent {
           .subscribe((albums) => {
             this.searchResulst = albums;
             this.results = albums.length;
-            this.results = this.searchResulst.length;
           });
         break;
       case 3:
@@ -56,7 +54,6 @@ export class AlbumListComponent {
           .subscribe((albums) => {
             this.searchResulst = albums;
             this.results = albums.length;
-            this.results = this.searchResulst.length;
           });
         break;
       default:

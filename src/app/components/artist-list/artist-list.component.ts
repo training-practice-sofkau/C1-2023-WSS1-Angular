@@ -38,7 +38,6 @@ export class ArtistListComponent implements OnInit {
           .subscribe((artists) => {
             this.searchResulst = artists;
             this.results = artists.length;
-            this.results = this.searchResulst.length;
           });
         break;
       case 2:
@@ -47,7 +46,8 @@ export class ArtistListComponent implements OnInit {
           .subscribe((artists) => {
             this.searchResulst = artists;
             this.results = artists.length;
-            this.results = this.searchResulst.length;
+            console.log("filtering by country");
+
           });
         break;
       case 3:
@@ -57,7 +57,6 @@ export class ArtistListComponent implements OnInit {
             .subscribe((artists) => {
               this.searchResulst = artists;
               this.results = artists.length;
-              this.results = this.searchResulst.length;
             });
         } else {
           this.artistService
