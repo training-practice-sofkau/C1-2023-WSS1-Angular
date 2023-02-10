@@ -1,7 +1,15 @@
-<div class="content" role="main">
-    <div class="artistTitle" routerLink="./artist"><h2>Artist</h2></div>
+<div class="content" [ngStyle]="{'margin-top': '100px', 'margin-left': '20px', width:'180px'}" role="main">
+    <div class="artistTitle" [ngStyle]="{'text-align':'center'}" routerLink="./artist"><h2>Artist</h2></div>
     <br/>
-    <div class="albumTitle" routerLink="./album"><h2>Album</h2></div>
-    <br/>
+    <div class="albumTitle" [ngStyle]="{'text-align':'center'}" routerLink="./album"><h2>Album</h2></div>
+
+    <div class="footer">
+      <img
+        width="40"
+        alt="Copyright Logo"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Copyright-serif.svg/2048px-Copyright-serif.svg.png"
+      />
+      <span>Copyright, 2023 - Willserna</span>
+    </div>
 </div>
 <router-outlet></router-outlet>
