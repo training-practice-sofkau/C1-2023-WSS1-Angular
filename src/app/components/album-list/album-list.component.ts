@@ -12,6 +12,7 @@ export class AlbumListComponent implements OnInit {
 
   @Input() param: string = "";
   @Input() typeSearch: string = "";
+  @Input() searchStrategy: string = "";
 
   l_albums: IAlbum[] = [];
   results: number = 0;
@@ -30,15 +31,48 @@ export class AlbumListComponent implements OnInit {
 
     switch (this.typeSearch) {
       case "title": {
-        this.service.getByTitle(param).subscribe(albums => this.l_albums= albums);
+        if (this.searchStrategy === "Starts with") {
+          this.service.getByTitle(param).subscribe(albums => this.l_albums = albums)
+        };
+        if (this.searchStrategy === "Not starts with") {
+          this.service.getByNoTitle(param).subscribe(albums => this.l_albums = albums)
+        };
+        if (this.searchStrategy === "More than") {
+          this.service.getByMoreTitle(param).subscribe(albums => this.l_albums = albums)
+        };
+        if (this.searchStrategy === "Less than") {
+          this.service.getByLessTitle(param).subscribe(albums => this.l_albums = albums)
+        };
         break;
       }
       case "genre": {
-        this.service.getByGenre(param).subscribe(albums => this.l_albums= albums);
+        if (this.searchStrategy === "Starts with") {
+          this.service.getByGenre(param).subscribe(albums => this.l_albums = albums)
+        };
+        if (this.searchStrategy === "Not starts with") {
+          this.service.getByNotGenre(param).subscribe(albums => this.l_albums = albums)
+        };
+        if (this.searchStrategy === "More than") {
+          this.service.getByMoreGenre(param).subscribe(albums => this.l_albums = albums)
+        };
+        if (this.searchStrategy === "Less than") {
+          this.service.getByLessGenre(param).subscribe(albums => this.l_albums = albums)
+        };
         break;
       }
-      case "number_of_songs": {
-        this.service.getByNumberOfSongs(param).subscribe(albums => this.l_albums= albums);
+      case "number of songs": {
+        if (this.searchStrategy === "Starts with") {
+          this.service.getByNumberOfSongs(param).subscribe(albums => this.l_albums = albums)
+        };
+        if (this.searchStrategy === "Not starts with") {
+          this.service.getByNotNumberOfSongs(param).subscribe(albums => this.l_albums = albums)
+        };
+        if (this.searchStrategy === "More than") {
+          this.service.getByMoreNumberOfSongs(param).subscribe(albums => this.l_albums = albums)
+        };
+        if (this.searchStrategy === "Less than") {
+          this.service.getByLessNumberOfSongs(param).subscribe(albums => this.l_albums = albums)
+        };
         break;
       }
       default: {

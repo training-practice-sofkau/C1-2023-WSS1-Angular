@@ -10,11 +10,8 @@ export class AlbumListMenuComponent {
   typeSearch: string ="";
   param: string = "";
   paramApp: string ="";
-
-
-  ngOnOptionSelection(typeSearch: string) {
-    let newTypeSearch: string = typeSearch;
-    this.typeSearch = newTypeSearch;
-  }
+  searchStrategy: string = "";
+  typeOptions: string[] = ["title", "genre", "number of songs"];
+  strategyOptions: string[] =["Starts with", "Not starts with","More than", "Less than"] ;
 
 }

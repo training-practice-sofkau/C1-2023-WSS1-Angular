@@ -1,19 +1,24 @@
+<!-- Selectors and search -->
 <div id="option-selector" [ngStyle]="{display: 'flex'}">
   <div ngClass="albumTxt">
     <input type="text" placeholder="Enter text" [(ngModel)]="param" />
   </div>
-    <div ngClass="albumOps">
-      <input type="radio" id="albumChoice1" name="album_radio_button" (click)="ngOnOptionSelection('title')"/>
-      <label for="albumChoice1">Title</label>
 
-      <input type="radio" id="albumChoice2" name="album_radio_button" (click)="ngOnOptionSelection('genre')" />
-      <label for="albumChoice2">Genre</label>
-
-      <input type="radio" id="albumChoice3" name="album_radio_button" (click)="ngOnOptionSelection('number_of_songs')"/>
-      <label for="albumChoice3">Number of songs</label>
+    <!-- Search type selector -->
+    <div style="width:200px">
+      <mat-select [(value)]="typeSearch">
+        <mat-option *ngFor="let option of typeOptions" [value]="option">{{option}}</mat-option>
+      </mat-select>
     </div>
+  <!-- Search strategy selector -->
+  <div style="width:200px">
+    <mat-select [(value)]="searchStrategy">
+      <mat-option *ngFor="let option of strategyOptions" [value]="option">{{option}}</mat-option>
+    </mat-select>
+  </div>
 </div>
 
-<div id="list">
-  <app-album-list [typeSearch]="typeSearch" [param]='param'></app-album-list>
- </div>
+<!-- ListComponent call -->
+<app-album-list [typeSearch]="typeSearch" [param]="param" [searchStrategy]="searchStrategy">
+</app-album-list>
+<div id="list"></div>
