@@ -1,1 +1,43 @@
-<p>album-list works!</p>
+<div ngClass="albumSearch">
+    <div ngClass="albumtxt">
+        <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
+    </div>
+    <div ngClass="albumOptions">
+        <input type="radio" name="opt" (click)="ngOnSearch(param, 'title')"/> Title
+        <input type="radio" name="opt" (click)="ngOnSearch(param, 'genre')"/> Genre
+        <input type="radio" name="opt" (click)="ngOnSearch(param, 'number_of_songs')"/> Num of Songs
+    </div>
+</div>
+
+<div *ngFor="let album of f_album | paginate : { itemsPerPage: 3,
+    currentPage: page}"[ngClass]="{even: album.id % 2 === 0, odd: album.id % 2 !== 0}">
+    <div ngClass="albumResults-album">
+        <img 
+        *ngIf="album.img?.url"
+        [src]="album.img.url"
+        [alt]="album.title"
+        />
+        <div>
+            id: {{album.id}} <br/>
+            name: {{album.title}} <br/>
+            genre: {{album.genre}} <br/>
+            release date: {{album.release_date}} <br/>
+            number of songs: {{album.number_of_songs}} <br/>
+        </div>
+    </div>
+  
+</div>
+
+<pagination-controls (pageChange)="page = $event"></pagination-controls>
+<!--Implement acording to the results obtained founded: n or There are no matches-->
+<ng-container *ngIf="results > 0; else noAlbumFound ">
+    <div>
+        <h4>Founded: {{results}}</h4>
+    </div>
+
+</ng-container>
+<ng-template #noAlbumFound>
+    <div>
+       <h4>No album were found</h4>
+    </div>
+</ng-template>

@@ -1,1 +1,75 @@
+.artistSearch {
+    display: flex;
+    margin: 2em;
+}
 
+
+.artistOptions {
+    display: flex;
+    align-items: center;
+    width: 15em;
+    justify-content: space-between;
+    margin-left: 10px;
+
+    input {
+        cursor:pointer;
+    }
+}
+
+.artistResults {
+    display: 'flex';
+    flex-direction:'column';
+}
+
+.artistResults-artist {
+    display: flex;
+    margin: 10px;
+    padding: 5px;
+
+    img {
+        width: 10em;
+        height: 10em;
+        object-fit: cover;
+        padding: 1em;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+}
+
+.odd {
+    background-color: #1368a0cc;
+    width: 50em;
+    margin: 10px;
+}
+
+.even {
+    background-color: #a94dbbcc;
+    width: 50em;
+    margin: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .odd {
+      width: 20em;
+  }
+
+  .even {
+      width: 20em;
+  }
+
+
+  .artistSearch {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .artistOptions {
+      margin-top: 10px;
+  }
+
+}

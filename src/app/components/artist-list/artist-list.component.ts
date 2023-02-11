@@ -1,6 +1,7 @@
+import { group } from '@angular/animations';
 import { Component, OnInit, Input } from '@angular/core';
-import { ARTISTS } from 'src/app/mocks/artist.mock';
 import { IArtist } from 'src/app/models/artist.interface';
+import { ArtistService } from 'src/app/services/artist.service';
 
 @Component({
   selector: 'app-artist-list',
@@ -10,21 +11,49 @@ import { IArtist } from 'src/app/models/artist.interface';
 
 export class ArtistListComponent implements OnInit{
 
+    constructor(private service: ArtistService){}
+
   @Input() param: string = "";
 
-  //TO-DO: Define a variable that will store the information
   l_artists: IArtist[] = [];
+  f_artists: IArtist[] = [];
 
   results: number = 0;
+
+  page: number = 1;
   
   ngOnInit(): void {
-    this.l_artists = ARTISTS;
+    this.service.getAll().subscribe((val) => {this.f_artists = val})
+    this.service.getAll().subscribe((val) => {this.l_artists = val})
     this.results = this.l_artists.length;
   }
 
-  //TO-DO: Create a function that based of param it will show n-results
-  ngOnSearch(param: string, typeSearch: string){
-    console.log(param)
+  ngOnSearch(){
+      let re = /(?<name>\w+)+(\W)+(\w+)/;
+      let filter = re.exec(this.param);
+
+      let p = filter![1];
+      let s = filter![2];
+      let b = filter![3];
+
+      console.log(p);
+      console.log(s);
+      console.log(b);
+
+      this.service.getByParameter(p, s, b).subscribe((val) => {this.f_artists = val})
+      
+
+    // if (this.filter === "name") {
+    //     this.f_artists = this.l_artists.filter((obj) => obj.name.toLowerCase().startsWith(this.param.toLowerCase()));
+    // } else if(this.filter === "country") {
+    //     this.f_artists = this.l_artists.filter((obj) => obj.country.toLowerCase().startsWith(this.param.toLowerCase()));
+    // } else if(this.filter === "age") {
+    //     this.f_artists = this.l_artists.filter((obj) => obj.age.toString().toLowerCase().startsWith(this.param.toLowerCase()));
+    // }
+    
+
+    // this.results = this.f_artists.length
   }
+
 
 }

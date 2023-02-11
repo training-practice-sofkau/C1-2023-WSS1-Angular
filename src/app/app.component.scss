@@ -1,10 +1,22 @@
 :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: Roboto;
     font-size: 14px;
     color: #333;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.artist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.album {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .footer {
@@ -27,11 +39,9 @@
 
 .content {
     display: flex;
-    margin: 82px auto 32px;
+    margin: 82px auto 82px;
     padding: 0 16px;
-    //max-width: 960px;
     flex-direction: column;
-    //align-items: center;
 }
 
 .toolbar {
@@ -59,7 +69,7 @@
     background-color: #1368a0cc;
     color: white;
     font-weight: 600;
-    
+    cursor: pointer;
 }
 
 .artistTitle h2 {
@@ -74,8 +84,10 @@
     background-color: #a94dbbcc;
     color: white;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .albumTitle h2 {
     margin: 14px 16px;
 }
+

@@ -10,14 +10,4 @@ export class AppComponent {
   type: string ='n/a';
   paramApp: string ="";
 
-  ngOnShowList(typeSel: string){
-    if(typeSel === "album"){
-      this.type = "album";
-
-    }else if(typeSel === "artist"){
-      this.type = "artist";
-    }else{
-      this.type = "n/a";
-    }
-  }
 }
