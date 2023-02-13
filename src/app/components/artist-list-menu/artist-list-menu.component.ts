@@ -11,6 +11,6 @@ export class ArtistListMenuComponent {
   param: string = "";
   paramApp: string ="";
   searchStrategy: string = "";
-  typeOptions: string[] = ["name", "country", "age"];
+  typeOptions: string[] = ["name", "country", "age", "ID"];
   strategyOptions: string[] =["Starts with", "Not starts with","More than", "Less than"] ;
 }

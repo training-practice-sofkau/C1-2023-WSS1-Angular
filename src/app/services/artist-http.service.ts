@@ -16,4 +16,8 @@ export class ArtistHttpService {
   getAll(): Observable<any> {
     return this.http.get(this.api);
   }
+
+  getByID(param: string): Observable<any> {
+    return this.http.get(this.api+"/"+param);
+  }
 }

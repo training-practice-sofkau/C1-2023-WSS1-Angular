@@ -20,7 +20,7 @@ export class ArtistListComponent implements OnInit, OnChanges {
   results: number = 0;
   p: number = 1;
 
-  artist_f: IArtist = {
+/*   artist_f: IArtist = {
     artistID: '',
     name: '',
     country: '',
@@ -28,7 +28,7 @@ export class ArtistListComponent implements OnInit, OnChanges {
     debutDate: new Date(),
     type: '',
     enterprise: ''
-  };
+  }; */
 
   constructor(private service1: ArtistHttpService, private service: ArtistService) { }
 
@@ -96,8 +96,15 @@ export class ArtistListComponent implements OnInit, OnChanges {
         };
         break;
       }
+      case "ID": {
+        if (this.searchStrategy === "Starts with") {
+        this.service1.getByID(param).subscribe(artists => this.l_artists = [artists.data])
+        this.results = this.l_artists.length;
+        };
+        break;
+      }
       default: {
-        //this.l_artists = ARTISTS;
+        this.l_artists = ARTISTS;
         break;
       }
     }
