@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, Observable} from 'rxjs';
+import { Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { IArtist } from 'src/app/models/artist.interface';

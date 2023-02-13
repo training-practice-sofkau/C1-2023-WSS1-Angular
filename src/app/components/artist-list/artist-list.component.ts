@@ -16,6 +16,17 @@ export class ArtistListComponent implements OnInit{
 
   l_artists: IArtist[] = [];
 
+  // artist_f: IArtist = {
+  //   artistID: '',
+  //   name: '',
+  //   country: '',
+  //   enterprise: '',
+  //   debutDate: new Date(),
+  //   type: '',
+  //   img: {url: 'https://imagoimpresiones.com/wp-content/uploads/woocommerce-placeholder.png'} 
+  // };
+
+
   results: number = 0;
 
   page: number = 1;

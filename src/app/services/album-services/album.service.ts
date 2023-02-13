@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { map, Observable} from 'rxjs';
-import { ALBUMS } from 'src/app/mocks/album.mock';
 import { IAlbum } from 'src/app/models/album.interface';
-
-ALBUMS;
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +10,7 @@ export class AlbumService {
   constructor() { }
 
   obsAlbum: Observable<IAlbum[]> = new Observable((observer) => {
-      observer.next(ALBUMS);
+      observer.next();
       observer.complete();
   })
 
