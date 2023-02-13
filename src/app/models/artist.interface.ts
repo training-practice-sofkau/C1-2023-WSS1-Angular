@@ -1,9 +1,12 @@
+import { IAlbum } from "./album.interface"
+
 export interface IArtist{
-    id: number,
+    artistID: string,
     name: string,
     country: string,
-    age: number,
-    year_debut: number,
-    total_albums: number,
+    enterprise: string,
+    debutDate?: Date,
+    type: string,
+    albumsDTO?:IAlbum[],
     link?:string
 }
