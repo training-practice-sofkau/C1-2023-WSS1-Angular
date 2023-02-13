@@ -45,6 +45,17 @@ export class ArtistListComponent implements OnInit{
 
 
   ngGetById(param: string){
+      if(!param){
+          this.service.getAll().subscribe({
+              next: (artist) => {
+                  this.l_artists = artist,
+                      this.results = this.l_artists.length;
+              },
+              error: (console.log),
+              complete: (console.log)
+          })
+      }
+
       this.service.getById(param).subscribe((artist) => {
           this.l_artists = [artist],
               this.results = this.l_artists.length;});
