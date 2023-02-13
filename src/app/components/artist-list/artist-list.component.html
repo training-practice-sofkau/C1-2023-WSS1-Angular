@@ -16,6 +16,10 @@
     <div>
         <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
+
+    <div class="btn-control">
+        <button type="submit" class="btn btn-primary" routerLink="/add">Add Artist</button>
+    </div>
 </div>
 
 <div class="list-container" *ngFor="let artist of l_artists | paginate: { itemsPerPage: 3, currentPage: p}">

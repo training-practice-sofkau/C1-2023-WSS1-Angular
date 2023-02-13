@@ -9,6 +9,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateArtistComponent } from './components/create-artist/create-artist.component';
 
 
 
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     ArtistListComponent,
     AlbumListComponent,
-    HomeComponent
+    HomeComponent,
+    CreateArtistComponent
   ],
   imports: [
     BrowserModule,
