@@ -4,6 +4,7 @@ import { AlbumListComponent } from './components/album-list/album-list.component
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { HomePageComponent } from './components/pages/home-page/home-page.component';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomePageComponent,
+    component: WelcomeComponent,
   },
   {
     path: 'artist',
