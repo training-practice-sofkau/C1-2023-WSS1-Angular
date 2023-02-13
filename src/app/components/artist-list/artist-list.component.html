@@ -1,22 +1,24 @@
 <div [ngStyle]="{display: 'flex'}">
     <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
+        <input type="text" placeholder="Enter text" [(ngModel)]="param" (click)="ngOnInit()"/>
     </div>
     <div ngClass="artistOps">
-        <input type="radio" (click)="ngOnSearch(param, 'name')"/> Name
-        <input type="radio"/> Country
-        <input type="radio"/> Age
+        <input type="radio" (click)="ngGetById(param)"/> id
+
     </div>
+    <button routerLink="/new/artist">Nuevo Artista</button>
 </div>
 
 <div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
     <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
-        id: {{artist.id}} <br/>
+        id: {{artist.artistID}} <br/>
         name: {{artist.name}} <br/>
         country: {{artist.country}} <br/>
-        age: {{artist.age}} <br/>
-        year debut: {{artist.year_debut}} <br/>
-        total of albums: {{artist.total_albums}} <br/>
+        enterprise: {{artist.enterprise}} <br/>
+        Debut date: {{artist.debutDate}} <br/>
+        Type: {{artist.type}} <br/>
+
+        
     </div>
   
 </div>

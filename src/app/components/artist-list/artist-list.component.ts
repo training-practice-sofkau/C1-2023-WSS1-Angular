@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ARTISTS } from 'src/app/mocks/artist.mock';
+
 import { IArtist } from 'src/app/models/artist.interface';
 import { ArtistService } from 'src/app/services/artist-services/artist.service';
 
@@ -18,16 +18,41 @@ export class ArtistListComponent implements OnInit{
   //TO-DO: Define a variable that will store the information
   l_artists: IArtist[] = [];
 
+  artist_f: IArtist = {
+    artistID: 0,
+    name: '',
+    country: '',
+    enterprise: '',
+    debutDate: new Date(),
+    type: ''
+
+  };
+
   results: number = 0;
   
   ngOnInit(): void {
-    this.service.getAll().subscribe((artist) => this.l_artists = artist);
-    this.results = this.l_artists.length;
+    this.service.getAll().subscribe({
+      next: (artist) => {
+        this.l_artists = artist,
+        this.results = this.l_artists.length;
+      },
+      error: (console.log),
+      complete: (console.log)
+    })
+    /*this.service.getAll()
+    .subscribe((artist) => { 
+      
+      this.l_artists = artist,
+      this.results = this.l_artists.length;});*/
+    
   }
 
   //TO-DO: Create a function that based of param it will show n-results
-  ngOnSearch(param: string, typeSearch: string){
-    console.log(param)
+  ngGetById(param: string){
+    this.service.getById(param).subscribe((artist) => {
+      this.l_artists = [artist],
+      this.results = this.l_artists.length;});
   }
+
 
 }

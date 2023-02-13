@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable} from 'rxjs';
-import { ARTISTS } from 'src/app/mocks/artist.mock';
+
 import { IArtist } from 'src/app/models/artist.interface';
 
 @Injectable({
@@ -8,10 +9,13 @@ import { IArtist } from 'src/app/models/artist.interface';
 })
 export class ArtistService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  //API url
+  api: string = "http://localhost:8080/artists"
 
   //TO-DO: All the functionalities related to artist
-  getAll(): Observable<IArtist[]> {
+  /*getAll(): Observable<IArtist[]> {
   
     let obsArtist: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS);
@@ -20,15 +24,20 @@ export class ArtistService {
 
     return obsArtist;
 
+  }*/
+  getAll(): Observable<any> {
+    return this.http.get(this.api);
   }
 
-  /*getByName(){
+  getById(id: string): Observable<any>{
+    //return this.http.get(`${this.api}/${id}`);
+    return this.http.get(this.api+"/"+id);
 
-  }*/
+  }
 
-  /*getByCountry(){
-
-  }*/
+  postArtist(artist: IArtist){
+    return this.http.post(this.api,artist);
+  }
 
   /*getByDateDebut(){
 
