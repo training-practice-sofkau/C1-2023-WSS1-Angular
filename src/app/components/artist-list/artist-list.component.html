@@ -1,12 +1,13 @@
-<div [ngStyle]="{display: 'flex'}">
-    <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param" (click)="ngOnInit()"/>
+<div [ngStyle]="{display: 'flex', alignItems:'center'}">
+  <mat-form-field [ngStyle]="{margin:'10px'}">
+    <mat-label>Type your search</mat-label>
+    <input matInput placeholder="Ex. Metallica" [(ngModel)]="param" (click)="ngOnInit()">
+  </mat-form-field>
+    <div [ngStyle]="{marginTop: '-10px'}">
+      <mat-radio-button (click)="ngGetById(param)">Id </mat-radio-button>
+      <button mat-raised-button color="primary" routerLink="/new/artist" [ngStyle]="{marginLeft:'10px'}">Nuevo Artista</button>
     </div>
-    <div ngClass="artistOps">
-        <input type="radio" (click)="ngGetById(param)"/> id
 
-    </div>
-    <button routerLink="/new/artist">Nuevo Artista</button>
 </div>
 
 <div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
@@ -17,10 +18,7 @@
         enterprise: {{artist.enterprise}} <br/>
         Debut date: {{artist.debutDate}} <br/>
         Type: {{artist.type}} <br/>
-
-        
     </div>
-  
 </div>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->

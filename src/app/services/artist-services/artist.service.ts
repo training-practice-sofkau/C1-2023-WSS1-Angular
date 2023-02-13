@@ -16,7 +16,7 @@ export class ArtistService {
 
   //TO-DO: All the functionalities related to artist
   /*getAll(): Observable<IArtist[]> {
-  
+
     let obsArtist: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS);
       observer.complete();
@@ -40,6 +40,6 @@ export class ArtistService {
   }
 
   /*getByDateDebut(){
-
+n
   }*/
 }
