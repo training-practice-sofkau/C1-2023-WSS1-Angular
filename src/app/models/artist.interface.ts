@@ -1,9 +1,9 @@
 export interface IArtist{
-    artistID: number,
-    name: string,
-    country: string,
-    enterprise: string,
-    debutDate: Date,
-    type: string
+    artistIDDTO: number,
+    nameDTO: string,
+    countryDTO: string,
+    enterpriseDTO: string,
+    debutDateDTO: Date,
+    typeDTO: string
 
 }

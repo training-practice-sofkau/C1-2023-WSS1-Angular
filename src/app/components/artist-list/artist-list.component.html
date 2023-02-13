@@ -11,12 +11,12 @@
 
 <div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
     <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
-        id: {{artist.artistID}} <br/>
-        name: {{artist.name}} <br/>
-        country: {{artist.country}} <br/>
-        enterprise: {{artist.enterprise}} <br/>
-        Debut date: {{artist.debutDate}} <br/>
-        Type: {{artist.type}} <br/>
+        id: {{artist.artistIDDTO}} <br/>
+        name: {{artist.nameDTO}} <br/>
+        country: {{artist.countryDTO}} <br/>
+        enterprise: {{artist.enterpriseDTO}} <br/>
+        Debut date: {{artist.debutDateDTO}} <br/>
+        Type: {{artist.typeDTO}} <br/>
 
         
     </div>

@@ -12,7 +12,7 @@ export class ArtistService {
   constructor(private http: HttpClient) { }
 
   //API url
-  api: string = "http://localhost:8080/artists"
+  api: string = "http://localhost:8080/charts/artists"
 
   //TO-DO: All the functionalities related to artist
   /*getAll(): Observable<IArtist[]> {

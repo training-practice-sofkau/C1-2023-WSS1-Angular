@@ -19,12 +19,12 @@ export class ArtistListComponent implements OnInit{
   l_artists: IArtist[] = [];
 
   artist_f: IArtist = {
-    artistID: 0,
-    name: '',
-    country: '',
-    enterprise: '',
-    debutDate: new Date(),
-    type: ''
+    artistIDDTO: 0,
+    nameDTO: '',
+    countryDTO: '',
+    enterpriseDTO: '',
+    debutDateDTO: new Date(),
+    typeDTO: ''
 
   };
 
@@ -33,7 +33,7 @@ export class ArtistListComponent implements OnInit{
   ngOnInit(): void {
     this.service.getAll().subscribe({
       next: (artist) => {
-        this.l_artists = artist,
+        this.l_artists = artist;
         this.results = this.l_artists.length;
       },
       error: (console.log),
