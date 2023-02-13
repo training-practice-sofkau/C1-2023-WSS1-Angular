@@ -18,6 +18,14 @@ export class ArtistService {
     return this.http.get(this.api);
   }
 
+  getById(id: string): Observable<any> {
+      return this.http.get(this.api+"/"+id)
+  }
+
+  postArtist(artist: IArtist){
+    return this.http.post(this.api,artist);
+  }
+
 }
 
 

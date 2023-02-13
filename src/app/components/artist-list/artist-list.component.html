@@ -3,6 +3,11 @@
         <div ngClass="artistTxt">
             <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
         </div>
+
+        <div ngClass="artistOps">
+            <button (click)="ngGetById(param)">Search by id </button>
+        </div>
+        <button  routerLink="/new/artist">Nuevo Artista</button>
     </div>
     <ng-container *ngIf="results > 0; else noArtistFound ">
         <div>

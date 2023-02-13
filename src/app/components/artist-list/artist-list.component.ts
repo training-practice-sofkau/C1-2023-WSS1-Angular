@@ -16,24 +16,39 @@ export class ArtistListComponent implements OnInit{
 
   l_artists: IArtist[] = [];
 
-  // artist_f: IArtist = {
-  //   artistID: '',
-  //   name: '',
-  //   country: '',
-  //   enterprise: '',
-  //   debutDate: new Date(),
-  //   type: '',
-  //   img: {url: 'https://imagoimpresiones.com/wp-content/uploads/woocommerce-placeholder.png'} 
-  // };
+  artist_f: IArtist = {
+    artistID: '',
+    name: '',
+    country: '',
+    enterprise: '',
+    debutDate: new Date(),
+    type: '',
+    img: {url: 'https://imagoimpresiones.com/wp-content/uploads/woocommerce-placeholder.png'} 
+  };
 
 
   results: number = 0;
 
   page: number = 1;
   
+
   ngOnInit(): void {
-    this.service.getAll().subscribe((val) => {this.l_artists = val})
-    this.results = this.l_artists.length;
+    this.service.getAll().subscribe({
+      next: (artist) => {
+        this.l_artists = artist,
+        this.results = this.l_artists.length;
+      },
+      error: (console.log),
+      complete: (console.log)
+    })
+  }
+
+
+  ngGetById(param: string){
+      this.service.getById(param).subscribe((artist) => {
+          this.l_artists = [artist],
+              this.results = this.l_artists.length;});
+      console.log(this.l_artists)
   }
 
 
