@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ARTISTS } from 'src/app/mocks/artist.mock';
+
 import { IArtist } from 'src/app/models/artist.interface';
 import { ArtistService } from 'src/app/services/artist-services/artist.service';
 
@@ -17,6 +17,7 @@ export class ArtistListComponent implements OnInit {
   l_artists: IArtist[] = [];
   pagination_artist: IArtist[] = [];
 
+
   results: number = 0;
 
   currentPage: number = 1;
@@ -24,7 +25,7 @@ export class ArtistListComponent implements OnInit {
   rows: number = 3;
 
   ngOnInit(): void {
-    this.service.getAll().subscribe((artist) => (this.l_artists = artist));
+    //this.service.getAll().subscribe((artist) => (this.l_artists = artist));
     this.pagination_artist = this.paginationList();
     this.results = this.l_artists.length;
   }
@@ -32,7 +33,7 @@ export class ArtistListComponent implements OnInit {
   //TO-DO: Create a function that based of param it will show n-results
   onSearch() {
 
-    this.service.getAll().subscribe((artist) => (this.l_artists = artist));
+    //this.service.getAll().subscribe((artist) => (this.l_artists = artist));
     const MYINDICATOR = this.myParam.match(/[:><-]/g) || [];
 
     const MYPARAMS = this.myParam.split(MYINDICATOR[0]);
@@ -52,13 +53,13 @@ export class ArtistListComponent implements OnInit {
     if(isNumber){
       switch(MYINDICATOR[0]){
         case '>':
-          this.service.getGreaterThan(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_artists=ar)
+          //this.service.getGreaterThan(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_artists=ar)
           break
         case '<':
-          this.service.getLessThan(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_artists=ar)
+          //this.service.getLessThan(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_artists=ar)
           break
         case '-':
-          this.service.getExcludeResults(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_artists=ar)
+          //this.service.getExcludeResults(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_artists=ar)
           break
         default:
           console.log("can not filter");  
@@ -68,10 +69,10 @@ export class ArtistListComponent implements OnInit {
     }else{
       switch(MYINDICATOR[0]){
         case ':':
-          this.service.getByStartWithString(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_artists=ar)
+          //this.service.getByStartWithString(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_artists=ar)
           break
         case '-':
-          this.service.getByNoStartWithString(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_artists=ar)
+          //this.service.getByNoStartWithString(myfilter,MYPARAMS[1]).subscribe(ar=>this.l_artists=ar)
           break
         default:
           console.log("can not filter");  
@@ -99,5 +100,6 @@ export class ArtistListComponent implements OnInit {
     }
     this.pagination_artist = this.paginationList();
   }
+
 
 }
