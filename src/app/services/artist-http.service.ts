@@ -11,5 +11,9 @@ export class ArtistHttpService {
   constructor(private http: HttpClient) { }
 
   //API url
-  api: string = "http://localhost:8080/artists"
+  api: string = "http://localhost:8080/charts/artists"
+
+  getAll(): Observable<any> {
+    return this.http.get(this.api);
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ARTISTS } from 'src/app/mocks/artist.mock';
 import { IArtist } from 'src/app/models/artist.interface';
+import { ArtistHttpService } from 'src/app/services/artist-http.service';
 import { ArtistService } from 'src/app/services/artist-service';
 
 @Component({
@@ -19,16 +20,35 @@ export class ArtistListComponent implements OnInit, OnChanges {
   results: number = 0;
   p: number = 1;
 
-  constructor(private service: ArtistService) { }
+  artist_f: IArtist = {
+    artistID: '',
+    name: '',
+    country: '',
+    age: 0,
+    debutDate: new Date(),
+    type: '',
+    enterprise: ''
+  };
+
+  constructor(private service1: ArtistHttpService, private service: ArtistService) { }
 
   ngOnInit(): void {
-    this.service.getAll().subscribe((artist) => this.l_artists = artist);
-    this.results = this.l_artists.length;
+/*     this.service.getAll().subscribe((artist) => this.l_artists = artist);
+    this.results = this.l_artists.length; */
+    this.service1.getAll().subscribe({
+      next: (artists) => {
+        this.l_artists = artists.data,
+        this.results = this.l_artists.length;
+        console.log(artists.data)
+      },
+      error: (console.log),
+      complete: (console.log)
+    })
   }
 
   ngOnSearch(param: string) {
 
-    this.l_artists = ARTISTS;
+    //this.l_artists = ARTISTS;
 
     switch (this.typeSearch) {
       case "name": {
@@ -77,7 +97,7 @@ export class ArtistListComponent implements OnInit, OnChanges {
         break;
       }
       default: {
-        this.l_artists = ARTISTS;
+        //this.l_artists = ARTISTS;
         break;
       }
     }
