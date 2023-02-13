@@ -19,38 +19,42 @@ export class ArtistListComponent implements OnInit {
   p: number = 1;
 
   ngOnInit(): void {
-    this.artistService
-      .getAll()
-      .subscribe((artists) => (this.artists = artists));
-    this.l_artists = this.artists;
-    this.results = this.l_artists.length;
+    this.artistService.getAll().subscribe({
+      next: (data) => {
+        this.artists = data
+        this.l_artists = this.artists;
+        this.results = this.l_artists.length;
+      },
+      error: (err) => {console.log("Error on getting artists:" + err);},
+      complete: () => {}
+    });
   }
 
   ngOnSearch() {
     if (this.filter === 'name') {
       this.artistService
-        .filterByName(this.searchingText)
+        .filterByName(this.searchingText, this.artists)
         .subscribe((artists) => (this.l_artists = artists));
     }
     if (this.filter === 'country') {
       this.artistService
-        .filterByCountry(this.searchingText)
+        .filterByCountry(this.searchingText, this.artists)
         .subscribe((artists) => (this.l_artists = artists));
     }
     if (this.filter === 'age') {
       this.artistService
-        .filterByAge(this.searchingText)
-        .subscribe((artists) => (this.l_artists = artists));;
+        .filterByAge(this.searchingText, this.artists)
+        .subscribe((artists) => (this.l_artists = artists));
     }
     if (this.filter === 'maxage') {
       this.artistService
-        .filterMaximumAge(this.searchingText)
-        .subscribe((artists) => (this.l_artists = artists));;
+        .filterMaximumAge(this.searchingText, this.artists)
+        .subscribe((artists) => (this.l_artists = artists));
     }
     if (this.filter === 'noname') {
       this.artistService
-        .filterNoName(this.searchingText)
-        .subscribe((artists) => (this.l_artists = artists));;
+        .filterNoName(this.searchingText, this.artists)
+        .subscribe((artists) => (this.l_artists = artists));
     }
     this.results = this.l_artists.length;
   }

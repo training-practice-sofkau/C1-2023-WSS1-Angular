@@ -1,25 +1,27 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IArtist } from 'src/app/models/artist.interface';
 import { ARTISTS } from '../../mocks/artist.mock';
 
+
 @Injectable({
   providedIn: 'root',
 })
 export class ArtistService {
-  constructor() {}
 
-  getAll(): Observable<IArtist[]> {
-    return new Observable((observer) => {
-      observer.next(ARTISTS);
-      observer.complete();
-    });
+  url: string = "http://localhost:8080/charts/artists/";
+
+  constructor(private httpClient: HttpClient) {}
+
+  getAll(): Observable<any>{
+    return this.httpClient.get(this.url);
   }
 
-  filterByName(searchingText: string): Observable<IArtist[]> {
+  filterByName(searchingText: string, artists: IArtist[]): Observable<IArtist[]> {
     return new Observable((observer) => {
       observer.next(
-        ARTISTS.sort((a, b) => a.name.localeCompare(b.name)).filter((artist) =>
+        artists.sort((a, b) => a.name.localeCompare(b.name)).filter((artist) =>
           artist.name.toLowerCase().startsWith(searchingText.toLowerCase())
         )
       );
@@ -27,10 +29,10 @@ export class ArtistService {
     });
   }
 
-  filterByCountry(searchingText: string): Observable<IArtist[]> {
+  filterByCountry(searchingText: string, artists: IArtist[]): Observable<IArtist[]> {
     return new Observable((observer) => {
       observer.next(
-        ARTISTS.sort((a, b) => a.name.localeCompare(b.name)).filter((artist) =>
+        artists.sort((a, b) => a.name.localeCompare(b.name)).filter((artist) =>
           artist.country.toLowerCase().startsWith(searchingText.toLowerCase())
         )
       );
@@ -38,12 +40,12 @@ export class ArtistService {
     });
   }
 
-  filterByAge(searchingText: string): Observable<IArtist[]> {
+  filterByAge(searchingText: string, artists: IArtist[]): Observable<IArtist[]> {
     return new Observable((observer) => {
       searchingText === ''
-        ? observer.next(ARTISTS.sort((a, b) => b.age - a.age))
+        ? observer.next(artists.sort((a, b) => b.age - a.age))
         : observer.next(
-            ARTISTS.sort((a, b) => b.age - a.age).filter(
+            artists.sort((a, b) => b.age - a.age).filter(
               (artist) => artist.age === parseInt(searchingText)
             )
           );
@@ -51,12 +53,12 @@ export class ArtistService {
     });
   }
 
-  filterMaximumAge(searchingText: string): Observable<IArtist[]> {
+  filterMaximumAge(searchingText: string, artists: IArtist[]): Observable<IArtist[]> {
     return new Observable((observer) => {
       searchingText === ''
         ? observer.next(ARTISTS.sort((a, b) => b.age - a.age))
         : observer.next(
-            ARTISTS.sort((a, b) => b.age - a.age).filter(
+            artists.sort((a, b) => b.age - a.age).filter(
               (artist) => artist.age <= parseInt(searchingText)
             )
           );
@@ -64,12 +66,12 @@ export class ArtistService {
     });
   }
 
-  filterNoName(searchingText: string): Observable<IArtist[]> {
+  filterNoName(searchingText: string, artists: IArtist[]): Observable<IArtist[]> {
     return new Observable((observer) => {
       searchingText === ''
-        ? observer.next(ARTISTS.sort((a, b) => a.name.localeCompare(b.name)))
+        ? observer.next(artists.sort((a, b) => a.name.localeCompare(b.name)))
         : observer.next(
-        ARTISTS.sort((a, b) => a.name.localeCompare(b.name)).filter((artist) =>
+        artists.sort((a, b) => a.name.localeCompare(b.name)).filter((artist) =>
           !artist.name.toLowerCase().startsWith(searchingText.toLowerCase())!
         )
       );
