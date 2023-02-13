@@ -1,3 +1,16 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+$pink-color: mat.$pink-palette;
+$indigo-color: mat.$indigo-palette;
+$gray-color: mat.$gray-palette;
+
 mat-sidenav {
-    width: 210px;
+  width: 210px;
 }
+
+a{
+  color: map.get($pink-color, 500);
+  font-size: 16px;
+}
+

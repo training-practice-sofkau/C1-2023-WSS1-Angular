@@ -1,15 +1,16 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 
-import { IArtist } from 'src/app/models/artist.interface';
+import {IArtist} from 'src/app/models/artist.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   //API url
   api: string = "http://localhost:8080/artists"
@@ -29,14 +30,14 @@ export class ArtistService {
     return this.http.get(this.api);
   }
 
-  getById(id: string): Observable<any>{
+  getById(id: string): Observable<any> {
     //return this.http.get(`${this.api}/${id}`);
-    return this.http.get(this.api+"/"+id);
+    return this.http.get(this.api + "/" + id);
 
   }
 
-  postArtist(artist: IArtist){
-    return this.http.post(this.api,artist);
+  postArtist(artist: IArtist) {
+    return this.http.post(this.api, artist);
   }
 
   /*getByDateDebut(){

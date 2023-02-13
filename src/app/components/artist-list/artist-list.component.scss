@@ -1,1 +1,19 @@
+@use "sass:map";
+@use "@angular/material" as mat;
 
+$pink-color: mat.$pink-palette;
+$indigo-color: mat.$indigo-palette;
+$gray-color: mat.$gray-palette;
+
+mat-card{
+  background-color: map.get($indigo-color, 100);
+}
+
+#notcp {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
