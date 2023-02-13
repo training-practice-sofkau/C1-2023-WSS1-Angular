@@ -4,6 +4,8 @@ import { NotFoundComponent} from './components/pages/not-found/not-found.compone
 import { HomePageComponent } from './components/pages/home-page/home-page.component';
 import { ArtistListMenuComponent } from './components/artist-list-menu/artist-list-menu.component';
 import { AlbumListMenuComponent } from './components/album-list-menu/album-list-menu.component';
+import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 const routes: Routes = [
   {
@@ -14,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomePageComponent,
+    component: WelcomeComponent,
 /*      children: [
       {
         path: 'artist',
