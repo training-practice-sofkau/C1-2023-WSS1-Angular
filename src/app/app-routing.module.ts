@@ -3,12 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AlbumListComponent } from './components/album-list/album-list.component';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 const routes: Routes = [
  
   {
     path: 'home',
-    component: AppComponent
+    component: HomePageComponent
   },
   {
     path: 'artist',

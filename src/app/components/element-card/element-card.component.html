@@ -7,8 +7,14 @@
     />
   </div>
   <div class="info--section">
-    <p *ngFor="let item of elementRender | keyvalue: returnZero | slice:0:numberProperties">
-      {{ item.key }} : {{ item.value }}
-    </p>
+    <div class="text--container">
+      <p *ngFor="let item of elementRender | keyvalue: returnZero | slice:0:numberProperties">
+        {{ item.key }} : {{ item.value }}
+      </p>
+    </div>
+    <div class="action--container">
+      <button (click)="sendId()">X</button>
+    </div>
+    
   </div>
 </div>
