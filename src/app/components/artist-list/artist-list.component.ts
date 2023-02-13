@@ -25,19 +25,5 @@ export class ArtistListComponent implements OnInit{
     this.results = this.l_artists.length;
   }
 
-  ngOnSearch(){
-      let re = /(\w+)+(\W)+(\w+)/;
-      let filter = re.exec(this.param);
-
-      let p = filter![1];
-      let s = filter![2];
-      let b = filter![3];
-
-
-      this.service.getByParameter(p, s, b).subscribe((val) => {this.l_artists = val})
-      
-      this.results = this.l_artists.length
-  }
-
 
 }

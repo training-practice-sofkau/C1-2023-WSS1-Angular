@@ -1,84 +1,22 @@
 import { Injectable } from '@angular/core';
 import { map, Observable} from 'rxjs';
-import { ARTISTS } from 'src/app/mocks/artist.mock';
+import { HttpClient } from '@angular/common/http';
+
 import { IArtist } from 'src/app/models/artist.interface';
 
-ARTISTS;
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  obsArtist: Observable<IArtist[]> = new Observable((observer) => {
-      observer.next(ARTISTS);
-      observer.complete();
-  })
+  api: string = "http://localhost:8080/artists"
 
-  getAll(): Observable<IArtist[]> {
-      return this.obsArtist;
+  getAll(): Observable<any> {
+    return this.http.get(this.api);
   }
-
-  getByParameter(p:string, s:string, b:string): Observable<IArtist[]> {
-
-      if(p === "name"){
-          if(s === ":"){
-              return this.obsArtist
-              .pipe(map(items => items
-                        .filter(items => items
-                                .name.toLowerCase().startsWith(b.toLowerCase()))));
-          }else if(s === "-"){
-              return this.obsArtist
-              .pipe(map(items => items
-                        .filter(items => !items
-                                .name.toLowerCase().startsWith(b))));
-          }
-      }else if(p === "country"){
-          if(s === ":"){
-              return this.obsArtist
-              .pipe(map(items => items
-                        .filter(items => items
-                                .country.toLowerCase().startsWith(b.toLowerCase()))));
-          }else if(s === "-"){
-              return this.obsArtist
-              .pipe(map(items => items
-                        .filter(items => !items
-                                .country.toLowerCase().startsWith(b))));
-          }
-
-      }else if(p === "age"){
-          if(s === ":"){
-              return this.obsArtist
-              .pipe(map(items => items
-                        .filter(items => items
-                                .age.toString().toLowerCase().startsWith(b.toLowerCase()))));
-          }else if(s === "-"){
-              return this.obsArtist
-              .pipe(map(items => items
-                        .filter(items => !items
-                                .age.toString().toLowerCase().startsWith(b))));
-
-          }else if(s === ">"){
-              return this.obsArtist
-              .pipe(map(items => items
-                        .filter(items => items
-                                .age > parseInt(b, 10))));
-
-          }else if(s === "<"){
-              return this.obsArtist
-              .pipe(map(items => items
-                        .filter(items => items
-                                .age < parseInt(b, 10))));
-          }
-
-      }
-
-      return this.obsArtist;
-
-  }
-
 
 }
 

@@ -1,7 +1,7 @@
 <div ngClass="artistSearch">
     <div ngClass="artistSearch-imput">
         <div ngClass="artistTxt">
-            <input type="text" placeholder="Enter text" (keyup)="ngOnSearch()" [(ngModel)]="param"/>
+            <input type="text" placeholder="Enter text" [(ngModel)]="param"/>
         </div>
     </div>
     <ng-container *ngIf="results > 0; else noArtistFound ">
