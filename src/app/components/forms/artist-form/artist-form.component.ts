@@ -23,13 +23,12 @@ export class ArtistFormComponent {
                 type: ''
             }
         );
-        this.saveArtist.valueChanges.subscribe((change)=>console.log(change));
+        this.saveArtist.valueChanges.subscribe();
 
     }
 
     onSubmit(){
-        this.service.postArtist(this.saveArtist.value).subscribe((answer)=> {
-            console.log(answer);
+        this.service.postArtist(this.saveArtist.value).subscribe(()=> {
             alert("Artist created");
         });
         

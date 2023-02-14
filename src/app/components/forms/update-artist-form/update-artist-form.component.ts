@@ -43,7 +43,7 @@ export class UpdateArtistFormComponent {
     collection(){
         console.warn(this.updateArtist.value)
         this.artist.updateArtist(this.router.snapshot.params['id'], this.updateArtist.value)
-        .subscribe((res) => console.warn(res))
+        .subscribe(() => alert("Artist created"))
     }
 
 

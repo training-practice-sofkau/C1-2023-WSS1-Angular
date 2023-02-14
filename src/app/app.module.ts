@@ -14,7 +14,7 @@ import { ArtistListComponent } from './components/artist-list/artist-list.compon
 import { AlbumListComponent } from './components/album-list/album-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-// import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
+import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtistFormComponent } from './components/forms/artist-form/artist-form.component';
 import { MatFormFieldModule} from '@angular/material/form-field';
@@ -30,7 +30,8 @@ import { UpdateArtistFormComponent } from './components/forms/update-artist-form
     HomeComponent,
     ErrorComponent,
     ArtistFormComponent,
-    UpdateArtistFormComponent
+    UpdateArtistFormComponent,
+    SidenavbarComponent
   ],
   imports: [
     NgxPaginationModule,
