@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { IArtist } from 'src/app/models/artist.interface';
-import { ARTISTS } from '../../mocks/artist.mock';
 
 
 @Injectable({
@@ -73,7 +72,7 @@ export class ArtistService {
   filterMaximumAge(searchingText: string, artists: IArtist[]): Observable<IArtist[]> {
     return new Observable((observer) => {
       searchingText === ''
-        ? observer.next(ARTISTS.sort((a, b) => b.age - a.age))
+        ? observer.next(artists.sort((a, b) => b.age - a.age))
         : observer.next(
             artists.sort((a, b) => b.age - a.age).filter(
               (artist) => artist.age <= parseInt(searchingText)
