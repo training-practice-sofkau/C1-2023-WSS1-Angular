@@ -54,4 +54,15 @@ export class ArtistListComponent implements OnInit{
       };
     };
   };
+
+  onDelete(artistID: string){
+    let userConfirm: boolean = confirm("Are you sure you want to delete this artist?")
+    if (userConfirm){
+      this.artistService.deleteArtist(artistID);
+    }
+  };
+
+  onUpdate(artist: IArtist){
+    this.artistService.setArtist(artist);
+  }
 };

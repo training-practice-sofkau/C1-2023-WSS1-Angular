@@ -30,6 +30,11 @@
       <strong>Enterprise: </strong>{{ artist.enterprise }}<br>
       <strong>Type: </strong>{{ artist.type }}<br>
     </div>
+    <div class="update-delete-buttons">
+      <button class="update-button" (click)="onUpdate(artist)"
+       routerLink="/new/artist">Update</button>
+      <button class="delete-button" (click)="onDelete(artist.artistID)">Delete</button>
+    </div>
   </div>
 </div>
 </section>
