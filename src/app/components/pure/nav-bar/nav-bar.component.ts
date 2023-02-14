@@ -25,12 +25,19 @@ export class NavBarComponent implements OnInit {
     this.formsService.artistTriger.subscribe((artist) => {
       if (!this.artistForm) {
         this.artistForm = true;
-        this.inputArtist = artist;
+        this.inputArtist = {
+          artistID: artist.artistID,
+          country: artist.country,
+          name: artist.name,
+          debutDate: artist.debutDate,
+          enterprise: artist.enterprise,
+          type: artist.type,
+        };
       }
     });
   }
-  createFrom(isForm : boolean){
-    this.artistForm=isForm;
+  createFrom(isForm: boolean) {
+    this.artistForm = isForm;
     this.inputArtist = {
       artistID: '',
       country: '',

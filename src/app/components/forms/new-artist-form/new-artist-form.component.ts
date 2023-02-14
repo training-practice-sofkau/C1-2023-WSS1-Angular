@@ -18,6 +18,7 @@ export class NewArtistFormComponent implements OnInit {
     debutDate: '',
     enterprise: '',
     type: '',
+
   };
   @Output() back: EventEmitter<boolean> = new EventEmitter();
 
@@ -59,10 +60,17 @@ export class NewArtistFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.artistStervice
-      .postArtist(this.artist.value)
-      .subscribe((answer) => console.log(answer));
-    this.clearForm();
+    if (this.inputArtist.artistID != '') {
+      this.artistStervice
+        .postArtist(this.inputArtist)
+        .subscribe((answer) => console.log(answer));
+      this.clearForm();
+    } else {
+      this.artistStervice
+        .patchArtist(this.inputArtist)
+        .subscribe((answer) => console.log(answer));
+      this.clearForm();
+    }
   }
 
   onBack() {
