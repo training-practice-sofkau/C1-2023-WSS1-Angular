@@ -1,11 +1,11 @@
 <app-search-bar
-  [options]="['Name', 'Country', 'Age']"
   [results]="results"
-  (buttonClick)="event($event)"
+  (onFindAll)="onFindAll()"
+  (onFilter)="onFilter($event)"
 ></app-search-bar>
 
 <div class="results_body" *ngIf="results>0">
-      <app-artist-card *ngFor="let artist of searchResulst" [artist]="artist" class="entry_card"></app-artist-card>
+      <app-artist-card *ngFor="let artist of searchResulst" [artist]="artist" class="entry-card" (onDelete)="deleteA($event)"></app-artist-card>
 </div>
 
 <ng-container *ngIf="results > 0; else noArtistFound">

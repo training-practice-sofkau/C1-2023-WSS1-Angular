@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IArtist } from 'src/app/models/artist.interface';
 
 @Component({
@@ -8,11 +8,20 @@ import { IArtist } from 'src/app/models/artist.interface';
 })
 export class ArtistCardComponent {
   @Input() artist: IArtist = {
-    age: 0,
+    artistID:"n/a",
     country: "n/a",
-    id: 0,
     name: "n/a",
-    total_albums: 0,
-    year_debut: 0,
+    debutDate:"n/a",
+    enterprise:"n/a",
+    type:"n/a",
   };
+ @Output() onDelete: EventEmitter<string> = new EventEmitter();
+
+ deleteA(){
+
+   this.onDelete.emit(this.artist.artistID);
+  }
+
+  edit(){
+  }
 }
