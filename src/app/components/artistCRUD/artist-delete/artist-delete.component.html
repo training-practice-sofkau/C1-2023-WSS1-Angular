@@ -1,6 +1,6 @@
 <div Ngclass="searchTxt">
   <input class="searchTxt" type="text" placeholder="Enter text" [(ngModel)]="param" />
-  <button mat-raised-button color="primary" (click)="onIDSearch()">Search</button>
+  <button mat-raised-button color="primary" style="margin: 5px" (click)="onIDSearch()">Search</button>
 </div>
 
 <div>
@@ -9,5 +9,5 @@
 </div>
 
 <div>
-  <button *ngIf="artistSelected" mat-raised-button color="primary" (click)="onDelete()">Delete</button>
+  <button *ngIf="artistSelected" mat-raised-button color="primary" style="margin: 5px" (click)="onDelete()">Delete</button>
 </div>
