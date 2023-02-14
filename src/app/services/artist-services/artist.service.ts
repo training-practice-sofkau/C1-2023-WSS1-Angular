@@ -11,20 +11,8 @@ export class ArtistService {
 
   constructor(private http: HttpClient) { }
 
-  //API url
   api: string = "http://localhost:8080/api/artists"
 
-  //TO-DO: All the functionalities related to artist
-  /*getAll(): Observable<IArtist[]> {
-
-    let obsArtist: Observable<IArtist[]> = new Observable(observer => {
-      observer.next(ARTISTS);
-      observer.complete();
-    });
-
-    return obsArtist;
-
-  }*/
   getAll(): Observable<any> {
     return this.http.get(this.api);
   }
@@ -32,14 +20,27 @@ export class ArtistService {
   getById(id: string): Observable<any>{
     //return this.http.get(`${this.api}/${id}`);
     return this.http.get(this.api+"/"+id);
+  }
 
+  getByName(filterParam: string, artistList: IArtist[]): Observable<IArtist[]> {
+
+    let obsArtist: Observable<IArtist[]> = new Observable(observer =>{
+      observer.next(artistList.filter(artist => artist.name.startsWith(filterParam)));
+      observer.complete();
+    });
+    return obsArtist;
+  }
+
+  getByCountry (filterParam: string, artistList: IArtist[]): Observable<IArtist[]> {
+    let obsArtist: Observable<IArtist[]> = new Observable(observer => {
+      observer.next(artistList.filter(artist => artist.country.startsWith(filterParam)));
+      observer.complete();
+    });
+
+    return obsArtist;
   }
 
   postArtist(artist: IArtist){
     return this.http.post(this.api,artist);
   }
-
-  /*getByDateDebut(){
-
-  }*/
 }
