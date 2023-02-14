@@ -18,16 +18,17 @@ export class ArtistFormComponent  implements OnInit {
         name:'',
         country:'',
         enterprise: '',
-        debutDate: new Date(),
+        debutDate: "2023-02-14",
         type: ''
       }
     );
     this.saveArtist.valueChanges.subscribe((change)=>console.log(change));
 
   }
-  
+
   onSubmit(){
     this.service.postArtist(this.saveArtist.value).subscribe((answer)=>console.log(answer));
+    window.alert("The user was created successfully.")
   }
 
 }
