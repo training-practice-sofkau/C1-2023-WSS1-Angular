@@ -42,7 +42,7 @@ export class ArtistFormComponent  implements OnInit {
           {
             name: artist.name,
             country: artist.country,
-            enterprise: artist.country,
+            enterprise: artist.enterprise,
             debutDate: artist.debutDate,
             type: artist.type
           });
