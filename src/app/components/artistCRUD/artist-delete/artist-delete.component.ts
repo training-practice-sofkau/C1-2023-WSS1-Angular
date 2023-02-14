@@ -28,7 +28,7 @@ export class ArtistDeleteComponent {
     if(this.artistSelected){
       this.service.deleteByID(this.artistSelected.artistID).subscribe((answer)=>{
         console.log(answer)
-        alert(`User with ID: ${this.artistSelected?.artistID} has been deleted!`)
+        alert(`Artist with ID: ${this.artistSelected?.artistID} has been deleted!`)
       })
     }}
   }

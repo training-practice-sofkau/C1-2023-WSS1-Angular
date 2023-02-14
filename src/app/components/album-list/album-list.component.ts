@@ -88,6 +88,13 @@ export class AlbumListComponent implements OnInit {
         };
         break;
       }
+      case "ID": {
+        if (this.searchStrategy === "Starts with") {
+        this.service1.getByID(param).subscribe(albums => this.l_albums = [albums.data])
+        this.results = this.l_albums.length;
+        };
+        break;
+      }
       default: {
         this.getAll();
         break;

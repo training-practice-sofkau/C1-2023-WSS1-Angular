@@ -1,0 +1,7 @@
+<div Ngclass="searchTxt">
+  <input class="searchTxt" type="text" placeholder="Enter text" [(ngModel)]="param" />
+  <button mat-raised-button color="primary" style="margin: 5px" (click)="onIDSearch()">Search</button>
+</div>
+
+
+<app-album-form-put  *ngIf="album" [albumSelected]="album"></app-album-form-put>

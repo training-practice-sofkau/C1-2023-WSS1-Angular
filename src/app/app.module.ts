@@ -34,6 +34,9 @@ import { ArtistFormPutComponent } from './components/artistCRUD/artist-form-put/
 import { ArtistFormPostComponent } from './components/artistCRUD/artist-form-post/artist-form-post.component';
 import { ArtistDeleteComponent } from './components/artistCRUD/artist-delete/artist-delete.component';
 import { AlbumFormPostComponent } from './components/albumCRUD/album-form-post/album-form-post.component';
+import { AlbumDeleteComponent } from './components/albumCRUD/album-delete/album-delete.component';
+import { AlbumPutComponent } from './components/albumCRUD/album-put/album-put.component';
+import { AlbumFormPutComponent } from './components/albumCRUD/album-form-put/album-form-put.component';
 
 
 @NgModule({
@@ -55,7 +58,10 @@ import { AlbumFormPostComponent } from './components/albumCRUD/album-form-post/a
     ArtistFormPutComponent,
     ArtistFormPostComponent,
     ArtistDeleteComponent,
-    AlbumFormPostComponent
+    AlbumFormPostComponent,
+    AlbumDeleteComponent,
+    AlbumPutComponent,
+    AlbumFormPutComponent
   ],
   imports: [
     BrowserModule,

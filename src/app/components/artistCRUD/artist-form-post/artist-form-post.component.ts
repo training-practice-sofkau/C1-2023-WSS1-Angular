@@ -32,7 +32,7 @@ export class ArtistFormPostComponent implements OnInit{
   onSubmit(){
     this.service.post(this.artist.value).subscribe((answer)=>{
       console.log(answer)
-      alert(`User with ID: ${answer.data.artistID} has been created!`)
+      alert(`Artist with ID: ${answer.data.artistID} has been created!`)
     });
   }
 }

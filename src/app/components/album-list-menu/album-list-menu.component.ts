@@ -11,7 +11,7 @@ export class AlbumListMenuComponent {
   param: string = "";
   paramApp: string ="";
   searchStrategy: string = "";
-  typeOptions: string[] = ["title", "genre", "number of songs"];
+  typeOptions: string[] = ["title", "genre", "number of songs", "ID"];
   strategyOptions: string[] =["Starts with", "Not starts with","More than", "Less than"] ;
 
 }

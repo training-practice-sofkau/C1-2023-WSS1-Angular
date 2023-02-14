@@ -1,0 +1,13 @@
+<div Ngclass="searchTxt">
+  <input class="searchTxt" type="text" placeholder="Enter text" [(ngModel)]="param" />
+  <button mat-raised-button color="primary" style="margin: 5px" (click)="onIDSearch()">Search</button>
+</div>
+
+<div>
+  <app-album *ngIf="albumSelected" [ngStyle]="{margin: '10px 10px 10px 13px ', padding:'5px'}"
+     [album]="albumSelected"></app-album>
+</div>
+
+<div>
+  <button *ngIf="albumSelected" mat-raised-button color="primary" style="margin: 5px" (click)="onDelete()">Delete</button>
+</div>
