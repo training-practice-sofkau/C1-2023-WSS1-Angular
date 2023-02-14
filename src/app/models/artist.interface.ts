@@ -1,9 +1,8 @@
 export interface IArtist {
-  id: number;
-  age: number;
+  artistID: string;
   name: string;
-  image: string;
+  type: string;
   country: string;
-  debutYear: number;
-  totalAlbums: number;
+  debutDate: Date;
+  enterprise: string;
 }
