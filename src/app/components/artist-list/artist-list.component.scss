@@ -45,6 +45,19 @@
         justify-content: space-around;
     }
 
+    .buttons-delete-update{
+        width: 10rem;
+        display: flex;
+        flex-direction: row;
+        margin-left: auto;
+        align-items: center;
+        justify-content: space-evenly;
+
+        div{
+            cursor: pointer;
+        }
+    }
+
 }
 
 .odd {
