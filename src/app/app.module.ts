@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateArtistComponent } from './components/create-artist/create-artist.component';
+import { EditArtistComponent } from './components/edit-artist/edit-artist.component';
 
 
 
@@ -19,7 +20,8 @@ import { CreateArtistComponent } from './components/create-artist/create-artist.
     ArtistListComponent,
     AlbumListComponent,
     HomeComponent,
-    CreateArtistComponent
+    CreateArtistComponent,
+    EditArtistComponent
   ],
   imports: [
     BrowserModule,

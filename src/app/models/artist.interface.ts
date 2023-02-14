@@ -1,5 +1,5 @@
 export interface IArtist{
-    id: number,
+    artistID: number,
     name: string,
     country: string,
     age: number,

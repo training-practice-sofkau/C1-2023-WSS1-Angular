@@ -23,8 +23,8 @@
 </div>
 
 <div class="list-container" *ngFor="let artist of l_artists | paginate: { itemsPerPage: 3, currentPage: p}">
-    <div class="card-artist">
-        ID: {{artist.id}} <br/>
+    <div class="card-artist" routerLink="/edit/{{artist.artistID}}">
+        ID: {{artist.artistID}} <br/>
         Name: {{artist.name}} <br/>
         Country: {{artist.country}} <br/>
         Age: {{artist.age}} <br/>

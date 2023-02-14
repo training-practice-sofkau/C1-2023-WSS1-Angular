@@ -2,7 +2,7 @@ import { IArtist } from "../models/artist.interface";
 
 export const ARTISTS: IArtist[] = [
     {
-        id: 1,
+        artistID: 1,
         name: 'Bruno Mars',
         country: 'USA',
         age: 30,
@@ -10,7 +10,7 @@ export const ARTISTS: IArtist[] = [
         totalAlbums: 12
     },
     {
-        id: 2,
+        artistID: 2,
         name: 'Jessie Ware',
         country: 'UK',
         age: 38,
@@ -18,7 +18,7 @@ export const ARTISTS: IArtist[] = [
         totalAlbums: 4
     },
     {
-        id: 3,
+        artistID: 3,
         name: 'Green Day',
         country: 'USA',
         age: 36,
@@ -26,7 +26,7 @@ export const ARTISTS: IArtist[] = [
         totalAlbums: 16
     },
     {
-        id: 4,
+        artistID: 4,
         name: 'Adele',
         country: 'UK',
         age: 34,
@@ -34,7 +34,7 @@ export const ARTISTS: IArtist[] = [
         totalAlbums: 3
     },
     {
-        id: 5,
+        artistID: 5,
         name: 'Aurora',
         country: 'Norway',
         age: 25,
@@ -42,7 +42,7 @@ export const ARTISTS: IArtist[] = [
         totalAlbums: 3
     },
     {
-        id: 6,
+        artistID: 6,
         name: 'Metallica',
         country: 'USA',
         age: 39,
@@ -50,7 +50,7 @@ export const ARTISTS: IArtist[] = [
         totalAlbums: 10
     },
     {
-        id: 7,
+        artistID: 7,
         name: 'Enrique Bunbury',
         country: 'Spain',
         age: 55,
@@ -58,7 +58,7 @@ export const ARTISTS: IArtist[] = [
         totalAlbums: 11
     },
     {
-        id: 8,
+        artistID: 8,
         name: 'Shakira',
         country: 'Colombia',
         age: 45,
@@ -66,7 +66,7 @@ export const ARTISTS: IArtist[] = [
         totalAlbums: 11
     },
     {
-        id: 9,
+        artistID: 9,
         name: 'Juanes',
         country: 'Colombia',
         age: 50,
@@ -74,7 +74,7 @@ export const ARTISTS: IArtist[] = [
         totalAlbums: 11
     },
     {
-        id: 10,
+        artistID: 10,
         name: 'Sam Smith',
         country: 'UK',
         age: 30,

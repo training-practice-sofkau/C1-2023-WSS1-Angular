@@ -23,6 +23,14 @@ export class ArtistService {
     return this.httpClient.post(this.url, form);
   }
 
+  getById(id: string) {
+    return this.httpClient.get(`${this.url}${id}`);
+  }
+
+  updateArtist(id: string, form: any) {
+    return this.httpClient.put(`${this.url}${id}`, form);
+  }
+
   filterByName(searchingText: string, artists: IArtist[]): Observable<IArtist[]> {
     return new Observable((observer) => {
       observer.next(
