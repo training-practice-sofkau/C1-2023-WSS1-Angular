@@ -33,14 +33,18 @@ export class ArtistListComponent implements OnInit {
   ngOnSearch() {
     switch (this.typeSearch) {
       case 'ID': {
-        this.service.getById(this.param).subscribe({
-          next: (artist) => {
-            this.artistsList = [artist];
-            this.results = this.artistsList.length;
-          },
-          error: console.log,
-          complete: console.log,
-        });
+        if (this.param) {
+          this.service.getById(this.param).subscribe({
+            next: (artist) => {
+              this.artistsList = [artist];
+              this.results = this.artistsList.length;
+            },
+            error: console.log,
+            complete: console.log,
+          });
+        } else {
+          alert('Please, enter an ID');
+        }
         break;
       }
 
