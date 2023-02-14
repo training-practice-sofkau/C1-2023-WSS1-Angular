@@ -22,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { ArtistFormComponent } from './components/forms/artist-form/artist-form.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     NotFoundComponent,
     SidenavbarComponent,
     WelcomeComponent,
+    ArtistFormComponent,
   ],
   imports: [
     FormsModule,
