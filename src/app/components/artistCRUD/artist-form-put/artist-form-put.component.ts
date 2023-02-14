@@ -50,7 +50,10 @@ export class ArtistFormPutComponent implements OnInit {
 
     //this.name= "hola"
     console.log(this.artistSelected.name)
-    this.service.update(this.artistSelected.artistID,this.artist.value).subscribe((answer)=>console.log(answer))
+    this.service.update(this.artistSelected.artistID,this.artist.value).subscribe((answer)=>{
+      console.log(answer)
+      alert(`User with ID: ${answer.data.artistID} has been updated!`)
+    })
     //this.service.postArtist(this.saveArtist.value).subscribe((answer)=>console.log(answer));
   }
 }
