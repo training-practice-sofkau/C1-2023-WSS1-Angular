@@ -7,6 +7,7 @@ import { AlbumListMenuComponent } from './components/album-list-menu/album-list-
 import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ArtistPutComponent } from './components/artistCRUD/artist-put/artist-put.component';
+import { ArtistFormPostComponent } from './components/artistCRUD/artist-form-post/artist-form-post.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'artist/put',
     component: ArtistPutComponent
+  },
+  {
+    path: 'artist/post',
+    component: ArtistFormPostComponent
   },
   {
     path: 'album',

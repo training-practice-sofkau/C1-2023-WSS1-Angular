@@ -32,6 +32,7 @@ import { ArtistPutComponent } from './components/artistCRUD/artist-put/artist-pu
 import { ArtistPostComponent } from './components/artistCRUD/artist-post/artist-post.component';
 import { ArtistFormComponent } from './components/artistCRUD/artist-form/artist-form.component';
 import { ArtistFormPutComponent } from './components/artistCRUD/artist-form-put/artist-form-put.component';
+import { ArtistFormPostComponent } from './components/artistCRUD/artist-form-post/artist-form-post.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { ArtistFormPutComponent } from './components/artistCRUD/artist-form-put/
     ArtistPutComponent,
     ArtistPostComponent,
     ArtistFormComponent,
-    ArtistFormPutComponent
+    ArtistFormPutComponent,
+    ArtistFormPostComponent
 
   ],
   imports: [

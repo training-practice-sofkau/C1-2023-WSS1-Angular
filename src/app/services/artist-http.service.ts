@@ -24,4 +24,8 @@ export class ArtistHttpService {
   update(param: string, artist:IArtist): Observable<any> {
     return this.http.put(this.api+"/"+param, artist);
   }
+
+  post(artist:IArtist):  Observable<any> {
+    return this.http.post(this.api, artist);
+  }
 }
