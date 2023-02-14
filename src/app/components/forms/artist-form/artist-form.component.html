@@ -1,24 +1,25 @@
 <form [formGroup]="saveArtist" ngClass="save">
     <mat-form-field appearance="fill">
-        <mat-label>Name:</mat-label> <input matInput placeholder="Insert name" formControlName="name" />
+        <mat-label>Name:</mat-label> <input matInput placeholder="Insert name" formControlName="nameDTO" />
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>Country: </mat-label> <input matInput placeholder="Insert country" formControlName="country" />
+        <mat-label>Country: </mat-label> <input matInput placeholder="Insert country" formControlName="countryDTO" />
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Enterprise: </mat-label> <input matInput placeholder="Insert enterprise"
-            formControlName="enterprise" />
+            formControlName="enterpriseDTO" />
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Debut Date: </mat-label>
-        <input matInput [matDatepicker]="picker" placeholder="Insert debut date" formControlName="debutDate" />
+        <input matInput [matDatepicker]="picker" 
+        placeholder="Insert debut date" formControlName="debutDateDTO" />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Type: </mat-label>
-        <mat-select formControlName="type">
+        <mat-select formControlName="typeDTO">
             <mat-option value="soloist">Soloist</mat-option>
             <mat-option value="band">Band</mat-option>
 

@@ -28,6 +28,7 @@ export class ArtistListComponent implements OnInit{
 
   };
 
+  p: number = 0;
   results: number = 0;
   
   ngOnInit(): void {
@@ -52,6 +53,10 @@ export class ArtistListComponent implements OnInit{
     this.service.getById(param).subscribe((artist) => {
       this.l_artists = [artist],
       this.results = this.l_artists.length;});
+  }
+
+  ngDeleteById(param: string){
+    
   }
 
 

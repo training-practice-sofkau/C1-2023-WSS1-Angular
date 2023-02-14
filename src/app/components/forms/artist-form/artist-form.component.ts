@@ -9,24 +9,26 @@ import { ArtistService } from 'src/app/services/artist-services/artist.service';
 })
 export class ArtistFormComponent  implements OnInit {
   saveArtist: FormGroup = new FormGroup({});
-  //typeSearch: string = '';
+  
+
+
   constructor(private builder: FormBuilder, private service: ArtistService){}
 
   ngOnInit():void{
     this.saveArtist = this.builder.group(
       {
-        name:'',
-        country:'',
-        enterprise: '',
-        debutDate: '',
-        type: ''
+        nameDTO:'',
+        countryDTO:'',
+        enterpriseDTO: '',
+        debutDateDTO: '',
+        typeDTO: ''
       }
     );
     this.saveArtist.valueChanges.subscribe((change)=>console.log(change));
 
   }
   
-  onSubmit(){
+  onSubmit(): void{
     this.service.postArtist(this.saveArtist.value).subscribe((answer)=>console.log(answer));
   }
 

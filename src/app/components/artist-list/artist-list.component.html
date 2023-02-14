@@ -1,27 +1,49 @@
 <div [ngStyle]="{display: 'flex'}">
     <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param" (keydown.backspace)="ngOnInit()"/>
+        <input type="text" placeholder="Enter text" [(ngModel)]="param" (keydown.backspace)="ngOnInit()" />
     </div>
     <div ngClass="artistOps">
-        <input type="radio" (click)="ngGetById(param)"/> id
+        <input type="radio" (click)="ngGetById(param)" /> id
 
     </div>
     <button routerLink="/new/artist">Nuevo Artista</button>
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
+<mat-card class="example-card" [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists
+| paginate: { itemsPerPage: 3, currentPage: p }">
     <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
-        id: {{artist.artistIDDTO}} <br/>
-        name: {{artist.nameDTO}} <br/>
-        country: {{artist.countryDTO}} <br/>
-        enterprise: {{artist.enterpriseDTO}} <br/>
-        Debut date: {{artist.debutDateDTO}} <br/>
-        Type: {{artist.typeDTO}} <br/>
+        <mat-card-header>
+            <mat-card-subtitle>Artist</mat-card-subtitle>
+            <mat-card-title>{{artist.nameDTO}}u</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            name: {{artist.nameDTO}} <br />
+            country: {{artist.countryDTO}} <br />
+            enterprise: {{artist.enterpriseDTO}} <br />
+            Debut date: {{artist.debutDateDTO}} <br />
+            Type: {{artist.typeDTO}} <br />
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="example-button-row">
+                <div class="example-flex-container">
+                    <div class="example-button-container">
+                        <div class="example-button-container">
+                            <button mat-mini-fab color="primary" aria-label="Example icon button with a bookmark icon">
+                                <mat-icon>update</mat-icon>
+                            </button>
 
-        
+                            <button mat-mini-fab color="accent" aria-label="Example icon button with a delete icon">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </mat-card-actions>
     </div>
-  
-</div>
+</mat-card>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="results > 0; else noArtistFound ">
@@ -35,3 +57,6 @@
         <h4>No artist were found</h4>
     </div>
 </ng-template>
+
+<pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="Previous"
+    nextLabel="Next"></pagination-controls>

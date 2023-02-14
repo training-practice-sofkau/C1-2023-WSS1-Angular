@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable} from 'rxjs';
+import { Observable, map} from 'rxjs';
 
 import { IArtist } from 'src/app/models/artist.interface';
 
@@ -14,17 +14,6 @@ export class ArtistService {
   //API url
   api: string = "http://localhost:8080/charts/artists"
 
-  //TO-DO: All the functionalities related to artist
-  /*getAll(): Observable<IArtist[]> {
-  
-    let obsArtist: Observable<IArtist[]> = new Observable(observer => {
-      observer.next(ARTISTS);
-      observer.complete();
-    });
-
-    return obsArtist;
-
-  }*/
   getAll(): Observable<any> {
     return this.http.get(this.api);
   }
@@ -35,11 +24,11 @@ export class ArtistService {
 
   }
 
-  postArtist(artist: IArtist){
+  postArtist(artist: IArtist): Observable<any>{
     return this.http.post(this.api,artist);
   }
 
-  /*getByDateDebut(){
-
-  }*/
+  putArtist(artist: IArtist): Observable<any>{
+    return this.http.put(this.api,artist);
+  }
 }
