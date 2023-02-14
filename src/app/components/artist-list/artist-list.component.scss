@@ -79,3 +79,25 @@ select {
   border-radius: 5px;
   text-shadow: none;
 }
+
+.artist-options-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    margin-top: 4.5px;
+    margin-left: 7px;
+    background: #a0dde6;
+    color: #fff;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    text-shadow: none;
+  }
+  button:hover {
+    background: #2ab7ca;
+    color: #fff;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    text-shadow: none;
+  }
+}
