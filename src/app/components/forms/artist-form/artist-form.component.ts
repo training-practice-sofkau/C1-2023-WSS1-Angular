@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ArtistService} from 'src/app/services/artist-services/artist.service';
+import {Router} from "@angular/router";
+import {ArtistListComponent} from "../../artist-list/artist-list.component";
 
 @Component({
   selector: 'app-artist-form',
@@ -10,7 +12,11 @@ import {ArtistService} from 'src/app/services/artist-services/artist.service';
 export class ArtistFormComponent implements OnInit {
   saveArtist: FormGroup = new FormGroup({});
 
-  constructor(private builder: FormBuilder, private service: ArtistService) {
+  constructor(
+    private builder: FormBuilder,
+    private service: ArtistService,
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
@@ -23,12 +29,16 @@ export class ArtistFormComponent implements OnInit {
         type: ''
       }
     );
-    this.saveArtist.valueChanges.subscribe((change) => console.log(change));
 
   }
 
   onSubmit() {
-    this.service.postArtist(this.saveArtist.value).subscribe((answer) => console.log(answer));
+    this.service.postArtist(this.saveArtist.value).subscribe({
+      next: (answer) => console.log(answer),
+      error: error => console.log(error),
+      complete: (console.log)
+      });
+    this.router.navigateByUrl('/artist');
   }
 
 }

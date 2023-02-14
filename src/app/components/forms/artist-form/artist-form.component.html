@@ -1,25 +1,35 @@
-<form [formGroup]="saveArtist" ngClass="save">
-  <mat-form-field appearance="fill">
-    <mat-label>Name:</mat-label>
-    <input matInput placeholder="Insert name" formControlName="name"/>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Country:</mat-label>
-    <input matInput placeholder="Insert country" formControlName="country"/>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Enterprise:</mat-label>
-    <input matInput placeholder="Insert enterprise" formControlName="enterprise"/>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Debut Date:</mat-label>
-    <input matInput placeholder="Insert cdebut date" formControlName="debutDate"/>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Type:</mat-label>
-    <input matInput placeholder="Insert type" formControlName="type"/>
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
-  <button mat-raised-button color="warn" routerLink="/artist">Go Back</button>
-
-</form>
+<div [ngStyle]="{display:'flex', flexDirection:'column', width:'fit-content', marginLeft:'40%', marginTop:'10%'}">
+  <mat-card>
+    <mat-card-header>
+      <h1>Add a new artist</h1>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="saveArtist" ngClass="save">
+        <mat-form-field appearance="fill">
+          <mat-label>Name:</mat-label>
+          <input matInput placeholder="Insert name" formControlName="name"/>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Country:</mat-label>
+          <input matInput placeholder="Insert country" formControlName="country"/>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Enterprise:</mat-label>
+          <input matInput placeholder="Insert enterprise" formControlName="enterprise"/>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Debut Date:</mat-label>
+          <input matInput type="date" placeholder="Insert cdebut date" formControlName="debutDate"/>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Type:</mat-label>
+          <input matInput placeholder="Insert type" formControlName="type"/>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+      <button mat-raised-button color="warn" routerLink="/artist" [ngStyle]="{marginLeft:'10px'}">Go Back</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

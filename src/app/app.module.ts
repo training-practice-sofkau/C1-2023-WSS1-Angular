@@ -7,7 +7,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {AppComponent} from './app.component';
-import {ArtistListComponent} from './components/artist-list/artist-list.component';
+import {ArtistListComponent, ArtistListDialog} from './components/artist-list/artist-list.component';
 import {AlbumListComponent} from './components/album-list/album-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
@@ -20,12 +20,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from "@angular/material/radio";
 import {MatCardModule} from "@angular/material/card";
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ArtistListComponent,
+    ArtistListDialog,
     AlbumListComponent,
     HomePageComponent,
     SidenavbarComponent,
@@ -33,7 +35,6 @@ import {MatCardModule} from "@angular/material/card";
     ArtistFormComponent
   ],
   imports: [
-
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -48,7 +49,8 @@ import {MatCardModule} from "@angular/material/card";
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

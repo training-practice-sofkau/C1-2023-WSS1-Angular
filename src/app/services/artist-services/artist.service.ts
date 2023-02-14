@@ -13,7 +13,7 @@ export class ArtistService {
   }
 
   //API url
-  api: string = "http://localhost:8080/artists"
+  api: string = "http://localhost:8080/artists";
 
   //TO-DO: All the functionalities related to artist
   /*getAll(): Observable<IArtist[]> {
@@ -36,11 +36,19 @@ export class ArtistService {
 
   }
 
-  postArtist(artist: IArtist) {
+  postArtist(artist: IArtist): Observable<any> {
     return this.http.post(this.api, artist);
   }
 
   /*getByDateDebut(){
 n
   }*/
+  deleteArtist(id: string): Observable<any> {
+    return this.http.delete(this.api + `/${id}`);
+  }
+
+  updateArtist(artist: IArtist): Observable<any> {
+    return this.http.put(this.api, artist);
+  }
+
 }

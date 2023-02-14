@@ -2,7 +2,7 @@
 @use "@angular/material" as mat;
 
 $pink-color: mat.$pink-palette;
-$indigo-color: mat.$indigo-palette;
+$blue-gray-color: mat.$blue-gray-palette;
 $gray-color: mat.$gray-palette;
 
 mat-sidenav {
@@ -10,7 +10,6 @@ mat-sidenav {
 }
 
 a{
-  color: map.get($pink-color, 500);
   font-size: 16px;
 }
 
