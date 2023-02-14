@@ -6,21 +6,25 @@
         <input type="radio" (click)="ngGetById(param)"/> id
 
     </div>
-    <button routerLink="/new/artist">Nuevo Artista</button>
+    <button (click)="setType('save')" routerLink="/new/artist" >Nuevo Artista</button>
 </div>
 
 <div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
-    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
+  <div [ngStyle]="{display: 'flex', 'justify-content': 'space-between'}">
+  <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
         id: {{artist.artistID}} <br/>
         name: {{artist.name}} <br/>
         country: {{artist.country}} <br/>
         enterprise: {{artist.enterprise}} <br/>
         Debut date: {{artist.debutDate}} <br/>
         Type: {{artist.type}} <br/>
-
-        
     </div>
-  
+    <div [ngStyle]="{display: 'flex', flexDirection:'column'}">
+      <button mat-raised-button color="warn" (click)="ngDeleteById(artist.artistID)">Delete</button>
+      <button mat-raised-button color="primary" (click)="setUpdateArtistCookie(artist, 'update')" routerLink="/new/artist">Update</button>
+    </div>
+  </div>
+
 </div>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->

@@ -1,20 +1,59 @@
+<div *ngIf="type == 'save'">
 <form [formGroup] = "saveArtist" ngClass="save">
     <mat-form-field appearance="fill" >
-        <mat-label>Name:</mat-label>  <input matInput placeholder="Insert name" formControlName="name"/> 
+        <mat-label>Name:</mat-label>  <input matInput placeholder="Insert name" formControlName="name" required/>
+        <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" >
-        <mat-label>Country: </mat-label> <input matInput placeholder="Insert country" formControlName="country"/>
+        <mat-label>Country: </mat-label> <input matInput placeholder="Insert country" formControlName="country" required/>
+        <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" >
-        <mat-label>Enterprise: </mat-label> <input matInput placeholder="Insert enterprise" formControlName="enterprise"/>
+        <mat-label>Enterprise: </mat-label> <input matInput placeholder="Insert enterprise" formControlName="enterprise" required/>
+        <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" >
-        <mat-label>Debut Date: </mat-label> <input matInput placeholder="Insert cdebut date" formControlName="debutDate"/>
+        <mat-label>Debut Date: </mat-label> <input matInput type="date" placeholder="Insert cdebut date" formControlName="debutDate" required/>
+        <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" >
-        <mat-label>Type: </mat-label> <input matInput placeholder="Insert type" formControlName="type"/>
+        <mat-label>Type: </mat-label> <input matInput placeholder="Insert type" formControlName="type" required/>
+        <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]='saveArtist.invalid'>Save</button>
     <button mat-raised-button color="warn" routerLink="/artist">Go Back</button>
- 
-</form>
+
+  </form>
+</div>
+
+<div *ngIf="type == 'update'|| type == ''">
+  <form [formGroup] = "saveArtist" ngClass="save">
+    <mat-form-field appearance="fill" >
+      <mat-label>Id:</mat-label>  <input matInput placeholder="Insert name" formControlName="artistID" required/>
+      <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+      <mat-form-field appearance="fill" >
+          <mat-label>Name:</mat-label>  <input matInput placeholder="Insert name" formControlName="name" required/>
+          <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" >
+          <mat-label>Country: </mat-label> <input matInput placeholder="Insert country" formControlName="country" required/>
+          <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" >
+          <mat-label>Enterprise: </mat-label> <input matInput placeholder="Insert enterprise" formControlName="enterprise" required/>
+          <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" >
+          <mat-label>Debut Date: </mat-label> <input matInput type="date" placeholder="Insert cdebut date" formControlName="debutDate" required/>
+          <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" >
+          <mat-label>Type: </mat-label> <input matInput placeholder="Insert type" formControlName="type" required/>
+          <mat-error *ngIf="input.invalid" >{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="onUpdate()" [disabled]='saveArtist.invalid'>Update</button>
+      <button mat-raised-button color="warn" routerLink="/artist" (click)="deleteCookie()">Go Back</button>
+
+    </form>
+  </div>
