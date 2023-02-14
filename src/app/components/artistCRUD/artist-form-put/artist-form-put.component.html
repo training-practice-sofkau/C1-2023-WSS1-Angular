@@ -1,0 +1,27 @@
+
+<div ngClass="artist-form-container">
+
+
+  <form [formGroup] = "artist" ngClass="artist-form">
+    <mat-form-field appearance="fill" >
+        <mat-label>Name:</mat-label>  <input matInput placeholder="Insert name" formControlName="name" [value]="artistSelected.name"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill" >
+        <mat-label>Country: </mat-label> <input matInput placeholder="Insert country" formControlName="country" [value]="artistSelected.country"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill" >
+        <mat-label>Enterprise: </mat-label> <input matInput placeholder="Insert enterprise" formControlName="enterprise" [value]="artistSelected.enterprise"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill" >
+        <mat-label>Debut Date: </mat-label> <input matInput placeholder="Insert cdebut date" formControlName="debutDate" [value]="artistSelected.debutDate"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill" >
+        <mat-label>Type: </mat-label> <input matInput placeholder="Insert type" formControlName="type" [value]="artistSelected.type"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill" >
+      <mat-label>Age: </mat-label> <input matInput placeholder="Insert age" formControlName="age" [value]="artistSelected.age"/>
+  </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+    <button mat-raised-button color="warn" routerLink="/artist">Go Back</button>
+  </form>
+  </div>

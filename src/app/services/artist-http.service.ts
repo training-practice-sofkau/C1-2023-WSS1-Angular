@@ -20,4 +20,8 @@ export class ArtistHttpService {
   getByID(param: string): Observable<any> {
     return this.http.get(this.api+"/"+param);
   }
+
+  update(param: string, artist:IArtist): Observable<any> {
+    return this.http.put(this.api+"/"+param, artist);
+  }
 }
