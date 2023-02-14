@@ -28,7 +28,11 @@ export class ArtistFormComponent {
     }
 
     onSubmit(){
-        this.service.postArtist(this.saveArtist.value).subscribe((answer)=>console.log(answer));
+        this.service.postArtist(this.saveArtist.value).subscribe((answer)=> {
+            console.log(answer);
+            alert("Artist created");
+        });
+        
     }
 
 }
