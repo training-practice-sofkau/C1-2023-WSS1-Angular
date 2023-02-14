@@ -1,23 +1,37 @@
-<mat-toolbar color = "primary"> 
-    <mat-toolbar-row> 
-        <button mat-icon-button (click)="sidenav.toggle();">
-            <mat-icon >menu</mat-icon>
-        </button> Music Catalog
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <mat-sidenav-container>
-    <mat-sidenav  #sidenav opened mode="side" >
-        <mat-nav-list>
-            <a mat-list-item routerLink="/"> <mat-icon>home</mat-icon> Home</a>  
-            <a mat-list-item routerLink="./album"> <mat-icon>library_music</mat-icon>Albums</a>
-            <a mat-list-item routerLink="./artist"> <mat-icon>people</mat-icon>Artist</a>
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content >
-        <div style ="height: 88vh;">
-            <router-outlet></router-outlet>
-        </div>
-  
-    </mat-sidenav-content>
-  
-  </mat-sidenav-container>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="sidenav.toggle();">
+      <mat-icon>menu</mat-icon>
+    </button>
+    Music Catalog
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav opened mode="side">
+    <mat-nav-list>
+
+      <mat-list-item routerLink="/">
+        <a><mat-icon>home</mat-icon></a>
+        <a>home</a>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/artist">
+        <a><mat-icon>people</mat-icon></a>
+        <a>Artist</a>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/album">
+        <a><mat-icon>library_music</mat-icon></a>
+        <a>Albums</a>
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div style="height: 90vh;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

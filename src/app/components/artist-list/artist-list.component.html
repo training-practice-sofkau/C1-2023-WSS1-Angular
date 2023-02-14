@@ -1,37 +1,44 @@
-<div [ngStyle]="{display: 'flex'}">
-    <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param" (click)="ngOnInit()"/>
-    </div>
-    <div ngClass="artistOps">
-        <input type="radio" (click)="ngGetById(param)"/> id
+<div [ngStyle]="{display: 'flex', alignItems:'center', justifyContent:'flex-end', marginRight:'10%'}">
+  <mat-form-field [ngStyle]="{margin:'10px'}">
+    <mat-label>Type your search</mat-label>
+    <input matInput placeholder="Ex. Metallica" [(ngModel)]="param" (click)="ngOnInit()">
+  </mat-form-field>
+  <div [ngStyle]="{marginTop: '-20px'}">
+    <button mat-raised-button color="primary" (click)="ngGetById(param)">Search by id</button>
+    <button mat-raised-button color="accent" routerLink="/new/artist" [ngStyle]="{marginLeft:'10px'}">New Artist</button>
+  </div>
 
-    </div>
-    <button routerLink="/new/artist">Nuevo Artista</button>
 </div>
 
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
-    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
-        id: {{artist.artistID}} <br/>
-        name: {{artist.name}} <br/>
-        country: {{artist.country}} <br/>
-        enterprise: {{artist.enterprise}} <br/>
-        Debut date: {{artist.debutDate}} <br/>
-        Type: {{artist.type}} <br/>
+<div [ngStyle]="{display: 'flex', flexDirection:'column', width:'80%', marginBottom:'10px', marginLeft:'10%'}" *ngFor="let artist of l_artists">
+  <mat-card>
+    <mat-card-header>
+      <h2>{{artist.name}}</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <h4>country: {{artist.country}}</h4>
+      <h4>enterprise: {{artist.enterprise}}</h4>
+      <h4>Debut date: {{artist.debutDate}}</h4>
+      <h4>Type: {{artist.type}}</h4>
+      <h5 id="notcp">{{artist.artistID}}</h5>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="updateArtist(artist)" [ngStyle]="{marginRight: '10px'}">Update</button>
+      <button mat-raised-button color="accent" (click)="deleteArtist(artist.artistID)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
 
-        
-    </div>
-  
 </div>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="results > 0; else noArtistFound ">
-    <div>
-        <h4>Founded: {{results}}</h4>
-    </div>
+  <div>
+    <h4>Founded: {{results}}</h4>
+  </div>
 
 </ng-container>
 <ng-template #noArtistFound>
-    <div>
-        <h4>No artist were found</h4>
-    </div>
+  <div>
+    <h4>No artist were found</h4>
+  </div>
 </ng-template>
