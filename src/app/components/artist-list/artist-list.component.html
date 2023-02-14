@@ -1,12 +1,13 @@
-<div [ngStyle]="{display: 'flex'}">
+<div [ngStyle]="{display: 'flex', margin:'10px 10px 10px 10px'}">
     <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param" (click)="ngOnInit()"/>
+        <input type="text" placeholder="Enter ID" [(ngModel)]="param" (click)="ngOnInit()"/>
     </div>
-    <div ngClass="artistOps">
-        <input type="radio" (click)="ngGetById(param)"/> id
+    <div ngClass="artistOps" [ngStyle]="{margin:'0px 10px 0px 10px'}">
+        <!-- <input type="radio" (click)="ngGetById(param)"/> id -->
 
+      <button [ngStyle]="{margin:'0px 10px 0px 10px'}" (click)="ngGetById(param)">Search by ID</button>
     </div>
-    <button routerLink="/new/artist">Nuevo Artista</button>
+    <button routerLink="/new/artist">Create artist</button>
 </div>
 
 <div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
@@ -18,20 +19,24 @@
         Debut date: {{artist.debutDate}} <br/>
         Type: {{artist.type}} <br/>
 
-        
+        <button [ngStyle]="{margin:'0px 10px 0px 10px'}" (click)="ngDelete(artist.artistID)">Delete</button>
+
+        <app-update-artist [artist]="artist"></app-update-artist>
     </div>
-  
+
 </div>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->
 <ng-container *ngIf="results > 0; else noArtistFound ">
     <div>
-        <h4>Founded: {{results}}</h4>
+        <h4 [ngStyle]="{margin:'10px 10px 10px 10px'}">Found: {{results}}</h4>
     </div>
 
 </ng-container>
-<ng-template #noArtistFound>
+<ng-template  #noArtistFound>
     <div>
-        <h4>No artist were found</h4>
+        <h4 [ngStyle]="{margin:'10px 10px 10px 10px'}">No artist found</h4>
     </div>
 </ng-template>
+
+
