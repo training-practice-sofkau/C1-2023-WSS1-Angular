@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { IAlbum } from './models/album.interface';
+import { IArtist } from './models/artist.interface';
 
 @Component({
   selector: 'app-root',

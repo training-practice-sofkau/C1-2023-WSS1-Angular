@@ -11,7 +11,7 @@
           <div class="search-option" routerLink="./home/artist">
             <h2>Artist</h2>
           </div>
-          <div class="search-option create" routerLink="./home/new-artist">
+          <div class="search-option create" (click)="createFrom(true)">
             <h2>new</h2>
           </div>
         </div>
@@ -23,6 +23,7 @@
             <h2>new</h2>
           </div>
         </div>
+        <app-new-artist-form *ngIf="artistForm" [inputArtist]="inputArtist" (back)="createFrom(false)"></app-new-artist-form>
       </nav>
     </mat-nav-list>
   </mat-sidenav>

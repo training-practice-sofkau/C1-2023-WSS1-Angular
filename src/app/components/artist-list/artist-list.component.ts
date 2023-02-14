@@ -1,7 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ARTISTS } from '../../mocks/artist.mock';
+import { Component, OnInit } from '@angular/core';
 import { IArtist } from '../../models/artist.interface';
-import { FormControl } from '@angular/forms';
 import { ArtistService } from 'src/app/services/artist.service';
 
 @Component({
@@ -18,11 +16,11 @@ export class ArtistListComponent implements OnInit {
   searchBy: number = 0;
   searchOperator: number = 1;
   results: number = 0;
-  // @Output() onDelete: EventEmitter<string> = new EventEmitter();
 
   ngOnInit(): void {
     this.onFindAll();
   }
+
 
   deleteA(id: string) {
     if (

@@ -20,15 +20,7 @@ const routes: Routes = [
       {
         path: 'album',
         component: AlbumListComponent,
-      },
-      {
-        path: 'new-artist',
-        component: ArtistListComponent,
-      },
-      {
-        path: 'new-album',
-        component: AlbumListComponent,
-      },
+      }
     ],
   },
 ];

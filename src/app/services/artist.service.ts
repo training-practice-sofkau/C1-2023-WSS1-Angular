@@ -22,4 +22,7 @@ export class ArtistService {
   deleteRegister(id : string): Observable<any> {
     return this.http.delete(`${this.api}/${id}`);
   }
+  postArtist(id : string): Observable<any> {
+    return this.http.get(`${this.api}/${id}`);
+  }
 }
