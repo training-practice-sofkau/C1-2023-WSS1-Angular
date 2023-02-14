@@ -1,7 +1,5 @@
-<form [formGroup] = "saveArtist" ngClass="save">
-  <!-- <mat-form-field appearance="fill" >
-    <mat-label>ID:</mat-label>  <input matInput placeholder="Insert name" formControlName="id"/>
-</mat-form-field> -->
+<form [formGroup] = "saveArtist" ngClass="save" [ngStyle]="{display: 'flex', flexDirection:'column', padding:'10px'}">
+
   <mat-form-field appearance="fill" >
       <mat-label>Name:</mat-label>  <input matInput placeholder="Insert name" formControlName="name"/>
   </mat-form-field>
