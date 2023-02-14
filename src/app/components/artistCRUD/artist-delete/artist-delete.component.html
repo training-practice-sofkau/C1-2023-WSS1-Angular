@@ -3,6 +3,10 @@
   <button mat-raised-button color="primary" (click)="onIDSearch()">Search</button>
 </div>
 
+<div>
+  <app-artist *ngIf="artistSelected" [ngStyle]="{margin: '10px 10px 10px 13px ', padding:'5px'}"
+     [artist]="artistSelected"></app-artist>
+</div>
 
 <div>
   <button *ngIf="artistSelected" mat-raised-button color="primary" (click)="onDelete()">Delete</button>

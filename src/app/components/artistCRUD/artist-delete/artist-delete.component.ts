@@ -25,9 +25,10 @@ export class ArtistDeleteComponent {
   onDelete(){
     //this.name= "hola"
     console.log(this.artistSelected?.name)
+    if (confirm('Do you want to delete the Artist?')){
     if(this.artistSelected){
       this.service.deleteByID(this.artistSelected.artistID).subscribe((answer)=>console.log(answer))
-    }
+    }}
   }
 
 }
