@@ -38,5 +38,6 @@ export class ArtistPutFormComponent implements OnInit {
     this.service
       .putArtist(this.artist.value)
       .subscribe((answer) => console.log(answer));
+    alert('The Artist was updated');
   }
 }

@@ -307,13 +307,13 @@ export class ArtistListComponent implements OnInit {
   }
 
   deleteArtist() {
-    if (confirm('Do you want to delete the Artist?'))
+    if (confirm('Do you want to delete the Artist?')) {
       this.service.deleteArtist(this.param).subscribe({
         error: console.log,
         complete: console.log,
       });
-    this.results = this.artistsList.length;
+      this.results = this.artistsList.length;
+      alert('The Artist was deleted');
+    }
   }
-
-  updateArtist() {}
 }

@@ -27,5 +27,6 @@ export class ArtistFormComponent implements OnInit {
     this.service
       .postArtist(this.saveArtist.value)
       .subscribe((answer) => console.log(answer));
+    alert('The Artist was created');
   }
 }
