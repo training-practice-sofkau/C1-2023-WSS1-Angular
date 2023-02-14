@@ -6,7 +6,6 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
 import { ArtistFormComponent } from './components/forms/artist-form/artist-form.component';
 import { ArtistPutComponent } from './components/artist-put/artist-put.component';
-import { ArtistPutFormComponent } from './components/forms/artist-put-form/artist-put-form.component';
 
 const routes: Routes = [
   {

@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AlbumListComponent } from './components/album-list/album-list.component';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
@@ -23,6 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ArtistFormComponent } from './components/forms/artist-form/artist-form.component';
+import { ArtistPutComponent } from './components/artist-put/artist-put.component';
+import { ArtistPutFormComponent } from './components/forms/artist-put-form/artist-put-form.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +37,11 @@ import { ArtistFormComponent } from './components/forms/artist-form/artist-form.
     SidenavbarComponent,
     WelcomeComponent,
     ArtistFormComponent,
+    ArtistPutComponent,
+    ArtistPutFormComponent,
   ],
   imports: [
+    MatSelectModule,
     FormsModule,
     BrowserModule,
     NgxPaginationModule,
@@ -49,8 +55,8 @@ import { ArtistFormComponent } from './components/forms/artist-form/artist-form.
     MatIconModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
     MatInputModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
