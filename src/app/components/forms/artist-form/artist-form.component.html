@@ -1,6 +1,6 @@
 <form [formGroup] = "saveArtist" ngClass="save">
     <mat-form-field appearance="fill" >
-        <mat-label>Name:</mat-label>  <input matInput placeholder="Insert name" formControlName="name"/> 
+        <mat-label>Name:</mat-label>  <input matInput placeholder="Insert name" formControlName="name"/>
     </mat-form-field>
     <mat-form-field appearance="fill" >
         <mat-label>Country: </mat-label> <input matInput placeholder="Insert country" formControlName="country"/>
@@ -16,5 +16,4 @@
     </mat-form-field>
     <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
     <button mat-raised-button color="warn" routerLink="/artist">Go Back</button>
- 
 </form>

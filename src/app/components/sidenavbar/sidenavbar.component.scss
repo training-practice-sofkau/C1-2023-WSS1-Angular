@@ -1,3 +1,12 @@
 mat-sidenav {
     width: 210px;
 }
+
+mat-sidenav-content {
+  display: flex;
+  justify-content: center;
+  div {
+    margin-top: 25px;
+    width: 60%;
+  }
+}
