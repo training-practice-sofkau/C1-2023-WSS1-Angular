@@ -1,7 +1,7 @@
 <div [ngStyle]="{ display: 'flex', justifyContent: 'center' }">
   <div class="search--container">
     <div ngClass="artistTxt">
-      <input type="text" placeholder="Enter text" [(ngModel)]="myParam" />
+      <input type="text" placeholder="Enter text" [(ngModel)]="myParam" (input)="onSearch()" />
     </div>
     <div ngClass="artistOps">
       <button (click)="onSearch()" class="search--btn">Search</button>
@@ -9,38 +9,49 @@
     </div>
   </div>
 </div>
-
-<div class="list--container">
-  <div *ngFor="let artist of pagination_artist">
-    <app-element-card [elementRender]="artist" (idElement)="deleteArtist($event)"></app-element-card>
-  </div>
-  <div class="paginator--container" *ngIf="pagination_artist.length > 0">
-    <p
-      (click)="changePage('down')"
-      *ngIf="currentPage > 1"
-      class="pagination--button"
-    >
-      <<
-    </p>
-    <p (click)="paginationList()">Page {{ currentPage }}</p>
-    <p
-      (click)="changePage('up')"
-      *ngIf="l_artists.length / rows > currentPage"
-      class="pagination--button"
-    >
-      >>
-    </p>
-  </div>
-</div>
-
-<!--Implement acording to the results obtained founded: n or There are no matches-->
-<ng-container *ngIf="results > 0; else noArtistFound">
-  <div>
-    <h4>Found: {{ results }}</h4>
-  </div>
+<ng-container *ngIf="editArtist; else infoList" >
+  <ng-container *ngIf="editArtist.artistID; else noInfo" >
+    <app-edit-artist-form [objEdit]="editArtist" (toEdit)="updateArtist($event)"></app-edit-artist-form>
+  </ng-container>
+  <ng-template #noInfo>
+    <h2>There is no results</h2>
+  </ng-template>
 </ng-container>
-<ng-template #noArtistFound>
-  <div>
-    <h4>No artist were found</h4>
+<ng-template #infoList>
+  <div class="list--container">
+    <div *ngFor="let artist of pagination_artist">
+      <app-element-card [elementRender]="artist" (idElement)="deleteArtist($event)"></app-element-card>
+    </div>
+    <div class="paginator--container" *ngIf="pagination_artist.length > 0">
+      <p
+        (click)="changePage('down')"
+        *ngIf="currentPage > 1"
+        class="pagination--button"
+      >
+        <<
+      </p>
+      <p (click)="paginationList()">Page {{ currentPage }}</p>
+      <p
+        (click)="changePage('up')"
+        *ngIf="l_artists.length / rows > currentPage"
+        class="pagination--button"
+      >
+        >>
+      </p>
+    </div>
   </div>
+  
+  <!--Implement acording to the results obtained founded: n or There are no matches-->
+  <ng-container *ngIf="results > 0; else noArtistFound">
+    <div>
+      <h4>Found: {{ results }}</h4>
+    </div>
+  </ng-container>
+  <ng-template #noArtistFound>
+    <div>
+      <h4>No artist were found</h4>
+    </div>
+  </ng-template>
 </ng-template>
+
+

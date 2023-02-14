@@ -30,8 +30,11 @@ export class ElementCardComponent implements OnInit{
 
   sendId(){
     if(this.elementRender){
-      const idxPropertyID= Object.keys(this.elementRender).findIndex(el=>el.toLocaleLowerCase().includes('id'))
-      this.idElement.emit(Object.values(this.elementRender)[idxPropertyID])
+      let op = confirm("Are you sure you want to remove this?")
+      if(op){
+        const idxPropertyID= Object.keys(this.elementRender).findIndex(el=>el.toLocaleLowerCase().includes('id'))
+        this.idElement.emit(Object.values(this.elementRender)[idxPropertyID])
+      }
     }
     
   }

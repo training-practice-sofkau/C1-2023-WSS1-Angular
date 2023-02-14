@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable} from 'rxjs';
 
 import { IArtist } from 'src/app/models/artist.interface';
+import { envDev } from 'src/environments/envDev';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,29 @@ export class ArtistService {
   constructor(private http: HttpClient) { }
 
   //API url
-  api: string = "http://localhost:8080/artists"
+  api: string = envDev.url
+
+  getAll(): Observable<any>{
+    return this.http.get(this.api+"artists")
+  }
+
+  getArtistById(id:string): Observable<any>{
+    return this.http.get(this.api+`artists/${id}`) 
+  }
+
+  deleteArtist(id:string):Observable<any>{
+    return this.http.delete(this.api+`artists/${id}`,{responseType: 'text'})
+  }
+
+  addArtist(obj:IArtist):Observable<any>{
+    return this.http.post(this.api+"artists",obj)
+  }
+
+  editArtist(obj:IArtist):Observable<any>{
+    return this.http.put(this.api+`artists`,obj)
+  }
+
+
 
   //TO-DO: All the functionalities related to artist
   /*getAll(): Observable<IArtist[]> {
