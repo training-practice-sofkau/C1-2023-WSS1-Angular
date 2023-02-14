@@ -1,138 +1,33 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { ARTISTS } from 'src/app/mocks/artist.mock';
+import { HttpClient } from '@angular/common/http';
 import { IArtist } from 'src/app/models/artist.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArtistsService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getAll(): Observable<IArtist[]> {
-    let obsArtists: Observable<IArtist[]> = new Observable((observer) => {
-      observer.next(ARTISTS);
-      observer.complete();
-    });
-    return obsArtists;
+  api: string = 'http://localhost:8080/api/artists';
+
+  getAll(): Observable<any> {
+    return this.http.get(this.api);
   }
 
-  getByName(param: string, filter: string): Observable<IArtist[]> {
-    let obsArtists: Observable<IArtist[]> = new Observable();
-
-    if (filter === '') {
-      obsArtists = new Observable((observer) => {
-        observer.next(
-          ARTISTS.filter(
-            (artist) => artist.name.toLowerCase() === param.toLowerCase()
-          ).sort((x, y) => x.name.localeCompare(y.name))
-        );
-        observer.complete();
-      });
-    }
-
-    if (filter === 'Starts with') {
-      obsArtists = new Observable((observer) => {
-        observer.next(
-          ARTISTS.filter((artist) =>
-            artist.name.toLowerCase().startsWith(param.toLowerCase())
-          ).sort((x, y) => x.name.localeCompare(y.name))
-        );
-        observer.complete();
-      });
-    }
-
-    if (filter === 'Not starts with') {
-      obsArtists = new Observable((observer) => {
-        observer.next(
-          ARTISTS.filter(
-            (artist) =>
-              artist.name.toLowerCase().charAt(0) !=
-              param.toLowerCase().charAt(0)
-          ).sort((x, y) => x.name.localeCompare(y.name))
-        );
-        observer.complete();
-      });
-    }
-    return obsArtists;
+  getById(id: string): Observable<any> {
+    return this.http.get(this.api + '/' + id);
   }
 
-  getByAge(param: string, filter: string): Observable<IArtist[]> {
-    let obsArtists: Observable<IArtist[]> = new Observable();
-
-    if (filter === '') {
-      obsArtists = new Observable((observer) => {
-        observer.next(
-          ARTISTS.filter((artist) => artist.age === parseInt(param)).sort(
-            (x, y) => x.name.localeCompare(y.name)
-          )
-        );
-        observer.complete();
-      });
-    }
-
-    if (filter === 'Greater than') {
-      obsArtists = new Observable((observer) => {
-        observer.next(
-          ARTISTS.filter((artist) => artist.age > parseInt(param)).sort(
-            (x, y) => x.name.localeCompare(y.name)
-          )
-        );
-        observer.complete();
-      });
-    }
-
-    if (filter === 'Less than') {
-      obsArtists = new Observable((observer) => {
-        observer.next(
-          ARTISTS.filter((artist) => artist.age < parseInt(param)).sort(
-            (x, y) => x.name.localeCompare(y.name)
-          )
-        );
-        observer.complete();
-      });
-    }
-
-    return obsArtists;
+  postArtist(artist: IArtist) {
+    return this.http.post(this.api, artist);
   }
 
-  getByCountry(param: string, filter: string): Observable<IArtist[]> {
-    let obsArtists: Observable<IArtist[]> = new Observable();
+  putArtist(id: string) {
+    return this.http.post(this.api, id);
+  }
 
-    if (filter === '') {
-      obsArtists = new Observable((observer) => {
-        observer.next(
-          ARTISTS.filter(
-            (artist) => artist.country.toLowerCase() === param.toLowerCase()
-          ).sort((x, y) => x.name.localeCompare(y.name))
-        );
-        observer.complete();
-      });
-    }
-
-    if (filter === 'Starts with') {
-      obsArtists = new Observable((observer) => {
-        observer.next(
-          ARTISTS.filter((artist) =>
-            artist.country.toLowerCase().startsWith(param.toLowerCase())
-          ).sort((x, y) => x.name.localeCompare(y.name))
-        );
-        observer.complete();
-      });
-    }
-
-    if (filter === 'Not starts with') {
-      obsArtists = new Observable((observer) => {
-        observer.next(
-          ARTISTS.filter(
-            (artist) =>
-              artist.country.toLowerCase().charAt(0) !=
-              param.toLowerCase().charAt(0)
-          ).sort((x, y) => x.name.localeCompare(y.name))
-        );
-        observer.complete();
-      });
-    }
-    return obsArtists;
+  deleteArtist(id: string) {
+    return this.http.delete(this.api + '/' + id);
   }
 }
