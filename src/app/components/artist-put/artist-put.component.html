@@ -1,0 +1,7 @@
+<div>
+  <input type="text" placeholder="Enter text" [(ngModel)]="param" />
+  <button mat-raised-button color="primary" (click)="findId()">Search</button>
+</div>
+
+<app-artist-put-form *ngIf="artistToUpdate" [foundedArtist]="artistToUpdate">
+</app-artist-put-form>
