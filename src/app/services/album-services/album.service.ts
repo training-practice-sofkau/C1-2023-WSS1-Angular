@@ -1,15 +1,28 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { ALBUMS } from 'src/app/mocks/album.mocks';
 import { IAlbum } from 'src/app/models/album.interface';
+import { envDev } from 'src/environments/envDev';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlbumService {
 
-  constructor() { }
+  api:string = envDev.url+"charts/"
 
+  constructor(private http: HttpClient) { }
+
+
+  getAll():Observable<any>{
+    return this.http.get(this.api+"albums")
+  }
+
+  deleteArtist(id:string):Observable<any>{
+    return this.http.delete(this.api+`albums/${id}`,{responseType: 'text'})
+  }
+  /*
   getAll(): Observable<IAlbum[]> {
     let obsALIAlbum: Observable<IAlbum[]> = new Observable((observer) => {
       observer.next(ALBUMS);
@@ -75,4 +88,5 @@ export class AlbumService {
         : -1))
     );
   }
+  */
 }

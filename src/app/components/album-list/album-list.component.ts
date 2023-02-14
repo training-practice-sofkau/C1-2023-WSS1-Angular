@@ -9,7 +9,6 @@ import { AlbumService } from 'src/app/services/album-services/album.service';
   styleUrls: ['./album-list.component.scss'],
 })
 export class AlbumListComponent implements OnInit {
-
   l_albums: IAlbum[] = [];
   pagination_albums: IAlbum[] = [];
 
@@ -19,20 +18,22 @@ export class AlbumListComponent implements OnInit {
 
   rows: number = 3;
 
-  myParam:string = ''
+  myParam: string = '';
 
-  constructor(private serviceAlbum:AlbumService){}
+  constructor(private serviceAlbum: AlbumService) {}
 
   ngOnInit(): void {
-    this.serviceAlbum.getAll().subscribe(al=>this.l_albums=al)
-    this.pagination_albums = this.paginationList();
-    this.results = this.l_albums.length;
+    this.serviceAlbum.getAll().subscribe((al) => {
+      this.l_albums = al;
+      console.log(al);
+      this.pagination_albums = this.paginationList();
+      this.results = this.l_albums.length;
+    });
   }
 
   onSearch() {
-
-    this.serviceAlbum.getAll().subscribe(al=>this.l_albums=al)
-
+    this.serviceAlbum.getAll().subscribe((al) => (this.l_albums = al));
+    /*
     const MYINDICATOR = this.myParam.match(/[:><-]/g) || [];
 
     const MYPARAMS = this.myParam.split(MYINDICATOR[0]);
@@ -84,6 +85,7 @@ export class AlbumListComponent implements OnInit {
     this.results = this.l_albums.length;
     this.currentPage = 1;
     this.pagination_albums = this.paginationList();
+    */
   }
 
   paginationList(): IAlbum[] {
@@ -99,5 +101,15 @@ export class AlbumListComponent implements OnInit {
       this.currentPage--;
     }
     this.pagination_albums = this.paginationList();
+  }
+
+  deleteAlbum(id:string){
+    this.serviceAlbum.deleteArtist(id).subscribe(({
+      next: (res) => {
+        alert(res)
+      },
+      error: console.log,
+      complete: console.log,
+    })) 
   }
 }

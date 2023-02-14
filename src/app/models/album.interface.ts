@@ -1,9 +1,11 @@
+import { IArtist } from "./artist.interface";
+
 export interface IAlbum{
-    id:number;
+    albumID:string;
     title:string;
     genre:string;
-    releaseDate:number;
-    numberOfSongs:number;
-    artist:string;
+    yearRelease:number;
+    totalSongs:number;
+    artistDTO:IArtist;
     link?:string;
 }

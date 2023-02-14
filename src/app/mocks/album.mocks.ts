@@ -1,6 +1,6 @@
 import { IAlbum } from "../models/album.interface";
 
-export const ALBUMS: IAlbum[] = [
+export const ALBUMS: IAlbum[] = [/*
     {
         id:1,
         title:'Thriller',
@@ -92,4 +92,5 @@ export const ALBUMS: IAlbum[] = [
         artist:'Spice girls',
         link:'https://www.infobae.com/new-resizer/doAVadYHWgEenD2JsLsFmths-ec=/992x558/filters:format(webp):quality(85)/s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2017/11/07130042/Spice-Girls-1920.jpg'
     }
+    */
 ]

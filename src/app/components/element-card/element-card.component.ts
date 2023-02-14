@@ -19,7 +19,7 @@ export class ElementCardComponent implements OnInit{
   ngOnInit(): void {
     if(this.elementRender) {
       this.imgElement=Object.entries(this.elementRender).find(ele=>ele[0].includes('link'))?.[1]
-      this.numberProperties=Object.entries(this.elementRender).length>6?Object.entries(this.elementRender).length-1:Object.entries(this.elementRender).length;
+      this.numberProperties=Object.entries(this.elementRender).length>5?Object.entries(this.elementRender).length-1:Object.entries(this.elementRender).length;
     }
 
   }
