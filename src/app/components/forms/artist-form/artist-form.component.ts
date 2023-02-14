@@ -9,7 +9,7 @@ import { ArtistService } from 'src/app/services/artist-services/artist.service';
 })
 export class ArtistFormComponent  implements OnInit {
   saveArtist: FormGroup = new FormGroup({});
-
+  //typeSearch: string = '';
   constructor(private builder: FormBuilder, private service: ArtistService){}
 
   ngOnInit():void{
@@ -18,7 +18,7 @@ export class ArtistFormComponent  implements OnInit {
         name:'',
         country:'',
         enterprise: '',
-        debutDate: new Date(),
+        debutDate: '',
         type: ''
       }
     );

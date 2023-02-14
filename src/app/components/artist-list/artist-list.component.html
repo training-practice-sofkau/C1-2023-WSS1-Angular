@@ -1,6 +1,6 @@
 <div [ngStyle]="{display: 'flex'}">
     <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param" (click)="ngOnInit()"/>
+        <input type="text" placeholder="Enter text" [(ngModel)]="param" (keydown.backspace)="ngOnInit()"/>
     </div>
     <div ngClass="artistOps">
         <input type="radio" (click)="ngGetById(param)"/> id

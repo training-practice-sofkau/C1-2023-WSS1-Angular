@@ -5,5 +5,4 @@ export interface IArtist{
     enterpriseDTO: string,
     debutDateDTO: Date,
     typeDTO: string
-
 }
