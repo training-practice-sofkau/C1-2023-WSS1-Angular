@@ -1,0 +1,21 @@
+<div class="search_bar">
+  <div class="input-text">
+    <input type="text" placeholder="Filter by ID" [(ngModel)]="searchParam" />
+  </div>
+  <button (click)="filter()" class="green-button filter-button">
+    Filter
+  </button>
+  <button (click)="findAll()" class="green-button">
+    Find all
+  </button>
+  <ng-container *ngIf="results > 0; else noArtistFound">
+    <div class="search-results">
+      <h4 class="result_text">{{ results }} albums found</h4>
+    </div>
+  </ng-container>
+</div>
+<ng-template #noArtistFound>
+  <div>
+    <h4 class="result_text">No albums were found</h4>
+  </div>
+</ng-template>

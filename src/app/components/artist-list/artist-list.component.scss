@@ -1,1 +1,22 @@
+.entry-card {
+  margin: 1vh;
+  background: linear-gradient(
+    90deg,
+    #3d3d3dcc,
+    90%,
+    rgba(128, 128, 128, 0.027)
+  );
+  &:hover {
+    background-color: #79ff8f94;
+  }
+  min-width: 35vw;
+  width: 45%;
+  border-radius: 3vh;
+  padding: 2vh;
+  height: 15vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  // gap: 2vh;
 
+}

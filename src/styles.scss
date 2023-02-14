@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background: linear-gradient(rgb(102, 102, 102), 10%, rgb(29, 29, 29));
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  ::-webkit-scrollbar {
+    width: 0.5vw;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #79ff8fcc;
+    border-radius: 10px;
+    position: absolute;
+    left:5vw;
+
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #79ff8fcc;
+    border-radius: 10px;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #79ff8f6b;
+  }
+
+}
+
+.result_text {
+  margin: 0px 0px 0px 10px;
+  color: rgba(245, 245, 245, 0.514);
+}
+
+.results_body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 1vh;
+  padding-right: 0.5vw;
+  padding-left: 2vh;
+  color: whitesmoke;
+  height: 70vh;
+  overflow-y: scroll;
+  position: relative;
+  width: 99%;
+  right: 1vw;
+}

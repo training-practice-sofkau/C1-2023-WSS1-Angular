@@ -1,0 +1,39 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="sidenav.toggle()">menu</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav opened mode="side">
+    <mat-nav-list>
+      <nav class="content" role="main">
+        <div class="row">
+          <div class="search-option" routerLink="./home/artist">
+            <h2>Artist</h2>
+          </div>
+          <div class="search-option create" (click)="createFrom(true)">
+            <h2>new</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="search-option" routerLink="./home/album">
+            <h2>Album</h2>
+          </div>
+          <div class="search-option create" routerLink="./home/new-album">
+            <h2>new</h2>
+          </div>
+        </div>
+        <app-new-artist-form
+          *ngIf="artistForm"
+          [inputArtist]="inputArtist"
+          (back)="createFrom(false)"
+        ></app-new-artist-form>
+      </nav>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- <div style ="height: 88vh;">
+          <router-outlet></router-outlet>
+      </div> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
