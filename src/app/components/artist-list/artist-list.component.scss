@@ -1,5 +1,4 @@
-.entry_card {
-  padding: 1vh;
+.entry-card {
   margin: 1vh;
   background: linear-gradient(
     90deg,
@@ -10,35 +9,14 @@
   &:hover {
     background-color: #79ff8f94;
   }
+  min-width: 35vw;
   width: 45%;
   border-radius: 3vh;
   padding: 2vh;
   height: 15vh;
   display: flex;
   align-items: stretch;
-  gap: 2vh;
-  img {
-    border: solid 1px black;
-    height: 15vh;
-    width: 15vh;
-    border-radius: 2vh;
-  }
-  .card-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
-    #genre {
-      font-size: x-large;
-    }
-    h3 {
-      font-size: xx-large;
-      margin: 0;
-      span {
-        font-size: medium;
-      }
-    }
-    h4 {
-      margin: 0;
-    }
-  }
+  justify-content: stretch;
+  // gap: 2vh;
+
 }

@@ -11,6 +11,9 @@ body {
   ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px #79ff8fcc;
     border-radius: 10px;
+    position: absolute;
+    left:5vw;
+
   }
   /* Handle */
   ::-webkit-scrollbar-thumb {
@@ -35,9 +38,11 @@ body {
   justify-content: space-between;
   padding-top: 1vh;
   padding-right: 0.5vw;
+  padding-left: 2vh;
   color: whitesmoke;
-  height: 85%;
+  height: 70vh;
   overflow-y: scroll;
-  width: 83vw;
-
+  position: relative;
+  width: 99%;
+  right: 1vw;
 }
