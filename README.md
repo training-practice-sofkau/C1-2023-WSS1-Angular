@@ -1,3 +1,6 @@
+# Backend
+This project was made with an API rest created with JavaSpringBoot from the following [Repository](https://github.com/JonathanPinilla/C1-2023-WSS2-Springboot-JonathanPinilla/tree/part-III)
+
 # C12023WSS1Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
