@@ -12,11 +12,11 @@ export class ArtistService {
   constructor(private http: HttpClient) { }
 
   //API url
-  api: string = "http://localhost:8080/artists"
+  api: string = "http://localhost:8080/api/artists"
 
   //TO-DO: All the functionalities related to artist
   /*getAll(): Observable<IArtist[]> {
-  
+
     let obsArtist: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS);
       observer.complete();
