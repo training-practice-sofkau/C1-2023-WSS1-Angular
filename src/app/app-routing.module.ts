@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 import { AlbumListComponent } from './components/album-list/album-list.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
-import { HomePageComponent } from './components/pages/home-page/home-page.component';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
+import { ArtistFormComponent } from './components/forms/artist-form/artist-form.component';
 
 const routes: Routes = [
   {
@@ -23,6 +23,10 @@ const routes: Routes = [
   {
     path: 'album',
     component: AlbumListComponent,
+  },
+  {
+    path: 'new/artist',
+    component: ArtistFormComponent,
   },
   {
     path: '**',
