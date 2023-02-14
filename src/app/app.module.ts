@@ -21,6 +21,7 @@ import {MatInputModule} from '@angular/material/input';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NewArtistComponent } from './components/modals/new-artist/new-artist.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { EditArtistFormComponent } from './components/forms/editArtitsForm/edit-artist-form/edit-artist-form.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     WelcomeComponent,
     ArtistFormComponent,
     HomePageComponent,
-    NewArtistComponent
+    NewArtistComponent,
+    EditArtistFormComponent
   ],
   imports: [
     BrowserModule,

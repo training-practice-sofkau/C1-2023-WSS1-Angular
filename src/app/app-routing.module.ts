@@ -4,12 +4,17 @@ import { AppComponent } from './app.component';
 import { AlbumListComponent } from './components/album-list/album-list.component';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 const routes: Routes = [
- 
+  {
+    path:"",
+    pathMatch:"full",
+    redirectTo:"home"
+  }, 
   {
     path: 'home',
-    component: HomePageComponent
+    component: WelcomeComponent
   },
   {
     path: 'artist',
