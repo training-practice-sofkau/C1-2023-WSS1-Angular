@@ -2,27 +2,30 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ARTISTS } from '../mocks/artist.mock';
 import { IArtist } from '../models/artist.interface';
+import { ArtistHttpService } from './artist-http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistService {
 
-  constructor() { }
+
+
 
   toLowerCase = (data:string): string => {
     return data.toLowerCase();
   }
 
-  getAll(): Observable<IArtist[]> {
+
+  /* getAll(): Observable<IArtist[]> {
     let obsArtist: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS);
       observer.complete();
     });
     return obsArtist;
-  }
+  } */
 
-  getByName(param: string): Observable<IArtist[]>{
+  getByName(param: string, ARTISTS: IArtist[]): Observable<IArtist[]>{
     let obsArtists: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS
         .filter(
@@ -34,7 +37,7 @@ export class ArtistService {
     return obsArtists;
   }
 
-  getByNotName(param: string): Observable<IArtist[]>{
+  getByNotName(param: string, ARTISTS: IArtist[]): Observable<IArtist[]>{
     let obsArtists: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS
         .filter(
@@ -46,7 +49,7 @@ export class ArtistService {
     return obsArtists;
   }
 
-  getByLessName(param: string): Observable<IArtist[]>{
+  getByLessName(param: string, ARTISTS: IArtist[]): Observable<IArtist[]>{
     let obsArtists: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS
         .filter(
@@ -60,7 +63,7 @@ export class ArtistService {
     return obsArtists;
   }
 
-  getByMoreName(param: string): Observable<IArtist[]>{
+  getByMoreName(param: string, ARTISTS: IArtist[]): Observable<IArtist[]>{
     let obsArtists: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS
         .filter(
@@ -75,7 +78,7 @@ export class ArtistService {
   }
 
 
-  getByCountry(param: string): Observable<IArtist[]>{
+  getByCountry(param: string, ARTISTS: IArtist[]): Observable<IArtist[]>{
     let obsArtists: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS
         .filter(
@@ -87,7 +90,7 @@ export class ArtistService {
     return obsArtists;
   }
 
-  getByNotCountry(param: string): Observable<IArtist[]>{
+  getByNotCountry(param: string, ARTISTS: IArtist[]): Observable<IArtist[]>{
     let obsArtists: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS
         .filter(
@@ -99,7 +102,7 @@ export class ArtistService {
     return obsArtists;
   }
 
-  getByLessCountry(param: string): Observable<IArtist[]>{
+  getByLessCountry(param: string, ARTISTS: IArtist[]): Observable<IArtist[]>{
     let obsArtists: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS
         .filter(
@@ -113,7 +116,7 @@ export class ArtistService {
     return obsArtists;
   }
 
-  getByMoreCountry(param: string): Observable<IArtist[]>{
+  getByMoreCountry(param: string, ARTISTS: IArtist[]): Observable<IArtist[]>{
     let obsArtists: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS
         .filter(
@@ -128,7 +131,7 @@ export class ArtistService {
   }
 
 
-  getByAge(param: string): Observable<IArtist[]>{
+  getByAge(param: string, ARTISTS: IArtist[]): Observable<IArtist[]>{
     let obsArtists: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS
         .filter(
@@ -140,7 +143,7 @@ export class ArtistService {
     return obsArtists;
   }
 
-  getByNotAge(param: string): Observable<IArtist[]>{
+  getByNotAge(param: string, ARTISTS: IArtist[]): Observable<IArtist[]>{
     let obsArtists: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS
         .filter(
@@ -152,7 +155,7 @@ export class ArtistService {
     return obsArtists;
   }
 
-  getByLessAge(param: string): Observable<IArtist[]>{
+  getByLessAge(param: string, ARTISTS: IArtist[]): Observable<IArtist[]>{
     let obsArtists: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS
         .filter(
@@ -164,7 +167,7 @@ export class ArtistService {
     return obsArtists;
   }
 
-  getByMoreAge(param: string): Observable<IArtist[]>{
+  getByMoreAge(param: string, ARTISTS: IArtist[]): Observable<IArtist[]>{
     let obsArtists: Observable<IArtist[]> = new Observable(observer => {
       observer.next(ARTISTS
         .filter(
