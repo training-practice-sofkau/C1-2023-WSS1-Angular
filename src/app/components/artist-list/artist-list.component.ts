@@ -67,25 +67,6 @@ export class ArtistListComponent implements OnInit{
     }
   }
 
-  // ngupdateArtist(artist: IArtist){
-  //   this.updateArtist = this.builder.group(
-  //     {
-  //       id: artist.artistID,
-  //       name: artist.name,
-  //       country: artist.country,
-  //       enterprise: artist.enterprise,
-  //       debutDate: artist.debutDate,
-  //       type: artist.type
-  //     }
-  //   );
-  //   const dialogRef=this.dialog.open(updateDialog, {
-  //     data: {name: artist.name, country: artist.country, enterprise: artist.enterprise, debutDate: artist.debutDate, type: artist.type}
-  //   });
-  //   dialogRef.afterClosed().subscribe(artist => {
-  //     this.updateArtist = artist;
-  //   })
-  //   this.updateArtist.valueChanges.subscribe((change)=>console.log(change));
-  // }
 
   onSubmit(){
 
