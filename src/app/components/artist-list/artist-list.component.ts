@@ -31,14 +31,15 @@ export class ArtistListComponent implements OnInit{
     })
   }
 
-  //TO-DO: Create a function that based of param it will show n-results
-  ngGetById(param: string){
-    this.artistService.getById(param).subscribe((artist) => {
-      this.results = [artist]});
-  }
-
   ngOnSearch(){
     switch(this.filterOption){
+      case "id": {
+        console.log(this.filterParam);
+        this.artistService.getById(this.filterParam).subscribe(
+          artist => { this.results = [artist]}
+        )
+        break;
+      };
       case "name": {
         this.artistService.getByName(this.filterParam, this.artistList).subscribe(
           artists => { this.results = artists; }
