@@ -1,25 +1,33 @@
 <form [formGroup]="saveArtist" ngClass="save">
     <mat-form-field appearance="fill">
-        <mat-label>Name:</mat-label> <input matInput placeholder="Insert name" formControlName="nameDTO" />
+        <mat-label>Name:</mat-label> 
+        <input matInput placeholder="Insert name" [ngModel]="updArtist.nameDTO" formControlName="nameDTO" />
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>Country: </mat-label> <input matInput placeholder="Insert country" formControlName="countryDTO" />
+        <mat-label>Country: </mat-label> 
+        <input matInput placeholder="Insert country" 
+        [ngModel]="updArtist.countryDTO"
+        formControlName="countryDTO" />
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>Enterprise: </mat-label> <input matInput placeholder="Insert enterprise"
+        <mat-label>Enterprise: </mat-label> <input matInput 
+        [ngModel]="updArtist.enterpriseDTO"
+         placeholder="Insert enterprise"
             formControlName="enterpriseDTO" />
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Debut Date: </mat-label>
         <input matInput [matDatepicker]="picker" 
-        placeholder="Insert debut date" formControlName="debutDateDTO" />
+        placeholder="Insert debut date"
+        [ngModel]="updArtist.debutDateDTO"
+        formControlName="debutDateDTO" />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Type: </mat-label>
-        <mat-select formControlName="typeDTO">
+        <mat-select [ngModel]="updArtist.typeDTO" formControlName="typeDTO">
             <mat-option value="soloist">Soloist</mat-option>
             <mat-option value="band">Band</mat-option>
 
@@ -27,6 +35,7 @@
 
     </mat-form-field>
     <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+    <button mat-raised-button color="primary" (click)="updateArtist()">Update</button>
     <button mat-raised-button color="warn" routerLink="/artist">Go Back</button>
 
 </form>

@@ -3,6 +3,6 @@ export interface IArtist{
     nameDTO: string,
     countryDTO: string,
     enterpriseDTO: string,
-    debutDateDTO: Date,
+    debutDateDTO: Date | null,
     typeDTO: string
 }

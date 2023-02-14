@@ -18,7 +18,7 @@ export class ArtistService {
     return this.http.get(this.api);
   }
 
-  getById(id: string): Observable<any>{
+  getById(id: string | null): Observable<any>{
     //return this.http.get(`${this.api}/${id}`);
     return this.http.get(this.api+"/"+id);
 
