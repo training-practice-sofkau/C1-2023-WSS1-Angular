@@ -16,6 +16,7 @@
     </div>
     <div ngClass="AlbumsOps">
       <button (click)="onSearch()" class="search--btn">Search</button>
+      <app-new-album (newAlbum)="saveAlbum($event)"></app-new-album>
     </div>
   </div>
 </div>

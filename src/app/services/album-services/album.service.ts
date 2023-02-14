@@ -24,6 +24,10 @@ export class AlbumService {
     return this.http.get(this.api+`albums/${id}`) 
   }
 
+  addAlbum(obj:IAlbum):Observable<any>{
+    return this.http.post(this.api+"albums",obj)
+  }
+
   deleteAlbum(id:string):Observable<any>{
     return this.http.delete(this.api+`albums/${id}`,{responseType: 'text'})
   }

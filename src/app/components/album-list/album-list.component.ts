@@ -135,6 +135,25 @@ export class AlbumListComponent implements OnInit {
     })) 
   }
 
+  saveAlbum(al:IAlbum){
+    console.log(al);
+    this.serviceAlbum.addAlbum(al).subscribe(({
+      next: (res=> {alert("Album saved")
+      this.serviceAlbum.getAll().subscribe({
+        next: (artist) => {
+          (this.l_albums = artist),
+            (this.pagination_albums = this.paginationList());
+          this.results = this.l_albums.length;
+        },
+        error: console.log,
+        complete: console.log,
+      });
+    }),
+      error: console.log,
+      complete: console.log,
+    }))
+  }
+
   updateAlbum(al:IAlbum){
     this.serviceAlbum.updateAlbum(al).subscribe(({
       next: (res=> alert("Updated")),

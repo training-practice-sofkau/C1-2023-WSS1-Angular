@@ -1,20 +1,25 @@
 <div class="form--container">
     <form [formGroup] = "saveAlbum" ngClass="save">
         <mat-form-field appearance="fill" >
-            <mat-label>Name:</mat-label>  <input matInput placeholder="Insert name" formControlName="name"/> 
+            <mat-label>title:</mat-label>  <input matInput placeholder="Insert name" formControlName="title"/> 
         </mat-form-field>
         <mat-form-field appearance="fill" >
-            <mat-label>Country: </mat-label> <input matInput placeholder="Insert country" formControlName="country"/>
+            <mat-label>total songs: </mat-label> <input matInput placeholder="Insert total of songs" formControlName="totalSongs"/>
         </mat-form-field>
         <mat-form-field appearance="fill" >
-            <mat-label>Enterprise: </mat-label> <input matInput placeholder="Insert enterprise" formControlName="enterprise"/>
+            <mat-label>year release: </mat-label> <input matInput placeholder="Insert year of release" formControlName="yearRelease"/>
         </mat-form-field>
         <mat-form-field appearance="fill" >
-            <mat-label>Debut Date: </mat-label> <input matInput placeholder="Insert cdebut date" formControlName="debutDate"/>
+            <mat-label>genre: </mat-label> <input matInput placeholder="Insert genre" formControlName="genre"/>
         </mat-form-field>
-        <mat-form-field appearance="fill" >
-            <mat-label>Type: </mat-label> <input matInput placeholder="Insert type" formControlName="type"/>
-        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Artist</mat-label>
+            <mat-select formControlName="artistDTO">
+              <mat-option *ngFor="let ex of artistAvailable" [value]="ex">
+                {{ ex.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         <button mat-raised-button color="primary" [mat-dialog-close]="this.saveAlbum.getRawValue()">Save</button>
      
     </form>

@@ -1,7 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { IArtist } from 'src/app/models/artist.interface';
 import { AlbumService } from 'src/app/services/album-services/album.service';
+import { ArtistService } from 'src/app/services/artist-services/artist.service';
 
 @Component({
   selector: 'app-album-form',
@@ -11,8 +13,10 @@ import { AlbumService } from 'src/app/services/album-services/album.service';
 export class AlbumFormComponent {
 
   saveAlbum: FormGroup = new FormGroup({});
+  artistAvailable:IArtist[] = []
 
   constructor(private builder: FormBuilder, private service: AlbumService,
+    private artService:ArtistService,
     public dialogRef: MatDialogRef<AlbumFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     ){}
@@ -34,12 +38,18 @@ export class AlbumFormComponent {
         },
         Validators.required,
       ],
-        totalSong:'',
+        totalSongs:'',
         yearRelease: '',
-        genre: new Date(),
+        genre: '',
         artistDTO: ''
       }
     );
+
+    this.artService.getAll().subscribe({
+      next: (artist) => (this.artistAvailable = artist),
+      error: console.log,
+      complete: console.log,
+    });
     //this.saveArtist.valueChanges.subscribe((change)=>console.log(change));
 
   }
