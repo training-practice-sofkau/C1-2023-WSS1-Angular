@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { ALBUMS } from 'src/app/mocks/album.mocks';
 import { IAlbum } from 'src/app/models/album.interface';
+import { IArtist } from 'src/app/models/artist.interface';
 import { envDev } from 'src/environments/envDev';
 
 @Injectable({
@@ -19,8 +20,16 @@ export class AlbumService {
     return this.http.get(this.api+"albums")
   }
 
-  deleteArtist(id:string):Observable<any>{
+  getAlbumById(id:string): Observable<any>{
+    return this.http.get(this.api+`albums/${id}`) 
+  }
+
+  deleteAlbum(id:string):Observable<any>{
     return this.http.delete(this.api+`albums/${id}`,{responseType: 'text'})
+  }
+
+  updateAlbum(art:IAlbum):Observable<any>{
+    return this.http.put(this.api+"albums",art)
   }
   /*
   getAll(): Observable<IAlbum[]> {

@@ -22,6 +22,10 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { NewArtistComponent } from './components/modals/new-artist/new-artist.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditArtistFormComponent } from './components/forms/editArtitsForm/edit-artist-form/edit-artist-form.component';
+import { EditAlbumFormComponent } from './components/forms/Album/edit-album-form/edit-album-form.component';
+import {MatSelectModule} from '@angular/material/select';
+import { NewAlbumComponent } from './components/modals/new-album/new-album.component';
+import { AlbumFormComponent } from './components/forms/Album/album-form/album-form.component';
 
 
 @NgModule({
@@ -35,7 +39,10 @@ import { EditArtistFormComponent } from './components/forms/editArtitsForm/edit-
     ArtistFormComponent,
     HomePageComponent,
     NewArtistComponent,
-    EditArtistFormComponent
+    EditArtistFormComponent,
+    EditAlbumFormComponent,
+    NewAlbumComponent,
+    AlbumFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +58,8 @@ import { EditArtistFormComponent } from './components/forms/editArtitsForm/edit-
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
 
   ],
   providers: [],

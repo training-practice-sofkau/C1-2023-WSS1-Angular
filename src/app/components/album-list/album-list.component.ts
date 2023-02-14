@@ -12,6 +12,8 @@ export class AlbumListComponent implements OnInit {
   l_albums: IAlbum[] = [];
   pagination_albums: IAlbum[] = [];
 
+  editAlbum:IAlbum | undefined = undefined
+
   results: number = 0;
 
   currentPage: number = 1;
@@ -32,7 +34,27 @@ export class AlbumListComponent implements OnInit {
   }
 
   onSearch() {
-    this.serviceAlbum.getAll().subscribe((al) => (this.l_albums = al));
+
+    if(this.myParam.length<4){
+      this.editAlbum=undefined
+      this.serviceAlbum.getAll().subscribe({
+        next: (artist) => {
+          (this.l_albums = artist),
+            (this.pagination_albums = this.paginationList());
+          this.results = this.l_albums.length;
+        },
+        error: console.log,
+        complete: console.log,
+      });
+    }else{
+      this.serviceAlbum.getAlbumById(this.myParam).subscribe(({
+        next: (res => this.editAlbum=res),
+        error: console.log,
+        complete: console.log
+      }))
+    }
+
+    //this.serviceAlbum.getAll().subscribe((al) => (this.l_albums = al));
     /*
     const MYINDICATOR = this.myParam.match(/[:><-]/g) || [];
 
@@ -104,12 +126,20 @@ export class AlbumListComponent implements OnInit {
   }
 
   deleteAlbum(id:string){
-    this.serviceAlbum.deleteArtist(id).subscribe(({
+    this.serviceAlbum.deleteAlbum(id).subscribe(({
       next: (res) => {
         alert(res)
       },
       error: console.log,
       complete: console.log,
     })) 
+  }
+
+  updateAlbum(al:IAlbum){
+    this.serviceAlbum.updateAlbum(al).subscribe(({
+      next: (res=> alert("Updated")),
+      error: console.log,
+      complete: console.log,
+    }))
   }
 }
