@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ALBUMS } from '../mocks/album.mock';
@@ -8,9 +9,13 @@ import { IAlbum } from '../models/album.interface';
 })
 export class AlbumService {
 
-  constructor() { }
+  api: string = "localhost:8080/charts/artists";
 
-  getAll(): Observable<IAlbum[]> {
+  constructor(private http: HttpClient) { }
+
+
+
+  getAll(): Observable<any> {
 
     let obsArtist: Observable<IAlbum[]> = new Observable(observer => {
       observer.next(ALBUMS);
@@ -59,7 +64,6 @@ export class AlbumService {
       observer.next(artistsFiltered);
       observer.complete();
     });
-
     return obsArtist;
   }
 

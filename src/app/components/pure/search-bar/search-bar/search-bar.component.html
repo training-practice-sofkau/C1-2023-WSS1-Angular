@@ -1,31 +1,12 @@
 <div class="search_bar">
-  <select name="Filter.by" id="filter-by" [(ngModel)]="searchBy">
-    <option disabled selected [value]="0">seach by</option>
-    <option *ngFor="let item of options; index as i" [value]="i + 1">
-      {{item}}
-    </option>
-  </select>
-  <select name="Filter.operator" [(ngModel)]="searchOperator">
-    <option [value]="1">=</option>
-    <option *ngIf="searchBy==3" [value]="2">></option>
-    <option *ngIf="searchBy==3" [value]="3"><</option>
-    <option [value]="4">-</option>
-  </select>
   <div class="input-text">
-    <input type="text" placeholder="Enter text" [(ngModel)]="searchParam" />
+    <input type="text" placeholder="Filter by ID" [(ngModel)]="searchParam" />
   </div>
-  <button (click)="search()" class="green-button">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="3vh"
-      height="3vh"
-      fill="currentColor"
-      viewBox="0 0 15 15"
-    >
-      <path
-        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-      />
-    </svg>
+  <button (click)="filter()" class="green-button filter-button">
+    Filter
+  </button>
+  <button (click)="findAll()" class="green-button">
+    Find all
   </button>
   <ng-container *ngIf="results > 0; else noArtistFound">
     <div class="search-results">
