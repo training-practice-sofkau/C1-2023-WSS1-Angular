@@ -18,7 +18,7 @@
     <mat-form-field appearance="fill" >
         <mat-label>Type: </mat-label> <input matInput placeholder="Insert type" formControlName="type"/>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()" routerLink="/artists">Save</button>
     <button mat-raised-button color="warn" routerLink="/artists">Go Back</button>
  
 </form>

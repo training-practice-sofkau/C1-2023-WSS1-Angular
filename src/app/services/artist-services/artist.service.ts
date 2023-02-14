@@ -19,11 +19,15 @@ export class ArtistService {
   }
 
   getById(id: string): Observable<any> {
-      return this.http.get(this.api+"/"+id)
+      return this.http.get(`${this.api}/${id}`)
   }
 
   postArtist(artist: IArtist){
     return this.http.post(this.api,artist);
+  }
+
+  deleteArtis(id: string){
+    return this.http.delete(`${this.api}/${id}`)
   }
 
 }

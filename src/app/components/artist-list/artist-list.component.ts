@@ -33,14 +33,18 @@ export class ArtistListComponent implements OnInit{
   
 
   ngOnInit(): void {
-    this.service.getAll().subscribe({
-      next: (artist) => {
-        this.l_artists = artist,
-        this.results = this.l_artists.length;
-      },
-      error: (console.log),
-      complete: (console.log)
-    })
+      this.fetchData();
+  }
+
+  fetchData(){
+      this.service.getAll().subscribe({
+          next: (artist) => {
+              this.l_artists = artist,
+                  this.results = this.l_artists.length;
+          },
+          error: (console.log),
+          complete: (console.log)
+      })
   }
 
 
@@ -60,6 +64,13 @@ export class ArtistListComponent implements OnInit{
           this.l_artists = [artist],
               this.results = this.l_artists.length;});
       console.log(this.l_artists)
+  }
+
+  deleteArtist(param: string){
+      if(confirm("Do you really want to delete?"))
+          {
+              this.service.deleteArtis(param).subscribe(() => this.ngOnInit())
+          }
   }
 
 
