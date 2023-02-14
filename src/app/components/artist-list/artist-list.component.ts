@@ -9,9 +9,9 @@ import { ArtistService } from 'src/app/services/artist-services/artist.service';
   styleUrls: ['./artist-list.component.scss']
 })
 
-export class ArtistListComponent implements OnInit{
+export class ArtistListComponent implements OnInit {
 
-  constructor(private service: ArtistService) {}
+  constructor(private service: ArtistService) { }
 
   @Input() param: string = "";
 
@@ -19,7 +19,7 @@ export class ArtistListComponent implements OnInit{
   l_artists: IArtist[] = [];
 
   artist_f: IArtist = {
-    artistIDDTO: 0,
+    artistIDDTO: '',
     nameDTO: '',
     countryDTO: '',
     enterpriseDTO: '',
@@ -30,7 +30,7 @@ export class ArtistListComponent implements OnInit{
 
   p: number = 0;
   results: number = 0;
-  
+
   ngOnInit(): void {
     this.service.getAll().subscribe({
       next: (artist) => {
@@ -45,18 +45,25 @@ export class ArtistListComponent implements OnInit{
       
       this.l_artists = artist,
       this.results = this.l_artists.length;});*/
-    
+
   }
 
   //TO-DO: Create a function that based of param it will show n-results
-  ngGetById(param: string){
+  ngGetById(param: string) {
     this.service.getById(param).subscribe((artist) => {
       this.l_artists = [artist],
-      this.results = this.l_artists.length;});
+        this.results = this.l_artists.length;
+    });
   }
 
-  ngDeleteById(param: string){
-    
+  ngDeleteById(artistID: string, artistName: string) {
+    if (confirm(`do you really like delete ${artistName} from the list?`)) {
+      this.service.deleteArtist(artistID).subscribe();
+      alert(`${artistName} was deleted successfully`);
+      this.ngOnInit();
+    } else {
+      this.ngOnInit();
+    }
   }
 
 

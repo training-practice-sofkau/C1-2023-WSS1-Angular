@@ -31,4 +31,8 @@ export class ArtistService {
   putArtist(artist: IArtist): Observable<any>{
     return this.http.put(this.api,artist);
   }
+
+  deleteArtist(artistId: string): Observable<any>{
+    return this.http.delete(`${this.api}/${artistId}`);
+  }
 }

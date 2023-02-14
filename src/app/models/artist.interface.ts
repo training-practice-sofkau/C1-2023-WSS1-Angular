@@ -1,5 +1,5 @@
 export interface IArtist{
-    artistIDDTO: number,
+    artistIDDTO: string,
     nameDTO: string,
     countryDTO: string,
     enterpriseDTO: string,

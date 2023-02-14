@@ -27,17 +27,14 @@
             <div class="example-button-row">
                 <div class="example-flex-container">
                     <div class="example-button-container">
-                        <div class="example-button-container">
-                            <button mat-mini-fab color="primary" aria-label="Example icon button with a bookmark icon">
-                                <mat-icon>update</mat-icon>
-                            </button>
-
-                            <button mat-mini-fab color="accent" aria-label="Example icon button with a delete icon">
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                        </div>
+                        <button mat-mini-fab color="primary">
+                            <mat-icon>update</mat-icon>
+                        </button>
+                    
+                        <button mat-mini-fab color="accent" (click)="ngDeleteById(artist.artistIDDTO,artist.nameDTO)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
                     </div>
-
 
                 </div>
             </div>
