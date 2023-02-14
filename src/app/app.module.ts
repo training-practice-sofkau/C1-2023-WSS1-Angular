@@ -19,7 +19,7 @@ import { ArtistFormComponent } from './components/forms/artist-form/artist-form.
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { CookieService } from 'ngx-cookie-service';
-
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { CookieService } from 'ngx-cookie-service';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-
+    MatRadioModule
 
   ],
   providers: [CookieService],
