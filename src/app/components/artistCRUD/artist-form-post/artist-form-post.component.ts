@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { IArtist } from 'src/app/models/artist.interface';
 import { ArtistHttpService } from 'src/app/services/artist-http.service';
 
 

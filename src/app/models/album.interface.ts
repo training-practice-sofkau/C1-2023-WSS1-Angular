@@ -1,7 +1,7 @@
 export interface IAlbum {
-  title: string,
+  albumID: string,
+  name: string,
   genre: string,
-  release_date: string,
-  number_of_songs: number,
-  artist: string
+  yearRelease: string,
+  totalSongs: number
 }

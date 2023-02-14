@@ -4,18 +4,29 @@
     <input class="searchTxt" type="text" placeholder="Enter text" [(ngModel)]="param" />
   </div>
 
-    <!-- Search type selector -->
-    <div style="width:200px; text-align:center">
-      <mat-select [(value)]="typeSearch">
-        <mat-option *ngFor="let option of typeOptions" [value]="option">{{option}}</mat-option>
-      </mat-select>
-    </div>
+  <!-- Search type selector -->
+  <div style="width:200px; text-align:center">
+    <mat-select [(value)]="typeSearch">
+      <mat-option *ngFor="let option of typeOptions" [value]="option">{{option}}</mat-option>
+    </mat-select>
+  </div>
   <!-- Search strategy selector -->
   <div style="width:200px; text-align:center">
     <mat-select [(value)]="searchStrategy">
       <mat-option *ngFor="let option of strategyOptions" [value]="option">{{option}}</mat-option>
     </mat-select>
   </div>
+  <div Ngclass="button" style="margin: 5px">
+    <button mat-raised-button color="primary" routerLink="./post">Post album</button>
+  </div>
+  <div Ngclass="button" style="margin: 5px">
+    <button mat-raised-button color="primary" routerLink="./put">Update album</button>
+  </div>
+  <div Ngclass="button" style="margin: 5px">
+    <button mat-raised-button color="primary" routerLink="./delete">Delete album</button>
+  </div>
+
+
 </div>
 
 <!-- ListComponent call -->

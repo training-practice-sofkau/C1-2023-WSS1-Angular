@@ -1,0 +1,21 @@
+
+<div ngClass="album-form-container">
+
+
+  <form [formGroup] = "album" ngClass="album-form">
+    <mat-form-field appearance="fill" >
+        <mat-label>Name:</mat-label>  <input matInput placeholder="Insert name" formControlName="name"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill" >
+        <mat-label>Total songs: </mat-label> <input matInput placeholder="Insert number of songs" formControlName="totalSongs"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill" >
+        <mat-label>Release year: </mat-label> <input matInput placeholder="Insert release year" formControlName="yearRelease" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" >
+        <mat-label>Genre: </mat-label> <input matInput placeholder="Insert genre" formControlName="genre"/>
+    </mat-form-field>
+    <button mat-raised-button color="primary" style="margin: 5px" (click)="onSubmit()">Save</button>
+    <button mat-raised-button color="warn" style="margin: 5px" routerLink="/artist">Go Back</button>
+  </form>
+  </div>

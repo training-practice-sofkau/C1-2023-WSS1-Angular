@@ -9,6 +9,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ArtistPutComponent } from './components/artistCRUD/artist-put/artist-put.component';
 import { ArtistFormPostComponent } from './components/artistCRUD/artist-form-post/artist-form-post.component';
 import { ArtistDeleteComponent } from './components/artistCRUD/artist-delete/artist-delete.component';
+import { AlbumFormPostComponent } from './components/albumCRUD/album-form-post/album-form-post.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,18 @@ const routes: Routes = [
   {
     path: 'album',
     component: AlbumListMenuComponent
+  },
+  {
+    path: 'album/put',
+    component: AlbumFormPostComponent
+  },
+  {
+    path: 'album/post',
+    component: AlbumFormPostComponent
+  },
+  {
+    path: 'album/delete',
+    component: ArtistDeleteComponent
   },
   {
     path: '**',

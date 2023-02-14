@@ -30,10 +30,10 @@ import { SideNavbarComponent } from './components/side-navbar/side-navbar.compon
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ArtistPutComponent } from './components/artistCRUD/artist-put/artist-put.component';
 import { ArtistPostComponent } from './components/artistCRUD/artist-post/artist-post.component';
-import { ArtistFormComponent } from './components/artistCRUD/artist-form/artist-form.component';
 import { ArtistFormPutComponent } from './components/artistCRUD/artist-form-put/artist-form-put.component';
 import { ArtistFormPostComponent } from './components/artistCRUD/artist-form-post/artist-form-post.component';
 import { ArtistDeleteComponent } from './components/artistCRUD/artist-delete/artist-delete.component';
+import { AlbumFormPostComponent } from './components/albumCRUD/album-form-post/album-form-post.component';
 
 
 @NgModule({
@@ -52,11 +52,10 @@ import { ArtistDeleteComponent } from './components/artistCRUD/artist-delete/art
     WelcomeComponent,
     ArtistPutComponent,
     ArtistPostComponent,
-    ArtistFormComponent,
     ArtistFormPutComponent,
     ArtistFormPostComponent,
-    ArtistDeleteComponent
-
+    ArtistDeleteComponent,
+    AlbumFormPostComponent
   ],
   imports: [
     BrowserModule,
