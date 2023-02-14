@@ -23,8 +23,8 @@ export class ArtistsService {
     return this.http.post(this.api, artist);
   }
 
-  putArtist(id: string) {
-    return this.http.post(this.api, id);
+  putArtist(artist: IArtist): Observable<any> {
+    return this.http.put(this.api, artist);
   }
 
   deleteArtist(id: string) {
