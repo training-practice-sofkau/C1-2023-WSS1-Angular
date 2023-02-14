@@ -21,6 +21,8 @@ export class ArtistFormComponent implements OnInit {
     typeDTO: ''
   }
   selected: string = '';
+  hiddeCreateButton: boolean = false;
+  hiddeUpdateButton: boolean = false;
 
   constructor(private builder: FormBuilder,
     private service: ArtistService,
@@ -35,14 +37,17 @@ export class ArtistFormComponent implements OnInit {
     console.log(this.Id);
     if(this.Id != null)
     {
+      this.hiddeUpdateButton = true;
       this.service.getById(this.Id).subscribe((artist) =>{
       this.updArtist = artist;
       this.selected = this.updArtist.typeDTO;
       console.log(this.selected);
       console.log(this.updArtist);
-    });}
-    console.log(this.selected);
-    console.log(this.updArtist);
+    });}else{
+      console.log(this.selected);
+      console.log(this.updArtist);
+      this.hiddeCreateButton = true;
+    }
     this.saveArtist = this.builder.group(
       {
         artistIDDTO: '',
@@ -54,6 +59,10 @@ export class ArtistFormComponent implements OnInit {
       }
     );
     this.saveArtist.valueChanges.subscribe((change) => console.log(change));
+    
+    
+    
+    
 
   }
 

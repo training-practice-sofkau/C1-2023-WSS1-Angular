@@ -42,8 +42,8 @@
         </mat-select>
 
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
-    <button mat-raised-button color="primary" (click)="updateArtist()">Update</button>
+    <button mat-raised-button color="primary" *ngIf="this.hiddeCreateButton"   (click)="onSubmit()">Save</button>
+    <button mat-raised-button color="primary"  *ngIf="this.hiddeUpdateButton" (click)="updateArtist()">Update</button>
     <button mat-raised-button color="warn" routerLink="/artist">Go Back</button>
 
 </form>
