@@ -20,6 +20,7 @@ export class ArtistFormComponent implements OnInit {
     debutDateDTO: null,
     typeDTO: ''
   }
+  selected: string = '';
 
   constructor(private builder: FormBuilder,
     private service: ArtistService,
@@ -31,14 +32,20 @@ export class ArtistFormComponent implements OnInit {
       this.Id = params.get("id");
       console.log(this.Id);
     });
+    console.log(this.Id);
     if(this.Id != null)
-    this.service.getById(this.Id).subscribe((artist) =>{
+    {
+      this.service.getById(this.Id).subscribe((artist) =>{
       this.updArtist = artist;
+      this.selected = this.updArtist.typeDTO;
+      console.log(this.selected);
       console.log(this.updArtist);
-    });
+    });}
+    console.log(this.selected);
+    console.log(this.updArtist);
     this.saveArtist = this.builder.group(
       {
-        artistIDDTO: `${this.updArtist.artistIDDTO}`,
+        artistIDDTO: '',
         nameDTO: '',
         countryDTO: '',
         enterpriseDTO: '',

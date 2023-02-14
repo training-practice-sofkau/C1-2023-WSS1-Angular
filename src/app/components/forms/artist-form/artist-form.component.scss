@@ -3,3 +3,10 @@
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .invisible{
+    display: block;
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
