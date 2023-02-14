@@ -12,19 +12,9 @@ export class ArtistService {
   constructor(private http: HttpClient) { }
 
   //API url
-  api: string = "http://localhost:8080/artists"
+  api: string = "http://localhost:8090/charts/artists"
 
-  //TO-DO: All the functionalities related to artist
-  /*getAll(): Observable<IArtist[]> {
-  
-    let obsArtist: Observable<IArtist[]> = new Observable(observer => {
-      observer.next(ARTISTS);
-      observer.complete();
-    });
 
-    return obsArtist;
-
-  }*/
   getAll(): Observable<any> {
     return this.http.get(this.api);
   }
@@ -32,14 +22,19 @@ export class ArtistService {
   getById(id: string): Observable<any>{
     //return this.http.get(`${this.api}/${id}`);
     return this.http.get(this.api+"/"+id);
-
   }
 
   postArtist(artist: IArtist){
     return this.http.post(this.api,artist);
   }
 
-  /*getByDateDebut(){
+  putArtist(artist: IArtist){
+    return this.http.put(this.api,artist);
+  }
 
-  }*/
+  deleteArtist(id: string){
+    return this.http.delete(this.api+"/"+id);
+  }
+
+
 }

@@ -18,9 +18,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ArtistFormComponent } from './components/forms/artist-form/artist-form.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { ArtistUpdateComponent } from './components/forms/update/update.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { UpdateArtistComponent } from './components/modals/update-artist/update-artist.component';
+
 
 
 @NgModule({
+
   declarations: [
     AppComponent,
     ArtistListComponent,
@@ -28,7 +33,9 @@ import {MatInputModule} from '@angular/material/input';
     HomePageComponent,
     SidenavbarComponent,
     WelcomeComponent,
-    ArtistFormComponent
+    ArtistFormComponent,
+    ArtistUpdateComponent,
+    UpdateArtistComponent
   ],
   imports: [
 
@@ -44,7 +51,10 @@ import {MatInputModule} from '@angular/material/input';
     HttpClientModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

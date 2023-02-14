@@ -1,7 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, Inject } from '@angular/core';
+
 
 import { IArtist } from 'src/app/models/artist.interface';
 import { ArtistService } from 'src/app/services/artist-services/artist.service';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-artist-list',
@@ -11,15 +14,20 @@ import { ArtistService } from 'src/app/services/artist-services/artist.service';
 
 export class ArtistListComponent implements OnInit{
 
-  constructor(private service: ArtistService) {}
+  constructor(private service: ArtistService, private builder: FormBuilder, private dialog: MatDialog,) {}
+  updateArtist: FormGroup = new FormGroup({});
 
-  @Input() param: string = "";
+
+
+  param: string = "";
+  del: string = "";
+  choice: string="";
 
   //TO-DO: Define a variable that will store the information
   l_artists: IArtist[] = [];
 
   artist_f: IArtist = {
-    artistID: 0,
+    artistID: '',
     name: '',
     country: '',
     enterprise: '',
@@ -29,7 +37,9 @@ export class ArtistListComponent implements OnInit{
   };
 
   results: number = 0;
-  
+
+
+
   ngOnInit(): void {
     this.service.getAll().subscribe({
       next: (artist) => {
@@ -39,15 +49,10 @@ export class ArtistListComponent implements OnInit{
       error: (console.log),
       complete: (console.log)
     })
-    /*this.service.getAll()
-    .subscribe((artist) => { 
-      
-      this.l_artists = artist,
-      this.results = this.l_artists.length;});*/
-    
+
   }
 
-  //TO-DO: Create a function that based of param it will show n-results
+
   ngGetById(param: string){
     this.service.getById(param).subscribe((artist) => {
       this.l_artists = [artist],
@@ -55,4 +60,28 @@ export class ArtistListComponent implements OnInit{
   }
 
 
+  ngDelete(del: string){
+
+    if(confirm("Are you sure you want to delete this entry?")){
+      this.service.deleteArtist(del).subscribe();
+    }
+  }
+
+
+  onSubmit(){
+
+    this.service.putArtist(this.updateArtist.value).subscribe((answer)=>console.log(answer));
+  }
+
+
 }
+
+
+
+
+
+
+
+
+
+
