@@ -18,6 +18,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ArtistFormComponent } from './components/forms/artist-form/artist-form.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -40,11 +45,17 @@ import {MatInputModule} from '@angular/material/input';
     MatToolbarModule,
     MatListModule,
     MatButtonModule,
+    MatDatepickerModule,
     MatIconModule,
     HttpClientModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatListModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    MatCardModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

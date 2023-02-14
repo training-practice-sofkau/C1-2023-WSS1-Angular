@@ -25,6 +25,10 @@ const routes: Routes = [
     component: ArtistFormComponent
   },
   {
+    path: 'new/artist/:id',
+    component: ArtistFormComponent
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'home'
