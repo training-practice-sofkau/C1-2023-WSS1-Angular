@@ -17,8 +17,9 @@ import { AppRoutingModule } from './app-routing.module';
 // import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtistFormComponent } from './components/forms/artist-form/artist-form.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { UpdateArtistFormComponent } from './components/forms/update-artist-form/update-artist-form.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {MatInputModule} from '@angular/material/input';
     AlbumListComponent,
     HomeComponent,
     ErrorComponent,
-    ArtistFormComponent
+    ArtistFormComponent,
+    UpdateArtistFormComponent
   ],
   imports: [
     NgxPaginationModule,

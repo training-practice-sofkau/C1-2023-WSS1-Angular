@@ -69,7 +69,7 @@ export class ArtistListComponent implements OnInit{
   deleteArtist(param: string){
       if(confirm("Do you really want to delete?"))
           {
-              this.service.deleteArtis(param).subscribe(() => this.ngOnInit())
+              this.service.deleteArtist(param).subscribe(() => this.ngOnInit())
           }
   }
 

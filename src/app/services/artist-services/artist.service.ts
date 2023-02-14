@@ -26,7 +26,15 @@ export class ArtistService {
     return this.http.post(this.api,artist);
   }
 
-  deleteArtis(id: string){
+  getCurretArtist(id: string){
+    return this.http.get(`${this.api}/${id}`)
+  }
+
+  updateArtist(id: string, data: any){
+    return this.http.put(`${this.api}/${id}`, data)
+  }
+
+  deleteArtist(id: string){
     return this.http.delete(`${this.api}/${id}`)
   }
 

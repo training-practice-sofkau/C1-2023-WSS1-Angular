@@ -33,6 +33,7 @@
             Type: {{artist.type}} <br/>
         </div>
         <div><i (click)="deleteArtist(artist.artistID)"  class="fa-solid fa-trash" style='font-size:20px; color:red;'></i></div>
+        <a routerLink='/update/{{artist.artistID}}'><i  class="fa-solid fa-edit" style='font-size:20px; color:blue;'></i></a>
     </div>
   
 </div>
