@@ -18,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ArtistFormComponent } from './components/forms/artist-form/artist-form.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-
+import { CookieService } from 'ngx-cookie-service';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -44,9 +45,11 @@ import {MatInputModule} from '@angular/material/input';
     HttpClientModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatRadioModule
+
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

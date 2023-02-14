@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-sidenavbar',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class SidenavbarComponent {
 
+  constructor( private cookie:CookieService){}
+
+
+  eraseCookie(){
+    this.cookie.deleteAll();
+  }
 }
