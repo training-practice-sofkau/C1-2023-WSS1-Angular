@@ -11,48 +11,59 @@ import { ArtistService } from 'src/app/services/artist-services/artist.service';
 
 export class ArtistListComponent implements OnInit{
 
-  constructor(private service: ArtistService) {}
+  constructor(private artistService: ArtistService) {}
 
-  @Input() param: string = "";
+  filterOption: string = "";
+  @Input() filterParam: string = "";
 
-  //TO-DO: Define a variable that will store the information
-  l_artists: IArtist[] = [];
+  artistList: IArtist[] = [];
+  results: IArtist[] = []
+  img = "https://www.shutterstock.com/image-vector/letter-b-pulse-music-player-260nw-1581685942.jpg";
 
-  artist_f: IArtist = {
-    artistID: 0,
-    name: '',
-    country: '',
-    enterprise: '',
-    debutDate: new Date(),
-    type: ''
-
-  };
-
-  results: number = 0;
-  
   ngOnInit(): void {
-    this.service.getAll().subscribe({
-      next: (artist) => {
-        this.l_artists = artist,
-        this.results = this.l_artists.length;
+    this.artistService.getAll().subscribe({
+      next: (artists) => {
+        this.artistList = artists,
+        this.results = artists;
       },
       error: (console.log),
       complete: (console.log)
     })
-    /*this.service.getAll()
-    .subscribe((artist) => { 
-      
-      this.l_artists = artist,
-      this.results = this.l_artists.length;});*/
-    
   }
 
-  //TO-DO: Create a function that based of param it will show n-results
-  ngGetById(param: string){
-    this.service.getById(param).subscribe((artist) => {
-      this.l_artists = [artist],
-      this.results = this.l_artists.length;});
+  ngOnSearch(){
+    switch(this.filterOption){
+      case "id": {
+        console.log(this.filterParam);
+        this.artistService.getById(this.filterParam).subscribe(
+          artist => { this.results = [artist]}
+        )
+        break;
+      };
+      case "name": {
+        this.artistService.getByName(this.filterParam, this.artistList).subscribe(
+          artists => { this.results = artists; }
+        );
+        break;
+      };
+      case "country": {
+        this.artistService.getByCountry(this.filterParam, this.artistList).subscribe(
+          artists => { this.results = artists;}
+        );
+        break;
+      };
+    };
+  };
+
+  onDelete(artistID: string){
+    let userConfirm: boolean = confirm("Are you sure you want to delete this artist?")
+    if (userConfirm){
+      this.artistService.deleteArtist(artistID).subscribe((answer)=>console.log(answer));
+      window.alert("Artist deleted successfully.");
+    }
+  };
+
+  onUpdate(artist: IArtist){
+    this.artistService.setArtist(artist);
   }
-
-
-}
+};
