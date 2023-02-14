@@ -52,8 +52,8 @@ export class ArtistService {
   };
 
   deleteArtist(artistID: string){
-    this.http.delete<HttpResponse<any>>(this.api+"/"+artistID)
-    window.alert("Artist deleted successfully.");
+    console.log(this.api+"/"+artistID);
+    return this.http.delete(`${this.api}/${artistID}`);
   }
 
   updateArtist(artistID: string, artist: IArtist){

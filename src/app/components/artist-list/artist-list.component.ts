@@ -58,7 +58,8 @@ export class ArtistListComponent implements OnInit{
   onDelete(artistID: string){
     let userConfirm: boolean = confirm("Are you sure you want to delete this artist?")
     if (userConfirm){
-      this.artistService.deleteArtist(artistID);
+      this.artistService.deleteArtist(artistID).subscribe((answer)=>console.log(answer));
+      window.alert("Artist deleted successfully.");
     }
   };
 
