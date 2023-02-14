@@ -3,7 +3,7 @@
         <input type="text" placeholder="Enter ID" [(ngModel)]="param" (click)="ngOnInit()"/>
     </div>
     <div ngClass="artistOps" [ngStyle]="{margin:'0px 10px 0px 10px'}">
-        <!-- <input type="radio" (click)="ngGetById(param)"/> id -->
+
 
       <button [ngStyle]="{margin:'0px 10px 0px 10px'}" (click)="ngGetById(param)">Search by ID</button>
     </div>
@@ -11,7 +11,7 @@
 </div>
 
 <div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
-    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
+    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 1130px 10px 13px ', padding:'5px'}">
         id: {{artist.artistID}} <br/>
         name: {{artist.name}} <br/>
         country: {{artist.country}} <br/>
