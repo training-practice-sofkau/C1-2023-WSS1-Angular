@@ -33,6 +33,7 @@ import { ArtistPostComponent } from './components/artistCRUD/artist-post/artist-
 import { ArtistFormComponent } from './components/artistCRUD/artist-form/artist-form.component';
 import { ArtistFormPutComponent } from './components/artistCRUD/artist-form-put/artist-form-put.component';
 import { ArtistFormPostComponent } from './components/artistCRUD/artist-form-post/artist-form-post.component';
+import { ArtistDeleteComponent } from './components/artistCRUD/artist-delete/artist-delete.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { ArtistFormPostComponent } from './components/artistCRUD/artist-form-pos
     ArtistPostComponent,
     ArtistFormComponent,
     ArtistFormPutComponent,
-    ArtistFormPostComponent
+    ArtistFormPostComponent,
+    ArtistDeleteComponent
 
   ],
   imports: [

@@ -8,6 +8,7 @@ import { SideNavbarComponent } from './components/side-navbar/side-navbar.compon
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ArtistPutComponent } from './components/artistCRUD/artist-put/artist-put.component';
 import { ArtistFormPostComponent } from './components/artistCRUD/artist-form-post/artist-form-post.component';
+import { ArtistDeleteComponent } from './components/artistCRUD/artist-delete/artist-delete.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'artist/post',
     component: ArtistFormPostComponent
+  },
+  {
+    path: 'artist/delete',
+    component: ArtistDeleteComponent
   },
   {
     path: 'album',

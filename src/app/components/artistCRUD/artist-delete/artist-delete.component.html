@@ -1,0 +1,9 @@
+<div Ngclass="searchTxt">
+  <input class="searchTxt" type="text" placeholder="Enter text" [(ngModel)]="param" />
+  <button mat-raised-button color="primary" (click)="onIDSearch()">Search</button>
+</div>
+
+
+<div>
+  <button *ngIf="artistSelected" mat-raised-button color="primary" (click)="onDelete()">Delete</button>
+</div>

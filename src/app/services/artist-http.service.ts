@@ -28,4 +28,8 @@ export class ArtistHttpService {
   post(artist:IArtist):  Observable<any> {
     return this.http.post(this.api, artist);
   }
+
+  deleteByID(param: string):  Observable<any> {
+    return this.http.delete(this.api+"/"+param);
+  }
 }
