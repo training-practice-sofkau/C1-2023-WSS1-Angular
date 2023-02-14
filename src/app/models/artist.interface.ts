@@ -3,6 +3,6 @@ export interface IArtist{
     name: string,
     country: string,
     age: number,
-    year_debut: number,
-    total_albums: number
+    yearDebut: number,
+    totalAlbums: number
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { IArtist } from 'src/app/models/artist.interface';
 import { ARTISTS } from '../../mocks/artist.mock';
@@ -16,6 +17,10 @@ export class ArtistService {
 
   getAll(): Observable<any>{
     return this.httpClient.get(this.url);
+  }
+
+  addArtist(form: any ){
+    return this.httpClient.post(this.url, form);
   }
 
   filterByName(searchingText: string, artists: IArtist[]): Observable<IArtist[]> {
