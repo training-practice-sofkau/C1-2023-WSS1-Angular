@@ -26,6 +26,6 @@ export class ArtistService {
     return this.http.post(this.api,artist);
   }
   patchArtist(artist : IArtist): Observable<any> {
-    return this.http.post(this.api,artist);
+    return this.http.patch(this.api,artist);
   }
 }

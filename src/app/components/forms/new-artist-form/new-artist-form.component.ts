@@ -60,16 +60,18 @@ export class NewArtistFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.inputArtist.artistID != '') {
+    if (this.inputArtist.artistID == '') {
       this.artistStervice
         .postArtist(this.inputArtist)
-        .subscribe((answer) => console.log(answer));
+        .subscribe((answer) => alert("Artist "+ answer.name +" succesfully created"));
       this.clearForm();
+      this.onBack();
     } else {
       this.artistStervice
         .patchArtist(this.inputArtist)
-        .subscribe((answer) => console.log(answer));
+        .subscribe((answer) => alert("Artist "+ answer.name +" succesfully updated"));
       this.clearForm();
+      this.onBack();
     }
   }
 
