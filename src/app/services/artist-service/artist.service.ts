@@ -31,6 +31,10 @@ export class ArtistService {
     return this.httpClient.put(`${this.url}${id}`, form);
   }
 
+  deleteArtist(id: string){
+    return this.httpClient.delete(`${this.url}${id}`)
+  }
+
   filterByName(searchingText: string, artists: IArtist[]): Observable<IArtist[]> {
     return new Observable((observer) => {
       observer.next(

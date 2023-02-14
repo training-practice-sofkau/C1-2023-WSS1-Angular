@@ -42,6 +42,19 @@ export class EditArtistComponent implements OnInit {
       error: (err) => console.error("Error updating artist: " + err),
       complete: () => {}
     })
-    this.routes.navigate(["artist"])
+    this.routes.navigate(["artist"]);
+  }
+
+  ngDeleteArtist(){
+    if(confirm("Sure want to delete this artist?")){
+      this.artistService.deleteArtist(this.artistId).subscribe({
+        next: (data) => {},
+        error: (err) => console.error("Error deleting artist: " + err),
+        complete: () => {}
+      })
+      this.routes.navigate(["artist"]);
+      return
+    }
+
   }
 }
