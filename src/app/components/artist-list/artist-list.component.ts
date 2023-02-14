@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ARTISTS } from 'src/app/mocks/artist.mock';
+import { map } from 'rxjs/operators';
 import { IArtist } from 'src/app/models/artist.interface';
 import { ArtistsService } from 'src/app/services/artist-service/artists.service';
 
@@ -15,51 +15,300 @@ export class ArtistListComponent implements OnInit {
   filter: string = '';
   typeSearch: string = '';
   artistsList: IArtist[] = [];
-  typeSearchList: string[] = ['Name', 'Age', 'Country'];
-  filtersList: string[] = [
-    'Starts with',
-    'Not starts with',
-    'Greater than',
-    'Less than',
-  ];
+  filtersList: string[] = ['Starts with', 'Not starts with'];
+  typeSearchList: string[] = ['ID', 'Name', 'Enterprise', 'Country'];
 
   constructor(private service: ArtistsService) {}
 
   ngOnInit(): void {
-    this.service.getAll().subscribe((artist) => (this.artistsList = artist));
-    this.results = this.artistsList.length;
+    this.service.getAll().subscribe({
+      next: (artist) => {
+        (this.artistsList = artist), (this.results = this.artistsList.length);
+      },
+      error: console.log,
+      complete: console.log,
+    });
   }
 
   ngOnSearch() {
-    this.artistsList = ARTISTS;
-
     switch (this.typeSearch) {
-      case 'Name': {
-        this.service
-          .getByName(this.param, this.filter)
-          .subscribe((artists) => (this.artistsList = artists));
+      case 'ID': {
+        this.service.getById(this.param).subscribe({
+          next: (artist) => {
+            this.artistsList = [artist];
+            this.results = this.artistsList.length;
+          },
+          error: console.log,
+          complete: console.log,
+        });
         break;
       }
 
-      case 'Age': {
-        this.service
-          .getByAge(this.param, this.filter)
-          .subscribe((artists) => (this.artistsList = artists));
+      case 'Name': {
+        if (this.filter === '') {
+          this.service
+            .getAll()
+            .pipe(
+              map((artists) =>
+                artists
+                  .filter(
+                    (artist: { name: string }) =>
+                      artist.name.toLowerCase() === this.param.toLowerCase()
+                  )
+                  .sort((x: { name: string }, y: { name: any }) =>
+                    x.name.localeCompare(y.name)
+                  )
+              )
+            )
+            .subscribe({
+              next: (artists) => {
+                (this.artistsList = artists),
+                  (this.results = this.artistsList.length);
+              },
+              error: console.log,
+              complete: console.log,
+            });
+        }
+
+        if (this.filter === 'Starts with') {
+          this.service
+            .getAll()
+            .pipe(
+              map((artists) =>
+                artists
+                  .filter((artist: { name: string }) =>
+                    artist.name
+                      .toLowerCase()
+                      .startsWith(this.param.toLowerCase())
+                  )
+                  .sort((x: { name: string }, y: { name: any }) =>
+                    x.name.localeCompare(y.name)
+                  )
+              )
+            )
+            .subscribe({
+              next: (artists) => {
+                (this.artistsList = artists),
+                  (this.results = this.artistsList.length);
+              },
+              error: console.log,
+              complete: console.log,
+            });
+        }
+
+        if (this.filter === 'Not starts with') {
+          this.service
+            .getAll()
+            .pipe(
+              map((artists) =>
+                artists
+                  .filter(
+                    (artist: { name: string }) =>
+                      artist.name.toLowerCase().charAt(0) !=
+                      this.param.toLowerCase().charAt(0)
+                  )
+                  .sort((x: { name: string }, y: { name: any }) =>
+                    x.name.localeCompare(y.name)
+                  )
+              )
+            )
+            .subscribe({
+              next: (artists) => {
+                (this.artistsList = artists),
+                  (this.results = this.artistsList.length);
+              },
+              error: console.log,
+              complete: console.log,
+            });
+        }
+
+        break;
+      }
+
+      case 'Enterprise': {
+        if (this.filter === '') {
+          this.service
+            .getAll()
+            .pipe(
+              map((artists) =>
+                artists
+                  .filter(
+                    (artist: { enterprise: string }) =>
+                      artist.enterprise.toLowerCase() ===
+                      this.param.toLowerCase()
+                  )
+                  .sort((x: { name: string }, y: { name: any }) =>
+                    x.name.localeCompare(y.name)
+                  )
+              )
+            )
+            .subscribe({
+              next: (artists) => {
+                (this.artistsList = artists),
+                  (this.results = this.artistsList.length);
+              },
+              error: console.log,
+              complete: console.log,
+            });
+        }
+
+        if (this.filter === 'Starts with') {
+          this.service
+            .getAll()
+            .pipe(
+              map((artists) =>
+                artists
+                  .filter((artist: { enterprise: string }) =>
+                    artist.enterprise
+                      .toLowerCase()
+                      .startsWith(this.param.toLowerCase())
+                  )
+                  .sort((x: { name: string }, y: { name: any }) =>
+                    x.name.localeCompare(y.name)
+                  )
+              )
+            )
+            .subscribe({
+              next: (artists) => {
+                (this.artistsList = artists),
+                  (this.results = this.artistsList.length);
+              },
+              error: console.log,
+              complete: console.log,
+            });
+        }
+
+        if (this.filter === 'Not starts with') {
+          this.service
+            .getAll()
+            .pipe(
+              map((artists) =>
+                artists
+                  .filter(
+                    (artist: { enterprise: string }) =>
+                      artist.enterprise.toLowerCase().charAt(0) !=
+                      this.param.toLowerCase().charAt(0)
+                  )
+                  .sort((x: { name: string }, y: { name: any }) =>
+                    x.name.localeCompare(y.name)
+                  )
+              )
+            )
+            .subscribe({
+              next: (artists) => {
+                (this.artistsList = artists),
+                  (this.results = this.artistsList.length);
+              },
+              error: console.log,
+              complete: console.log,
+            });
+        }
+
         break;
       }
 
       case 'Country': {
-        this.service
-          .getByCountry(this.param, this.filter)
-          .subscribe((artists) => (this.artistsList = artists));
+        if (this.filter === '') {
+          this.service
+            .getAll()
+            .pipe(
+              map((artists) =>
+                artists
+                  .filter(
+                    (artist: { country: string }) =>
+                      artist.country.toLowerCase() === this.param.toLowerCase()
+                  )
+                  .sort((x: { name: string }, y: { name: any }) =>
+                    x.name.localeCompare(y.name)
+                  )
+              )
+            )
+            .subscribe({
+              next: (artists) => {
+                (this.artistsList = artists),
+                  (this.results = this.artistsList.length);
+              },
+              error: console.log,
+              complete: console.log,
+            });
+        }
+
+        if (this.filter === 'Starts with') {
+          this.service
+            .getAll()
+            .pipe(
+              map((artists) =>
+                artists
+                  .filter((artist: { country: string }) =>
+                    artist.country
+                      .toLowerCase()
+                      .startsWith(this.param.toLowerCase())
+                  )
+                  .sort((x: { name: string }, y: { name: any }) =>
+                    x.name.localeCompare(y.name)
+                  )
+              )
+            )
+            .subscribe({
+              next: (artists) => {
+                (this.artistsList = artists),
+                  (this.results = this.artistsList.length);
+              },
+              error: console.log,
+              complete: console.log,
+            });
+        }
+
+        if (this.filter === 'Not starts with') {
+          this.service
+            .getAll()
+            .pipe(
+              map((artists) =>
+                artists
+                  .filter(
+                    (artist: { country: string }) =>
+                      artist.country.toLowerCase().charAt(0) !=
+                      this.param.toLowerCase().charAt(0)
+                  )
+                  .sort((x: { name: string }, y: { name: any }) =>
+                    x.name.localeCompare(y.name)
+                  )
+              )
+            )
+            .subscribe({
+              next: (artists) => {
+                (this.artistsList = artists),
+                  (this.results = this.artistsList.length);
+              },
+              error: console.log,
+              complete: console.log,
+            });
+        }
+
         break;
       }
 
       default: {
-        this.artistsList = ARTISTS;
+        this.service.getAll().subscribe({
+          next: (artist) => {
+            this.artistsList = artist;
+            this.results = this.artistsList.length;
+          },
+          error: console.log,
+          complete: console.log,
+        });
         break;
       }
     }
+  }
+
+  deleteArtist() {
+    this.service.deleteArtist(this.param).subscribe({
+      error: console.log,
+      complete: console.log,
+    });
     this.results = this.artistsList.length;
   }
+
+  updateArtist() {}
 }
