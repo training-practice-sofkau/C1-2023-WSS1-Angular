@@ -1,32 +1,40 @@
-<div [ngStyle]="{display: 'flex'}">
-    <div ngClass="artistTxt">
-        <input type="text" placeholder="Enter text" [(ngModel)]="param" (click)="ngOnInit()"/>
+<section class="search-bar">
+  <div class="search-box">
+      <input type="text" placeholder="Enter text" [(ngModel)]="filterParam" (change)="ngOnSearch()"/>
+  </div>
+  <div class="search-options">
+    <label>Filter by</label>
+    <select name="filterOption" id="filterOption" [(ngModel)]="filterOption">
+      <option value="id">ID</option>
+      <option value="name">Name</option>
+      <option value="genre">Genre</option>
+    </select>
+  </div>
+</section>
+<section class="artist-results-container">
+<div class="artist-details-container" *ngFor="let artist of results">
+  <div>
+    <img src="{{ img }}">
+  </div>
+  <div class="artist-details">
+    <div>
+      <strong>id: </strong>{{ artist.artistID }}<br>
+      <strong>Name: </strong>{{ artist.name }}<br>
+      <strong>Genre: </strong>{{ artist.country }}<br>
     </div>
-    <div ngClass="artistOps">
-        <input type="radio" (click)="ngGetById(param)"/> id
-
+    <div>
+      <strong>Debut: </strong>{{ artist.debutDate }}<br>
+      <strong>Enterprise: </strong>{{ artist.enterprise }}<br>
+      <strong>Type: </strong>{{ artist.type }}<br>
     </div>
-    <button routerLink="/new/artist">Nuevo Artista</button>
+  </div>
 </div>
-
-<div [ngStyle]="{display: 'flex', flexDirection:'column'}" *ngFor="let artist of l_artists">
-    <div [ngStyle]="{backgroundColor: 'pink', margin: '10px 10px 10px 13px ', padding:'5px'}">
-        id: {{artist.artistID}} <br/>
-        name: {{artist.name}} <br/>
-        country: {{artist.country}} <br/>
-        enterprise: {{artist.enterprise}} <br/>
-        Debut date: {{artist.debutDate}} <br/>
-        Type: {{artist.type}} <br/>
-
-        
-    </div>
-  
-</div>
+</section>
 
 <!--Implement acording to the results obtained founded: n or There are no matches-->
-<ng-container *ngIf="results > 0; else noArtistFound ">
+<ng-container *ngIf="results.length > 0; else noArtistFound ">
     <div>
-        <h4>Founded: {{results}}</h4>
+        <h4>Founded: {{results.length}}</h4>
     </div>
 
 </ng-container>
