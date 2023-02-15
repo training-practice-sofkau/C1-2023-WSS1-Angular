@@ -1,0 +1,20 @@
+<div class="element--container">
+  <div class="image--section">
+    <img
+      [src]="imgElement ? imgElement : defaultImage"
+      alt="image for song"
+      class="logo--song"
+    />
+  </div>
+  <div class="info--section">
+    <div class="text--container">
+      <p *ngFor="let item of elementRender | keyvalue: returnZero | slice:0:numberProperties">
+        {{ item.key }} : {{ item.value }}
+      </p>
+    </div>
+    <div class="action--container">
+      <button mat-raised-button color="warn" (click)="sendId()">X</button>
+    </div>
+    
+  </div>
+</div>

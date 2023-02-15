@@ -9,15 +9,23 @@ import { MatIconModule} from '@angular/material/icon';
 import { AppComponent } from './app.component';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
 import { AlbumListComponent } from './components/album-list/album-list.component';
+import { ElementCardComponent } from './components/element-card/element-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HomePageComponent } from './models/home-page/home-page.component';
 import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtistFormComponent } from './components/forms/artist-form/artist-form.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { NewArtistComponent } from './components/modals/new-artist/new-artist.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EditArtistFormComponent } from './components/forms/editArtitsForm/edit-artist-form/edit-artist-form.component';
+import { EditAlbumFormComponent } from './components/forms/Album/edit-album-form/edit-album-form.component';
+import {MatSelectModule} from '@angular/material/select';
+import { NewAlbumComponent } from './components/modals/new-album/new-album.component';
+import { AlbumFormComponent } from './components/forms/Album/album-form/album-form.component';
 
 
 @NgModule({
@@ -25,13 +33,18 @@ import {MatInputModule} from '@angular/material/input';
     AppComponent,
     ArtistListComponent,
     AlbumListComponent,
-    HomePageComponent,
+    ElementCardComponent,
     SidenavbarComponent,
     WelcomeComponent,
-    ArtistFormComponent
+    ArtistFormComponent,
+    HomePageComponent,
+    NewArtistComponent,
+    EditArtistFormComponent,
+    EditAlbumFormComponent,
+    NewAlbumComponent,
+    AlbumFormComponent,
   ],
   imports: [
-
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -44,7 +57,10 @@ import {MatInputModule} from '@angular/material/input';
     HttpClientModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule,
+    MatSelectModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 <div class="form--container">
-    <form [formGroup] = "saveArtist" ngClass="save">
+    <form [formGroup] = "editArtist" ngClass="save">
         <mat-form-field appearance="fill" >
             <mat-label>Name:</mat-label>  <input matInput placeholder="Insert name" formControlName="name"/> 
         </mat-form-field>
@@ -15,9 +15,9 @@
         <mat-form-field appearance="fill" >
             <mat-label>Type: </mat-label> <input matInput placeholder="Insert type" formControlName="type"/>
         </mat-form-field>
-        <button mat-raised-button color="primary" [mat-dialog-close]="this.saveArtist.getRawValue()">Save</button>
+        <button mat-raised-button color="primary" (click)="submitInfo()">Edit</button>
+        <button mat-raised-button color="warn" routerLink="/artist">Go Back</button>
      
     </form>
-    
-
 </div>
+

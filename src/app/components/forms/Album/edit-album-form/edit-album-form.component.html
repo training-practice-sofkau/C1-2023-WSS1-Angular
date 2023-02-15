@@ -1,0 +1,44 @@
+<div class="form--container">
+  <form [formGroup]="editAlbum" ngClass="save">
+    <mat-form-field appearance="fill">
+      <mat-label>Title: </mat-label>
+      <input matInput placeholder="Insert name" formControlName="title" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Total Songs: </mat-label>
+      <input
+        matInput
+        placeholder="Insert country"
+        formControlName="totalSongs"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Year Release: </mat-label>
+      <input
+        matInput
+        placeholder="Insert enterprise"
+        formControlName="yearRelease"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Genre: </mat-label>
+      <input
+        matInput
+        placeholder="Insert cdebut date"
+        formControlName="genre"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Artist</mat-label>
+      <mat-select formControlName="artistDTO">
+        <mat-option *ngFor="let ex of artistAvailable" [value]="ex">
+          {{ ex.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="submitInfo()">
+      Edit
+    </button>
+    <button mat-raised-button color="warn" routerLink="/artist">Go Back</button>
+  </form>
+</div>
