@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { map, Observable} from 'rxjs';
+import { Observable} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 import { IAlbum } from 'src/app/models/album.interface';
 
 @Injectable({
@@ -7,75 +9,13 @@ import { IAlbum } from 'src/app/models/album.interface';
 })
 export class AlbumService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  obsAlbum: Observable<IAlbum[]> = new Observable((observer) => {
-      observer.next();
-      observer.complete();
-  })
+  api: string = "http://localhost:8080/albums"
 
-  getAll(): Observable<IAlbum[]> {
-      return this.obsAlbum;
+  getAll(): Observable<any> {
+    return this.http.get(this.api);
   }
-
-  getByParameter(p:string, s:string, b:string): Observable<IAlbum[]> {
-
-      if(p === "title"){
-          if(s === ":"){
-              return this.obsAlbum
-              .pipe(map(items => items
-                        .filter(items => items
-                                .title.toLowerCase().startsWith(b.toLowerCase()))));
-          }else if(s === "-"){
-              return this.obsAlbum
-              .pipe(map(items => items
-                        .filter(items => !items
-                                .title.toLowerCase().startsWith(b))));
-          }
-      }else if(p === "genre"){
-          if(s === ":"){
-              return this.obsAlbum
-              .pipe(map(items => items
-                        .filter(items => items
-                                .genre.toLowerCase().startsWith(b.toLowerCase()))));
-          }else if(s === "-"){
-              return this.obsAlbum
-              .pipe(map(items => items
-                        .filter(items => !items
-                                .genre.toLowerCase().startsWith(b))));
-          }
-
-      }else if(p === "nsongs"){
-          if(s === ":"){
-              return this.obsAlbum
-              .pipe(map(items => items
-                        .filter(items => items
-                                .number_of_songs.toString().toLowerCase().startsWith(b.toLowerCase()))));
-          }else if(s === "-"){
-              return this.obsAlbum
-              .pipe(map(items => items
-                        .filter(items => !items
-                                .number_of_songs.toString().toLowerCase().startsWith(b))));
-
-          }else if(s === ">"){
-              return this.obsAlbum
-              .pipe(map(items => items
-                        .filter(items => items
-                                .number_of_songs > parseInt(b, 10))));
-
-          }else if(s === "<"){
-              return this.obsAlbum
-              .pipe(map(items => items
-                        .filter(items => items
-                                .number_of_songs < parseInt(b, 10))));
-          }
-
-      }
-
-      return this.obsAlbum;
-
-  }
-
 
 }
 

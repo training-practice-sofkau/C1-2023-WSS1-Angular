@@ -16,27 +16,34 @@ export class AlbumListComponent implements OnInit {
 
   l_albums: IAlbum[] = [];
 
+
+  // album_f: IAlbum = {
+  //   artistID: '',
+  //   name: '',
+  //   country: '',
+  //   enterprise: '',
+  //   debutDate: new Date(),
+  //   type: '',
+  //   img: {url: 'https://imagoimpresiones.com/wp-content/uploads/woocommerce-placeholder.png'} 
+  // };
+
   results: number = 0;
 
   page: number = 1;
   
   ngOnInit(): void {
-    this.service.getAll().subscribe((val) => {this.l_albums = val})
-    this.results = this.l_albums.length;
+    this.fetchData();
   }
 
-  ngOnSearch(){
-      let re = /(\w+)+(\W)+(\w+)/;
-      let filter = re.exec(this.param);
-
-      let p = filter![1];
-      let s = filter![2];
-      let b = filter![3];
-
-
-      this.service.getByParameter(p, s, b).subscribe((val) => {this.l_albums = val})
-      
-      this.results = this.l_albums.length
+  fetchData(){
+      this.service.getAll().subscribe({
+          next: (album) => {
+              this.l_albums = album,
+                  this.results = this.l_albums.length;
+          },
+          error: (console.log),
+          complete: (console.log)
+      })
   }
 
 }

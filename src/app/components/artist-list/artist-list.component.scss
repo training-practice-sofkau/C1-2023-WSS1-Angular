@@ -71,6 +71,13 @@
     width: 50em;
     margin: 10px;
 }
+.mat-row:nth-child(even){
+    background-color: red;
+}
+        
+.mat-row:nth-child(odd){
+    background-color: black;
+}
 
 @media only screen and (max-width: 600px) {
   .odd {
