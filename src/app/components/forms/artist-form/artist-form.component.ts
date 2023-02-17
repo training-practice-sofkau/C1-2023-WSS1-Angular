@@ -32,20 +32,20 @@ export class ArtistFormComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params)=> {
       this.Id = params.get("id");
-      console.log(this.Id);
+      //console.log(this.Id);
     });
-    console.log(this.Id);
+    //console.log(this.Id);
     if(this.Id != null)
     {
       this.hiddeUpdateButton = true;
       this.service.getById(this.Id).subscribe((artist) =>{
       this.updArtist = artist;
       this.selected = this.updArtist.typeDTO;
-      console.log(this.selected);
-      console.log(this.updArtist);
+      //console.log(this.selected);
+      //console.log(this.updArtist);
     });}else{
-      console.log(this.selected);
-      console.log(this.updArtist);
+      //console.log(this.selected);
+      //console.log(this.updArtist);
       this.hiddeCreateButton = true;
     }
     this.saveArtist = this.builder.group(

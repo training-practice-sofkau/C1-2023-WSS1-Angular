@@ -1,5 +1,7 @@
 <div class="container-fluid">
-    <div class="search-container" [ngStyle]="{display: 'flex', flexDirection:'row', margin: '10px 10px 10px 13px '}">
+    <div class="search-container" 
+    [ngStyle]="{display: 'flex', 
+    flexDirection:'row', margin: '10px 10px 10px 13px '}">
         <div ngClass="artistTxt">
             <input  type="text" placeholder="Enter text" [(ngModel)]="param"
                 (keydown.backspace)="ngOnInit()" />
